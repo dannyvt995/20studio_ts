@@ -49,7 +49,7 @@ function IntroWorkPage({ propsForGsap, backgroundImage }: IIntroWorkPage) {
 
                 </div>
                 <div className={s.text_2}>
-                    <p className={s.intro}>In honor of Columbia Pictures' 100th anniversary, we teamed up with Watson Design Group to create a century-filled digital experience and quiz. This took visitors through entertainment history and a personalized journey of self-discovery, revealing their most influential films and TV shows.</p>
+                    <p className={s.intro}>In honor of Columbia Pictures&quot; 100th anniversary, we teamed up with Watson Design Group to create a century-filled digital experience and quiz. This took visitors through entertainment history and a personalized journey of self-discovery, revealing their most influential films and TV shows.</p>
                     <div className={s.info}><span className={s.client}>Watson Design Group</span> <ul className="services"><li className={s.service}>
                         Visual Design
                     </li><li className={s.service}>

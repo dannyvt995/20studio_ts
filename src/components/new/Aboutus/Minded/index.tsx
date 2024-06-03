@@ -14,7 +14,7 @@ export default function Minded() {
                 </h2> 
                 <h2  className={s.title}>
                     <div className={s.title_mask}>
-                        <div className={s.title_line}>"Agency” </div>
+                        <div className={s.title_line}>&quot;Agency&quot; </div>
                     </div>
                     <div className={s.title_mask}>
                         <div className={s.title_line}>— trong</div>

@@ -60,7 +60,7 @@ function NavbarModalSection({ }) {
 
 
 
-    }, [indexItemNavbar])
+    }, [indexItemNavbar,prevIndexItemNavbar])
     return (
         <section className={s.navbar_modal_section}>
             <div className={s.wrapper} id="w_navbarModal">

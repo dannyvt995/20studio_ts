@@ -12,7 +12,7 @@ export default function Layout_3() {
                         Stand-out Experience
                     </h2>
                     <div className={s.body}>
-                        <p>With a shared vision on quality, we set out to design a stand-out digital presence that not only attracts attention but also reinforces the agency's brand values, builds trust, and differentiates it from the competition, ultimately driving business growth and success.</p>
+                        <p>With a shared vision on quality, we set out to design a stand-out digital presence that not only attracts attention but also reinforces the agency&apos;s brand values, builds trust, and differentiates it from the competition, ultimately driving business growth and success.</p>
                     </div>
                 </div>
                 <div className="left">

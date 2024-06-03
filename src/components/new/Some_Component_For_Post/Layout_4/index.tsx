@@ -32,7 +32,7 @@ export default function Layout_4() {
                             360° Experience
                     </h2>
                     <div  className={s.body}>
-                        <p>A 360° experience allows visitors to delve into Studio D’s work, offering a comprehensive view of 3D environments from every angle. This module was created so visitors can intimately experience the agency's high-end capabilities and fine details of their work.</p>
+                        <p>A 360° experience allows visitors to delve into Studio D’s work, offering a comprehensive view of 3D environments from every angle. This module was created so visitors can intimately experience the agency&apos;s high-end capabilities and fine details of their work.</p>
                         </div>
             </div>
         </section>
