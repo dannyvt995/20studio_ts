@@ -1,0 +1,133 @@
+.navbar_modal_section {
+
+        position: fixed;
+        top:0;
+        left:0;
+        z-index: -1;
+        width:100vw;
+        height:100vh;
+}
+.navbar_modal_section .wrapper {
+    background-color: #0d0e13;
+    background-color: var(--color-dark-grey);
+    color: #e4e0db;
+    color: var(--color-light-grey);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%);
+    height:100%;
+    width:100%;
+}
+
+.navbar_modal_section .container {
+    display:grid;
+    grid-template-columns: repeat(10, 1fr);
+    margin: 0 8vw;
+
+    height: fit-content;
+}
+.navbar_modal_section .logo {
+    position:fixed;
+    top:-10vw;
+    left:4.1vw;
+}
+.navbar_modal_section .images {
+    overflow: hidden;
+}
+.navbar_modal_section .images li {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left:0;
+    bottom:0;
+    right:0;
+        will-change:tranform,opacity;
+        opacity: 0 ;
+}
+.navbar_modal_section .images li:first-child {
+    opacity:1;
+}
+.navbar_modal_section .main {
+    grid-column: 2 / 11;
+    position: relative;
+}
+.navbar_modal_section .main_line {
+    display: inline-flex;
+    position: relative;
+    transform-origin: top left;
+    will-change: transform;
+    color:var(--white);
+}
+.navbar_modal_section .social {
+    display: flex;
+    flex-direction: column;
+    grid-column: 2 / 6;
+}
+
+.navbar_modal_section .link_item,
+.navbar_modal_section .logo{
+    color: hsla(33, 14%, 88%, .6);
+    color: var(--color-light-grey-06);
+    display: inline-flex;
+    font-family: "Lausanne-300";
+    font-family: var(--font-f-lausanne-300);
+    font-size: 3.7333333333vw;
+    font-size: var(--font-s-p);
+    letter-spacing: .0266666667vw;
+    letter-spacing: var(--font-ls-p);
+    line-height: 5.6vw;
+    line-height: var(--font-lh-p);
+    position: relative;
+    transform-origin: top left;
+    transition: color .5s;
+    will-change: transform;
+}
+.navbar_modal_section  .sub_link:last-child {
+    margin-left: auto;
+}
+@media (min-width: 601px) {
+    .navbar_modal_section .container {
+     
+        grid-column-gap: 2.2222222222vw;
+        grid-template-columns: repeat(12, 1fr);
+        margin:  0 !important;
+    }
+    .navbar_modal_section .images {
+        height: 30.1388888889vw;
+        left: 19.7916666667vw;
+        overflow: hidden;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 21.3194444444vw;
+    }
+    .navbar_modal_section .main {
+        grid-column: 8 / 11;
+        margin-bottom: 1.8055555556vw;
+    }
+    .navbar_modal_section .main_line {
+        font-family: "Lausanne-300";
+        font-family: var(--font-f-lausanne-300);
+        font-size: 7.7333333333vw;
+        font-size: var(--font-s-h2);
+        letter-spacing: -.2666666667vw;
+        letter-spacing: var(--font-ls-h2);
+        line-height: 9.0666666667vw;
+        line-height: var(--font-lh-h2);
+        will-change: transform;
+    }
+    .navbar_modal_section .social {
+        grid-column: 8 / 13;
+    }
+    .navbar_modal_section .sub {
+        align-items: flex-end;
+        bottom: -8.9666666667vw;
+        display: flex;
+        left: 4.1666666667vw;
+        position: absolute;
+        width: 61.8888888889vw;
+    }
+}

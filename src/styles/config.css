@@ -1,0 +1,225 @@
+/* @font-face {
+    font-family: BeautiqueDisplay;
+    src: url('/fonts/BeautiqueDisplay/BeautiqueDisplay-Bold.otf');
+    font-weight: 400
+  }
+
+  @font-face {
+    font-family: "Lausanne-300";
+    src: url('/fonts/TWKLausanne.woff2');
+    font-weight: 300
+  } */
+  a{
+    text-decoration: none;
+  }
+div,p,a,span {
+   
+}
+ul {
+    list-style-type:none;
+    margin:0;
+    padding:0;
+}
+:root {
+
+    --grid_margin_des: 8vw;
+    --grid_col_count: repeat(12, 1fr);
+    --grid_gap: 10px;
+    --col_width : calc(calc(calc(100vw - calc(var(--grid_margin_des) * 2)) - calc(var(--grid_gap) * 11)) / 12);
+
+
+    --cream: rgb(245, 238, 221);
+    --black: #0d0e13;
+    --white: #fff;
+    --gray: hsl(0, 0%, 49%);
+
+    --fsdf : 1rem;
+    --fslarge: 10rem;
+
+
+    --color-white: #fff;
+    --color-white-02: hsla(0,0%,100%,.2);
+    --color-white-04: hsla(0,0%,100%,.4);
+    --color-white-06: hsla(0,0%,100%,.6);
+    --color-white-08: hsla(0,0%,100%,.8);
+    --color-off-white: #f8f8f8;
+    --color-off-white-02: hsla(0,0%,97%,.2);
+    --color-off-white-04: hsla(0,0%,97%,.4);
+    --color-off-white-06: hsla(0,0%,97%,.6);
+    --color-off-white-08: hsla(0,0%,97%,.8);
+    --color-story: #070707;
+    --color-dark-grey: #0d0e13;
+    --color-dark-grey-02: rgba(13,14,19,.2);
+    --color-dark-grey-04: rgba(13,14,19,.4);
+    --color-dark-grey-06: rgba(13,14,19,.6);
+    --color-dark-grey-08: rgba(13,14,19,.8);
+    --color-light-grey: #e4e0db;
+    --color-light-grey-02: hsla(33,14%,88%,.2);
+    --color-light-grey-06: hsla(33,14%,88%,.6);
+    --color-light-grey-08: hsla(33,14%,88%,.8);
+    --color-sand: #e0ccbb;
+    --color-sand-06: hsla(28,37%,81%,.6);
+    --color-sand-08: hsla(28,37%,81%,.8);
+    --font-f-lausanne-300: "Lausanne-300";
+    --font-f-Lausanne-300: "Lausanne-300";
+    --font-f-lausanne-500: "Lausanne-500";
+    --font-s-h0: 25.6vw;
+    --font-lh-h0: 25.6vw;
+    --font-ls-h0: -1.2vw;
+    --font-s-h1: 16vw;
+    --font-lh-h1: 16vw;
+    --font-ls-h1: -0.4vw;
+    --font-s-h2: 7.7333333333vw;
+    --font-lh-h2: 9.0666666667vw;
+    --font-ls-h2: -0.2666666667vw;
+    --font-s-h3: 6.4vw;
+    --font-lh-h3: 8vw;
+    --font-ls-h3: -0.1333333333vw;
+    --font-s-h4: 4.8vw;
+    --font-lh-h4: 6.4vw;
+    --font-ls-h4: 0vw;
+    --font-s-p: 3.7333333333vw;
+    --font-lh-p: 5.6vw;
+    --font-ls-p: 0.0266666667vw;
+    --font-s-p-small: 3.7333333333vw;
+    --font-lh-p-small: 5.6vw;
+    --font-ls-p-small: 0.0266666667vw;
+    --font-s-subtitle: 3.2vw;
+    --font-lh-subtitle: 4.2666666667vw;
+    --font-ls-subtitle: 0.0266666667vw;
+    --font-s-cta: 4.2666666667vw;
+    --font-lh-cta: 4.2666666667vw;
+    --font-ls-cta: 0vw;
+    --font-s-label: 3.7333333333vw;
+    --font-lh-label: 3.7333333333vw;
+    --font-ls-label: 0vw
+
+
+
+    /* let go */
+    /* index */
+    --navbar_height: 10vh;
+}
+
+@media(min-width: 601px) {
+    :root {
+        --font-s-h0:17.3611111111vw;
+        --font-lh-h0: 15.6944444444vw;
+        --font-ls-h0: -0.7986111111vw;
+        --font-s-h1: 10vw;
+        --font-lh-h1: 10vw;
+        --font-ls-h1: -0.3472222222vw;
+        --font-s-h2: 3.6111111111vw;
+        --font-lh-h2: 4.4444444444vw;
+        --font-ls-h2: -0.1041666667vw;
+        --font-s-h3: 2.2222222222vw;
+        --font-lh-h3: 2.7777777778vw;
+        --font-ls-h3: -0.0069444444vw;
+        --font-s-h4: 1.6666666667vw;
+        --font-lh-h4: 2.2222222222vw;
+        --font-ls-h4: 0vw;
+        --font-s-p: 1.1111111111vw;
+        --font-lh-p: 1.6666666667vw;
+        --font-ls-p: 0.0069444444vw;
+        --font-s-subtitle: 0.8333333333vw;
+        --font-lh-subtitle: 1.1111111111vw;
+        --font-ls-subtitle: 0.0069444444vw;
+        --font-s-p-small: 0.9722222222vw;
+        --font-lh-p-small: 1.4583333333vw;
+        --font-ls-p-small: 0.0069444444vw;
+        --font-s-cta: 1.1111111111vw;
+        --font-lh-cta: 1.1111111111vw;
+        --font-ls-cta: 0vw;
+        --font-s-label: 0.9722222222vw;
+        --font-lh-label: 0.9722222222vw;
+        --font-ls-label: 0vw
+    }
+}
+
+*,:after,:before {
+    box-sizing: border-box
+}
+
+
+
+html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -ms-overflow-style: none;
+    scrollbar-width: none
+}
+
+body {
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    margin: 0;
+    overscroll-behavior: none;
+    scroll-behavior: smooth;
+    text-rendering: optimizeSpeed;
+   
+}
+
+body::-webkit-scrollbar {
+    height: 0;
+    width: 0
+}
+
+* {
+    box-sizing: border-box;
+}
+h1,h2,h3,h4,h5 {
+    font-family:JosefinSans;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+ul.format,ol.format {
+    margin: 0;
+    padding: 0;
+}
+p,a,button,span,div {
+    font-size: var(--fsdf);
+}
+a,
+button:hover {
+    cursor: pointer;
+    user-select: none;
+}
+
+ul.format,ol.format {
+    list-style-type: none;
+}
+.light_background {
+    background-color: var(--white);
+}
+.light_background h1,
+.light_background h2,
+.light_background h3,
+.light_background h4,
+.light_background p,
+.light_background a,
+.light_background span {
+    color: var(--black) !important;
+}
+.dark_background {
+    background-color: var(--black);
+}
+
+.dark_background h1,
+.dark_background h2,
+.dark_background h3,
+.dark_background h4,
+.dark_background p,
+.dark_background a,
+.dark_background span {
+    color: var(--white) !important;
+}
+
+/* add */
+.mutil_line {
+    
+}

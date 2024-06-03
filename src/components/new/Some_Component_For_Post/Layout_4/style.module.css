@@ -1,0 +1,114 @@
+.POST_layout4 {
+
+}
+.POST_layout4  .container {
+    display:grid;
+}
+.POST_layout4 .media:first-child {
+    grid-column: 1 / 11;
+    z-index: 1;
+}
+.POST_layout4 .media:nth-child(2) {
+    grid-column: 6 / 11;
+    margin: -26.6666666667vw -8.5333333333vw 0 0;
+}
+.POST_layout4 .label {
+    grid-column: 1 / 11;
+    margin-top: 6.6666666667vw;
+}
+.POST_layout4 .label {
+    color: #0d0e13;
+    color: var(--color-dark-grey);
+    display: inline-flex;
+    font-family: Lausanne-300;
+    font-family: var(--font-f-lausanne-300);
+    font-size: 3.7333333333vw;
+    font-size: var(--font-s-label);
+    height: 7.7333333333vw;
+    justify-self: flex-start;
+    letter-spacing: 0;
+    letter-spacing: var(--font-ls-label);
+    line-height: 3.7333333333vw;
+    line-height: var(--font-lh-label);
+    line-height: 8.2666666667vw;
+    padding-left: 5.8666666667vw;
+    position: relative;
+}
+.POST_layout4 .icon {
+    height: 3.2vw;
+    position: absolute;
+    transform: translate(-5.3333333333vw, 2.1333333333vw);
+    width: 3.2vw;
+    z-index: 1;
+}
+.POST_layout4 .text {
+    display: flex;
+    position: relative;
+    transform-origin: top left;
+    z-index: 1;
+}
+.POST_layout4 .body {
+    color: rgba(13, 14, 19, .6);
+    color: var(--color-dark-grey-06);
+    grid-column: 1 / 9;
+    margin-top: 6.6666666667vw;
+}
+.POST_layout4 .body p {
+    font-family: "Lausanne-300";
+    font-family: var(--font-f-lausanne-300);
+    font-size: 3.7333333333vw;
+    font-size: var(--font-s-p);
+    letter-spacing: .0266666667vw;
+    letter-spacing: var(--font-ls-p);
+    line-height: 5.6vw;
+    line-height: var(--font-lh-p);
+}
+@media (min-width: 601px) {
+    .POST_layout4 .container {
+        grid-column-gap: 2.2222222222vw;
+        grid-template-columns: repeat(12, 1fr);
+
+    }
+    .POST_layout4 .media:first-child {
+        grid-column: 2 / 12;
+        order: 1;
+    }
+    .POST_layout4 .media:nth-child(2) {
+        grid-column: 7 / 13;
+        margin: -25vw -8.3333333333vw 0 -2.2222222222vw;
+        order: 4;
+    }
+    .POST_layout4 .label {
+        grid-column: 2 / 5;
+        margin-top: 4.1666666667vw;
+        order: 2;
+        height: 2.3611111111vw;
+        line-height: 2.5694444444vw;
+        padding-left: 1.5277777778vw;
+    }
+    .POST_layout4 .icon {
+        height: .8333333333vw;
+        transform: translate(-1.4930555556vw, .7638888889vw);
+        width: .8333333333vw;
+        will-change: transform;
+    }
+    .POST_layout4 .text {
+        will-change: transform;
+    }
+    .POST_layout4 .body {
+        align-self: flex-start;
+        grid-column: 2 / 5;
+        margin-top: 2.9861111111vw;
+        order: 3;
+    }
+    .POST_layout4 .body p {
+        font-family: "Lausanne-300";
+        font-family: var(--font-f-lausanne-300);
+        font-size: 3.7333333333vw;
+        font-size: var(--font-s-p-small);
+        letter-spacing: .0266666667vw;
+        letter-spacing: var(--font-ls-p-small);
+        line-height: 5.6vw;
+        line-height: var(--font-lh-p-small);
+    }
+}

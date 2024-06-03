@@ -1,0 +1,40 @@
+.nav {
+    position: fixed;
+    right: 3.4722222222vw;
+    top: 3.125vw;
+    transition: color .5s;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    z-index: 999;
+
+    mix-blend-mode: difference;
+}
+
+.nav .nav_list {
+    display: flex;
+    overflow: hidden;
+}
+.nav .nav_list  > .nav_item:not(:first-child) {
+    margin-left: 2.0833333333vw;
+    
+}
+.nav .nav_item a {
+    transform-origin: top left;
+}
+.nav .nav_item a {
+    font-family: Lausanne-300;
+    font-family: var(--font-f-lausanne-300);
+    font-size: 3.7333333333vw;
+    font-size: var(--font-s-p-small);
+    letter-spacing: .0266666667vw;
+    letter-spacing: var(--font-ls-p-small);
+    line-height: 5.6vw;
+    line-height: var(--font-lh-p-small);
+    position: relative;
+    color:var(--white);
+    will-change: transform;
+}
+.nav .nav_item a:hover {
+    color:var(--white) !important;
+}

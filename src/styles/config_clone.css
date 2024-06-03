@@ -1,0 +1,104 @@
+.dark_bg * {
+    color:var(--white);
+}
+img, svg {
+    display: block;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+body {
+    background: var(--white); /* for blend mode button adn more */
+}
+#button_menu {
+    mix-blend-mode: difference;
+}
+.has_padding_top_and_bottom {
+    padding: 10.4166666667vw 0;
+}
+.navbar_item_colorblack  a,
+.navbar_item_colorblack  .lable,
+.navbar_item_colorblack  .icon-close{
+    color:var(--black) !important;
+}
+.navbar_item_colorblack   .underline_Dom_Effect {
+    background-color:var(--black) !important;
+}
+a {
+    position:relative;
+}
+.cream_background {
+    background-color: var(--cream) !important;
+}
+.greendam_background {
+    background-color: var(--greendam) !important;
+}
+.greendam_background * {
+    color:var(--color-white-08) !important;
+}
+:root {
+    --greendam:rgb(134, 143, 138);
+}
+
+@media (max-width:620px) {
+    .container {
+        margin: 0 8vw !important;
+    }
+}
+
+/* #navbar {
+    transition: opacity 300ms;
+    will-change : opacity;
+}
+#button_menu {
+    transition: opacity 300ms;
+    opacity:0;
+    will-change : opacity;
+}
+@keyframes hiddenTarget {
+    from {opacity: 1}
+    to {opacity:0}
+  }
+  @keyframes showTarget {
+    from {opacity: 0}
+    to {opacity:1}
+  }
+  .ANIM_hidden_target {
+
+    animation-name: hiddenTarget;
+    animation-duration: 300ms;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+    z-index:77 !important;
+  }
+  .ANIM_show_target {
+
+    animation-name: showTarget;
+    animation-duration: 300ms;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+    z-index:99 !important;
+  } */
+
+
+  /* width */
+::-webkit-scrollbar {
+    width: 5px;
+    opacity:.2;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background-color:#80808054;
+
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: var(--white);
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--gray);
+  }

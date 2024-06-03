@@ -1,0 +1,82 @@
+section {
+    position:relative;
+    box-sizing: border-box;
+}
+blockquote, body, dd, dl, figcaption, figure, h1, h2, h3, h4, input, li, ol, p, ul {
+    margin: 0;
+}
+.container {
+    position:relative;
+    z-index:1;
+
+}
+.hero_section .text-1, .hero_section .text-2 {
+    display: grid;
+    align-items: flex-start;
+}
+@media (max-width: 601px) {
+    .hero_section {
+        height:130vh !important;
+    }
+    #hero_section .intro {
+        grid-column: 1 / 13 !important;
+        margin-top:90vw !important;
+    }
+    #hero_section .intro > span,
+    #hero_section .body > p > span {
+        font-size: var(--font-s-p)!important;
+        letter-spacing: var(--font-ls-p)!important;
+        line-height: var(--font-lh-p)!important;
+    }
+    .hero_section .text-2 .body {
+        width:70vw !important;
+    }
+    #hero_section .link,#hero_section .list1,#hero_section .list2 {
+        display:none !important;
+    }
+
+    
+}
+@media (min-width: 601px) {
+    .hero_section .container {
+        padding: 0 8.3333333333vw;  /* from margin */
+    }
+    .hero_section .text-1,.hero_section  .text-2 {
+        grid-column-gap: 2.2222222222vw;
+        grid-template-columns: repeat(12, 1fr);
+    }
+    .hero_section .intro  {
+        grid-column: 1 / 7;
+        max-width: 36.8055555556vw;
+        padding-top: 30.5555555556vw;
+    }
+    .hero_section .title  {
+        font-family: Lausanne-300;
+        font-family: var(--font-f-lausanne-300);
+        font-size: 25.6vw;
+        font-size: var(--font-s-h0);
+        letter-spacing: -1.2vw;
+        letter-spacing: var(--font-ls-h0);
+        line-height: 25.6vw;
+        line-height: var(--font-lh-h0);
+        margin: 8.0555555556vw 0 6.875vw;
+        transform: translateX(-1.3888888889vw);
+    }
+    .hero_section .body {
+        grid-column: 1 / 6;
+        margin-bottom: 6.1111111111vw;
+    }
+    .hero_section .link {
+        display: inline-flex;
+        font-family: Lausanne-300;
+        font-family: var(--font-f-lausanne-300);
+        font-size: 4.2666666667vw;
+        font-size: var(--font-s-cta);
+        justify-self: flex-start;
+        letter-spacing: 0;
+        letter-spacing: var(--font-ls-cta);
+        line-height: 4.2666666667vw;
+        line-height: var(--font-lh-cta);
+        position: relative;
+    }
+}

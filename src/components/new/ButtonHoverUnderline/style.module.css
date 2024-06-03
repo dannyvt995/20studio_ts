@@ -1,0 +1,26 @@
+.BtnHoverUnderLine {
+   position:relative;
+   width:fit-content;
+   display:flex;
+   align-items: center;
+}
+.activeTab {
+  /*  pointer-events:none !important; */
+}
+.activeTab a {
+   /* color:var(--gray) !important; */
+}
+.activeTab .underline_Dom_Effect {
+  /*  left: 0 !important;
+   width: 100% !important; */
+ 
+}
+.activeTab  .IconBtn{
+   display: block !important;
+}
+.IconBtn {
+   display: none;
+   width: 10px;
+   height: 10px;
+   margin-right:10px;
+}

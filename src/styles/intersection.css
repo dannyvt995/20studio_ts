@@ -1,0 +1,20 @@
+#splitHead .char {
+  font-size: 10rem;
+}
+.m1 {
+    opacity:0.5;
+    transition:500ms ;
+    animation: square-animation 2s ;
+    animation-fill-mode: forwards;
+}
+
+
+
+@keyframes square-animation {
+    0% {
+      transform: translateY(100px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }

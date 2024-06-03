@@ -1,0 +1,44 @@
+.our_partners_section {
+    height: fit-content;
+    padding: 10vw 0;
+}
+.our_partners_section .title {
+    grid-column-start: 4;
+    grid-column-end: 12;
+}
+.our_partners_section .tag {
+    grid-column-start: 1;
+    grid-column-end: 4;
+    display: flex;
+    height: fit-content;
+    align-self: flex-end;
+    justify-content: center;
+} 
+.our_partners_section .tag span  {
+    width: 20px;
+    height: 20px;
+    margin-right: 20px;
+}
+.our_partners_section .tag p {
+    font-size: 1vw;
+} 
+.our_partners_section .title h2 {
+    font-size:5vw;
+    text-transform: uppercase;
+}
+
+
+.our_partners_section .listLogoPartners {
+    grid-column-start: 1;
+    grid-column-end: 13;
+
+    display:flex;
+    justify-content: space-between;
+
+}
+.our_partners_section .listLogoPartners > :nth-child(n) {
+    display:block;
+    width:250px;
+    height:300px;
+    background-color: aquamarine;
+}

@@ -1,0 +1,105 @@
+.logo {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+
+  svg path {
+    transition: fill 0.4s var(--easeOutQuart);
+  }
+
+  [fill='#080808'],
+  [fill='rgb(0,0,0)'] {
+    display: none !important;
+  }
+
+  &_inner {
+    position: relative;
+  }
+
+  &_small {
+    margin-top: rem(8px);
+
+    svg {
+      width: rem(100px);
+      object-fit: contain;
+    }
+
+    &_label {
+      width: 320px;
+      opacity: 0;
+      top: -4px;
+      display: block;
+      visibility: hidden;
+      position: absolute;
+      pointer-events: none;
+    }
+  }
+
+  &_lottie {
+    position: absolute;
+    width: rem(1498px);
+    object-fit: contain;
+    top: rem(56px);
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+
+    svg {
+      width: 100%;
+      object-fit: contain;
+    }
+
+    &_label {
+      position: absolute;
+      width: rem(1498px);
+      aspect-ratio: 1498/256;
+      object-fit: contain;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      display: block;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    &_el {
+      width: 100%;
+    }
+  }
+
+  &.isHome {
+    .logo_small {
+      opacity: 0;
+      pointer-events: none;
+      visibility: hidden;
+    }
+  }
+
+  &:not(.isHome) {
+    .logo_lottie {
+      opacity: 0;
+      pointer-events: none;
+      visibility: hidden;
+    }
+  }
+
+  &.white {
+    svg path {
+      fill: white !important;
+    }
+  }
+
+  &.green {
+    svg path {
+      fill: #bbc703 !important;
+    }
+  }
+
+  &.brow {
+    svg path {
+      fill: #004e32 !important;
+    }
+  }
+}

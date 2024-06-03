@@ -1,0 +1,301 @@
+#lenis_space {
+
+    width: 100%;
+    z-index: 99999;
+    position: relative;
+}
+
+
+#page1 {
+
+
+
+    z-index: 0;
+}
+
+/* #home,#page1,#page2,#page3,#page4{
+    clip-path: polygon(0% 0%, 100% 0%, 100% 123%, 0% 100%),
+} */
+#homescroll,
+#page1scroll,
+#page2scroll,
+#page3scroll,
+#page4scroll {
+    transform: translateY(600px) scale(1.3) rotate(7deg);
+    will-change: tranform, opacity;
+    opacity: 0;
+  
+}
+#aboutpage,#contactpage,#homepage,#workpage {
+  
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    will-change:tranform,opacity;
+    transform: scale(1.2) rotate(7deg) translateY(50%);
+   
+}
+#aboutpage, #contactpage, #homepage, #workpage,#work1page,
+#work2page,
+#work3page,
+#work4page {
+    overflow-y: scroll !important;
+}
+@media (max-width: 601px) {
+   
+}
+#wrapper_this {
+    overflow:hidden;
+    position:absolute;
+    width:100vw;
+    height:100vh;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    will-change:tranform;
+    clip-path: polygon(0% 100%, 100% 120%, 100% 100%, 0% 100%);
+}
+
+.page h1 {
+    z-index: 9999;
+    margin: auto;
+    font-size: 5rem;
+    color: white;
+}
+
+#menu {
+    opacity: 0;
+    will-change: tranform, opacity;
+}
+
+#page2,
+#page3,
+#page4,
+#menu {
+
+    z-index: 0;
+}
+
+#id_2 {}
+
+main {
+    position: relative;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+
+    z-index: 1111;
+}
+
+.navbar ul {
+    display: flex;
+    flex-direction: row;
+}
+
+.navbar ul li {
+    margin: 0 50px;
+}
+
+.navbar a {
+    font-size: 2rem;
+    display: block;
+    padding: 1rem 2rem;
+    border: 1px solid green;
+}
+
+.View_Switch_Compo {
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+
+.fix {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100vh;
+}
+
+.page>.fix>.content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: auto;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    /*  transform-origin: top top; */
+
+
+
+
+}
+
+.page {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: auto;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    /*   height: fit-content; */
+    /*   clip-path: polygon(0% 0%, 100% 0%, 100% 123%, 0% 100%); */
+
+    will-change: tranform;
+
+
+}
+
+.List {
+    display: flex;
+    flex-direction: column;
+    height: 600px;
+    width: 400px;
+    background: cyan;
+    overflow: scroll;
+    border: 2px solid black;
+    box-sizing: border-box;
+}
+
+.list_item {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    margin: 0;
+    padding: 5px;
+    overflow: hidden;
+}
+
+#hero_banner_section,
+#section1,
+#section2 {
+    will-change: transform;
+}
+
+.section1 {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background: blue;
+}
+
+.section2 {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background: green;
+}
+
+.page * {}
+
+.overplay {
+    background: blue;
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+
+    /* clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%); */
+}
+
+
+
+
+
+/* another eff */
+.underline_Dom_Effect {
+    position: absolute;
+    filter: blur(0.1px);
+    left: 0;
+    width: 0;
+    height: 1px;
+    filter:blur(.6px);
+    background-color:var(--color-sand-08) ;
+    will-change: transform;
+}
+
+
+/* work detail page */
+
+#work1page,
+#work2page,
+#work3page,
+#work4page {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    will-change: tranform;
+
+}
+
+#work1page>.part1,
+#work2page>.part1,
+#work3page>.part1,
+#work4page>.part1 {
+    width: 100%;
+    height: 200vh;
+    transform: scale(1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#work1page>.part1 {
+    background: url(/work/TRAO.webp);
+    background-size: cover;
+
+}
+
+#work2page>.part1 {
+    background: url(/work/NET.webp);
+    background-size: cover;
+
+}
+
+
+#work3page>.part1 {
+    background: url(/work/SIREN.webp);
+    background-size: cover;
+
+}
+
+
+#work4page>.part1 {
+    background: url(/work/MOIDIEN.webp);
+    background-size: cover;
+
+}
+
+
+
+#work1page>.part2,
+#work2page>.part2,
+#work3page>.part2,
+#work4page>.part2 {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: blue;
+}
+
+.white_bg {
+    background:white;
+}

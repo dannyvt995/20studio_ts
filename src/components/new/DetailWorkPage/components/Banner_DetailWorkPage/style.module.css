@@ -1,0 +1,112 @@
+.Banner_DetailWorkPage {
+    background: #0d0e13;
+    background: var(--color-dark-grey);
+    color: #f8f8f8;
+    color: var(--color-off-white);
+    height: 175vh;
+    height: calc(var(--vh, 1vh)* 175);
+    pointer-events: none;
+    position: relative;
+}
+.Banner_DetailWorkPage .container {
+    
+    position: relative;
+    z-index: 1;
+}
+.Banner_DetailWorkPage .background {
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    pointer-events: all;
+    position: absolute;
+    right: 0;
+    z-index:-1;
+}
+.Banner_DetailWorkPage .text-1 ,.Banner_DetailWorkPage  .text-2 {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+}
+.Banner_DetailWorkPage .title span{
+    display: inline-flex;
+    flex-direction: column;
+    font-weight:100;
+    font-family: "Lausanne-300";
+    font-family: var(--font-f-lausanne-300);
+    font-size: 16vw;
+    font-size: var(--font-s-h1);
+    letter-spacing: -.4vw;
+    letter-spacing: var(--font-ls-h1);
+    line-height: 16vw;
+    line-height: var(--font-lh-h1);
+}
+
+.Banner_DetailWorkPage .text-1,.Banner_DetailWorkPage .text-2 {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+}
+.Banner_DetailWorkPage .body h3 {
+    font-weight:300;
+    font-family: "Lausanne-300";
+    font-family: var(--font-f-lausanne-300);
+    font-size: 4.8vw;
+    font-size: var(--font-s-h4);
+    letter-spacing: 0;
+    letter-spacing: var(--font-ls-h4);
+    line-height: 6.4vw;
+    line-height: var(--font-lh-h4);
+}
+.Banner_DetailWorkPage .body p {
+    color: hsla(0, 0%, 97%, .8);
+    color: var(--color-off-white-08);
+    font-family: "Lausanne-300";
+    font-family: var(--font-f-lausanne-300);
+    font-size: 3.7333333333vw;
+    font-size: var(--font-s-p);
+    letter-spacing: .0266666667vw;
+    letter-spacing: var(--font-ls-p);
+    line-height: 5.6vw;
+    line-height: var(--font-lh-p);
+}
+@media (min-width: 601px) {
+    .Banner_DetailWorkPage{
+        height: 105.1388888889vw;
+        overflow: hidden;
+    }
+    .Banner_DetailWorkPage .text-2 {
+        margin: 18.5416666667vw 4.8611111111vw 0 42.7777777778vw;
+    }
+    .Banner_DetailWorkPage .container {
+        padding-top: 20.6944444444vw;
+        /* padding:  0 0; */
+    }
+    .Banner_DetailWorkPage .background {
+        pointer-events: all;
+        top: 0;
+    }
+    .Banner_DetailWorkPage .title {
+        margin: 0 0 .6944444444vw;
+        transform: translateX(-.6944444444vw);
+    }
+    .Banner_DetailWorkPage  .text-1 {
+        /* margin: 0 8.3333333333vw; */
+    }
+    .Banner_DetailWorkPage .subtitle {
+        font-weight:500;
+        color: hsla(0, 0%, 97%, .8);
+        color: var(--color-off-white-08);
+        font-family: "Lausanne-300";
+        font-family: var(--font-f-lausanne-300);
+        font-size: 3.7333333333vw;
+        font-size: var(--font-s-p);
+        letter-spacing: .0266666667vw;
+        letter-spacing: var(--font-ls-p);
+        line-height: 5.6vw;
+        line-height: var(--font-lh-p);
+    }
+    .Banner_DetailWorkPage .body p {
+        margin: 1.7361111111vw 0;
+        width: 29.375vw;
+    }
+}

@@ -1,0 +1,139 @@
+.POST_layout2 {
+
+}
+.POST_layout2 .container {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+ 
+}
+.POST_layout2 .title {
+    grid-column: 1 / 11;
+}
+.POST_layout2 .title span{
+    font-family: "Lausanne-300";
+    font-family: var(--font-f-lausanne-300);
+    font-size: 16vw;
+    font-size: var(--font-s-h1);
+  
+    letter-spacing: -.4vw;
+    letter-spacing: var(--font-ls-h1);
+    line-height: 16vw;
+    line-height: var(--font-lh-h1);
+}
+.POST_layout2 .title .title-mask {
+    height: 15.2vw;
+    line-height: 12vw;
+}
+.POST_layout2 .label {
+    grid-column: 1 / 11;
+}
+.POST_layout2 h2.label{
+    color: #0d0e13;
+    color: var(--color-dark-grey);
+    display: inline-flex;
+    font-family: Lausanne-300;
+    font-family: var(--font-f-lausanne-300);
+    font-size: 3.7333333333vw;
+    font-size: var(--font-s-label);
+    height: 7.7333333333vw;
+    justify-self: flex-start;
+    letter-spacing: 0;
+    letter-spacing: var(--font-ls-label);
+    line-height: 3.7333333333vw;
+    line-height: var(--font-lh-label);
+    line-height: 2.2666666667vw;
+    padding-left: 5.8666666667vw;
+    position: relative;
+}
+.POST_layout2 .icon {
+    height: 3.2vw;
+    position: absolute;
+    transform: translate(-5.3333333333vw, 2.1333333333vw);
+    width: 3.2vw;
+    z-index: 1;
+}
+.POST_layout2 .text {
+    display: flex;
+    position: relative;
+    transform-origin: top left;
+    z-index: 1;
+}
+.POST_layout2 .blockquote {
+    grid-column: 1 / 11;
+    margin:0;
+}
+.POST_layout2 .body p{ 
+    font-family: "Lausanne-300";
+    font-family: var(--font-f-lausanne-300);
+    font-size: 3.7333333333vw;
+    font-size: var(--font-s-p-small);
+    letter-spacing: .0266666667vw;
+    letter-spacing: var(--font-ls-p-small);
+    line-height: 5.6vw;
+    line-height: var(--font-lh-p-small);
+}
+.POST_layout2 .author {
+    align-items: center;
+    display: flex;
+    grid-column: 1 / 11;
+    margin-top: 14.9333333333vw;
+}
+.POST_layout2 .avatar {
+    border-radius: 50%;
+    height: 16.5333333333vw;
+    overflow: hidden;
+    width: 16.5333333333vw;
+}
+.POST_layout2 .details {
+    font-family: "Lausanne-300";
+    font-family: var(--font-f-lausanne-300);
+    font-size: 3.7333333333vw;
+    font-size: var(--font-s-p-small);
+    letter-spacing: .0266666667vw;
+    letter-spacing: var(--font-ls-p-small);
+    line-height: 5.6vw;
+    line-height: var(--font-lh-p-small);
+    margin-left: 4vw;
+}
+.POST_layout2 .details span {
+    color: rgba(13, 14, 19, .6);
+    color: var(--color-dark-grey-06);
+}
+@media (min-width: 601px) {
+    .POST_layout2 .container {
+        grid-column-gap: 2.2222222222vw;
+        grid-template-columns: repeat(12, 1fr);
+      
+    }
+    .POST_layout2 .title {
+        grid-column: 2 / 13;
+        margin-bottom: 7.7777777778vw;
+    }
+    .POST_layout2 .title .title-mask {
+        height: 10.0694444444vw;
+        line-height: 7.6388888889vw;
+    }
+    .POST_layout2 .label {
+        grid-column: 2 / 6;
+    }
+    .POST_layout2 .icon {
+        height: .8333333333vw;
+        transform: translate(-1.4930555556vw, .7638888889vw);
+        width: .8333333333vw;
+        will-change: transform;
+    }
+    .POST_layout2 .blockquote {
+        grid-column: 6 / 9;
+    }
+    .POST_layout2 .author {
+        grid-column: 6 / 9;
+        margin-top: 2.8472222222vw;
+    }
+    .POST_layout2 .avatar {
+        height: 4.8611111111vw;
+        width: 4.8611111111vw;
+    }
+    .POST_layout2 .details {
+        margin-left: 2.1527777778vw;
+    }
+}

@@ -1,0 +1,124 @@
+.ContactPageIntro {
+    background: #fff;
+    background: var(--color-white);
+    overflow: hidden;
+
+}
+.ContactPageIntro .container {
+/*     margin: 0 8vw; */
+    position: relative;
+    height:fit-content;
+}
+.ContactPageIntro .image {
+    position: relative;
+    z-index: 1;
+    aspect-ratio: 248 / 371;
+    overflow:hidden;
+}
+.ContactPageIntro .h1 {
+    height: 1px;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    width: 1px;
+}
+.ContactPageIntro .title {
+    display: flex;
+    position: absolute;
+}
+.ContactPageIntro .contact-item:first-child {
+    margin-bottom: 5.3333333333vw;
+}
+.ContactPageIntro .link.is-dark {
+    color: #0d0e13;
+    color: var(--color-dark-grey);
+}
+.ContactPageIntro .address {
+    display: block;
+    font-family: Lausanne-300;
+    font-family: var(--font-f-lausanne-300);
+    font-size: 3.7333333333vw;
+    font-size: var(--font-s-p-small);
+    letter-spacing: .0266666667vw;
+    letter-spacing: var(--font-ls-p-small);
+    line-height: 5.6vw;
+    line-height: var(--font-lh-p-small);
+}
+@media (min-width: 601px) {
+    .ContactPageIntro {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        height: calc(var(--vh, 1vh)* 100);
+        justify-content: center;
+        padding: 8.3333333333vw 0;
+    }
+    .ContactPageIntro .container {
+     /*    margin: 0 8.3333333333vw; */
+     padding: 0 8.3333333333vw;
+    }
+    .ContactPageIntro .image {
+        height: 39.375vw;
+        margin-left: 35.625vw;
+        width: 26.3888888889vw;
+    }
+    .ContactPageIntro .title {
+        bottom: 20vw;
+        margin-left: -8.3333333333vw;
+        white-space:nowrap;
+    }
+    .ContactPageIntro .title .line{
+        font-weight:300;
+        font-family: Lausanne-300;
+        font-family: var(--font-f-lausanne-300);
+        font-size: 16vw;
+        font-size: var(--font-s-h1);
+        letter-spacing: -.4vw;
+        letter-spacing: var(--font-ls-h1);
+        line-height: 16vw;
+        line-height: var(--font-lh-h1);
+       
+    }
+    .ContactPageIntro .left,
+    .ContactPageIntro  .right {
+        bottom: 0;
+        position: absolute;
+    }
+    .ContactPageIntro .right {
+        left: 80.0000000vw;
+    }
+    .ContactPageIntro .body {
+        margin-bottom: 6.25vw;
+        width: 21.3888888889vw;
+    }
+    .ContactPageIntro .body p {
+        font-family: Lausanne-300;
+        font-family: var(--font-f-lausanne-300);
+        font-size: 3.7333333333vw;
+        font-size: var(--font-s-p-small);
+        letter-spacing: .0266666667vw;
+        letter-spacing: var(--font-ls-p-small);
+        line-height: 5.6vw;
+        line-height: var(--font-lh-p-small);
+    }
+    .ContactPageIntro .contact-item:first-child {
+        margin-bottom: 1.3888888889vw;
+    }
+    .ContactPageIntro .link {
+        display: inline-flex;
+        font-family: Lausanne-300;
+        font-family: var(--font-f-lausanne-300);
+        font-size: 4.2666666667vw;
+        font-size: var(--font-s-cta);
+        justify-self: flex-start;
+        letter-spacing: 0;
+        letter-spacing: var(--font-ls-cta);
+        line-height: 4.2666666667vw;
+        line-height: var(--font-lh-cta);
+        position: relative;
+    }
+    .ContactPageIntro .address {
+        margin-bottom: 2.7777777778vw;
+    }
+}

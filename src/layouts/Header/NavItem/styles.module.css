@@ -1,0 +1,12 @@
+.nav {
+  &_text {
+    position: relative;
+    display: block;
+    overflow: hidden;
+
+    &_clone {
+      position: absolute;
+      display: block;
+    }
+  }
+}

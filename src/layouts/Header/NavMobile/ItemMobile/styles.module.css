@@ -1,0 +1,32 @@
+.itemMobile {
+  z-index: 11;
+  width: rem(288px);
+  cursor: pointer;
+  &_inner {
+    overflow: hidden;
+  }
+  &_line {
+    display: block;
+    width: 100%;
+    height: 1px;
+    opacity: 0.2;
+    background: linear-gradient(
+      270deg,
+      rgba(255, 255, 255, 0) 4.51%,
+      rgba(255, 255, 255, 0.83) 19.62%,
+      #fff 78.62%,
+      rgba(255, 255, 255, 0) 95.14%
+    );
+
+    &__top {
+      margin-bottom: rem(22px);
+    }
+    &__bottom {
+      margin-top: rem(22px);
+    }
+  }
+  p {
+    font-size: rem(36px);
+    text-align: center;
+  }
+}
