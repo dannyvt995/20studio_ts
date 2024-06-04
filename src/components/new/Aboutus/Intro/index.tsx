@@ -1,8 +1,8 @@
 import React from 'react'
 import s from './style.module.css'
 import cn from 'classnames'
-import ImagePreload from '@/components/ImagePreload'
 import StarIcon from '@/components/Icon/StarIcon'
+import Image from 'next/image'
 
 
 export default function Intro(): React.ReactElement  {
@@ -11,29 +11,32 @@ export default function Intro(): React.ReactElement  {
             <div className={s.container}>
                 <ul className={s.images}>
                     <li className={s.image}>
-                        <ImagePreload
+                        <Image
                             src="/clone/aboutus/intro_1.webp"
                             width={0}
                             height={0}
+                            sizes='100vw'
                             style={{ width: "100%", height: "auto" }}
                             alt="intro_aboutus 1"
                         />
                     
                     </li>
                     <li className={s.image}>
-                        <ImagePreload
+                        <Image
                             src="/clone/aboutus/intro_2.webp"
                             width={0}
                             height={0}
+                            sizes='100vw'
                             style={{ width: "100%", height: "auto" }}
                             alt="intro_aboutus 2"
                         />
                     </li>
                     <li className={s.image}>
-                        <ImagePreload
+                        <Image
                             src="/clone/aboutus/intro_3.webp"
                             width={0}
                             height={0}
+                            sizes='100vw'
                             style={{ width: "100%", height: "auto" }}
                             alt="intro_aboutus 3"
                         />

@@ -2,16 +2,46 @@
 "use client"
 
 import s from './style.module.css'
-import ButtonHoverUnderLineNew from '../ButtonHoverUnderline';
-
+import { useRef, memo } from 'react';
+import gsap from 'gsap'
+import Link from 'next/link';
+import { isMobile } from '@/utils/responsive';
+import { useGSAP } from '@gsap/react';
 interface IFooterSection {
-    propsForGsap?:any
+    propsForGsap?: any
 }
-export default function FooterSection({ propsForGsap }:IFooterSection) {
+function FooterSection({ propsForGsap }: IFooterSection) {
+    const triggleSection = useRef<HTMLElement>(null)
+    const domEffect = useRef(null)
+    useGSAP(() => {
+     
+        if (isMobile()) return
+
+        if (propsForGsap.stateTransitionPage === 'entered') {
+ 
+            gsap.timeline({
+                scrollTrigger:{
+                    scroller: propsForGsap.scrollerRef,
+                    trigger: triggleSection.current,
+                    start: "top bottom",
+                    end: "bottom bottom",
+                    scrub:true,
+                }
+            })
+            .set(domEffect.current, { y: -window.innerHeight * .4 })
+            .fromTo(domEffect.current, {
+                y: -window.innerHeight * .4, // calc(100vh * -1.2)
+            }, { y: 0 })
+        }
+
+ 
+    }, {dependencies:[propsForGsap.stateTransitionPage]});
+
+
 
     return (
-        <section className={s.footer_section} id="footer_section">
-            <div className={s.container}>
+        <section className={s.footer_section} id="footer_section" ref={triggleSection}>
+            <div className={s.container} ref={domEffect}>
                 <div className={s.title}>
                     <div>Our</div>
                     <div>Story</div>
@@ -35,16 +65,16 @@ export default function FooterSection({ propsForGsap }:IFooterSection) {
                 </ul>
                 <ul className={s.nav_footer}>
                     <li className={s.item}>
-                        <ButtonHoverUnderLineNew noName="var(--font-lh-p)" auto_link="/work" >Dự án</ButtonHoverUnderLineNew>
+                        <Link href={"/work"}>Dự án</Link>
                     </li>
                     <li className={s.item}>
-                        <ButtonHoverUnderLineNew noName="var(--font-lh-p)" auto_link="/about" classStyle="list-link">20 Studio</ButtonHoverUnderLineNew>
+                        <Link href={"/"}>Dịch vụ</Link>
                     </li>
                     <li className={s.item}>
-                        <ButtonHoverUnderLineNew noName="var(--font-lh-p)" auto_link="/home" classStyle="list-link">Dịch vụ</ButtonHoverUnderLineNew>
+                        <Link href={"/about"}>20 Studio</Link>
                     </li>
                     <li className={s.item}>
-                        <ButtonHoverUnderLineNew noName="var(--font-lh-p)" auto_link="/contact" classStyle="list-link">Liên hệ</ButtonHoverUnderLineNew>
+                        <Link href={"/contact"}>Liên hệ</Link>
                     </li>
                 </ul>
                 <ul className={s.social}>
@@ -70,3 +100,5 @@ export default function FooterSection({ propsForGsap }:IFooterSection) {
         </section>
     )
 }
+
+export default memo(FooterSection)

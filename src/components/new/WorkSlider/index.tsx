@@ -246,7 +246,7 @@ export default function WorkSlider() {
       observeRefPageWheel.current = null
       work_page_ref.current = null
     }
-  })
+  },[work_page_ref.current])
 
 
 

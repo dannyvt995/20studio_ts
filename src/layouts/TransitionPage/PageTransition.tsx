@@ -54,25 +54,30 @@ const PageTransition: React.FC<PageTransitionProps> = ({
   let domScroll: HTMLElement | null;
   let targetParentDom: HTMLElement | null;
   let targetDom: HTMLElement | null;
-
+  let targetId: string
 
 
   const lenisRef = React.useRef<Lenis>();
 
   function reInitLenis(pathNameFormat: string) {
     domScroll = document.getElementById(`${pathNameFormat}page`)
-    // console.log(domScroll)
+    if(!domScroll) return
+    gsap.registerPlugin(ScrollTrigger)
     lenisRef.current = new Lenis({
-      syncTouch: true,
+  //    syncTouch: true,
       wrapper: domScroll as HTMLElement,
+ //     lerp:.075,
       duration: 1.2,
       easing: (t: number) => 1 - Math.pow(1 - t, 3.6)
     })
-
+    lenisRef.current?.stop()
+    setTimeout(() => {
+      lenisRef.current?.start()
+    },1000)
     window.lenis = lenisRef.current;
     gsap.ticker.add(update)
-
-
+     ScrollTrigger.defaults({ scroller: domScroll });
+     ScrollTrigger.refresh()
     function update(time: number) {
       lenisRef.current?.raf(time * 1420);
     }
@@ -87,15 +92,16 @@ const PageTransition: React.FC<PageTransitionProps> = ({
 
   useEffect(() => {
     if (matches.length > 0) {
-      let targetId = removeSplash(pathName, listPathAndIdDom)
+      targetId = removeSplash(pathName, listPathAndIdDom)
       targetDom = document.getElementById(`${targetId}page`)
       targetParentDom = targetDom?.parentNode as HTMLElement
       enterAnim(targetParentDom)
-      reInitLenis(pathName)
+      reInitLenis(pathNameFormat)
     } else {
       console.log('No matches found');
     }
     return () => {
+      targetId = ''
       targetParentDom = null
       targetDom = null
     }
@@ -130,6 +136,7 @@ const PageTransition: React.FC<PageTransitionProps> = ({
 
 
       .to(dom as HTMLElement, {
+   
         clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
         duration: timeTransition,
 
@@ -158,6 +165,7 @@ const PageTransition: React.FC<PageTransitionProps> = ({
     }
     )
       .to(dom.children[0] as HTMLElement, {
+    
         '-webkit-filter': 'brightness(26%)',
         filter: 'brightness(26%)',
         rotate: -7,
@@ -185,7 +193,7 @@ const PageTransition: React.FC<PageTransitionProps> = ({
             }}
             onEntered={() => {
               localStorage.setItem("onEnter", "false")
-              if (pathName === '/work' || pathName === '/3d') return
+              if (pathName === '/work' || pathName === '/3d' || isMobile()) return
               reInitLenis(pathNameFormat)
             }}
 
@@ -201,24 +209,24 @@ const PageTransition: React.FC<PageTransitionProps> = ({
               switch (pathName) {
                 case '/':
                 case '/home':
-                  contentDomReference = <HomePage />;
+                  contentDomReference = <HomePage stateTransition={state} />;
 
                   break;
                 case '/about':
-                  contentDomReference = <AboutPage />;
+                  contentDomReference = <AboutPage stateTransition={state} />;
 
                   break;
                 case '/contact':
-                  contentDomReference = <ContactPage />;
+                  contentDomReference = <ContactPage stateTransition={state} />;
 
                   break;
                 case '/work':
-                  contentDomReference = <WorkPage />;
+                  contentDomReference = <WorkPage stateTransition={state} />;
 
                   break;
 
                 default:
-                  return contentDomReference = <HomePage />;
+                  return contentDomReference = <HomePage stateTransition={state} />;
               }
 
               return (

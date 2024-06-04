@@ -1,4 +1,5 @@
 import RouterControls from '@/app/RouterControls';
+import CacheImage from '@/components/new/CacheImage';
 import LenisScroller from '@Components/LenisScroller';
 import Header from '@Layouts/Header';
 import React, { PropsWithChildren } from 'react';
@@ -8,6 +9,7 @@ export default function MainLayout({ children }: PropsWithChildren): React.React
   return (
     <main>
       <Header/>
+      <CacheImage/>
       <RouterControls>
         {children}
       </RouterControls>

@@ -105,6 +105,20 @@
     margin: 0 8.3333333333vw;
     z-index:2;
 }
+.text_1,.text_2 {
+    display:grid;
+    grid-column-gap: 2.2222222222vw;
+    grid-template-columns: repeat(12, 1fr);
+}
+.intro {
+    grid-column: 1 / 9;
+    max-width: 50.8055555556vw;
+    padding-top: 30.5555555556vw;
+}
+.body {
+    grid-column: 1 / 8;
+    margin-bottom: 6.1111111111vw;
+}
 @media (max-width:620px) {
     .hero_section {
         height:130vh !important;
