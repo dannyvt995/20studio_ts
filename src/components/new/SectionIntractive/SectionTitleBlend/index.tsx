@@ -2,60 +2,42 @@
 import { useEffect, useRef } from 'react'
 import s from './style.module.css'
 import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useGSAP } from '@gsap/react';
+import { isMobile } from '@/utils/responsive';
 
 interface ISectionTitleBlend {
-    propsForGsap:any
+    propsForGsap: any
 }
 
-export default function SectionTitleBlend({ propsForGsap }:ISectionTitleBlend) {
-    const WrapperTitleBlendRed = useRef(null)
-    const timelineRef = useRef(null)
+export default function SectionTitleBlend({ propsForGsap }: ISectionTitleBlend) {
+    const TriggerSection = useRef(null)
+    const DomEffect = useRef(null)
     // x 0% > 20%
-/*     useEffect(() => {
+
+    useGSAP(() => {
+        if (isMobile()) return
+
         if (propsForGsap.stateTransitionPage === 'entered') {
-            if (window.innerWidth < 620) return
-            gsap.registerPlugin(ScrollTrigger)
-            console.log("\t\t=>Reinit/init scrolltriggle on component SectionTitleBlend")
-
-            const ctx = gsap.context(() => {
-                timelineRef.current = gsap.timeline({
-                    scrollTrigger: {
-                        scroller: propsForGsap.scrollerRef,
-                        trigger: WrapperTitleBlendRed.current,
-                        start: "top bottom",
-                        end: "bottom top",
-                        scrub: .95
-                    }
-                })
-                timelineRef.current.fromTo(WrapperTitleBlendRed.current.children[0].children[0],{
-                    x:"60%"
-                },
-                {
-                    x: "-60%"
-                })
-                return () => {
-                    ctx.revert();
-                   
+            gsap.timeline({
+                scrollTrigger: {
+                    scroller: propsForGsap.scrollerRef,
+                    trigger: TriggerSection.current,
+                    start: "top bottom",
+                    end: "bottom top",
+                    scrub: true
                 }
-            });
+            }).fromTo(DomEffect.current, {x: "60%"},{x: "-60%"})
+        }
+    }, { dependencies: [propsForGsap.stateTransitionPage] })
 
-        }else{
-            console.log("\t\t=>Lock Gsap until onEnterd",propsForGsap.scrollerRef)
-        }
-       
-        return () => {
-            timelineRef.current?.kill()
-            timelineRef.current = null
-        }
-    }, [propsForGsap]) */
+
     return (
-        <div className={s.section_title_blend} ref={WrapperTitleBlendRed}>
-             <div className={s.warpper_title}>
-                <div className={s.title} >
-                        Forever Upwards Fover Alone
+        <div className={s.section_title_blend} ref={TriggerSection}>
+            <div className={s.warpper_title}>
+                <div className={s.title} ref={DomEffect}>
+                    Forever Upwards Fover Alone
                 </div>
-             </div>
+            </div>
         </div>
     )
 }

@@ -1,0 +1,31 @@
+.w {
+    width:100%;
+    height:100%;
+}
+.item_button {
+    display: flex;
+    height: 200px;
+    width: 100%;
+    margin: 0 auto;
+}
+.item_button {
+    width: 200px;
+}
+.list_image {
+    display: flex;
+    position: relative;
+    height: 620px;
+    width: 620px;
+    margin: 0 auto;
+    overflow:hidden;
+}
+.list_image > .w {
+    position:absolute;
+    width:100%;
+    height:100%;
+    left:0;
+    top:0;
+}
+.item_button button{
+    will-change:transform;
+}

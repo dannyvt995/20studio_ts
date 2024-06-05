@@ -1,49 +1,41 @@
 "use client"
-import { useEffect, memo } from 'react'
+import {useRef, useEffect, memo } from 'react'
 import gsap from 'gsap'
 import s from './style.module.css'
 import Image from 'next/image'
-
+import { useGSAP } from '@gsap/react';
+import { isMobile } from '@/utils/responsive';
 interface IIntroWorkPage {
     propsForGsap: any,
     backgroundImage: any
 }
 
 function IntroWorkPage({ propsForGsap, backgroundImage }: IIntroWorkPage) {
+    const triggleSection = useRef<HTMLUListElement>(null)
 
-    /*  useEffect(() => {
-         if ( propsForGsap.stateTransitionPage === 'entered') {
-             if(window.innerWidth < 620) return
-  
-             console.log("Reinit/init scrolltriggle on component Work 1")
- 
-             const ctx = gsap.context(() => {
-                 gsap.to('.iii', { y: 0, duration: 1, ease: "power3.out" });
-                 return () => {
-                     ctx.revert();
-                     timelineRef.current?.kill()
-                     timelineRef.current = null
-                 }
-             });
- 
-         }
-     }, [propsForGsap]) */
+     useGSAP(() => {
+        if (isMobile()) return
+        if (propsForGsap.stateTransitionPage === 'entered') {
+          gsap.to(`.${s.iii}`, { y: 0, duration: 1, ease: "power3.out" });
+        }
+      }, { dependencies: [propsForGsap.stateTransitionPage] })
+
 
     return (
-        <section className={s.IntroWorkPage} >
+        <section className={s.IntroWorkPage} ref={triggleSection}>
             <div className={s.background}>
                 <Image alt="d" src={backgroundImage} width={0} height={0} sizes="100vw" style={{ width: "100%", height: "auto" }} className={s.project_image} />
             </div>
             <div className={s.container}>
                 <div className={s.text_1}>
                     <h1 className={s.title}>
-                        <span className='ii'><span className='iii'>100 Years</span></span>
-                        <span className='ii'><span className='iii'>Columbia</span></span>
-                        <span className='ii'><span className='iii'>Pictures</span></span>
+                        <span className={s.ii}><span className={s.iii}>100 Years</span></span>
+                        <span className={s.ii}><span className={s.iii}>Columbia</span></span>
+                        <span className={s.ii}><span className={s.iii}>Pictures</span></span>
                     </h1>
                     <h2 className={s.subtitle}>
-                        <div className='text-line'>
-                            <span className='iii'>Celebrating a Century of Cinema</span>
+                        <div className={s.text_line}>
+                            <span className={s.iii}>Celebrating a Century of Cinema</span>
                         </div>
                     </h2>
 

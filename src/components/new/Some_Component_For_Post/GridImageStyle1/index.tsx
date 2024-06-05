@@ -4,7 +4,7 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import s from './style.module.css'
 import Image from 'next/image'
-export default function GridImage1({  }) {
+export default function GridImage1({ propsForGsap }:{propsForGsap?:any}) {
     const triggleSection = useRef(null)
     const domEffectTop = useRef(null)
     const domEffectBot = useRef(null)

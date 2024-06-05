@@ -10,6 +10,9 @@ blockquote, body, dd, dl, figcaption, figure, h1, h2, h3, h4, input, li, ol, p, 
     z-index:1;
 
 }
+.has_padding_top_and_bottom {
+    padding-bottom: 10.4166666667vw;
+}
 .hero_section .text-1, .hero_section .text-2 {
     display: grid;
     align-items: flex-start;

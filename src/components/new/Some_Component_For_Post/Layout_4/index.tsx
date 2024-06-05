@@ -1,10 +1,11 @@
 import React from 'react'
-
+import cn from 'classnames'
 import s from './style.module.css'
 import Image from 'next/image'
 export default function Layout_4() {
     return (
-        <section className='POST_layout4 has_padding_top_and_bottom greendam_background'>
+        <section className={cn(s.POST_layout4,"has_padding_top_and_bottom greendam_background")}>
+
             <div className={s.container}>
                 <div className={s.media}>
                     <video
@@ -22,7 +23,7 @@ export default function Layout_4() {
                         Your browser does not support the video tag.
                     </video>
                 </div>
-                <div  className="media">
+                <div  className={s.media}>
                 <Image alt="alt" src={"/clone/layout_component1__5.webp"} width={0} height={0} sizes="100vw" style={{ width: "100%", height: "auto" }} className={s.project_image} />
          
                 </div>

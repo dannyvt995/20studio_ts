@@ -1,10 +1,10 @@
 import React from 'react'
-
+import cn from 'classnames'
 import s from './style.module.css'
 import Image from 'next/image'
 export default function Layout_3() {
     return (
-        <section className='POST_layout3 has_padding_top_and_bottom align-text-right cream_background'>
+        <section className={cn(s.POST_layout3,"has_padding_top_and_bottom align-text-right cream_background")}>
             <div className={s.container}>
                 <div className={s.text}>
                     <h2  className={s.label}>
@@ -15,13 +15,13 @@ export default function Layout_3() {
                         <p>With a shared vision on quality, we set out to design a stand-out digital presence that not only attracts attention but also reinforces the agency&apos;s brand values, builds trust, and differentiates it from the competition, ultimately driving business growth and success.</p>
                     </div>
                 </div>
-                <div className="left">
-                    <div className="media">
+                <div className={s.left}>
+                    <div className={s.media}>
                         <Image alt="alt" src={"/clone/layout_component2__1.webp"} width={0} height={0} sizes="100vw" style={{ width: "100%", height: "auto" }} />
                     </div>
                 </div>
-                <div className="right">
-                    <div className="media">
+                <div className={s.right}>
+                    <div className={s.media}>
                     <video
                             autoPlay
                             playsInline
@@ -37,7 +37,7 @@ export default function Layout_3() {
                         </video>
                       
                     </div>
-                    <div className="media">
+                    <div className={s.media}>
                     <video
                             autoPlay
                             playsInline

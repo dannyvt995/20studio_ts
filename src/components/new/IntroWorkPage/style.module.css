@@ -1,4 +1,4 @@
-.IntroWorkPage {
+.IntroWorkPage{
     background: #0d0e13;
     background: var(--color-dark-grey);
     color: #fff;
@@ -8,28 +8,28 @@
     pointer-events: none;
     position: relative;
 }
-.IntroWorkPage .container {
+ .container {
    /*  margin: 0 8vw; */
     position: relative;
     z-index: 1;
 }
-.IntroWorkPage .text-1 {
+ .text_1 {
     display: flex;
     flex-direction: column;
     height: 100vh;
     height: calc(var(--vh, 1vh)* 100);
   
 }
-.IntroWorkPage .text-2 {
+ .text_2 {
     display: grid;
     flex-direction: column;
     grid-template-columns: repeat(10, 1fr);
 }
-.IntroWorkPage .title  {
+ .title  {
     margin: auto 0 5.0666666667vw;
     width: 100%;
 }
-.IntroWorkPage .title span{
+ .title span{
     font-weight:300;
     font-family: "Lausanne-300";
     font-family: var(--font-f-lausanne-300);
@@ -41,7 +41,7 @@
     line-height: var(--font-lh-h1);
   
 }
-.IntroWorkPage .background {
+ .background {
     bottom: 0;
     left: 0;
     overflow: hidden;
@@ -49,10 +49,10 @@
     right: 0;
     top:0;
 }
-.IntroWorkPage .subtitle {
+ .subtitle {
     opacity: .8;
 }
-.IntroWorkPage .intro {
+ .intro {
     font-family: "Lausanne-300";
     font-family: var(--font-f-lausanne-300);
     font-size: 6.4vw;
@@ -62,7 +62,7 @@
     line-height: 8vw;
     line-height: var(--font-lh-h3);
 }
-.IntroWorkPage .info *{
+ .info *{
     color: hsla(0, 0%, 100%, .8);
     color: var(--color-white-08);
     font-family: "Lausanne-300";
@@ -74,15 +74,15 @@
     line-height: 5.6vw;
     line-height: var(--font-lh-p);
 }
-.IntroWorkPage .client {
+ .client {
     display: flex;
     flex-direction: column;
 }
-.IntroWorkPage .date {
+ .date {
     display: flex;
     flex-direction: column;
 }
-.IntroWorkPage .client:before {
+ .client:before {
     content: "Client";
     color: #fff;
    
@@ -90,32 +90,32 @@
     font-family: "Lausanne-300";
     font-family: var(--font-f-lausanne-300);
 }
-.IntroWorkPage .services:before {
+ .services:before {
     content: "Services";
     color: #fff;
     color: var(--color-white);
     font-family: "Lausanne-300";
     font-family: var(--font-f-lausanne-300);
 }
-.IntroWorkPage .industries:before {
+ .industries:before {
     content: "Industries";
     color: #fff;
     color: var(--color-white);
     font-family: "Lausanne-300";
     font-family: var(--font-f-lausanne-500);
 }
-.IntroWorkPage .date:before {
+ .date:before {
     content: "Date";
     color: #fff;
     color: var(--color-white);
     font-family: "Lausanne-500";
     font-family: var(--font-f-lausanne-500);
 }
-.IntroWorkPage .subtitle  {
+ .subtitle  {
     width:100%;
     height:var(--font-lh-p-small);
 }
-.IntroWorkPage .subtitle .text-line{
+ .subtitle .text_line{
         position:relative;
         height:var(--font-lh-p-small);
         width:100%;
@@ -123,56 +123,56 @@
 }
 
 @media (max-width: 601px) {
-    .IntroWorkPage .intro {
+     .intro {
         display:none !important;
 
     }
-    .IntroWorkPage .text-1 {
+     .text_1 {
         height:fit-content !important;
         margin-top: 42vh!important;
     }
-    .IntroWorkPage {
+     .IntroWorkPage {
         height:100vh !important;
     }
-    .IntroWorkPage .background > img{
+     .background > img{
         width: auto !important;
         height: 100% !important;
         transform: translateX(-50%) !important;
         left: 50% !important;
         position: relative !important;
     }
-    .IntroWorkPage .text-2 .info {
+     .text_2 .info {
         display: flex!important;
     justify-content: space-between!important;
     grid-column: 1 / 11!important;
     }
 }
 @media (min-width: 601px) {
-    .IntroWorkPage  {
+    .IntroWorkPage{
         height: 124.5138888889vw !important;
         overflow: hidden;
     }
-    .IntroWorkPage .background {
+     .background {
         pointer-events: all;
         top: 0;
     }
-    .IntroWorkPage .container {
+     .container {
         margin: 0 8.3333333333vw;
     }
-    .IntroWorkPage .text-1 {
+     .text_1 {
         align-items: flex-start;
         max-height: 65vw;
         padding-bottom: 4.1666666667vw;
     }
-    .IntroWorkPage .text-2 {
+     .text_2 {
         grid-column-gap: 2.2222222222vw;
         grid-template-columns: repeat(12, 1fr);
     }
-    .IntroWorkPage .title {
+     .title {
         margin-bottom: 0;
     }
   
-    .IntroWorkPage .subtitle .text-line span{
+     .subtitle .text_line span{
         font-family: "Lausanne-300";
         font-family: var(--font-f-lausanne-300);
         font-size: 3.7333333333vw;
@@ -182,11 +182,11 @@
         line-height: 5.6vw;
         line-height: var(--font-lh-p-small);
     }
-    .IntroWorkPage .intro {
+     .intro {
         grid-column: 1 / 7;
         margin: 9.375vw 0 10.4861111111vw;
     }
-    .IntroWorkPage .info {
+     .info {
         display: grid;
         grid-column: 1 / 13;
         grid-template-columns: repeat(10, 1fr);
@@ -195,16 +195,16 @@
         grid-column-gap: 2.2222222222vw;
         grid-template-columns: repeat(12, 1fr);
     }
-    .IntroWorkPage .client {
+     .client {
         grid-column: 1 / 3;
     }
-    .IntroWorkPage .services {
+     .services {
         grid-column: 3 / 5;
     }
-    .IntroWorkPage .industries {
+     .industries {
         grid-column: 5 / 7;
     }
-    .IntroWorkPage .date {
+     .date {
         grid-column: 7 / 9;
     }
     
@@ -212,13 +212,13 @@
 
 
 /*  animation */
-.IntroWorkPage .title .ii {
+.ii {
     position:relative;
     height: var(--font-s-h1);
     overflow:hidden;
 }
-.IntroWorkPage .title .iii ,
-.IntroWorkPage .subtitle .iii {
+.iii ,
+.iii {
     position:absolute;
     top:0;
     left:0;

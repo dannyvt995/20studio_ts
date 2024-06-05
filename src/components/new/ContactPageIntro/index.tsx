@@ -10,7 +10,7 @@ export default function ContactPageIntro() {
             <div className={s.container}>
                 <div className={s.image}>
                    
-                <ImagePreload  src="/home/banner.webp" width={0} height={0}  style={{width:'auto',height:'100%',    position: 'absolute',left:'50%',transform: 'translateX(-50%)'}} alt="e" />
+                <ImagePreload  src="/home/banner.png" width={0} height={0}  style={{width:'auto',height:'100%',    position: 'absolute',left:'50%',transform: 'translateX(-50%)'}} alt="e" />
                 </div>
               
                 <h1 className={s.h1}>Contact</h1>

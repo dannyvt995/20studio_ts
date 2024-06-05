@@ -74,7 +74,7 @@
 
 
 @media (min-width: 601px) {
-    .has-padding-bottom {
+    .has_padding_top_and_bottom {
         padding-bottom: 10.4166666667vw;
     }
     .partners_section .title.is-normal {

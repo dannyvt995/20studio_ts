@@ -15,7 +15,7 @@ function AboutPage({stateTransition} : IPageModule): JSX.Element {
     }
     const propsHeroSection = {
         classAdd: "dark_background",
-        backgroundImage: "/about/banner.webp",
+        backgroundImage: "/about/banner.png",
         backgroundSize: { width: "105%", height: "auto" }
     }
     return (

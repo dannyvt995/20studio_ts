@@ -8,6 +8,8 @@ import LetContact from '@/components/new/LetContact';
 import FooterSection from '@/components/new/FooterSection';
 import { IPageModule } from '@/types/common';
 import { memo } from 'react';
+import FAQSection from '@/components/new/FAQSection';
+import SliderImageHover from '@/components/SliderImageHover';
 function HomePage({stateTransition}:IPageModule): JSX.Element {
     const propsForGsap = {
         stateTransitionPage: stateTransition,
@@ -21,7 +23,10 @@ function HomePage({stateTransition}:IPageModule): JSX.Element {
     return (
         <div id="homepage">
             <HeroSection propsForGsap={propsForGsap} propsHeroSection={propsHeroSection}/>
+         
             <ServicesSection />
+            <FAQSection/>
+            <SliderImageHover/>
             <LetContact propsForGsap={propsForGsap}/>
             <FooterSection propsForGsap={propsForGsap}/>
         </div>

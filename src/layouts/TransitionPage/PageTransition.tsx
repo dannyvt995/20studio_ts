@@ -18,10 +18,13 @@ import HomePage from '@Modules/HomePage';
 import AboutPage from '@Modules/AboutPage';
 import ContactPage from '@Modules/ContactPage';
 import WorkPage from '@Modules/WorkPage';
+import Project1 from '@Modules/Project1';
 import { listPathAndIdDom } from '@Constants/data_noname';
 import { removeSplash } from '@Utils/removeSplash'
 import { isMobile } from '@/utils/responsive';
 import Lenis from '@studio-freight/lenis';
+import useStoreZustand from '@/hooks/useStoreZustand';
+
 
 
 
@@ -54,33 +57,72 @@ const PageTransition: React.FC<PageTransitionProps> = ({
   let domScroll: HTMLElement | null;
   let targetParentDom: HTMLElement | null;
   let targetDom: HTMLElement | null;
-  let targetId: string
 
+  let targetButtonNavbar: HTMLElement | null;
+  let targetNavbarDeskop: HTMLElement | null;
 
   const lenisRef = React.useRef<Lenis>();
+  const targetId = removeSplash(pathName, listPathAndIdDom)
+  const {setStateTransition} = useStoreZustand()
+  const condition_Disable = pathName === '/work' || pathName === '/3d' || isMobile();
+  const transitionKeyRef = useRef<string|null>(null)
+  const isWorkPage = useRef<boolean>(false)
+  const propsGsap = {
+    props_enterAnim: {
 
+      duration: timeTransition,
+      ease: easeTransition
+    },
+    props_exitAnim: {
+
+      duration: timeTransition,
+      ease: easeTransition
+    },
+    props_Filter_Light: {
+      '-webkit-filter': 'brightness(100%)',
+      filter: 'brightness(100%)',
+    },
+    props_Filter_Shadow: {
+      '-webkit-filter': 'brightness(16%)',
+      filter: 'brightness(16%)',
+    }
+  }
+
+
+
+  function update(time: number) {
+    lenisRef.current?.raf(time * 1420);
+
+  }
   function reInitLenis(pathNameFormat: string) {
     domScroll = document.getElementById(`${pathNameFormat}page`)
-    if(!domScroll) return
+    targetButtonNavbar = document.getElementById("button_menu")
+    targetNavbarDeskop = document.getElementById("navbar_deskop")
+
+    if (!domScroll) return
+    if (!targetNavbarDeskop || !targetButtonNavbar) {
+      console.error('PageTransition>>Menu references are not correct');
+      return;
+    }
     gsap.registerPlugin(ScrollTrigger)
     lenisRef.current = new Lenis({
-  //    syncTouch: true,
       wrapper: domScroll as HTMLElement,
- //     lerp:.075,
       duration: 1.2,
       easing: (t: number) => 1 - Math.pow(1 - t, 3.6)
     })
+
     lenisRef.current?.stop()
+
+
+
+    gsap.ticker.add(update)
+    ScrollTrigger.defaults({ scroller: domScroll });
+
+    window.lenis = lenisRef.current;
     setTimeout(() => {
       lenisRef.current?.start()
-    },1000)
-    window.lenis = lenisRef.current;
-    gsap.ticker.add(update)
-     ScrollTrigger.defaults({ scroller: domScroll });
-     ScrollTrigger.refresh()
-    function update(time: number) {
-      lenisRef.current?.raf(time * 1420);
-    }
+      ScrollTrigger.refresh()
+    }, 1000)
     return () => {
       lenisRef.current = undefined
       window.lenis = null
@@ -92,7 +134,6 @@ const PageTransition: React.FC<PageTransitionProps> = ({
 
   useEffect(() => {
     if (matches.length > 0) {
-      targetId = removeSplash(pathName, listPathAndIdDom)
       targetDom = document.getElementById(`${targetId}page`)
       targetParentDom = targetDom?.parentNode as HTMLElement
       enterAnim(targetParentDom)
@@ -101,84 +142,101 @@ const PageTransition: React.FC<PageTransitionProps> = ({
       console.log('No matches found');
     }
     return () => {
-      targetId = ''
       targetParentDom = null
       targetDom = null
+      targetButtonNavbar = null
+      targetNavbarDeskop = null
     }
   }, [])
 
 
 
-
+  const enterDetailProject = (dom: HTMLElement) => {
+    gsap.set(dom, {
+      clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
+    })
+  }
   const enterAnim = (dom: HTMLElement) => {
 
-    gsap.timeline({})
+    gsap.timeline()
       .set(dom.parentNode as HTMLElement, { zIndex: indexRef.current++ })
       .set(dom, { clipPath: 'polygon(0% 100%, 100% 110%, 100% 100%, 0% 100%)' })
       .set(dom.children[0] as HTMLElement, {
-
-        '-webkit-filter': 'brightness(100%)',
-        filter: 'brightness(100%)',
-        rotate: 0,
-        y: 0,
-        x: 0,
-        scale: 1
-
-      })
-      .set(dom.children[0] as HTMLElement, {
-        '-webkit-filter': 'brightness(100%)',
-        filter: 'brightness(100%)',
-        rotate: 7,
-        y: window.innerHeight / 2,
-
-        scale: 1.2
-      })
-
-
-      .to(dom as HTMLElement, {
-   
-        clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
-        duration: timeTransition,
-
-        ease: easeTransition
-      })
-      .to(dom.children[0] as HTMLElement, {
-        '-webkit-filter': 'brightness(100%)',
-        filter: 'brightness(100%)',
         rotate: 0,
         y: 0,
         x: 0,
         scale: 1,
-
-        duration: timeTransition,
-        ease: easeTransition
-      }, '<');
+        ...propsGsap.props_Filter_Light,
+      })
+      .set(dom.children[0] as HTMLElement, {
+        rotate: 7,
+        y: window.innerHeight / 2,
+        scale: 1.2,
+        ...propsGsap.props_Filter_Light,
+      })
+      .to(dom as HTMLElement, {
+        clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
+        ...propsGsap.props_enterAnim
+      })
+      .to(dom.children[0] as HTMLElement, {
+        rotate: 0,
+        y: 0,
+        x: 0,
+        scale: 1,
+        ...propsGsap.props_Filter_Light,
+        ...propsGsap.props_enterAnim
+      }, '<')
   }
 
   const exitAnim = (dom: HTMLElement) => {
-
-
     gsap.timeline().set(dom.children[0] as HTMLElement, {
-      '-webkit-filter': 'brightness(100%)',
-      filter: 'brightness(100%)',
-
-    }
-    )
+      ...propsGsap.props_Filter_Light,
+    })
       .to(dom.children[0] as HTMLElement, {
-    
-        '-webkit-filter': 'brightness(26%)',
-        filter: 'brightness(26%)',
         rotate: -7,
         y: -window.innerHeight / 2,
         scale: 1.2,
-        duration: timeTransition,
-
-        ease: easeTransition
-      });
+        ...propsGsap.props_Filter_Shadow,
+        ...propsGsap.props_exitAnim
+      })
   }
+  const exitWorkPage = (dom:HTMLElement, item_project_active:number) => {
+    // always is #work page
+    // Now we have 4 item dom
+    // .heading , .indicator, .thumbnail , .projects // 0,1,2,3
+    let titleProject = dom.children[0].children[0].children[0].children[0].children[Number(item_project_active)]
+    let subtitleProject = dom.children[0].children[0].children[0].children[1].children[Number(item_project_active)]
+    let thumbnailProject = dom.children[0].children[0].children[2]
+    let backgroundProject = dom.children[0].children[0].children[3].children[Number(item_project_active)].children[0].children[0]
 
+
+    gsap.timeline()
+      .set(thumbnailProject, {
+        clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
+      }).to(
+        backgroundProject, {
+        scale: 1,
+        ...propsGsap.props_exitAnim
+      }
+      ).to(
+        thumbnailProject, {
+        clipPath: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)',
+        ...propsGsap.props_exitAnim
+      }, "<")
+      .to(
+        [titleProject, subtitleProject], {
+        opacity: 0,
+        ...propsGsap.props_exitAnim
+      }, "<")
+
+  }
+  useEffect(() => {
+    const check = Number(listPathAndIdDom.pagesWork.includes(transitionKeyRef.current as string))
+    if(check)isWorkPage.current = true
+  },[transitionKeyRef.current])
   return (
     <div ref={scopeRef}>
+           {children}
       <PageTransitionGroup>
         <TransitionGroup component={null}>
 
@@ -189,18 +247,33 @@ const PageTransition: React.FC<PageTransitionProps> = ({
 
             unmountOnExit={true}
             onEnter={(node: any) => {
-              enterAnim(node.children[0]);
+              transitionKeyRef.current = transitionKey
+              setStateTransition('enter')
+              console.log(transitionKey)
+              if (listPathAndIdDom.pagesWork.includes(transitionKey)) {
+                enterDetailProject(node.children[0])
+              } else {
+                enterAnim(node.children[0]);
+              }
+
+      
+           
             }}
             onEntered={() => {
-              localStorage.setItem("onEnter", "false")
+              setStateTransition('entered')
               if (pathName === '/work' || pathName === '/3d' || isMobile()) return
               reInitLenis(pathNameFormat)
             }}
 
 
             onExit={(node: any) => {
-              exitAnim(node.children[0]);
-
+              setStateTransition('exit')
+              if (pathName==="/work" && listPathAndIdDom.pagesWork.includes(transitionKeyRef.current as string)) {
+                let activeItemOnWorkPage = localStorage.getItem('activeItemOnWorkPage')
+                exitWorkPage(node.children[0], Number(activeItemOnWorkPage))
+              } else {
+                exitAnim(node.children[0]);
+              }
             }}
           >
             {state => {
@@ -224,15 +297,19 @@ const PageTransition: React.FC<PageTransitionProps> = ({
                   contentDomReference = <WorkPage stateTransition={state} />;
 
                   break;
-
+                  case '/work/work1':
+                    contentDomReference = <Project1 stateTransition={state}/>;
+  
+                    break;
                 default:
-                  return contentDomReference = <HomePage stateTransition={state} />;
+                  return null
               }
 
               return (
                 <PageTransitionWrapper state={state} >
                   <div id='wrapper_this'>
                     {contentDomReference}
+               
                   </div>
                 </PageTransitionWrapper>
               );

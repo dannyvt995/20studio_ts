@@ -2,7 +2,7 @@
 "use client"
 
 import s from './style.module.css'
-import { useRef, memo } from 'react';
+import { useRef } from 'react';
 import gsap from 'gsap'
 import Link from 'next/link';
 import { isMobile } from '@/utils/responsive';
@@ -16,9 +16,10 @@ function FooterSection({ propsForGsap }: IFooterSection) {
     useGSAP(() => {
      
         if (isMobile()) return
-
+        let timeoutId: NodeJS.Timeout;
         if (propsForGsap.stateTransitionPage === 'entered') {
  
+            timeoutId = setTimeout(() => {
             gsap.timeline({
                 scrollTrigger:{
                     scroller: propsForGsap.scrollerRef,
@@ -32,9 +33,10 @@ function FooterSection({ propsForGsap }: IFooterSection) {
             .fromTo(domEffect.current, {
                 y: -window.innerHeight * .4, // calc(100vh * -1.2)
             }, { y: 0 })
+           },500)
         }
 
- 
+        return () => clearTimeout(timeoutId); 
     }, {dependencies:[propsForGsap.stateTransitionPage]});
 
 
@@ -101,4 +103,4 @@ function FooterSection({ propsForGsap }: IFooterSection) {
     )
 }
 
-export default memo(FooterSection)
+export default FooterSection

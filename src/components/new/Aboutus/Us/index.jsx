@@ -30,7 +30,7 @@ export default function Us() {
                 <div className={s.images}>
                     <div className={s.image} >
                         <Image
-                            src="/clone/aboutus/us_1.webp"
+                            src="/clone/aboutus/us_1.jpg"
                             width={0}
                             height={0}
                             sizes="100vw"
@@ -40,7 +40,7 @@ export default function Us() {
                     </div>
                     <div className={s.image}>
                         <Image
-                            src="/clone/aboutus/us_2.webp"
+                            src="/clone/aboutus/us_2.jpg"
                             width={0}
                             height={0}
                             sizes="100vw"

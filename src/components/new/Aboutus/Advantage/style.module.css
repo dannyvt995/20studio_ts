@@ -8,7 +8,7 @@
     padding: 21.3333333333vw 0 ;
 }
 
-.aboutus_advantage .label {
+ .label {
     color: #0d0e13;
     color: var(--color-dark-grey);
     display: inline-flex;
@@ -26,17 +26,17 @@
     padding-left: 5.8666666667vw;
     position: relative;
 }
-.aboutus_advantage .icon {
+ .icon {
     height: 3.2vw;
     position: absolute;
     transform: translate(-5.3333333333vw, 2.1333333333vw);
     width: 3.2vw;
     z-index: 1;
 }
-.aboutus_advantage .intro {
+ .intro {
     margin: 12vw 0 18.6666666667vw;
 }
-.aboutus_advantage .intro p {
+ .intro p {
     font-family: Lausanne-300;
     font-family: var(--font-f-lausanne-300);
     font-size: 6.4vw;
@@ -46,12 +46,12 @@
     line-height: 8vw;
     line-height: var(--font-lh-h3);
 }
-.aboutus_advantage .item {
+ .item {
     position: relative;
 }
 
 /* list item */
-.aboutus_advantage .index {
+ .index {
     color: hsla(33, 14%, 88%, .8);
     color: var(--color-light-grey-08);
     font-family: Lausanne-300;
@@ -63,7 +63,7 @@
     line-height: 5.6vw;
     line-height: var(--font-lh-p);
 }
-.aboutus_advantage .subtitle {
+ .subtitle {
     font-family: Lausanne-300;
     font-family: var(--font-f-lausanne-300);
     font-size: 7.7333333333vw;
@@ -74,7 +74,7 @@
     line-height: var(--font-lh-h2);
     margin-bottom: 6.1333333333vw;
 }
-.aboutus_advantage .body p {
+ .body p {
     color: hsla(33, 14%, 88%, .8);
     color: var(--color-light-grey-08);
     font-family: Lausanne-300;
@@ -87,64 +87,67 @@
     line-height: var(--font-lh-p);
     margin-bottom: 8vw;
 }
-.aboutus_advantage .body p:last-child {
+ .body p:last-child {
     margin: 0;
 }
 @media (min-width: 601px) {
-    .aboutus_advantage .container {
+     .container {
         margin: 0 8.3333333333vw;
     }
      .aboutus_advantage {
         padding: 13.8888888889vw 0 0 0 ; 
     }
-     .aboutus_advantage .label {
+      .label {
         height: 2.3611111111vw;
         line-height: 2.5694444444vw;
         padding-left: 1.5277777778vw;
     }
-     .aboutus_advantage .icon {
+      .icon {
         height: .8333333333vw;
         transform: translate(-1.4930555556vw, .7638888889vw);
         width: .8333333333vw;
         will-change: transform;
     }
-     .aboutus_advantage .intro {
+      .intro {
         margin: 4.8611111111vw 0 11.4583333333vw;
         width: 40.625vw;
     }
    
 
-
+    .items {
+        grid-column-gap: 2.2222222222vw;
+        grid-template-columns: repeat(12, 1fr);
+    }
 
     /* item list */
-     .aboutus_advantage .index {
+      .index {
         left: -3.125vw;
         position: absolute;
         top: 10.9722222222vw;
     }
-     .aboutus_advantage .items {
+      .items {
         display: grid;
         grid-column-gap: 2.2222222222vw;
         grid-template-columns: repeat(12, 1fr);
     }
-     .aboutus_advantage .item:first-child {
+      .item:first-child {
         grid-column: 3 / 7;
     }
-     .aboutus_advantage .item:nth-child(2) {
+      .item:nth-child(2) {
         grid-column: 8 / 12;
         margin-top: 10.4166666667vw;
     }
-     .aboutus_advantage .item:nth-child(3) {
+      .item:nth-child(3) {
         grid-column: 2 / 5;
     }
-     .aboutus_advantage .item:nth-child(4) {
+      .item:nth-child(4) {
         grid-column: 7 / 10;
         margin-top: 10.4166666667vw;
     }
-     .aboutus_advantage .subtitle {
+      .subtitle {
         margin-bottom: 1.7361111111vw;
     }
-     .aboutus_advantage .body {
+      .body {
         max-width: 19.2361111111vw;
     }
 }

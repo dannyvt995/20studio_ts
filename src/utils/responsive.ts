@@ -1,5 +1,9 @@
 export const isMobile = (): boolean => {
+  if (typeof navigator === 'undefined') {
+    return false; // Return false if navigator is not defined
+  }
   let check = false;
+  
   (function (a: string): void {
     if (
       /(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i.test(
@@ -10,11 +14,14 @@ export const isMobile = (): boolean => {
       )
     )
       check = true;
-  })(navigator.userAgent || navigator.vendor);
+  })(navigator !== undefined && navigator?.userAgent || navigator?.vendor);
   return check;
 };
 
 export const isMobileAndTablet = function (): boolean {
+  if (typeof navigator === 'undefined') {
+    return false; // Return false if navigator is not defined
+  }
   let check = false;
   (function (a: string): void {
     if (
@@ -26,6 +33,6 @@ export const isMobileAndTablet = function (): boolean {
       )
     )
       check = true;
-  })(navigator.userAgent || navigator.vendor);
+  })( navigator?.userAgent || navigator?.vendor);
   return check;
 };

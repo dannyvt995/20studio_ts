@@ -302,6 +302,7 @@ export default function WorkSlider() {
       })
       //update val
       valueRef.current = nextvalueRef
+  
       setValStore(valueRef.current.toString(), 'activeItemOnWorkPage')
     }
   }

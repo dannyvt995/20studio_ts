@@ -64,32 +64,32 @@ export default function HeroSection({ propsForGsap, propsHeroSection }: IHeroSec
 
                     </div>
 
-                    <Link className={s.link} href="/about">Về 20 Studio</Link>
+                    <Link className={s.link} href="/about" >Về 20 Studio</Link>
                     <ul className={s.list1}>
                         <li className={s.list_item}>
-                            <Link href={"/work"}>Dự án</Link>
+                            <Link className={s.list_link} href={"/work"}>Dự án</Link>
                         </li>
                         <li className={s.list_item}>
 
-                            <Link href={"/about"}>20 Studio</Link>
+                            <Link className={s.list_link} href={"/about"}>20 Studio</Link>
                         </li>
                         <li className={s.list_item}>
-                            <Link href={"/contact"}>Liên hệ</Link>
+                            <Link className={s.list_link} href={"/contact"}>Liên hệ</Link>
 
                         </li>
                         <li className={s.list_item}>
-                            <Link href={"/"}>Dịch vụ</Link>
+                            <Link className={s.list_link} href={"/"}>Dịch vụ</Link>
 
                         </li>
                     </ul>
                     <ul className="list2">
                         <li className={s.list_item}>
-                            <a href="mailto:creatiflow.danny@gmail.com" className="list-link">
+                            <a href="mailto:creatiflow.danny@gmail.com"  className={s.list_link}>
                                 20stuido@gmail.com
                             </a>
                         </li>
                         <li className={s.list_item}>
-                            <a href="tel:+389984639" className="list-link">
+                            <a href="tel:+389984639"  className={s.list_link}>
                                 +012.34.6789
                             </a>
                         </li>

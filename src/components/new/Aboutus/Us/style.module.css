@@ -1,7 +1,7 @@
 .aboutus_us  {
     
 }
-.aboutus_us .label {
+.label {
     color: #0d0e13;
     color: var(--color-dark-grey);
     display: inline-flex;
@@ -19,17 +19,17 @@
     padding-left: 5.8666666667vw;
     position: relative;
 }
-.aboutus_us .icon {
+.icon {
     height: 3.2vw;
     position: absolute;
     transform: translate(-5.3333333333vw, 2.1333333333vw);
     width: 3.2vw;
     z-index: 1;
 }
-.aboutus_us .title {
+.title {
     margin: 10.6666666667vw 0 6.9333333333vw;
 }
-.aboutus_us .title .title_line {
+.title .title_line {
     font-family: Lausanne-300;
     font-family: var(--font-f-lausanne-300);
     font-size: 16vw;
@@ -40,11 +40,11 @@
     line-height: var(--font-lh-h1);
    
 }
-.aboutus_us .title .title-mask {
+.title .title-mask {
     height: 15.2vw;
     line-height: 12vw;
 }
-.aboutus_us .body p {
+.body p {
     font-family: Lausanne-300;
     font-family: var(--font-f-lausanne-300);
     font-size: 4.8vw;
@@ -54,11 +54,11 @@
     line-height: 6.4vw;
     line-height: var(--font-lh-h4);
 }
-.aboutus_us .image {
+.image {
     height: auto;
     overflow: hidden;
 }
-.aboutus_us .quote {
+.quote {
     color: hsla(33, 14%, 88%, .8);
     color: var(--color-light-grey-08);
     font-family: Lausanne-300;
@@ -76,53 +76,53 @@
         margin-top: -2px;
         padding: 0 0 13.8888888889vw;
     }
-.aboutus_us .container {
+.container {
         display: grid;
         margin: 0 8.3333333333vw;
         grid-column-gap: 2.2222222222vw;
         grid-template-columns: repeat(12, 1fr);
     }
-.aboutus_us .label {
+.label {
         height: 2.3611111111vw;
         line-height: 2.5694444444vw;
         padding-left: 1.5277777778vw;
         position: absolute;
         top: 36.8055555556vw;
     }
-.aboutus_us .icon {
+.icon {
         height: .8333333333vw;
         transform: translate(-1.4930555556vw, .7638888889vw);
         width: .8333333333vw;
         will-change: transform;
     }
-.aboutus_us .title {
+.title {
         grid-column: 4 / 13;
     }
-    .aboutus_us .title .title_line {
+    .title .title_line {
         font-size:8.6vw !important;
     }
-.aboutus_us .title .title-mask {
+.title .title-mask {
         height: 10.0694444444vw;
         line-height: 7.6388888889vw;
     }
-.aboutus_us .body {
+.body {
         grid-column: 4 / 8;
     }
-.aboutus_us .images {
+.images {
         display: flex;
         grid-column: 2 / 12;
     }
-.aboutus_us .image:first-child {
+.image:first-child {
         height: 22.2222222222vw;
         margin-top: 21.5972222222vw;
         width: 33.3333333333vw;
     }
-.aboutus_us .image:nth-child(2) {
+.image:nth-child(2) {
         height: 28.6111111111vw;
         margin-left: auto;
         width: 19.1666666667vw;
     }
-.aboutus_us .quote {
+.quote {
         border-top: 1px solid hsla(0, 0%, 100%, .2);
         border-top: 1px solid var(--color-white-02);
         grid-column: 9 / 12;

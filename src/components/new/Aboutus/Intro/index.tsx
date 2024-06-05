@@ -8,11 +8,11 @@ import Image from 'next/image'
 export default function Intro(): React.ReactElement  {
     return (
         <section className={cn(s.aboutus_intro,'light_background')}>
-            <div className={s.container}>
+            <div className="container">
                 <ul className={s.images}>
                     <li className={s.image}>
                         <Image
-                            src="/clone/aboutus/intro_1.webp"
+                            src="/clone/aboutus/intro_1.jpg"
                             width={0}
                             height={0}
                             sizes='100vw'
@@ -23,7 +23,7 @@ export default function Intro(): React.ReactElement  {
                     </li>
                     <li className={s.image}>
                         <Image
-                            src="/clone/aboutus/intro_2.webp"
+                            src="/clone/aboutus/intro_2.jpg"
                             width={0}
                             height={0}
                             sizes='100vw'
@@ -33,7 +33,7 @@ export default function Intro(): React.ReactElement  {
                     </li>
                     <li className={s.image}>
                         <Image
-                            src="/clone/aboutus/intro_3.webp"
+                            src="/clone/aboutus/intro_3.jpg"
                             width={0}
                             height={0}
                             sizes='100vw'

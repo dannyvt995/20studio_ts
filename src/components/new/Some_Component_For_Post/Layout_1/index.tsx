@@ -1,11 +1,11 @@
 import React from 'react'
 import s from './style.module.css'
-
+import cn from 'classnames'
 import Image from 'next/image'
 
 export default function Layout_1() {
   return (
-    <section className='POST_layout1 has_padding_top_and_bottom'>
+    <section className={cn(s.POST_layout1,"has_padding_top_and_bottom")}>
         <div className={s.container}>
           <div className={s.media}>
             <Image alt="alt" src={"/clone/layout_component1__1.webp"} width={0} height={0} sizes="100vw" style={{ width: "100%", height: "auto" }} className={s.project_image} />

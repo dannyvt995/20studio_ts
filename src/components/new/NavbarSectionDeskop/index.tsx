@@ -1,10 +1,12 @@
-import React, { memo } from 'react'
+import React, { memo, useEffect } from 'react'
 import s from './style.module.css'
 import Link from 'next/link';
 
+
 function NavbarSectionDeskop(): JSX.Element {
+
     return (
-        <nav className={s.nav} id='navbar'>
+        <nav className={s.nav} id='navbar_deskop'>
             <ul className={s.nav_list}>
 
                 <li className={s.nav_item}>
@@ -23,4 +25,4 @@ function NavbarSectionDeskop(): JSX.Element {
         </nav>
     )
 }
-export default memo(NavbarSectionDeskop)
+export default NavbarSectionDeskop

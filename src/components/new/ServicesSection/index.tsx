@@ -10,7 +10,7 @@ export default function ServicesSection() {
             <div className={s.container}>
                 <div className={s.text}>
                     <h2 className={s.lable}>
-                        <StarIcon src='/icon/star.svg'/>
+                        <StarIcon src='/icon/star.svg' className={s.icon}/>
                         Danh mục sản phẩm</h2>
                     <h3 className={s.title}>Dự án</h3>
                     <div className={s.body}>

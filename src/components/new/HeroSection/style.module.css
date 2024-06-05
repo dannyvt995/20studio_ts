@@ -72,7 +72,8 @@
 .hero_section .list_item {
     line-height: 2.2222222222vw;
 }
-.hero_section .list_link {
+.hero_section .list_link,
+.hero_section .link {
     font-family: Lausanne-300;
     font-family: var(--font-f-lausanne-300);
     font-size: 3.7333333333vw;
@@ -113,7 +114,7 @@
 .intro {
     grid-column: 1 / 9;
     max-width: 50.8055555556vw;
-    padding-top: 30.5555555556vw;
+    padding-top: 25.5555555556vw;
 }
 .body {
     grid-column: 1 / 8;

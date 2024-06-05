@@ -1,17 +1,17 @@
 .POST_layout3 {
     height:142vw;
 }
-.POST_layout3 .container {
+.container {
     display: grid;
     grid-template-columns: repeat(10, 1fr);
 
     position: relative;
  
 }
-.POST_layout3 .container > .text {
+.container > .text {
     grid-column: 1 / 10;
 }
-.POST_layout3 .label {
+.label {
 
     display: inline-flex;
     color: #0d0e13;
@@ -33,20 +33,20 @@
     position: relative;
 }
 
-.POST_layout3 .icon {
+.icon {
     height: 3.2vw;
     position: absolute;
     transform: translate(-5.3333333333vw, 2.1333333333vw);
     width: 3.2vw;
     z-index: 1;
 }
-.POST_layout3 .label .text {
+.label .text {
     display: flex;
     position: relative;
     transform-origin: top left;
     z-index: 1;
 }
-.POST_layout3 .body p {
+.body p {
     color: rgba(13, 14, 19, .6);
     color: var(--color-dark-grey-06);
     font-family: "Lausanne-300";
@@ -59,19 +59,19 @@
     line-height: var(--font-lh-p);
     margin: 6.1333333333vw 0 14.1333333333vw;
 }
-.POST_layout3 .left {
+.left {
     grid-column: 1 / 6;
     margin-left: -33.0666666667vw;
 }
-.POST_layout3 .left {
+.left {
     grid-column: 1 / 6;
     margin-left: -40.5555555556vw;
     will-change: transform;
 }
-.POST_layout3 .media:last-child {
+.media:last-child {
     margin: 0;
 }
-.POST_layout3 .media {
+.media {
     margin-bottom: 10.6666666667vw;
 }
 .right {
@@ -81,41 +81,41 @@
 .align-text-right .right .media:first-child {
     margin-top: 24vw;
 }
-.POST_layout3 .media {
+.media {
     margin-bottom: 10.6666666667vw;
 }
-.POST_layout3 .media:last-child {
+.media:last-child {
     margin: 0;
 }
 @media (min-width: 601px) {
-    .POST_layout3 .container {
+    .container {
         grid-column-gap: 2.2222222222vw;
         grid-template-columns: repeat(12, 1fr);
         margin: 0 8.3333333333vw;
     }
-    .POST_layout3 .text {
+    .text {
         left: 42.7777777778vw;
         position: absolute;
         width: 26.3888888889vw;
     }
-    .POST_layout3 .label {
+    .label {
         height: 2.3611111111vw;
         line-height: 2.5694444444vw;
         padding-left: 1.5277777778vw;
     }
-    .POST_layout3 .icon {
+    .icon {
         height: .8333333333vw;
         transform: translate(-1.4930555556vw, .7638888889vw);
         width: .8333333333vw;
         will-change: transform;
     }
-    .POST_layout3 .body {
+    .body {
         margin: 2.9861111111vw 0 0;
     }
-    .POST_layout3 .media {
+    .media {
         margin-bottom: 10.4166666667vw;
     }
-    .POST_layout3 .right {
+    .right {
         grid-column: 7 / 13;
         margin-right: -19.1666666667vw;
         will-change: transform;
@@ -123,7 +123,7 @@
     .align-text-right .right .media:first-child {
         margin-top: 34.7222222222vw;
     }
-    .POST_layout3 .media {
+    .media {
         margin-bottom: 10.4166666667vw;
     }
 }

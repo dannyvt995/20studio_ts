@@ -3,7 +3,7 @@
 
 import { memo, useEffect, useRef } from 'react'
 import gsap from 'gsap'
-import {ScrollTrigger} from 'gsap/dist/ScrollTrigger'
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 import cn from 'classnames'
 import s from './style.module.css'
 import Image from 'next/image'
@@ -19,30 +19,32 @@ function LetContact({ propsForGsap }: ILetContact) {
 
   useGSAP(() => {
     if (isMobile()) return
-  
+    let timeoutId: NodeJS.Timeout;
     if (propsForGsap.stateTransitionPage === 'entered') {
-      
-      const listImg =  Array.prototype.slice.call( triggleSection.current?.children )
-      gsap.timeline({
-        scrollTrigger: {
-          scroller: propsForGsap.scrollerRef,
-          trigger: triggleSection.current,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: true,
-        }
-      })
-        .to([listImg[1], listImg[3]], {
-          x: -100
-        }
-        ).to(
-          [listImg[2], listImg[4]], {
-          x: 100
-        }
-          , "<")
+      const listImg = Array.prototype.slice.call(triggleSection.current?.children)
+      timeoutId = setTimeout(() => {
+        gsap.timeline({
+          scrollTrigger: {
+            scroller: propsForGsap.scrollerRef,
+            trigger: triggleSection.current,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true,
+          }
+        })
+          .to([listImg[1], listImg[3]], {
+            x: -100
+          }
+          ).to(
+            [listImg[2], listImg[4]], {
+            x: 100
+          }
+            , "<")
+      }, 500)
     }
+    return () => clearTimeout(timeoutId);
   }, { dependencies: [propsForGsap.stateTransitionPage] })
-  
+
   return (
     <section className={cn(s.letcontact_section, s.light_background)} id="letcontact_section" >
       <div className={s.container}>
@@ -87,4 +89,4 @@ function LetContact({ propsForGsap }: ILetContact) {
   )
 }
 
-export default memo(LetContact)
+export default LetContact
