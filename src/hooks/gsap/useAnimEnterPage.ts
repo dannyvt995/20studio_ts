@@ -4,6 +4,7 @@ import { propsGsap } from "@Constants/gsap_props"
 import { gsap } from "gsap"
 
 export function useAnimEnterPage({ node, indexRef }: { node: HTMLDivElement, indexRef: any }) {
+    
     let cloneNode :any = node
     let timeline:any
         timeline = gsap.timeline();

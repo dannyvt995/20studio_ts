@@ -2,7 +2,8 @@ import React from 'react'
 import cn from 'classnames'
 import s from './style.module.css'
 import Image from 'next/image'
-import ImagePreload from '@/components/ImagePreload'
+
+
 import StarIcon from '@/components/Icon/StarIcon'
 export default function ServicesSection() {
     return (
@@ -21,7 +22,7 @@ export default function ServicesSection() {
             <div className={s.services}>
                 <a className={s.service}>
                     <div className={s.block}>
-                        <ImagePreload src="/clone/ser1.jpg" width={0} height={0} sizes="100vw" style={{ width: "100%", height: "auto" }} alt="services1" />
+                        <Image src="/clone/ser1.jpg" width={0} height={0} sizes="100vw" style={{ width: "100%", height: "auto" }} alt="services1" />
                     </div>
                     <p className={s.info}>
                         <span><strong>Chinh’s Major Project - </strong>Phát triển mẫu</span>
@@ -29,7 +30,7 @@ export default function ServicesSection() {
                 </a>
                 <a className={s.service}>
                     <div className={s.block}>
-                    <ImagePreload src="/clone/ser2.jpg" width={0} height={0} sizes="100vw" style={{ width: "100%", height: "auto" }} alt="services1" />
+                    <Image src="/clone/ser2.jpg" width={0} height={0} sizes="100vw" style={{ width: "100%", height: "auto" }} alt="services1" />
                     </div>
                     <p className={s.info}>
                         <span><strong>Nét Project - </strong>Phát triển mẫu</span>
@@ -37,7 +38,7 @@ export default function ServicesSection() {
                 </a>
                 <a className={s.service}>
                     <div className={s.block}>
-                    <ImagePreload src="/clone/ser3.jpg" width={0} height={0} sizes="100vw" style={{ width: "100%", height: "auto" }} alt="services1" />
+                    <Image src="/clone/ser3.jpg" width={0} height={0} sizes="100vw" style={{ width: "100%", height: "auto" }} alt="services1" />
                     </div>
                     <p className={s.info}>
                         <span><strong>Lung Tung - </strong>Quản lí sản xuất</span>
@@ -45,7 +46,7 @@ export default function ServicesSection() {
                 </a>
                 <a className={s.service}>
                     <div className={s.block}>
-                        <ImagePreload 
+                        <Image
                             src="/clone/services1.webp"
                             width={0} height={0} sizes="100vw" style={{ width: "100%", height: "auto" }} alt="services1"
                         />

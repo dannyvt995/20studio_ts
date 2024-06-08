@@ -52,10 +52,14 @@ const PageTransition: React.FC<PageTransitionProps> = ({
   useEffect(() => {
     targetDom.current = document.getElementById(`${pathNameFormat}page`) as HTMLDivElement
     targetParentDom.current = targetDom.current?.parentNode as HTMLDivElement
-    useAnimEnterPage({
-      node: targetParentDom.current as HTMLDivElement,
-      indexRef: 2
-    })
+    if(targetDom.current && targetParentDom.current) {
+      console.log('lọt',targetDom.current,targetParentDom.current)
+      useAnimEnterPage({
+        node: targetParentDom.current as HTMLDivElement,
+        indexRef: 2
+      })
+    }
+
     if(!isMobile()) {
       useInitLenis({
         pathName: pathNameFormat
