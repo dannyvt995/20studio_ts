@@ -6,174 +6,9 @@ import { Observer } from "gsap/dist/Observer";
 import Image from 'next/image'
 import { useRouter } from 'next/navigation';
 import cn from 'classnames'
-import { listPath ,filterBrightness } from './animation';
+import { gsapSlider, loadAnimationEnterPage, runSlider,setValStore } from '@Hooks/work_page/useSliderImage';
 
-interface IRunSlider {
-  ListTitleRef: Element[];
-  ListSubtitleRef: Element[];
-  ListThumbnailRef: Element[];
-  ListBackgroundRef: Element[];
-  prevState: number;
-  nextState: number;
-}
-
-interface IGsapSlider {
-  indexOfSlider: React.MutableRefObject<number>;
-  prevState: number;
-  nextState: number;
-  ListChildTitle: Element[][];
-  ListChildSub: Element[][];
-  ListChildThumbnail: Element[];
-  ListBackgroundRef: Element[];
-  durationAnimation?: number;
-  StateLock?: React.MutableRefObject<boolean>;
-  dir: number;
-}
-
-interface IGsapEnter {
-  ListChildTitle: Element[][];
-  ListChildSubtitle: Element[][];
-  ListThumbnail: Element[];
-}
-
-function loadAnimationEnterPage({ListChildTitle, ListChildSubtitle, ListThumbnail}:IGsapEnter) {
-  //list_child_title = list_child_subtitles
-
-  ListChildTitle.forEach((child:Element[], index:number) => {
-
-    if (index === 0) {
-      gsap.timeline().set(child, {
-        yPercent: 0,
-        opacity: 1,
-      })
-        .set(ListChildSubtitle[index], { opacity: .8 })
-    } else {
-      gsap.timeline({}).set(child, {
-        yPercent: -100,
-        opacity: 1,
-      })
-        .set(ListChildSubtitle[index], { opacity: 0 })
-    }
-  });
-}
-
-function runSlider({
-  ListTitleRef, ListSubtitleRef, ListThumbnailRef, ListBackgroundRef, prevState, nextState
-}:IRunSlider) {
-  ListTitleRef[prevState].classList.remove('active');
-  ListTitleRef[nextState].classList.add('active');
-  ListSubtitleRef[prevState].classList.remove('active');
-  ListSubtitleRef[nextState].classList.add('active');
-  ListThumbnailRef[prevState].classList.remove('active');
-  ListThumbnailRef[nextState].classList.add('active');
-  ListBackgroundRef[prevState].classList.remove('active');
-  ListBackgroundRef[nextState].classList.add('active');
-}
-function gsapSlider({ prevState, nextState, ListChildTitle, ListChildSub, ListChildThumbnail, ListBackgroundRef, StateLock, durationAnimation, indexOfSlider, dir }:IGsapSlider) {
-
- 
-  indexOfSlider.current++;
-
-  let pathResultBaseDirection1, pathResultBaseDirection2
-  switch (dir) {
-    case 1:
-      pathResultBaseDirection1 = listPath[1];
-      pathResultBaseDirection2 = listPath[2];
-      break;
-    case -1:
-      pathResultBaseDirection1 = listPath[2];
-      pathResultBaseDirection2 = listPath[1];
-      break;
-  }
-
-  gsap.timeline({
-    onComplete: () => {
-      if(StateLock)StateLock.current = false;
-    }
-
-  })
-    .set(ListChildTitle[nextState], { yPercent: -100 * dir })
-    .set(ListChildSub[nextState], { opacity: 0 })
-    .set([ListBackgroundRef[prevState].children[0],ListBackgroundRef[nextState].children[0]],filterBrightness.light)
-    .set( ListBackgroundRef[nextState].children[0],{yPercent: 20 * dir})
-    .set(ListChildThumbnail[nextState], {
-      opacity: 1,
-      clipPath: pathResultBaseDirection1,
-      zIndex: indexOfSlider.current + 111,
-    })
-    .set(ListBackgroundRef[nextState], {
-      clipPath: pathResultBaseDirection2,
-      zIndex: indexOfSlider.current - 111,
-    })
-    .to(
-      ListChildTitle[nextState],
-      {
-        yPercent: 0,
-        stagger: 0.1,
-        ease: "power3.inOut",
-
-        duration: durationAnimation
-      
-      })
-    .to(
-      ListChildTitle[prevState],
-      {
-
-        yPercent: 100 * dir,
-        stagger: 0.1,
-        ease: "power3.inOut",
-
-        duration: durationAnimation,
-      }, "<")
-    .to(
-      ListChildSub[nextState],
-      {
-        opacity: .8,
-        duration: durationAnimation,
-        stagger: 0.1,
-        ease: "power3.inOut"
-      }, "<")
-    .to(
-      ListChildSub[prevState],
-      {
-        opacity: 0,
-        stagger: 0.1,
-        ease: "power3.inOut"
-      }, "<")
-    .to([ListChildThumbnail[nextState],ListBackgroundRef[nextState]], {
-      clipPath: listPath[0],
-      duration: durationAnimation,
-      ease: "power3.inOut"
-
-    }, "<")
-    .to( ListBackgroundRef[nextState].children[0],{
-
-      yPercent: 0,
-      duration: durationAnimation,
-      ease: "power3.inOut",
-    }, "<")
-    .to(
-      ListBackgroundRef[prevState].children[0],
-      {
-
-        yPercent: -42 * dir,
-        rotate: 10 * dir,
-        scale: 1.1,
-        
-
-        duration: durationAnimation,
-        ease: "power3.inOut",
-        clearProps: "yPercent,rotate,scale",
-        ...filterBrightness.dark
-      }, "<")
-
-
-
-}
-function setValStore(val:string|number, nameVal:string) {
-  localStorage.setItem(nameVal, val.toString())
-}
-
+gsap.registerPlugin(Observer)
 export default function WorkSlider() {
   
   const observeRefPageWheel = useRef<Observer | null>(null);
@@ -219,7 +54,7 @@ export default function WorkSlider() {
       ListChildBackgroundRef.current = ListBackgroundRef.current.map(child =>
         Array.from(child.children, child => child) // vi thumb co 0 lop wrap
       );
-  
+
       loadAnimationEnterPage({
         ListChildTitle : ListChildTitleRef.current, 
         ListChildSubtitle : ListChildSubtitleRef.current, 
@@ -231,7 +66,7 @@ export default function WorkSlider() {
   }, []);
   
   useEffect(() => {
-    gsap.registerPlugin(Observer)
+  
     observeRefPageWheel.current = Observer.create({
       target: work_page_ref.current,
       type: "wheel,touch,pointer",
@@ -277,7 +112,7 @@ export default function WorkSlider() {
       valueRef.current = nextvalueRef
       setValStore(valueRef.current.toString(), 'activeItemOnWorkPage')
     } else if (dir === -1) {
-      let nextvalueRef = (valueRef.current + 1) % ListTitleRef.current.length; // Loop from 0 to 4
+      let nextvalueRef = (valueRef.current + 1) % ListTitleRef.current.length; 
       //just active for parent wrap
       runSlider({
         ListTitleRef: ListTitleRef.current,

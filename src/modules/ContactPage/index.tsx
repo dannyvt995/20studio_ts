@@ -1,17 +1,15 @@
-import ContactPageIntro from '@/components/new/ContactPageIntro';
-import FooterSection from '@/components/new/FooterSection';
+import ContactPageIntro from '@Components/new/ContactPageIntro';
+import FooterSection from '@Components/new/FooterSection';
+import { contact_page } from '@Constants/page_props';
 import { IPageModule } from '@/types/common';
 import { memo } from 'react';
+
 function ContactPage({stateTransition}:IPageModule): JSX.Element {
-    const propsForGsap = {
-        stateTransitionPage: stateTransition,
-        scrollerRef: "#contactpage"
-    }
-  
+
     return (
         <div id="contactpage">
             <ContactPageIntro />
-            <FooterSection propsForGsap={propsForGsap}/>
+            <FooterSection state={stateTransition} propsForGsap={contact_page.propsForGsap}/>
         </div>
     )
 }

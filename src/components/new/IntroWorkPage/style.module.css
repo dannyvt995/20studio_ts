@@ -16,7 +16,7 @@
  .text_1 {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+   
     height: calc(var(--vh, 1vh)* 100);
   
 }
@@ -170,9 +170,12 @@
     }
      .title {
         margin-bottom: 0;
+
+        display: flex;
+        flex-direction: column;
     }
   
-     .subtitle .text_line span{
+     .subtitle .text_line > .iii{
         font-family: "Lausanne-300";
         font-family: var(--font-f-lausanne-300);
         font-size: 3.7333333333vw;

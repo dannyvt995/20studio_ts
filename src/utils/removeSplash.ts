@@ -1,13 +1,15 @@
+import { listPathAndIdDom } from "@Constants/data_noname"
 
-export function removeSplash(target: string,listPathAndIdDom:any) {
-    let value
-    if (listPathAndIdDom.pagesWork.includes(target)) {
-      value = target.replace(/\/work\//g, "");
-  
-    } else {
-      value = target.replace(/\//g, "");
-      if (value == '') value = "home"
-    }
-  
-    return value
+export const removeSplash = ( {pathName}:{pathName: any}) => {
+  let value
+
+  if (listPathAndIdDom.pagesWork.includes(pathName)) {
+    value = pathName.replace(/\/work\//g, "");
+
+  } else {
+    value = pathName.replace(/\//g, "");
+    if (value == '') value = "home"
+  }
+
+  return value
 }

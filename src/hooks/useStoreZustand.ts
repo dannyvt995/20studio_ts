@@ -11,6 +11,9 @@ interface IStoreZustand {
   //transition
   stateTransition: string;
   setStateTransition: (key: string) => void;
+
+  //page render
+  
 }
 
 const useStoreZustand = create<IStoreZustand>((set) => ({

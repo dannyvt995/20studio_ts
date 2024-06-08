@@ -1,26 +1,19 @@
-import HeroSection from '@/components/new/HeroSection';
-import s from './style.module.css'
+import HeroSection from '@Components/new/HeroSection';
 import Advantage from "@Components/new/Aboutus/Advantage";
 import Intro from "@Components/new/Aboutus/Intro";
-import SectionTitleBlend from '@/components/new/SectionIntractive/SectionTitleBlend';
-import FooterSection from '@/components/new/FooterSection';
-import Minded from '@/components/new/Aboutus/Minded';
-import Us from '@/components/new/Aboutus/Us';
+import SectionTitleBlend from '@Components/new/SectionIntractive/SectionTitleBlend';
+import FooterSection from '@Components/new/FooterSection';
+import Minded from '@Components/new/Aboutus/Minded';
+import Us from '@Components/new/Aboutus/Us';
 import { IPageModule } from '@/types/common';
 import { memo } from 'react';
+import { about_page } from '@Constants/page_props';
+
 function AboutPage({stateTransition} : IPageModule): JSX.Element {
-    const propsForGsap = {
-        stateTransitionPage: stateTransition,
-        scrollerRef: "#aboutpage"
-    }
-    const propsHeroSection = {
-        classAdd: "dark_background",
-        backgroundImage: "/about/banner.png",
-        backgroundSize: { width: "105%", height: "auto" }
-    }
+
     return (
         <div id="aboutpage">
-            <HeroSection propsForGsap={propsForGsap} propsHeroSection={propsHeroSection} />
+            <HeroSection state={stateTransition} propsForGsap={about_page.propsForGsap} propsHeroSection={about_page.propsHeroSection} />
 
             <Intro />
 
@@ -30,10 +23,10 @@ function AboutPage({stateTransition} : IPageModule): JSX.Element {
 
             <Advantage />
 
-            <SectionTitleBlend propsForGsap={propsForGsap} />
+            <SectionTitleBlend state={stateTransition} propsForGsap={about_page.propsForGsap} />
             <Minded />
             <Us />
-            <FooterSection propsForGsap={propsForGsap} />
+            <FooterSection state={stateTransition} propsForGsap={about_page.propsForGsap} />
         </div>
     )
 }

@@ -12,15 +12,16 @@ import { isMobile } from '@/utils/responsive';
 import { IPropsFromTransition } from '@/types/common';
 gsap.registerPlugin(ScrollTrigger)
 interface ILetContact {
-  propsForGsap: IPropsFromTransition
+  state:string,
+  propsForGsap: any
 }
-function LetContact({ propsForGsap }: ILetContact) {
+function LetContact({ propsForGsap,state }: ILetContact) {
   const triggleSection = useRef<HTMLUListElement>(null)
 
   useGSAP(() => {
     if (isMobile()) return
     let timeoutId: NodeJS.Timeout;
-    if (propsForGsap.stateTransitionPage === 'entered') {
+    if (state === 'entered') {
       const listImg = Array.prototype.slice.call(triggleSection.current?.children)
       timeoutId = setTimeout(() => {
         gsap.timeline({
@@ -43,7 +44,7 @@ function LetContact({ propsForGsap }: ILetContact) {
       }, 500)
     }
     return () => clearTimeout(timeoutId);
-  }, { dependencies: [propsForGsap.stateTransitionPage] })
+  }, { dependencies: [state] })
 
   return (
     <section className={cn(s.letcontact_section, s.light_background)} id="letcontact_section" >

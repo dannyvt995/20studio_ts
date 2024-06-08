@@ -3,7 +3,6 @@
         position: fixed;
         top:0;
         left:0;
-        z-index: -1;
         width:100vw;
         height:100vh;
 }
@@ -90,7 +89,7 @@
 }
 @media (min-width: 601px) {
      .container {
-     
+        will-change: transform;
         grid-column-gap: 2.2222222222vw;
         grid-template-columns: repeat(12, 1fr);
         margin:  0 !important;

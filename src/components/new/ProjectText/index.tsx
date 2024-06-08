@@ -13,7 +13,7 @@ export default function ProjectText({ disableTitle }:{disableTitle:boolean}) {
             <span><span className={s.title_line}>Encouraging</span></span>
           </h2>
         )} */}
-     <h2 className={cn(s.title ,s.is_normal)}>
+          <h2 className={cn(s.title ,s.is_normal)}>
             <span><span className={s.title_line}>Immersive</span></span>
             <span><span className={s.title_line}>Impression</span></span>
             <span><span className={s.title_line}>Encouraging</span></span>

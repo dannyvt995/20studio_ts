@@ -8,16 +8,17 @@ import Link from 'next/link';
 import { isMobile } from '@/utils/responsive';
 import { useGSAP } from '@gsap/react';
 interface IFooterSection {
+    state:string,
     propsForGsap?: any
 }
-function FooterSection({ propsForGsap }: IFooterSection) {
+function FooterSection({ propsForGsap,state }: IFooterSection) {
     const triggleSection = useRef<HTMLElement>(null)
     const domEffect = useRef(null)
     useGSAP(() => {
      
         if (isMobile()) return
         let timeoutId: NodeJS.Timeout;
-        if (propsForGsap.stateTransitionPage === 'entered') {
+        if (state === 'entered') {
  
             timeoutId = setTimeout(() => {
             gsap.timeline({
@@ -37,7 +38,7 @@ function FooterSection({ propsForGsap }: IFooterSection) {
         }
 
         return () => clearTimeout(timeoutId); 
-    }, {dependencies:[propsForGsap.stateTransitionPage]});
+    }, {dependencies:[state]});
 
 
 

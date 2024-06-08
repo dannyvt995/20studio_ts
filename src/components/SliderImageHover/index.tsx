@@ -21,7 +21,9 @@ export const Mask = ({ children }: { children: React.ReactElement }): React.Reac
     }, [refContent])
     return helloRef;
 };
+
 Mask.displayName = 'MeskRef'
+
 export const Button = ({ children, data_link }: { children: string, data_link: string }) => {
     const ButtonRef = useRef<HTMLButtonElement>(null)
     const { selectedItemNavbar } = useStoreZustand();
@@ -50,7 +52,8 @@ export const Button = ({ children, data_link }: { children: string, data_link: s
         <button data-link={data_link} ref={ButtonRef}>{children}</button>
     )
 }
-Button.displayName = 'ButtonRef'
+Button.displayName = 'Button'
+
 export const ListButton = memo(() => {
     return (
         <div className={s.item_button} >
@@ -61,7 +64,8 @@ export const ListButton = memo(() => {
         </div>
     )
 })
-ListButton.displayName = 'ListButtonRef'
+ListButton.displayName = 'ListButton'
+
 export const WrapperMask = ({ img }: { img: string }) => {
     return (
         <Mask>
@@ -71,63 +75,57 @@ export const WrapperMask = ({ img }: { img: string }) => {
         </Mask>
     )
 }
-WrapperMask.displayName = 'WrapperMaskRef'
-function lerp(start: number, end: number, t: number) {
-    return start + (end - start) * t;
-}
+WrapperMask.displayName = 'WrapperMask'
 
 export const SliderImage = () => {
-
+    const maxToSlice = 32;
     const { indexItemNavbar } = useStoreZustand();
     const [outs, setOuts] = React.useState<(JSX.Element | null)[]>([]);
-    const listItem = React.useMemo(() => [
-        <WrapperMask key={0} img={"/home/banner.png"} />,
-        <WrapperMask key={1} img={"/home/form_contact_bgsection.png"} />,
-        <WrapperMask key={2} img={"/clone/ser1.jpg"} />,
-        <WrapperMask key={3} img={"/clone/ser2.jpg"} />
-    ], []);
-    const updateOuts = (() => {
+    const [count, setCount] = React.useState<number>(0);
+    const updateOuts = () => {
         let newOut;
+        setCount(count+1)
+       
         switch (indexItemNavbar) {
             case 1:
-                newOut = listItem[indexItemNavbar];
+                newOut = <WrapperMask key={count} img={"/home/banner.png"} />;
                 break;
             case 2:
-                newOut = listItem[indexItemNavbar];
+                newOut = <WrapperMask key={count} img={"/home/form_contact_bgsection.png"} />;
                 break;
             case 3:
-                newOut = listItem[indexItemNavbar];
+                newOut = <WrapperMask key={count} img={"/clone/ser1.jpg"} />;
                 break;
             case 4:
-                newOut = listItem[indexItemNavbar];
+                newOut = <WrapperMask key={count} img={"/clone/ser2.jpg"} />;
                 break;
             default:
-                newOut = listItem[0];
+                newOut = <WrapperMask key={count} img={"/home/banner.png"} />;
                 break;
         }
-   
-        setOuts(prevOuts => [...prevOuts, newOut]);
-        const max = listItem.length * 8
-
-        if (outs.length > max) {
-            setOuts(prevOuts => prevOuts.slice(outs.length, outs.length - 15));
-            setOuts(prevOuts => [...prevOuts, newOut]);
-        }
-        
-        return newOut
-    })
-
+      
+        setOuts(prevOuts => {
+            const updatedOuts = [...prevOuts, newOut];
+            if (updatedOuts.length > maxToSlice) {
+                return updatedOuts.slice(updatedOuts.length - (maxToSlice / 2), updatedOuts.length);
+            }
+            return updatedOuts;
+        });
+    };
 
     useEffect(() => {
         updateOuts();
     }, [indexItemNavbar]);
+
     return (
         <div className={s.list_image}>
             {outs.map(out => out)}
         </div>
     );
-}
-SliderImage.displayName = 'SliderImageRef'
+};
+
+SliderImage.displayName = 'SliderImage'
+
 const SliderImageHover = memo((): React.ReactElement => {
 
     return (
@@ -138,5 +136,6 @@ const SliderImageHover = memo((): React.ReactElement => {
 
     );
 });
-SliderImageHover.displayName = 'SliderImageHoverRef'
+SliderImageHover.displayName = 'SliderImageHover'
+
 export default SliderImageHover;

@@ -1,17 +1,19 @@
 
 
- .container {
+.container {
     display:grid;
     grid-column-gap: 2.2222222222vw;
     grid-template-columns: repeat(12, 1fr);
 }
- .title {
+.title {
     margin: 0 0 6.4vw;
+    display: flex;
+    flex-direction: column;
 }
 
 
 
- .label {
+.label {
     color: #0d0e13;
     color: var(--color-dark-grey);
     display: inline-flex;
@@ -30,7 +32,7 @@
     position: relative;
 }
 
- .label > .text {
+.label > .text {
     font-weight:600;
     font-family: Lausanne-300;
     font-family: var(--font-f-lausanne-300);
@@ -39,29 +41,29 @@
 
 }
 
- .icon {
+.icon {
     height: 3.2vw;
     position: absolute;
     transform: translate(-5.3333333333vw, 2.1333333333vw);
     width: 3.2vw;
     z-index: 1;
 }
- .label .text {
+.label .text {
     display: flex;
     position: relative;
     transform-origin: top left;
     z-index: 1;
 }
- .body {
+.body {
     color: rgba(13, 14, 19, .6);
     color: var(--color-dark-grey-06);
 }
- .body p {
+.body p {
     display: flex;
     flex-direction: column;
 }
 /* IMPORTANT */
- .label {
+.label {
     opacity:0;
 }
 /* IMPORTANT */
@@ -69,12 +71,12 @@
 
 
 /* IMPORTANT */
- .title > span {
+.title > span {
     position:relative;
     height:var(--font-lh-h2);
     overflow:hidden;
 }
- .title .title_line{
+.title .title_line{
     font-family: "Lausanne-300";
     font-family: var(--font-f-lausanne-300);
     font-size: 7.7333333333vw;
@@ -87,7 +89,7 @@
     position:absolute;
     will-change:tranform;
 }
- .title > span > span:nth-child(n) {
+.iii {
     transform:translateY(9.0666666667vw);
 }
 
@@ -95,12 +97,12 @@
 /* IMPORTANT */
 
 /* IMPORTANT */
- .body p > span {
+.body p > span {
     position: relative;
     height: var(--font-lh-p-small);
     overflow:hidden;
 }
- .body p > span > span {
+.body p > span > span {
     font-family: "Lausanne-300";
     font-family: var(--font-f-lausanne-300);
     font-size: 3.7333333333vw;
@@ -113,7 +115,7 @@
     position:absolute;
     will-change:tranform;
 }
- .body p > span > span:nth-child(n) {
+.body p > span > span:nth-child(n) {
     transform:translateY(60px);
 }
 /* IMPORTANT */
@@ -121,24 +123,25 @@
     .has-padding-bottom {
         padding-bottom: 10.4166666667vw;
     }
-     .title.is-normal {
+    .title.is-normal {
         margin: 0 0 1.6666666667vw;
     }
-      .title {
+     .title {
         grid-column: 4 / 13;
+        margin: 0 0 1.6666666667vw;
     }
-     .label {
+    .label {
         height: 2.3611111111vw;
         line-height: 2.5694444444vw;
         padding-left: 1.5277777778vw;
     }
-     .label {
+    .label {
         grid-column: 2 / 4;
     }
-     .body {
+    .body {
         grid-column: 4 / 9;
     }
-     .icon {
+    .icon {
         height: .8333333333vw;
         transform: translate(-1.4930555556vw, .7638888889vw);
         width: .8333333333vw;

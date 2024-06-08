@@ -1,34 +1,25 @@
-import OurPartners from '@/components/new/OurPartners';
-import s from './style.module.css'
-import Advantage from "@Components/new/Aboutus/Advantage";
-import Intro from "@Components/new/Aboutus/Intro";
+
 import HeroSection from '@Components/new/HeroSection';
-import ServicesSection from '@/components/new/ServicesSection';
-import LetContact from '@/components/new/LetContact';
-import FooterSection from '@/components/new/FooterSection';
+import ServicesSection from '@Components/new/ServicesSection';
+import LetContact from '@Components/new/LetContact';
+import FooterSection from '@Components/new/FooterSection';
 import { IPageModule } from '@/types/common';
 import { memo } from 'react';
-import FAQSection from '@/components/new/FAQSection';
-import SliderImageHover from '@/components/SliderImageHover';
+import FAQSection from '@Components/new/FAQSection';
+import SliderImageHover from '@Components/SliderImageHover';
+import { home_page } from '@Constants/page_props';
+
 function HomePage({stateTransition}:IPageModule): JSX.Element {
-    const propsForGsap = {
-        stateTransitionPage: stateTransition,
-        scrollerRef: "#homepage"
-      }
-      const propsHeroSection = {
-        classAdd:"dark_background",
-        backgroundImage:"/home/banner.png",
-        backgroundSize:{ width: "auto", height: "100%" }
-      }
+   
     return (
         <div id="homepage">
-            <HeroSection propsForGsap={propsForGsap} propsHeroSection={propsHeroSection}/>
+            <HeroSection state={stateTransition} propsForGsap={home_page.propsForGsap} propsHeroSection={home_page.propsHeroSection}/>
          
             <ServicesSection />
             <FAQSection/>
             <SliderImageHover/>
-            <LetContact propsForGsap={propsForGsap}/>
-            <FooterSection propsForGsap={propsForGsap}/>
+            <LetContact state={stateTransition} propsForGsap={home_page.propsForGsap}/>
+            <FooterSection state={stateTransition} propsForGsap={home_page.propsForGsap}/>
         </div>
     )
 }

@@ -26,8 +26,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={barlow.className}>
+    <html lang="en" >
+      <body className={barlow.className} suppressHydrationWarning={true}>
     
       <MainLayout>
         {children}

@@ -25,6 +25,8 @@ export interface IPageModule {
 
 
 export interface IPropsFromTransition {
+  state: any,
+
   stateTransitionPage?: string,
   scrollerRef?: string,
 

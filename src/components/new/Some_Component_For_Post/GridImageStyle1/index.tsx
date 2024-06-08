@@ -11,7 +11,7 @@ export default function GridImage1({ propsForGsap }:{propsForGsap?:any}) {
     const timelineRef = useRef(null)
 
     // useEffect(() => {
-    //     if ( propsForGsap.stateTransitionPage === 'entered') {
+    //     if ( state === 'entered') {
     //         if(window.innerWidth < 620) return
     //         gsap.registerPlugin(ScrollTrigger)
     //         console.log("Reinit/init scrolltriggle on component child on FooterSection")

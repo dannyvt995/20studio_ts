@@ -5,26 +5,28 @@ import s from './style.module.css'
 import Image from 'next/image'
 import { useGSAP } from '@gsap/react';
 import { isMobile } from '@/utils/responsive';
+import ImagePreload from '@/components/ImagePreload'
 interface IIntroWorkPage {
-    propsForGsap: any,
-    backgroundImage: any
+    state:string,
+    propsForGsap?: any,
+    backgroundImage?: any
 }
 
-function IntroWorkPage({ propsForGsap, backgroundImage }: IIntroWorkPage) {
+function IntroWorkPage({ backgroundImage,state }: IIntroWorkPage) {
     const triggleSection = useRef<HTMLUListElement>(null)
 
      useGSAP(() => {
         if (isMobile()) return
-        if (propsForGsap.stateTransitionPage === 'entered') {
-          gsap.to(`.${s.iii}`, { y: 0, duration: 1, ease: "power3.out" });
+        if (state === 'entered') {
+          gsap.to(`.${s.iii}`, { delay:.2, y: 0, duration: 1, ease: "power3.out" });
         }
-      }, { dependencies: [propsForGsap.stateTransitionPage] })
+      }, { dependencies: [state] })
 
 
     return (
         <section className={s.IntroWorkPage} ref={triggleSection}>
             <div className={s.background}>
-                <Image alt="d" src={backgroundImage} width={0} height={0} sizes="100vw" style={{ width: "100%", height: "auto" }} className={s.project_image} />
+                <ImagePreload alt="alt" src={backgroundImage} width={0} height={0}style={{ width: "100%", height: "auto" }} className={s.project_image} />
             </div>
             <div className={s.container}>
                 <div className={s.text_1}>

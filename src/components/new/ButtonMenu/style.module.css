@@ -1,7 +1,7 @@
 .button_menu {
     color: #0d0e13;
     color: var(--white);
-    display: flex;
+    display: none;
 
     padding: 8vw;
     position: fixed;
@@ -38,7 +38,6 @@
    .button_menu {
         line-height: 1.3888888889vw;
         padding: 3.14722222222vw;
-        top: 150px;
     }
     .button_menu .icon {
         height: 1.25vw;

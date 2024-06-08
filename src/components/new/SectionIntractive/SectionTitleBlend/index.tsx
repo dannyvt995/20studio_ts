@@ -6,18 +6,18 @@ import { useGSAP } from '@gsap/react';
 import { isMobile } from '@/utils/responsive';
 
 interface ISectionTitleBlend {
+    state:string,
     propsForGsap: any
 }
 
-export default function SectionTitleBlend({ propsForGsap }: ISectionTitleBlend) {
+export default function SectionTitleBlend({ state,propsForGsap }: ISectionTitleBlend) {
     const TriggerSection = useRef(null)
     const DomEffect = useRef(null)
-    // x 0% > 20%
 
     useGSAP(() => {
         if (isMobile()) return
 
-        if (propsForGsap.stateTransitionPage === 'entered') {
+        if (state === 'entered') {
             gsap.timeline({
                 scrollTrigger: {
                     scroller: propsForGsap.scrollerRef,
@@ -28,7 +28,7 @@ export default function SectionTitleBlend({ propsForGsap }: ISectionTitleBlend) 
                 }
             }).fromTo(DomEffect.current, {x: "60%"},{x: "-60%"})
         }
-    }, { dependencies: [propsForGsap.stateTransitionPage] })
+    }, { dependencies: [state] })
 
 
     return (
