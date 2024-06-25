@@ -1,6 +1,6 @@
 
 
-import { memo } from 'react';
+import { memo, useEffect } from 'react';
 import { IPageModule } from '@/types/common';
 import IntroWorkPage from '@/components/new/IntroWorkPage';
 import ProjectText from '@/components/new/ProjectText';
@@ -15,12 +15,14 @@ import useAnimationParagraph from '@Hooks/gsap/useAnimationParagraph';
 import { project1_page } from '@/constants/page_props';
 
 function Project1({stateTransition}:IPageModule): JSX.Element {
-
-      if(stateTransition === 'entered') {
-        useAnimationHeading()
-        useAnimationHeadingTag()
-        useAnimationParagraph()
-    }
+    useEffect(() => {
+        if(stateTransition === 'entered') {
+            useAnimationHeading()
+            useAnimationHeadingTag()
+            useAnimationParagraph()
+        }
+    },[])
+   
     return (
         <div id="work1page">
             <IntroWorkPage state={stateTransition} propsForGsap={project1_page.propsForGsap}  backgroundImage={"/clone/services1.webp"}/>

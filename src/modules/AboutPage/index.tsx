@@ -10,7 +10,7 @@ import { memo } from 'react';
 import { about_page } from '@Constants/page_props';
 
 function AboutPage({stateTransition} : IPageModule): JSX.Element {
-
+  
     return (
         <div id="aboutpage">
             <HeroSection state={stateTransition} propsForGsap={about_page.propsForGsap} propsHeroSection={about_page.propsHeroSection} />

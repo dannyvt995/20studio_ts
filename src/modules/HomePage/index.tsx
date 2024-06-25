@@ -1,4 +1,4 @@
-
+'use client';
 import HeroSection from '@Components/new/HeroSection';
 import ServicesSection from '@Components/new/ServicesSection';
 import LetContact from '@Components/new/LetContact';
@@ -14,11 +14,12 @@ function HomePage({stateTransition}:IPageModule): JSX.Element {
     return (
         <div id="homepage">
             <HeroSection state={stateTransition} propsForGsap={home_page.propsForGsap} propsHeroSection={home_page.propsHeroSection}/>
-         
             <ServicesSection />
             <FAQSection/>
-            <SliderImageHover/>
-            <LetContact state={stateTransition} propsForGsap={home_page.propsForGsap}/>
+        
+          
+           {/*  <SliderImageHover/> */}
+           {/*  <LetContact state={stateTransition} propsForGsap={home_page.propsForGsap}/> */}
             <FooterSection state={stateTransition} propsForGsap={home_page.propsForGsap}/>
         </div>
     )

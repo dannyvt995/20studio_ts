@@ -28,26 +28,25 @@ export const Button = ({ children, data_link }: { children: string, data_link: s
     const ButtonRef = useRef<HTMLButtonElement>(null)
     const { selectedItemNavbar } = useStoreZustand();
     useEffect(() => {
-        if (!ButtonRef.current) return
-        const enterAnimation = (e: any) => {
-            let targetIndex = e.target.getAttribute("data-link")
-
-            selectedItemNavbar(targetIndex as number)
+        const buttonElement = ButtonRef.current;
+        if (!buttonElement) return;
+        
+        const enterAnimation = (e: MouseEvent) => {
+            let targetIndex = buttonElement.getAttribute("data-link");
+            selectedItemNavbar(targetIndex as any);
         };
      
         const leaveAnimation = () => {
             //setTimeoutactiveherer
         };
 
-        ButtonRef.current.addEventListener("mouseenter", enterAnimation);
-        ButtonRef.current.addEventListener("mouseleave", leaveAnimation);
+        buttonElement.addEventListener("mouseenter", enterAnimation);
+        buttonElement.addEventListener("mouseleave", leaveAnimation);
         return () => {
-            if (ButtonRef.current) {
-                ButtonRef.current.removeEventListener("mouseenter", enterAnimation);
-                ButtonRef.current.removeEventListener("mouseleave", leaveAnimation);
-            }
+            buttonElement.removeEventListener("mouseenter", enterAnimation);
+            buttonElement.removeEventListener("mouseleave", leaveAnimation);
         };
-    }, []);
+    }, [selectedItemNavbar]);
     return (
         <button data-link={data_link} ref={ButtonRef}>{children}</button>
     )

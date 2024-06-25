@@ -1,55 +1,51 @@
 "use client"
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
-import { useEffect } from 'react';
+import { useEffect,useRef } from 'react';
 
 // Initialize ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
 
 const useAnimationParagraph = () => {
+  const scopeRef = useRef<any>(null);
+  const triggleRef = useRef<any>(null);
+  const listDomRef = useRef<any>(null);
+  const timelineRef = useRef<any>(null);
 
-  let Scope
-  let Triggle
-  let ListDom
-  let Timeline
   useEffect(() => {
-    Scope = Array.from(document.querySelectorAll(".project_text"));
+    scopeRef.current = Array.from(document.querySelectorAll('.project_text'));
 
-    Scope.forEach((element) => {
-      ListDom = Array.from(element.querySelectorAll("p > span > span"));
-      Triggle = element.querySelector("p")
+    scopeRef.current.forEach((element:any) => {
+      listDomRef.current = Array.from(element.querySelectorAll('p > span > span'));
+      triggleRef.current = element.querySelector('p');
 
-      Timeline = gsap.timeline({
+      timelineRef.current = gsap.timeline({
         paused: true,
         scrollTrigger: {
-          scroller: "#work1page",
-          trigger: Triggle,
-          start: "top 86%",
-          end: "bottom 42%",
-          //toggleActions: "play play reverse reverse",
-          /*    markers: true, */
-          scrub: true
-        }
+          scroller: '#work1page',
+          trigger: triggleRef.current,
+          start: 'top 86%',
+          end: 'bottom 42%',
+          scrub: true,
+        },
       })
-        .set(ListDom,{rotateZ: 4.2})
-        .to(ListDom, { 
+        .set(listDomRef.current, { rotateZ: 4.2 })
+        .to(listDomRef.current, { 
           y: 0, 
           rotateZ: 0,
           rotateX: 0,
-          stagger: 0.1
-         }, 0);
+          stagger: 0.1 
+        }, 0);
+    });
 
-
-    })
     return () => {
-      Scope = null
-      Triggle = null
-      ListDom = null
-      
-      Timeline = null
-    }
-  },[])
- 
-};
-export default useAnimationParagraph
+      scopeRef.current = null;
+      triggleRef.current = null;
+      listDomRef.current = null;
+      timelineRef.current = null;
+    };
+  }, []); // Empty dependency array to run only on mount
 
+};
+
+export default useAnimationParagraph;

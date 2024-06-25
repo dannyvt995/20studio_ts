@@ -6,12 +6,14 @@ import { gsap } from "gsap"
 export function useAnimEnterPage({ node, indexRef }: { node: HTMLDivElement, indexRef: any }) {
     
     let cloneNode :any = node
+    let cloneNodeChild :any = cloneNode.children[0]
+    let cloneNodeParent :any =cloneNode.parentNode
     let timeline:any
         timeline = gsap.timeline();
         timeline
-        .set(cloneNode.parentNode as HTMLDivElement, { zIndex: indexRef })
+        .set(cloneNodeParent as HTMLDivElement, { zIndex: indexRef })
         .set(cloneNode, { ...propsGsap.pathBot })
-        .set(cloneNode.children[0] as HTMLDivElement, {
+        .set(cloneNodeChild as HTMLDivElement, {
             ...propsGsap.pageEnter_tranform,
             ...propsGsap.brightness100,
         })
@@ -19,7 +21,7 @@ export function useAnimEnterPage({ node, indexRef }: { node: HTMLDivElement, ind
             ...propsGsap.pathOpen,
             ...propsGsap.config
         })
-        .to(cloneNode.children[0] as HTMLDivElement, {
+        .to(cloneNodeChild as HTMLDivElement, {
             ...propsGsap.pageDefault,
             ...propsGsap.brightness100,
             ...propsGsap.config
@@ -30,9 +32,12 @@ export function useAnimEnterPage({ node, indexRef }: { node: HTMLDivElement, ind
                 timeline.kill();
                 timeline = null;
             }
-            if (cloneNode) {
-                gsap.set(cloneNode.children[0] as HTMLDivElement, { clearProps: 'all' }); // Clear all applied properties
-                cloneNode = null;
+            if (cloneNodeParent) {
+                cloneNodeParent = null
+            }
+            if (cloneNodeChild) {
+                gsap.set(cloneNodeChild as HTMLDivElement, { clearProps: 'all' }); // Clear all applied properties
+                cloneNodeChild = null;
             }
         };
 }

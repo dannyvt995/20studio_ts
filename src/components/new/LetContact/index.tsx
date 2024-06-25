@@ -21,10 +21,12 @@ function LetContact({ propsForGsap,state }: ILetContact) {
   useGSAP(() => {
     if (isMobile()) return
     let timeoutId: NodeJS.Timeout;
+    let listImg : any
+    let timeline : any
     if (state === 'entered') {
-      const listImg = Array.prototype.slice.call(triggleSection.current?.children)
+      listImg = Array.prototype.slice.call(triggleSection.current?.children)
       timeoutId = setTimeout(() => {
-        gsap.timeline({
+        timeline = gsap.timeline({
           scrollTrigger: {
             scroller: propsForGsap.scrollerRef,
             trigger: triggleSection.current,
@@ -43,7 +45,13 @@ function LetContact({ propsForGsap,state }: ILetContact) {
             , "<")
       }, 500)
     }
-    return () => clearTimeout(timeoutId);
+    return () => {
+      clearTimeout(timeoutId)
+      timeline = null
+      if(listImg) {
+        listImg = null
+      }
+    }
   }, { dependencies: [state] })
 
   return (
@@ -51,13 +59,11 @@ function LetContact({ propsForGsap,state }: ILetContact) {
       <div className={s.container}>
         <ul className={s.media_wrapper} ref={triggleSection}>
           <li className={s.media}>
-
             <Image sizes="100vw" alt="d" src="/clone/letcontact_center.webp" width={0} height={0} style={{ width: "100%", height: "auto" }} quality={42} />
           </li>
           <li className={s.media}>
             <Image sizes="100vw" alt="d" src="/clone/letcontact_top-left.webp" width={0} height={0} style={{ width: "auto", height: "100%" }} quality={42} />
           </li>
-
           <li className={s.media}>
             <Image sizes="100vw" alt="d" src="/clone/media1_n.webp" width={0} height={0} style={{ width: "100%", height: "auto" }} quality={42} />
           </li>

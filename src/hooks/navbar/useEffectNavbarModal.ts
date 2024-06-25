@@ -1,6 +1,9 @@
 "use client"
+import { AnyNsRecord } from 'dns';
 import gsap from 'gsap';
 import { useState } from 'react';
+import { removeSplash } from '@/utils/removeSplash'
+import { usePathname } from 'next/navigation'
 const propsGsap = {
     props_openNav: {
         duration: 1.2,
@@ -21,8 +24,8 @@ const propsGsap = {
 }
 
 export const useEffectActive_NavbarModal = (
-    { stateActive,SectionRef, MaskRef, DomEffect, SliderImage, pathNameFormat }:
-        { stateActive?:boolean,SectionRef: any, MaskRef: any, DomEffect: any, SliderImage: any, pathNameFormat: string }
+    { stateActive,SectionRef, MaskRef, DomEffect, SliderImage,pathNameFormat }:
+        { stateActive?:boolean,SectionRef: any, MaskRef: any, DomEffect: any, SliderImage: any,pathNameFormat:string}
 ) => {
     console.log("useEffectActive_NavbarModal")
     let Timeline: any = null
@@ -74,17 +77,6 @@ export const useEffectActive_NavbarModal = (
     }
    
     const handleClickMenu = () => {
-        console.log(localStorage.getItem("page_mount"))
-        if(localStorage.getItem("page_mount") == 'false') {
-      
-            localStorage.setItem("page_mount","true")
-          
-        }
-        if(localStorage.getItem("page_mount") == 'true') {
-      
-            localStorage.setItem("page_mount","false")
-          
-        }
         Timeline.reversed(!Timeline.reversed());
     };
 

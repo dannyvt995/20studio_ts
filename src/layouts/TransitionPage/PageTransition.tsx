@@ -44,33 +44,43 @@ const PageTransition: React.FC<PageTransitionProps> = ({
   const targetParentDom = useRef<HTMLDivElement | null>();
   const targetDom = useRef<HTMLDivElement | null>();
 
-
   const { setStateTransition } = useStoreZustand()
   const transitionKeyRef = useRef<string | null>(null)
   const isWorkPage = useRef<boolean>(false)
 
   useEffect(() => {
-    targetDom.current = document.getElementById(`${pathNameFormat}page`) as HTMLDivElement
-    targetParentDom.current = targetDom.current?.parentNode as HTMLDivElement
-    if(targetDom.current && targetParentDom.current) {
-      console.log('lọt',targetDom.current,targetParentDom.current)
-      useAnimEnterPage({
-        node: targetParentDom.current as HTMLDivElement,
-        indexRef: 2
-      })
-    }
-
+ 
+    console.log("load lần đầu ....")
+    enterPage({index:22})
     if(!isMobile()) {
       useInitLenis({
         pathName: pathNameFormat
       })
     }
+  },[])
+
+  function enterPage({node,index}:{node?:any,index:number}) {
+    targetDom.current = document.getElementById(`${pathNameFormat}page`) as HTMLDivElement
+    targetParentDom.current = targetDom.current?.parentNode as HTMLDivElement
+    if(targetDom.current && targetParentDom.current) {
+     useAnimEnterPage({
+        node: targetParentDom.current,
+        indexRef: index
+      })
+    }
+
     return () => {
       targetParentDom.current = null
       targetDom.current = null
     }
-  }, [])
+  }
 
+  function exitPage({nodeChild}:{nodeChild:HTMLDivElement}) {
+    useAnimExitPage({
+      nodeChild:nodeChild
+    })
+  }
+  
   useEffect(() => {
     const check = Number(listPathAndIdDom.pagesWork.includes(transitionKeyRef.current as string))
     if (check) isWorkPage.current = true
@@ -92,15 +102,18 @@ const PageTransition: React.FC<PageTransitionProps> = ({
                   node: node.children[0]
                 })
               } else {
-                useAnimEnterPage({
+                enterPage({
                   node: node.children[0],
-                  indexRef: indexRef.current++
+                  index: indexRef.current++
                 })
               }
             }}
 
-            onEntered={() => {
+            onEntered={(node:any) => {
+              
+              
               setStateTransition('entered')
+              
               if(!isMobile()) {
                 if (pathName === '/work' || pathName === '/3d') return
                 useInitLenis({
@@ -122,9 +135,7 @@ const PageTransition: React.FC<PageTransitionProps> = ({
                   indexWork: Number(activeItemOnWorkPage)
                 })
               } else {
-                useAnimExitPage({
-                  node: node.children[0]
-                })
+                exitPage({nodeChild:node.children[0].children[0]})
               }
             }}
           >

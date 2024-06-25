@@ -16,7 +16,7 @@ import { removeSplash } from '@/utils/removeSplash'
 function NavbarModalSection({ }) {
 
     const router = useRouter()
-
+    const buttonMenuRef = useRef<HTMLButtonElement>(null)
     const { indexItemNavbar, prevIndexItemNavbar } = useStoreZustand();
 
 
@@ -28,29 +28,32 @@ function NavbarModalSection({ }) {
     const SectionRef = useRef<HTMLElement>(null)
 
     const { stateTransition } = useStoreZustand()
-   // const [stateToggle,setStateToggle] = useState<boolean>(false)
+    // const [stateToggle,setStateToggle] = useState<boolean>(false)
     const pathName = usePathname()
     const pathNameFormat = removeSplash({ pathName: pathName })
     // useEffect(() => {
     //     localStorage.setItem("page_mount","false")
     // },[])
-    // useEffect(() => {
-      
-    //     if (stateTransition === 'entered' && pathNameFormat)
-    //         if (SectionRef.current && MaskRef.current && DomEffect.current && SliderImage.current && pathNameFormat)
-    //             console.log('entered')
- 
-    //            // setStateToggle(!stateToggle)
-    //     useEffectActive_NavbarModal({
-    //        // stateActive: stateToggle,
-    //         SectionRef: SectionRef.current,
-    //         MaskRef: MaskRef.current,
-    //         DomEffect: DomEffect.current,
-    //         SliderImage: SliderImage.current,
-    //         pathNameFormat: pathNameFormat,
-    //     })
+    useEffect(() => {
 
-    // }, [pathName])
+        // 
+        //     if (SectionRef.current && MaskRef.current && DomEffect.current && SliderImage.current && pathNameFormat)
+        //         console.log('entered')
+
+               // setStateToggle(!stateToggle)
+               if (stateTransition === 'entered' && pathNameFormat) {
+                useEffectActive_NavbarModal({
+                    // stateActive: stateToggle,
+                     SectionRef: SectionRef.current,
+                     MaskRef: MaskRef.current,
+                     DomEffect: DomEffect.current,
+                     SliderImage: SliderImage.current,
+                     pathNameFormat: pathNameFormat,
+                 })
+               }
+        
+
+    }, [stateTransition,pathNameFormat])
 
     useEffect(() => {
         if (indexItemNavbar >= 0 && prevIndexItemNavbar >= 0) {
@@ -82,65 +85,68 @@ function NavbarModalSection({ }) {
     }
 
     return (
-        <section className={s.navbar_modal_section} ref={SectionRef}>
-            <div className={s.wrapper} ref={MaskRef}>
-                <div className={s.container} ref={DomEffect}>
-                    <div className={s.logo}>
-                        20 STUDIO
+        <>
+            <section className={s.navbar_modal_section} ref={SectionRef}>
+                <div className={s.wrapper} ref={MaskRef}>
+                    <div className={s.container} ref={DomEffect}>
+                        <div className={s.logo}>
+                            20 STUDIO
+                        </div>
+                        <ul className={s.images} ref={SliderImage}>
+                            <li>
+                                <Image src="/home/banner.png" width={0} height={0} sizes="100vw" style={{ position: 'relative', width: 'auto', height: '100%', left: '50%', transform: 'translateX(-50%)' }} alt="logo narbar modal" />
+                            </li>
+                            <li>
+                                <Image src="/home/ser1.webp" width={0} height={0} sizes="100vw" style={{ position: 'relative', width: 'auto', height: '100%', left: '50%', transform: 'translateX(-50%)' }} alt="logo narbar modal" />
+                            </li>
+                            <li>
+                                <Image src="/home/ser2.webp" width={0} height={0} sizes="100vw" style={{ position: 'relative', width: 'auto', height: '100%', left: '50%', transform: 'translateX(-50%)' }} alt="logo narbar modal" />
+                            </li>
+                            <li>
+                                <Image src="/home/ser3.webp" width={0} height={0} sizes="100vw" style={{ position: 'relative', width: 'auto', height: '100%', left: '50%', transform: 'translateX(-50%)' }} alt="logo narbar modal" />
+                            </li>
+                        </ul>
+                        <ul className={s.main}>
+                            <li className={s.main_link}>
+                                <a onClick={handleRedirect} data-link="/work" className={s.main_line}>Dự án</a>
+                            </li>
+                            <li className={s.main_link}>
+                                <a onClick={handleRedirect} data-link="/about" className={s.main_line}>20 Studio</a>
+                            </li>
+                            <li className={s.main_link}>
+                                <a onClick={handleRedirect} data-link="/" className={s.main_line}>Dịch vụ</a>
+                            </li>
+                            <li className={s.main_link}>
+                                <a onClick={handleRedirect} data-link="/contact" className={s.main_line}>Liên hệ</a>
+                            </li>
+                        </ul>
+                        <ul className={s.social}>
+                            <li className={s.social_link}>
+                                {/*   <ButtonHoverUnderLineNew eventPass={handleClick} data_type="outsite" noName={"var(--font-lh-p)"} data_link="/" classStyle="link-item">Facebook</ButtonHoverUnderLineNew> */}
+                            </li>
+                            <li className={s.social_link}>
+                                {/* <ButtonHoverUnderLineNew eventPass={handleClick} data_type="outsite" noName={"var(--font-lh-p)"} data_link="/" classStyle="link-item">Instagram</ButtonHoverUnderLineNew> */}
+                            </li>
+                            <li className={s.social_link}>
+                                {/*  <ButtonHoverUnderLineNew eventPass={handleClick} data_type="outsite" noName={"var(--font-lh-p)"} data_link="/" classStyle="link-item">Linked</ButtonHoverUnderLineNew> */}
+                            </li>
+                        </ul>
+                        <ul className={s.sub}>
+                            <li className={s.sub_link}>
+                                <span className={cn(s.link_item, s.is_reel)}>
+                                    Made by 20 Team
+                                </span>
+                            </li>
+                            <li className={s.sub_link}>
+                                {/*    <ButtonHoverUnderLineNew eventPass={handleClick} data_type="outsite" noName={"var(--font-lh-p)"} data_link="/about" classStyle="link-item">Về chúng tôi</ButtonHoverUnderLineNew> */}
+                            </li>
+                        </ul>
                     </div>
-                    <ul className={s.images} ref={SliderImage}>
-                        <li>
-                            <Image src="/home/banner.png" width={0} height={0} sizes="100vw" style={{ position: 'relative', width: 'auto', height: '100%', left: '50%', transform: 'translateX(-50%)' }} alt="logo narbar modal" />
-                        </li>
-                        <li>
-                            <Image src="/home/ser1.webp" width={0} height={0} sizes="100vw" style={{ position: 'relative', width: 'auto', height: '100%', left: '50%', transform: 'translateX(-50%)' }} alt="logo narbar modal" />
-                        </li>
-                        <li>
-                            <Image src="/home/ser2.webp" width={0} height={0} sizes="100vw" style={{ position: 'relative', width: 'auto', height: '100%', left: '50%', transform: 'translateX(-50%)' }} alt="logo narbar modal" />
-                        </li>
-                        <li>
-                            <Image src="/home/ser3.webp" width={0} height={0} sizes="100vw" style={{ position: 'relative', width: 'auto', height: '100%', left: '50%', transform: 'translateX(-50%)' }} alt="logo narbar modal" />
-                        </li>
-                    </ul>
-                    <ul className={s.main}>
-                        <li className={s.main_link}>
-                            <a onClick={handleRedirect} data-link="/work" className={s.main_line}>Dự án</a>
-                        </li>
-                        <li className={s.main_link}>
-                            <a onClick={handleRedirect} data-link="/about" className={s.main_line}>20 Studio</a>
-                        </li>
-                        <li className={s.main_link}>
-                            <a onClick={handleRedirect} data-link="/" className={s.main_line}>Dịch vụ</a>
-                        </li>
-                        <li className={s.main_link}>
-                            <a onClick={handleRedirect} data-link="/contact" className={s.main_line}>Liên hệ</a>
-                        </li>
-                    </ul>
-                    <ul className={s.social}>
-                        <li className={s.social_link}>
-                            {/*   <ButtonHoverUnderLineNew eventPass={handleClick} data_type="outsite" noName={"var(--font-lh-p)"} data_link="/" classStyle="link-item">Facebook</ButtonHoverUnderLineNew> */}
-                        </li>
-                        <li className={s.social_link}>
-                            {/* <ButtonHoverUnderLineNew eventPass={handleClick} data_type="outsite" noName={"var(--font-lh-p)"} data_link="/" classStyle="link-item">Instagram</ButtonHoverUnderLineNew> */}
-                        </li>
-                        <li className={s.social_link}>
-                            {/*  <ButtonHoverUnderLineNew eventPass={handleClick} data_type="outsite" noName={"var(--font-lh-p)"} data_link="/" classStyle="link-item">Linked</ButtonHoverUnderLineNew> */}
-                        </li>
-                    </ul>
-                    <ul className={s.sub}>
-                        <li className={s.sub_link}>
-                            <span className={cn(s.link_item, s.is_reel)}>
-                                Made by 20 Team
-                            </span>
-                        </li>
-                        <li className={s.sub_link}>
-                            {/*    <ButtonHoverUnderLineNew eventPass={handleClick} data_type="outsite" noName={"var(--font-lh-p)"} data_link="/about" classStyle="link-item">Về chúng tôi</ButtonHoverUnderLineNew> */}
-                        </li>
-                    </ul>
-                </div>
 
-            </div>
-        </section>
+                </div>
+            </section>
+        </>
+
     )
 }
 export default memo(NavbarModalSection)
