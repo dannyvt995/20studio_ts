@@ -17,9 +17,9 @@ import { project1_page } from '@/constants/page_props';
 function Project1({stateTransition}:IPageModule): JSX.Element {
     useEffect(() => {
         if(stateTransition === 'entered') {
-            useAnimationHeading()
-            useAnimationHeadingTag()
-            useAnimationParagraph()
+            // useAnimationHeading()
+            // useAnimationHeadingTag()
+            // useAnimationParagraph()
         }
     },[])
    

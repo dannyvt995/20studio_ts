@@ -1,5 +1,5 @@
 "use client"
-import React, { memo, useEffect, useRef } from 'react';
+import React, { memo, useEffect, useRef,useState,useCallback } from 'react';
 import { Transition, TransitionGroup } from 'react-transition-group';
 
 import PageTransitionGroup from './PageTransitionGroup';
@@ -21,8 +21,8 @@ import { useAnimEnterPage } from '@Hooks/gsap/useAnimEnterPage';
 import { useAnimExitPage } from '@Hooks/gsap/useAnimExitPage';
 import { useEnterDetailProject } from '@/hooks/gsap/useEnterDetailProject';
 import { useExitWorkPage } from '@/hooks/gsap/useExitWorkPage';
-
-
+import { propsGsap } from "@Constants/gsap_props"
+import { gsap } from "gsap"
 interface PageTransitionProps {
   children: React.ReactNode;
   transitionKey: string;
@@ -40,51 +40,90 @@ const PageTransition: React.FC<PageTransitionProps> = ({
   const timeTransition = 1.5
   const indexRef = useRef(100)
   const scopeRef = useRef(null)
-
-  const targetParentDom = useRef<HTMLDivElement | null>();
-  const targetDom = useRef<HTMLDivElement | null>();
-
+  
   const { setStateTransition } = useStoreZustand()
   const transitionKeyRef = useRef<string | null>(null)
   const isWorkPage = useRef<boolean>(false)
+  const [firstLoadPage, setFirstLoadPage] = useState(false);
+
 
   useEffect(() => {
- 
-    console.log("load lần đầu ....")
-    enterPage({index:22})
-    if(!isMobile()) {
-      useInitLenis({
-        pathName: pathNameFormat
-      })
-    }
+    setFirstLoadPage(true)
   },[])
 
-  function enterPage({node,index}:{node?:any,index:number}) {
-    targetDom.current = document.getElementById(`${pathNameFormat}page`) as HTMLDivElement
-    targetParentDom.current = targetDom.current?.parentNode as HTMLDivElement
-    if(targetDom.current && targetParentDom.current) {
-     useAnimEnterPage({
-        node: targetParentDom.current,
-        indexRef: index
-      })
-    }
+  useInitLenis({
+    firstLoad:firstLoadPage
+  });
+
+
+  const enterPage = ({node,nodeChild,nodeParent,index}:{node:any,nodeChild:any,nodeParent:any,index:number}) => {
+    //gsap will be run on here
+    let cloneNode: any = node
+    let cloneNodeChild: any = nodeChild
+    let cloneNodeParent: any = nodeParent
+    let timeline: any
+
+    timeline = gsap.timeline();
+    timeline
+        .set(cloneNodeParent as HTMLDivElement, { zIndex: index })
+        .set(cloneNode, { ...propsGsap.pathBot })
+        .set(cloneNodeChild as HTMLDivElement, {
+            ...propsGsap.pageEnter_tranform,
+            ...propsGsap.brightness100,
+        })
+        .to(cloneNode as HTMLDivElement, {
+            ...propsGsap.pathOpen,
+            ...propsGsap.config
+        })
+        .to(cloneNodeChild as HTMLDivElement, {
+            ...propsGsap.pageDefault,
+            ...propsGsap.brightness100,
+            ...propsGsap.config
+        }, '<')
 
     return () => {
-      targetParentDom.current = null
-      targetDom.current = null
-    }
-  }
-
-  function exitPage({nodeChild}:{nodeChild:HTMLDivElement}) {
-    useAnimExitPage({
-      nodeChild:nodeChild
-    })
+        if (timeline) {
+            timeline.kill();
+            timeline = null;
+        }
+        if (cloneNodeParent) {
+            cloneNodeParent = null
+        }
+        if (cloneNodeChild) {
+            gsap.set(cloneNodeChild as HTMLDivElement, { clearProps: 'all' }); // Clear all applied properties
+            cloneNodeChild = null;
+        }
+    };
   }
   
-  useEffect(() => {
-    const check = Number(listPathAndIdDom.pagesWork.includes(transitionKeyRef.current as string))
-    if (check) isWorkPage.current = true
-  }, [transitionKeyRef.current])
+  const exitPage = ({nodeChild}:{nodeChild:HTMLDivElement}) => {
+    //gsap will be run on here
+    let cloneNode : any = nodeChild
+    let timeline : any
+    timeline = gsap.timeline();
+
+    timeline
+        .set(cloneNode as HTMLElement, {
+            ...propsGsap.brightness100,
+        })
+        .to(cloneNode as HTMLElement, {
+            ...propsGsap.pageExit_tranform,
+            ...propsGsap.brightness16,
+            ...propsGsap.props_exitAnim
+        });
+
+    return () => {
+        if (timeline) {
+            timeline.kill();
+            timeline = null;
+        }
+        if(cloneNode) {
+            gsap.set(cloneNode as HTMLDivElement, { clearProps: 'all' });
+            cloneNode = null
+        }
+    };
+  }
+
 
   return (
     <div ref={scopeRef}>
@@ -97,46 +136,19 @@ const PageTransition: React.FC<PageTransitionProps> = ({
             onEnter={(node: any) => {
               transitionKeyRef.current = transitionKey
               setStateTransition('enter')
-              if (listPathAndIdDom.pagesWork.includes(transitionKey)) {
-                useEnterDetailProject({
-                  node: node.children[0]
-                })
-              } else {
-                enterPage({
-                  node: node.children[0],
-                  index: indexRef.current++
-                })
-              }
+              enterPage({
+                node: node.children[0],
+                nodeChild:node.children[0].children[0],
+                nodeParent:node,
+                index: indexRef.current++
+              })
             }}
-
             onEntered={(node:any) => {
-              
-              
               setStateTransition('entered')
-              
-              if(!isMobile()) {
-                if (pathName === '/work' || pathName === '/3d') return
-                useInitLenis({
-                  pathName: pathNameFormat
-                })
-              }
-              
-              
             }}
-
-
             onExit={(node: any) => {
               setStateTransition('exit')
-              if (pathName === "/work" && listPathAndIdDom.pagesWork.includes(transitionKeyRef.current as string)) {
-                let activeItemOnWorkPage = localStorage.getItem('activeItemOnWorkPage')
-
-                useExitWorkPage({
-                  node: node.children[0],
-                  indexWork: Number(activeItemOnWorkPage)
-                })
-              } else {
-                exitPage({nodeChild:node.children[0].children[0]})
-              }
+              exitPage({nodeChild:node.children[0].children[0]})
             }}
           >
             {state => {
@@ -186,4 +198,4 @@ const PageTransition: React.FC<PageTransitionProps> = ({
   );
 }
 
-export default memo(PageTransition);
+export default PageTransition;

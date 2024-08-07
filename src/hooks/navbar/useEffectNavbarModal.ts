@@ -24,9 +24,10 @@ const propsGsap = {
 }
 
 export const useEffectActive_NavbarModal = (
-    { stateActive,SectionRef, MaskRef, DomEffect, SliderImage,pathNameFormat }:
-        { stateActive?:boolean,SectionRef: any, MaskRef: any, DomEffect: any, SliderImage: any,pathNameFormat:string}
+    { stateTransition,SectionRef, MaskRef, DomEffect, SliderImage,pathNameFormat }:
+        { stateTransition:string,SectionRef: any, MaskRef: any, DomEffect: any, SliderImage: any,pathNameFormat:string}
 ) => {
+    if(stateTransition !== 'entered') return
     console.log("useEffectActive_NavbarModal")
     let Timeline: any = null
     let Img_MenuModal: any = null

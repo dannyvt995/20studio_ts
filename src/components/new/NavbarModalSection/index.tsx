@@ -34,29 +34,17 @@ function NavbarModalSection({ }) {
     // useEffect(() => {
     //     localStorage.setItem("page_mount","false")
     // },[])
-    useEffect(() => {
-
-        // 
-        //     if (SectionRef.current && MaskRef.current && DomEffect.current && SliderImage.current && pathNameFormat)
-        //         console.log('entered')
-
-               // setStateToggle(!stateToggle)
-               if (stateTransition === 'entered' && pathNameFormat) {
-                useEffectActive_NavbarModal({
-                    // stateActive: stateToggle,
-                     SectionRef: SectionRef.current,
-                     MaskRef: MaskRef.current,
-                     DomEffect: DomEffect.current,
-                     SliderImage: SliderImage.current,
-                     pathNameFormat: pathNameFormat,
-                 })
-               }
-        
-
-    }, [stateTransition,pathNameFormat])
-
+    // useEffectActive_NavbarModal({
+    //     stateTransition: stateTransition,
+    //      SectionRef: SectionRef.current,
+    //      MaskRef: MaskRef.current,
+    //      DomEffect: DomEffect.current,
+    //      SliderImage: SliderImage.current,
+    //      pathNameFormat: pathNameFormat,
+    //  })
     useEffect(() => {
         if (indexItemNavbar >= 0 && prevIndexItemNavbar >= 0) {
+            console.log(indexItemNavbar,prevIndexItemNavbar)
             indexOfSlider.current++
             // useHoverSliderModalNav({
             //     prevState: prevIndexItemNavbar,
