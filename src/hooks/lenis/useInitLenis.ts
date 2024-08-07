@@ -14,14 +14,14 @@ export function useInitLenis({ firstLoad }: { firstLoad?: boolean }) {
   const pathName = usePathname()
   const pathNameFormat = removeSplash({ pathName: pathName })
   const { stateTransition } = useStoreZustand()
-
+  console.log(stateTransition)
 
   useEffect(() => {
     // some condition
     if (!firstLoad) return
     if (isMobile() || pathName === '/work' || pathName === '/3d') return
 
-
+   
 
     gsap.registerPlugin(ScrollTrigger)
     let timeoutId: NodeJS.Timeout;
@@ -30,7 +30,7 @@ export function useInitLenis({ firstLoad }: { firstLoad?: boolean }) {
     let ButtonNavbar: HTMLElement | null;
     let NavbarDeskop: HTMLElement | null;
     const flag = 1220;
-    if (stateTransition == 'entered') {
+    if (stateTransition == 'entered' || stateTransition == 'none') {
       console.log("INIT LENIS---")
       domScroll = document.getElementById(`${pathNameFormat}page`)
       ButtonNavbar = document.getElementById("button_menu")

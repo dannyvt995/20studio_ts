@@ -1,5 +1,5 @@
 "use client"
-import React, { memo, useEffect, useRef,useState,useCallback } from 'react';
+import React, { useMemo, useEffect, useRef,useState,useCallback } from 'react';
 import { Transition, TransitionGroup } from 'react-transition-group';
 
 import PageTransitionGroup from './PageTransitionGroup';
@@ -48,6 +48,8 @@ const PageTransition: React.FC<PageTransitionProps> = ({
 
 
   useEffect(() => {
+
+    transitionFirst(pathNameFormat)
     setFirstLoadPage(true)
   },[])
 
@@ -55,7 +57,16 @@ const PageTransition: React.FC<PageTransitionProps> = ({
     firstLoad:firstLoadPage
   });
 
-
+  function transitionFirst(pn : string) {
+      console.log("Enter firets ================>")
+      const this_page = document.getElementById(`${pn}page`)
+      enterPage({
+        node: this_page?.parentElement,
+        nodeChild:this_page,
+        nodeParent:this_page,
+        index: 10
+      })
+  }
   const enterPage = ({node,nodeChild,nodeParent,index}:{node:any,nodeChild:any,nodeParent:any,index:number}) => {
     //gsap will be run on here
     let cloneNode: any = node
@@ -124,6 +135,40 @@ const PageTransition: React.FC<PageTransitionProps> = ({
     };
   }
 
+  const getContentDomReference = useMemo(() => {
+    const PageContent = (state: string) => {
+      let contentDomReference = null;
+      switch (pathName) {
+        case '/':
+        case '/home':
+          contentDomReference = <HomePage stateTransition={state} />;
+          break;
+        case '/about':
+          contentDomReference = <AboutPage stateTransition={state} />;
+          break;
+        case '/contact':
+          contentDomReference = <ContactPage stateTransition={state} />;
+          break;
+        case '/work':
+          contentDomReference = <WorkPage stateTransition={state} />;
+          break;
+        case '/work/work1':
+          contentDomReference = <Project1 stateTransition={state} />;
+          break;
+        default:
+          return null;
+      }
+      return (
+        <PageTransitionWrapper state={state}>
+          <div id='wrapper_this'>
+            {contentDomReference}
+          </div>
+        </PageTransitionWrapper>
+      );
+    };
+    PageContent.displayName = 'PageContent';
+    return PageContent;
+  }, [pathName]);
 
   return (
     <div ref={scopeRef}>
@@ -151,42 +196,7 @@ const PageTransition: React.FC<PageTransitionProps> = ({
               exitPage({nodeChild:node.children[0].children[0]})
             }}
           >
-            {state => {
-              let contentDomReference = null
-
-              switch (pathName) {
-                case '/':
-                case '/home':
-                  contentDomReference = <HomePage stateTransition={state} />;
-
-                  break;
-                case '/about':
-                  contentDomReference = <AboutPage stateTransition={state} />;
-
-                  break;
-                case '/contact':
-                  contentDomReference = <ContactPage stateTransition={state} />;
-
-                  break;
-                case '/work':
-                  contentDomReference = <WorkPage stateTransition={state} />;
-
-                  break;
-                case '/work/work1':
-                  contentDomReference = <Project1 stateTransition={state} />;
-
-                  break;
-                default:
-                  return null
-              }
-              return (
-                <PageTransitionWrapper state={state} >
-                  <div id='wrapper_this'>
-                    {contentDomReference}
-                  </div>
-                </PageTransitionWrapper>
-              );
-            }}
+            {state => getContentDomReference(state)}
           </Transition>
 
         </TransitionGroup>
