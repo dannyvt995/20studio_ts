@@ -15,13 +15,7 @@ import useAnimationParagraph from '@Hooks/gsap/useAnimationParagraph';
 import { project1_page } from '@/constants/page_props';
 
 function Project1(): JSX.Element {
-    useEffect(() => {
-        if(stateTransition === 'entered') {
-            // useAnimationHeading()
-            // useAnimationHeadingTag()
-            // useAnimationParagraph()
-        }
-    },[])
+   
    
     return (
         <div id="work1page">
