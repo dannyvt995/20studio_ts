@@ -9,11 +9,11 @@ import { IPageModule } from '@/types/common';
 import { memo } from 'react';
 import { about_page } from '@Constants/page_props';
 
-function AboutPage({stateTransition} : IPageModule): JSX.Element {
+function AboutPage(): JSX.Element {
   
     return (
         <div id="aboutpage">
-            <HeroSection state={stateTransition} propsForGsap={about_page.propsForGsap} propsHeroSection={about_page.propsHeroSection} />
+            <HeroSection pageName="about" propsForGsap={about_page.propsForGsap} propsHeroSection={about_page.propsHeroSection} />
 
             <Intro />
 
@@ -23,10 +23,10 @@ function AboutPage({stateTransition} : IPageModule): JSX.Element {
 
             <Advantage />
 
-            <SectionTitleBlend state={stateTransition} propsForGsap={about_page.propsForGsap} />
+            <SectionTitleBlend  propsForGsap={about_page.propsForGsap} />
             <Minded />
             <Us />
-            <FooterSection state={stateTransition} propsForGsap={about_page.propsForGsap} />
+            <FooterSection  propsForGsap={about_page.propsForGsap} />
         </div>
     )
 }

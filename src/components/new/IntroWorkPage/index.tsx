@@ -7,7 +7,7 @@ import { useGSAP } from '@gsap/react';
 import { isMobile } from '@/utils/responsive';
 import ImagePreload from '@/components/ImagePreload'
 interface IIntroWorkPage {
-    state:string,
+    state?:string,
     propsForGsap?: any,
     backgroundImage?: any
 }

@@ -1,0 +1,54 @@
+{
+    "pages": {
+        "homepage" : {
+            "content_herosection":{
+                "desIntro" : [
+                    "20studio là một công ty thời trang toàn cầu",
+                    "chuyên tạo ra sản phẩm độc đáo và phong cách",
+                    "mang lại trải nghiệm đặc biệt và tinh tế cho khách hàng của mình."
+                ],
+                "titLarge" : [
+                    "Design",
+                    "Fashion",
+                    "Experience"
+                ],
+                "more": ["Tận dụng sự kết hợp giữa sự sáng tạo và kỹ thuật chuyên môn, chúng tôi cam kết mang đến những sản phẩm chất lượng cao và độc đáo, từ ý tưởng ban đầu đến sản phẩm hoàn thiện. Hãy để 20studio trở thành đối tác đáng tin cậy của bạn trong việc thúc đẩy sự thành công của thương hiệu thời trang của bạn."],
+                "btn" : {
+                    "work" : "Dự án",
+                    "about" : "20 Studio",
+                    "contact": "Liên hệ",
+                    "home": "Dịch vụ"
+                },
+                "btn_info" : {
+                    "mail" :  "vphcm@20studio.vn",
+                    "phone":  "012346789"
+                }
+            }
+        },
+        "aboutpage" : {
+            "content_herosection":{
+                "desIntro" : [
+                    "20studio là một công ty thời trang toàn cầu",
+                    "chuyên tạo ra sản phẩm độc đáo và phong cách",
+                    "mang lại trải nghiệm đặc biệt và tinh tế cho khách hàng của mình."
+                ],
+                "titLarge" : [
+                    "Design",
+                    "Fashion",
+                    "Experience"
+                ],
+                "more": ["Tận dụng sự kết hợp giữa sự sáng tạo và kỹ thuật chuyên môn, chúng tôi cam kết mang đến những sản phẩm chất lượng cao và độc đáo, từ ý tưởng ban đầu đến sản phẩm hoàn thiện. Hãy để 20studio trở thành đối tác đáng tin cậy của bạn trong việc thúc đẩy sự thành công của thương hiệu thời trang của bạn."],
+                "btn" : {
+                    "work" : "Dự án",
+                    "about" : "20 Studio",
+                    "contact": "Liên hệ",
+                    "home": "Dịch vụ"
+                },
+                "btn_info" : {
+                    "mail" :  "vphcm@20studio.vn",
+                    "phone":  "012346789"
+                }
+            }
+        }
+    }
+}

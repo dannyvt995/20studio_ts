@@ -25,8 +25,16 @@
     position: relative;
 
 }
-.hero_section .intro > span {
 
+.hero_section .intro > span {
+    overflow: hidden;
+  
+}
+.hero_section .intro .ip {
+
+    display: inline-block;
+    transform: translateY(100%);
+    will-change: transform;
     font-family: Lausanne-300;
     font-family: var(--font-f-lausanne-300);
     font-size: 4.8vw;
@@ -34,7 +42,8 @@
     letter-spacing: 0;
     letter-spacing: var(--font-ls-h4);
     line-height: 6.4vw;
-    line-height: var(--font-lh-h4);
+    line-height: var(--font-lh-h4)
+   
 }
 .hero_section .title {
 
@@ -43,10 +52,17 @@
     margin: 6.6666666667vw 0;
     transform: translateX(-1.0666666667vw);
 }
-.hero_section .title {
+.hero_section .title > span {
+    overflow: hidden;
   
 }
-.hero_section .title span {
+.hero_section .title .tp {
+
+    display: inline-block;
+    transform: translateY(100%);
+    will-change: transform;
+
+
     font-weight: 300;
     font-size: 16.5vw;
    /*  font-size: var(--font-s-h1);  */

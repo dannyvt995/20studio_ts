@@ -25,6 +25,7 @@
       "@Constants/*": ["./src/constants/*"],
       "@Utils/*": ["./src/utils/*"],
       "@Layouts/*": ["./src/layouts/*"],
+      "@Data/*": ["./src/data/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

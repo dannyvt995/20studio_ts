@@ -9,18 +9,18 @@ import FAQSection from '@Components/new/FAQSection';
 import SliderImageHover from '@Components/SliderImageHover';
 import { home_page } from '@Constants/page_props';
 
-function HomePage({stateTransition}:IPageModule): JSX.Element {
+function HomePage(): JSX.Element {
    
     return (
         <div id="homepage">
-            <HeroSection state={stateTransition} propsForGsap={home_page.propsForGsap} propsHeroSection={home_page.propsHeroSection}/>
+            <HeroSection pageName="home" propsForGsap={home_page.propsForGsap} propsHeroSection={home_page.propsHeroSection}/>
             <ServicesSection />
             <FAQSection/>
         
           
            {/*  <SliderImageHover/> */}
-           {/*  <LetContact state={stateTransition} propsForGsap={home_page.propsForGsap}/> */}
-            <FooterSection state={stateTransition} propsForGsap={home_page.propsForGsap}/>
+           {/*  <LetContact  propsForGsap={home_page.propsForGsap}/> */}
+            <FooterSection propsForGsap={home_page.propsForGsap}/>
         </div>
     )
 }

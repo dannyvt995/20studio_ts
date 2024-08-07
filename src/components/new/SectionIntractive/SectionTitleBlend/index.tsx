@@ -6,7 +6,7 @@ import { useGSAP } from '@gsap/react';
 import { isMobile } from '@/utils/responsive';
 
 interface ISectionTitleBlend {
-    state:string,
+    state?:string,
     propsForGsap: any
 }
 

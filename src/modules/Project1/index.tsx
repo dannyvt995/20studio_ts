@@ -14,7 +14,7 @@ import useAnimationHeadingTag from '@Hooks/gsap/useAnimationHeadingTag';
 import useAnimationParagraph from '@Hooks/gsap/useAnimationParagraph';
 import { project1_page } from '@/constants/page_props';
 
-function Project1({stateTransition}:IPageModule): JSX.Element {
+function Project1(): JSX.Element {
     useEffect(() => {
         if(stateTransition === 'entered') {
             // useAnimationHeading()
@@ -25,7 +25,7 @@ function Project1({stateTransition}:IPageModule): JSX.Element {
    
     return (
         <div id="work1page">
-            <IntroWorkPage state={stateTransition} propsForGsap={project1_page.propsForGsap}  backgroundImage={"/clone/services1.webp"}/>
+            <IntroWorkPage  propsForGsap={project1_page.propsForGsap}  backgroundImage={"/clone/services1.webp"}/>
             <ProjectText disableTitle={false}/>
              <GridImage1 propsForGsap={project1_page.propsForGsap}/>
              <ProjectText disableTitle={true}/>

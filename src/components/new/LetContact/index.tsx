@@ -12,7 +12,7 @@ import { isMobile } from '@/utils/responsive';
 import { IPropsFromTransition } from '@/types/common';
 gsap.registerPlugin(ScrollTrigger)
 interface ILetContact {
-  state:string,
+  state?:string,
   propsForGsap: any
 }
 function LetContact({ propsForGsap,state }: ILetContact) {

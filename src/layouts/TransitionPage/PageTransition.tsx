@@ -1,4 +1,4 @@
-"use client"
+
 import React, { useMemo, useEffect, useRef,useState,useCallback } from 'react';
 import { Transition, TransitionGroup } from 'react-transition-group';
 
@@ -58,7 +58,8 @@ const PageTransition: React.FC<PageTransitionProps> = ({
   });
 
   function transitionFirst(pn : string) {
-      console.log("Enter firets ================>")
+      console.log("Enter page ================>")
+      
       const this_page = document.getElementById(`${pn}page`)
       enterPage({
         node: this_page?.parentElement,
@@ -66,6 +67,7 @@ const PageTransition: React.FC<PageTransitionProps> = ({
         nodeParent:this_page,
         index: 10
       })
+      setStateTransition('entered')
   }
   const enterPage = ({node,nodeChild,nodeParent,index}:{node:any,nodeChild:any,nodeParent:any,index:number}) => {
     //gsap will be run on here
@@ -136,24 +138,24 @@ const PageTransition: React.FC<PageTransitionProps> = ({
   }
 
   const getContentDomReference = useMemo(() => {
-    const PageContent = (state: string) => {
+    const PageContentRef = (state: string) => {
       let contentDomReference = null;
       switch (pathName) {
         case '/':
         case '/home':
-          contentDomReference = <HomePage stateTransition={state} />;
+          contentDomReference = <HomePage />;
           break;
         case '/about':
-          contentDomReference = <AboutPage stateTransition={state} />;
+          contentDomReference = <AboutPage  />;
           break;
         case '/contact':
-          contentDomReference = <ContactPage stateTransition={state} />;
+          contentDomReference = <ContactPage />;
           break;
         case '/work':
-          contentDomReference = <WorkPage stateTransition={state} />;
+          contentDomReference = <WorkPage/>;
           break;
         case '/work/work1':
-          contentDomReference = <Project1 stateTransition={state} />;
+          contentDomReference = <Project1 />;
           break;
         default:
           return null;
@@ -166,8 +168,8 @@ const PageTransition: React.FC<PageTransitionProps> = ({
         </PageTransitionWrapper>
       );
     };
-    PageContent.displayName = 'PageContent';
-    return PageContent;
+    PageContentRef.displayName = 'PageContentRef';
+    return PageContentRef;
   }, [pathName]);
 
   return (
@@ -180,7 +182,7 @@ const PageTransition: React.FC<PageTransitionProps> = ({
             unmountOnExit={true}
             onEnter={(node: any) => {
               transitionKeyRef.current = transitionKey
-              setStateTransition('enter')
+             //setStateTransition('enter')
               enterPage({
                 node: node.children[0],
                 nodeChild:node.children[0].children[0],
@@ -189,10 +191,10 @@ const PageTransition: React.FC<PageTransitionProps> = ({
               })
             }}
             onEntered={(node:any) => {
-              setStateTransition('entered')
+           //   setStateTransition('entered')
             }}
             onExit={(node: any) => {
-              setStateTransition('exit')
+            //  setStateTransition('exit')
               exitPage({nodeChild:node.children[0].children[0]})
             }}
           >

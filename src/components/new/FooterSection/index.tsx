@@ -7,19 +7,23 @@ import gsap from 'gsap'
 import Link from 'next/link';
 import { isMobile } from '@/utils/responsive';
 import { useGSAP } from '@gsap/react';
+import useStoreZustand from '@Hooks/useStoreZustand';
+
 interface IFooterSection {
-    state:string,
+    state?:string,
     propsForGsap?: any
 }
 function FooterSection({ propsForGsap,state }: IFooterSection) {
     const triggleSection = useRef<HTMLElement>(null)
     const domEffect = useRef(null)
+    const { stateTransition } = useStoreZustand()
+
     useGSAP(() => {
      
         if (isMobile()) return
         let timeoutId: NodeJS.Timeout;
-        if (state === 'entered') {
- 
+        if (stateTransition === 'entered') {
+            console.log("FooterSection re-render")
             timeoutId = setTimeout(() => {
             gsap.timeline({
                 scrollTrigger:{
@@ -38,7 +42,7 @@ function FooterSection({ propsForGsap,state }: IFooterSection) {
         }
 
         return () => clearTimeout(timeoutId); 
-    }, {dependencies:[state]});
+    }, {dependencies:[stateTransition]});
 
 
 

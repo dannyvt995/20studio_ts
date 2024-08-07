@@ -4,12 +4,12 @@ import { contact_page } from '@Constants/page_props';
 import { IPageModule } from '@/types/common';
 import { memo } from 'react';
 
-function ContactPage({stateTransition}:IPageModule): JSX.Element {
+function ContactPage(): JSX.Element {
 
     return (
         <div id="contactpage">
             <ContactPageIntro />
-            <FooterSection state={stateTransition} propsForGsap={contact_page.propsForGsap}/>
+            <FooterSection  propsForGsap={contact_page.propsForGsap}/>
         </div>
     )
 }
