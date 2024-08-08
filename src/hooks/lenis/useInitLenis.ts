@@ -52,7 +52,7 @@ export function useInitLenis({ firstLoad }: { firstLoad?: boolean }) {
 
       lenisRef = new Lenis({
         wrapper:domScroll as HTMLElement,
-        lerp: 0.042,
+        lerp: 0.072,
       })
 
 

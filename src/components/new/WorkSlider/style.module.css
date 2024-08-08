@@ -89,7 +89,7 @@
 }
 .work_page .thumbnail {
     overflow: hidden;
-    
+    will-change:transform;
     opacity:0;
     
 }

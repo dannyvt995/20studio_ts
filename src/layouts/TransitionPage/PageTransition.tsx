@@ -12,17 +12,19 @@ import AboutPage from '@Modules/AboutPage';
 import ContactPage from '@Modules/ContactPage';
 import WorkPage from '@Modules/WorkPage';
 import Project1 from '@Modules/Project1';
-import { listPathAndIdDom } from '@Constants/data_noname';
+import Project2 from '@Modules/Project2';
+import Project3 from '@Modules/Project3';
+import Project4 from '@Modules/Project4';
+
+
 import { removeSplash } from '@Utils/removeSplash'
 import { isMobile } from '@Utils/responsive';
 import useStoreZustand from '@Hooks/useStoreZustand';
 import { useInitLenis } from '@Hooks/lenis/useInitLenis';
-import { useAnimEnterPage } from '@Hooks/gsap/useAnimEnterPage';
-import { useAnimExitPage } from '@Hooks/gsap/useAnimExitPage';
-import { useEnterDetailProject } from '@/hooks/gsap/useEnterDetailProject';
-import { useExitWorkPage } from '@/hooks/gsap/useExitWorkPage';
 import { propsGsap } from "@Constants/gsap_props"
 import { gsap } from "gsap"
+
+
 interface PageTransitionProps {
   children: React.ReactNode;
   transitionKey: string;
@@ -157,12 +159,21 @@ const PageTransition: React.FC<PageTransitionProps> = ({
         case '/work/work1':
           contentDomReference = <Project1 />;
           break;
+          case '/work/work2':
+            contentDomReference = <Project2 />;
+            break;
+            case '/work/work3':
+              contentDomReference = <Project3 />;
+              break;
+              case '/work/work4':
+                contentDomReference = <Project4/>;
+                break;
         default:
-          return null;
+          return <h1>404 Page</h1>;
       }
       return (
         <PageTransitionWrapper state={state}>
-          <div id='wrapper_this'>
+          <div id='wrapper_this'  >
             {contentDomReference}
           </div>
         </PageTransitionWrapper>
@@ -180,26 +191,45 @@ const PageTransition: React.FC<PageTransitionProps> = ({
             key={transitionKey}
             timeout={timeTransition * 1000}
             unmountOnExit={true}
+            
             onEnter={(node: any) => {
+              console.log(transitionKey)
                 document.body.style.pointerEvents = 'none'
                    document.body.style.userSelect = 'none'
               transitionKeyRef.current = transitionKey
              //setStateTransition('enter')
-              enterPage({
-                node: node.children[0],
-                nodeChild:node.children[0].children[0],
-                nodeParent:node,
-                index: indexRef.current++
-              })
+             if(transitionKey !== '/work/work1' && transitionKey !== '/work/work2' && transitionKey !== '/work/work3' && transitionKey !== '/work/work4') {
+                enterPage({
+                  node: node.children[0],
+                  nodeChild:node.children[0].children[0],
+                  nodeParent:node,
+                  index: indexRef.current++
+                })
+             }else{
+              //set page type 2 thành index lớn và return thành nhỏ hơn 100 trong entered
+              node.style.zIndex = 444
+              node.children[0].style.clipPath = 'none'
+             }
+             
             }}
             onEntered={(node:any) => {
               document.body.style.pointerEvents = 'auto'
                    document.body.style.userSelect = 'auto'
+                   // nên set 1 state tại đây , là cần thiết
            //   setStateTransition('entered')
+
+           // tạm thời return index < 100 với các page type 2
+           if(transitionKeyRef.current == '/work/work1' || transitionKeyRef.current == '/work/work2'  || transitionKeyRef.current == '/work/work3'  || transitionKeyRef.current == '/work/work4') {
+            node.style.zIndex = 70
+           }
             }}
             onExit={(node: any) => {
             //  setStateTransition('exit')
-              exitPage({nodeChild:node.children[0].children[0]})
+      
+           if(transitionKeyRef.current !== '/work/work1' && transitionKeyRef.current !== '/work/work2' && transitionKeyRef.current !== '/work/work3' && transitionKeyRef.current !== '/work/work4') {
+             exitPage({nodeChild:node.children[0].children[0]})
+           }
+         
             }}
           >
             {state => getContentDomReference(state)}

@@ -9,53 +9,34 @@ import s from './style.module.css'
 import Image from 'next/image'
 import { useGSAP } from '@gsap/react';
 import { isMobile } from '@/utils/responsive';
-import { IPropsFromTransition } from '@/types/common';
 gsap.registerPlugin(ScrollTrigger)
 interface ILetContact {
-  state?:string,
   propsForGsap: any
 }
-function LetContact({ propsForGsap,state }: ILetContact) {
+function LetContact({ propsForGsap }: ILetContact) {
   const triggleSection = useRef<HTMLUListElement>(null)
-
+  const dirAction = [0, -1, 1, -1, 1]
   useGSAP(() => {
     if (isMobile()) return
-    let timeoutId: NodeJS.Timeout;
-    let listImg : any
-    let timeline : any
-    if (state === 'entered') {
-      listImg = Array.prototype.slice.call(triggleSection.current?.children)
-      timeoutId = setTimeout(() => {
-        timeline = gsap.timeline({
-          scrollTrigger: {
-            scroller: propsForGsap.scrollerRef,
-            trigger: triggleSection.current,
-            start: "top bottom",
-            end: "bottom top",
-            scrub: true,
-          }
-        })
-          .to([listImg[1], listImg[3]], {
-            x: -100
-          }
-          ).to(
-            [listImg[2], listImg[4]], {
-            x: 100
-          }
-            , "<")
-      }, 500)
-    }
-    return () => {
-      clearTimeout(timeoutId)
-      timeline = null
-      if(listImg) {
-        listImg = null
+
+
+    gsap.timeline({
+      scrollTrigger: {
+        scroller: propsForGsap.scrollerRef,
+        trigger: triggleSection.current,
+        start: "top bottom",
+        end: "bottom top",
+        scrub: .95,
       }
-    }
-  }, { dependencies: [state] })
+    })
+      .to(`.${s.media}`, {
+        x: (index) => dirAction[index] * 100
+      })
+
+  })
 
   return (
-    <section className={cn(s.letcontact_section, s.light_background)} id="letcontact_section" >
+    <section className={cn(s.letcontact_section, s.light_background)} >
       <div className={s.container}>
         <ul className={s.media_wrapper} ref={triggleSection}>
           <li className={s.media}>

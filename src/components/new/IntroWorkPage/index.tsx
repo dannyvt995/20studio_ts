@@ -17,10 +17,8 @@ function IntroWorkPage({ backgroundImage,state }: IIntroWorkPage) {
 
      useGSAP(() => {
         if (isMobile()) return
-        if (state === 'entered') {
-          gsap.to(`.${s.iii}`, { delay:.2, y: 0, duration: 1, ease: "power3.out" });
-        }
-      }, { dependencies: [state] })
+        gsap.to(`.${s.iii}`, { delay:.2, y: 0, duration: 1, ease: "power3.out" });
+      }, { scope:triggleSection})
 
 
     return (

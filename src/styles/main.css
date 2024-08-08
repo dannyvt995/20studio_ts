@@ -43,7 +43,8 @@
 #work3page,
 #work4page {
     height: 100vh;
-    overflow-y: scroll !important;
+    /* overflow-y: scroll !important; */
+    overflow: hidden !important;
 }
 @media (max-width: 601px) {
    

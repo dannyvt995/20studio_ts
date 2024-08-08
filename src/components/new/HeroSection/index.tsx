@@ -49,21 +49,21 @@ export default function HeroSection({ pageName, propsForGsap, propsHeroSection }
             stagger: .1,
             duration:1
         }, '<')
-        const tl2 = gsap.timeline({paused:true})
-        tl2.to(`.${s.background}`, {
-            y: window.innerHeight * .64, // calc(100vh * -1.2)
-            scrollTrigger: {
-                scroller: propsForGsap.scrollerRef,
-                trigger: triggleSection.current,
-                start: "top top",
-                end: "bottom top",
-                scrub: .95,
-            }
-        });
+        // const tl2 = gsap.timeline({paused:true})
+        // tl2.to(`.${s.background}`, {
+        //     y: window.innerHeight * .64, // calc(100vh * -1.2)
+        //     scrollTrigger: {
+        //         scroller: propsForGsap.scrollerRef,
+        //         trigger: triggleSection.current,
+        //         start: "top top",
+        //         end: "bottom top",
+        //         scrub: .95,
+        //     }
+        // });
         if (pathNameFormat === pageName) {
             console.log("useGSAP running...")
             tl1.play()
-            tl2.play()
+            //tl2.play()
         }
     }, []);
 

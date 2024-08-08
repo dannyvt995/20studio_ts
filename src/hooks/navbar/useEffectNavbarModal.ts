@@ -6,11 +6,11 @@ import { removeSplash } from '@/utils/removeSplash'
 import { usePathname,useRouter } from 'next/navigation'
 const propsGsap = {
     props_openNav: {
-        duration: 1.2,
+        duration: 1,
         ease: "power3.inOut"
     },
     props_CloseNav: {
-        duration: .5,
+        duration: 1,
         ease: "power3.out"
     },
     props_Filter_Light: {
@@ -42,7 +42,6 @@ export const useEffectActive_NavbarModal = (
     const router = useRouter()
     console.log("HOOK NAVBAR MODAL...")
     let Timeline: any = null
-    let Img_MenuModal: any = null
     let NavbarDeskop: any = null
     let ButtonMenu: any = null
     let DomContent: any = null
@@ -63,23 +62,23 @@ export const useEffectActive_NavbarModal = (
         Timeline.set(SectionRef, { zIndex: 500, pointerEvents: 'none' })
             .set(MaskRef, { clipPath: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)' })
             .set(DomEffect, {
-                rotate: -7,
+                rotate: -5,
                 scale: 1.72,
                 y: -window.innerHeight / 2,
             })
             .to(DomContent, {
-                rotate: 7,
-                scale: 1.2,
-                y: window.innerHeight / 4,
+                rotate: 5,
+                scale: 1.1,
+                y: window.innerHeight / 3,
                 ...propsGsap.props_openNav
             }, '<')
             .to(MaskRef, {
-                clipPath: 'polygon(0% 0%, 100% 0%, 100% 111%, 0% 100%)',
+                clipPath: 'polygon(0% 0%, 100% 0%, 100% 110%, 0% 100%)',
                 ...propsGsap.props_openNav
             }, '<')
             .to(DomEffect, {
                 rotate: 0,
-                scale: 1,
+                scale: 1,   
                 y: 0,
                 ...propsGsap.props_openNav
             }, '<').reverse();
@@ -91,7 +90,7 @@ export const useEffectActive_NavbarModal = (
             const linkTarget = (e.currentTarget as HTMLAnchorElement).dataset.link;
     
             if (linkTarget === pathNameFormat) return;
-            console.log(linkTarget)
+            // bug will exist in here , so set to false
             Timeline.reversed(!Timeline.reversed());
             router.push(`${linkTarget}`);
         });
@@ -99,6 +98,7 @@ export const useEffectActive_NavbarModal = (
 
     const handleClickMenu = () => {
         Timeline.reversed(!Timeline.reversed());
+    
     };
 
     if (ButtonMenu) ButtonMenu.addEventListener("click", handleClickMenu);

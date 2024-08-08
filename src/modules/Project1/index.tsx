@@ -33,4 +33,4 @@ function Project1(): JSX.Element {
         </div>
     )
 }
-export default  memo(Project1)
+export default  Project1

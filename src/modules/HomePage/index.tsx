@@ -19,7 +19,7 @@ function HomePage(): JSX.Element {
         
           
            {/*  <SliderImageHover/> */}
-           {/*  <LetContact  propsForGsap={home_page.propsForGsap}/> */}
+            <LetContact  propsForGsap={home_page.propsForGsap}/>
             <FooterSection propsForGsap={home_page.propsForGsap}/>
         </div>
     )

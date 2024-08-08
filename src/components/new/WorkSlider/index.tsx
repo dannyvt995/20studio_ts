@@ -6,11 +6,11 @@ import { Observer } from "gsap/dist/Observer";
 import Image from 'next/image'
 import { useRouter } from 'next/navigation';
 import cn from 'classnames'
-import { gsapSlider, loadAnimationEnterPage, runSlider,setValStore } from '@Hooks/work_page/useSliderImage';
+import { gsapSlider, loadAnimationEnterPage, runSlider, setValStore } from '@Hooks/work_page/useSliderImage';
 
 gsap.registerPlugin(Observer)
 export default function WorkSlider() {
-  
+
   const observeRefPageWheel = useRef<Observer | null>(null);
   const work_page_ref = useRef(null)
   const stopNow = useRef(false)
@@ -29,10 +29,10 @@ export default function WorkSlider() {
   const ListThumbnailRef = useRef<Element[]>([])
   const ListBackgroundRef = useRef<Element[]>([])
 
-  const ListChildTitleRef = useRef<Element[][]>([])
-  const ListChildSubtitleRef = useRef<Element[][]>([])
-  const ListChildThumbnailRef = useRef<Element[][]>([])
-  const ListChildBackgroundRef = useRef<Element[][]>([])
+  const ListChildTitleRef = useRef<any>([])
+  const ListChildSubtitleRef = useRef<any>([])
+  const ListChildThumbnailRef = useRef<any>([])
+  const ListChildBackgroundRef = useRef<any>([])
 
 
   useEffect(() => {
@@ -42,6 +42,9 @@ export default function WorkSlider() {
       ListSubtitleRef.current = Array.from(subtitlesRef.current.children);
       ListThumbnailRef.current = Array.from(thumbnailsRef.current.children);
       ListBackgroundRef.current = Array.from(backgroundsRef.current.children);
+
+
+      // sử dụng 4 scope này , chưa optimaze
       ListChildTitleRef.current = ListTitleRef.current.map(child =>
         Array.from(child.children, child => child.children[0])// 1 lop wrap 
       );
@@ -56,17 +59,17 @@ export default function WorkSlider() {
       );
 
       loadAnimationEnterPage({
-        ListChildTitle : ListChildTitleRef.current, 
-        ListChildSubtitle : ListChildSubtitleRef.current, 
-        ListThumbnail :ListThumbnailRef.current
+        ListChildTitle: ListChildTitleRef.current,
+        ListChildSubtitle: ListChildSubtitleRef.current,
+        ListThumbnail: ListThumbnailRef.current
       });
     }
-    
-   
+
+
   }, []);
-  
+
   useEffect(() => {
-  
+
     observeRefPageWheel.current = Observer.create({
       target: work_page_ref.current,
       type: "wheel,touch,pointer",
@@ -81,11 +84,11 @@ export default function WorkSlider() {
       observeRefPageWheel.current = null
       work_page_ref.current = null
     }
-  },[handleMouseDown,handleMouseUp])
+  }, [handleMouseDown, handleMouseUp])
 
 
 
-  function fireAnimation(dir:number) {
+  function fireAnimation(dir: number) {
     if (dir === 1) {
       let nextvalueRef = (valueRef.current - 1 + ListTitleRef.current.length) % ListTitleRef.current.length; // Loop from 4 to 0
       runSlider({
@@ -112,7 +115,7 @@ export default function WorkSlider() {
       valueRef.current = nextvalueRef
       setValStore(valueRef.current.toString(), 'activeItemOnWorkPage')
     } else if (dir === -1) {
-      let nextvalueRef = (valueRef.current + 1) % ListTitleRef.current.length; 
+      let nextvalueRef = (valueRef.current + 1) % ListTitleRef.current.length;
       //just active for parent wrap
       runSlider({
         ListTitleRef: ListTitleRef.current,
@@ -137,7 +140,7 @@ export default function WorkSlider() {
       })
       //update val
       valueRef.current = nextvalueRef
-  
+
       setValStore(valueRef.current.toString(), 'activeItemOnWorkPage')
     }
   }
@@ -164,26 +167,87 @@ export default function WorkSlider() {
   function handleOpenProject(e: React.MouseEvent<HTMLButtonElement>) {
     if (stopNow.current === true) return
     observeRefPageWheel.current?.disable()
+               document.body.style.pointerEvents = 'none'
     let targetIndexProject = e.currentTarget.getAttribute("data-work")
     switch (targetIndexProject) {
       case "1":
-        router.push('/work/work1')
+
+        prepareBeforeRedirect('/work/work1')
         break;
       case "2":
-        router.push('/work/work2')
+        prepareBeforeRedirect('/work/work2')
         break;
       case "3":
-        router.push('/work/work3')
+        prepareBeforeRedirect('/work/work3')
         break;
       case "4":
-        router.push('/work/work4')
+        prepareBeforeRedirect('/work/work4')
         break;
 
     }
   }
+  function removeElementAtIndex(array:any, n:any) {
+    if (n < 0 || n >= array.length) {
+      // Kiểm tra xem chỉ số n có hợp lệ không
+      return array;
+    }
+    
+    // Tạo một bản sao của mảng gốc và loại bỏ phần tử tại vị trí n
+    return array.slice(0, n).concat(array.slice(n + 1));
+  }
+  
+  function prepareBeforeRedirect(targetUrl: string) {
+    const arrToRemoveThumb = removeElementAtIndex([0,1,2,3], valueRef.current); // 4 project
+    for (let i = 0; i < arrToRemoveThumb.length; i++) {
+      gsap.set(ListThumbnailRef.current[arrToRemoveThumb[i]],{opacity:0})
+      
+    }
+    const timeline = gsap.timeline({
+      defaults: { duration: 1 },
+      onComplete: () => {
+        // gsap.set(ListChildBackgroundRef.current[valueRef.current][0].children, {
+        //   opacity:0
+  
+        // })
+  
+       router.push(targetUrl)
+      }
+    })
+
+    const arr = [
+      ...ListChildTitleRef.current[valueRef.current],
+      ...ListChildSubtitleRef.current[valueRef.current]
+    ]
+    timeline
+    
+    .to(arr, {
+      y: '-100%',
+    })
+      .fromTo(ListThumbnailRef.current[valueRef.current], {
+
+        clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)'
+      }, {
+
+        clipPath: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)',
+
+      }, '<')
+      .fromTo(ListThumbnailRef.current[valueRef.current].children, {
+        scale: 1,
+      }, {
+        rotate: -10,
+        scale: 1.1,
+        y: '-70%',
+      }, '<')
+      .to(ListChildBackgroundRef.current[valueRef.current][0].children, {
+        scale: 1,
+
+      }, '<')
+
+  }
+
   return (
     <section className={s.work_page} id="work_page" ref={work_page_ref}>
-      {/*       <h1  className={s.h1}>Work</h1> */}
+
       <div className={s.heading}>
         <div className={s.title} ref={titlesRef}>
 
@@ -220,13 +284,13 @@ export default function WorkSlider() {
           </div>
           <div>
             <span className={s.ii}><span className={s.iii}>3..Columbia Columbia Columbia</span></span>
-            <span className={s.ii}><span className={s.iii}></span></span>
-            <span className={s.ii}><span className={s.iii}></span></span>
+            <span className={s.ii}><span className={s.iii}>umbiaumbia</span></span>
+            <span className={s.ii}><span className={s.iii}>umbiaumbia</span></span>
           </div>
           <div>
             <span className={s.ii}><span className={s.iii}>4..100 100100 Columbia Columbia</span></span>
-            <span className={s.ii}><span className={s.iii}></span></span>
-            <span className={s.ii}><span className={s.iii}></span></span>
+            <span className={s.ii}><span className={s.iii}>00 Colu00 Colu</span></span>
+            <span className={s.ii}><span className={s.iii}>00 Colu</span></span>
           </div>
         </div>
       </div>
@@ -236,7 +300,7 @@ export default function WorkSlider() {
       </div>
 
       <div className={s.thumbnails} ref={thumbnailsRef}>
-        <div className={cn(s.thumbnail,s.active)}>
+        <div className={cn(s.thumbnail, s.active)}>
 
           <Image src="/clone/services1.webp" alt="job1" width={0} height={0} sizes="100vw" style={{ width: "100%", height: "auto" }} className="thumbnail-image" /></div>
         <div className={s.thumbnail}>
@@ -251,7 +315,7 @@ export default function WorkSlider() {
 
       </div>
       <div className={s.projects} ref={backgroundsRef}>
-        <button onClick={handleOpenProject} data-work="1" type="button" className={cn(s.project,s.active)} style={{ display: 'block' }}>
+        <button onClick={handleOpenProject} data-work="1" type="button" className={cn(s.project, s.active)} style={{ display: 'block' }}>
           <div className={s.project_wrap}>
             <Image src="/clone/services1.webp" alt="alt" width={0} height={0} sizes="100vw" style={{ width: "100%", height: "auto" }} className={s.project_image} />
           </div>

@@ -5,7 +5,7 @@ export const about_page = {
     propsHeroSection: {
         classAdd: "dark_background",
         backgroundImage: "/about/banner.webp",
-        backgroundSize: { width: "105%", height: "auto" }
+        backgroundSize: { width: "auto", height: "100%" }
     }
 }
 export const contact_page = {
