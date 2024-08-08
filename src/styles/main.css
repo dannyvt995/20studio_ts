@@ -24,6 +24,7 @@
     transform: translateY(600px) scale(1.3) rotate(7deg);
     will-change: tranform, opacity;
     opacity: 0;
+   
   
 }
 #aboutpage,#contactpage,#homepage,#workpage {
@@ -35,12 +36,13 @@
     bottom:0;
     will-change:tranform,opacity;
     transform: scale(1.2) rotate(7deg) translateY(50%);
-   
+
 }
 #aboutpage, #contactpage, #homepage, #workpage,#work1page,
 #work2page,
 #work3page,
 #work4page {
+    height: 100vh;
     overflow-y: scroll !important;
 }
 @media (max-width: 601px) {

@@ -15,7 +15,7 @@ function AboutPage(): JSX.Element {
         <div id="aboutpage">
             <HeroSection pageName="about" propsForGsap={about_page.propsForGsap} propsHeroSection={about_page.propsHeroSection} />
 
-            <Intro />
+            <Intro  propsForGsap={about_page.propsForGsap}/>
 
             {/* lazy load from here */}
             {/* lazy load from here */}

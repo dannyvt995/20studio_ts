@@ -11,6 +11,9 @@
 }
 .image {
     overflow: hidden;
+    
+    will-change: transform;
+
 }
 .text {
     margin-top: 22.6666666667vw;

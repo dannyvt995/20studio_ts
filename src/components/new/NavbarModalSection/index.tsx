@@ -8,14 +8,14 @@ import useStoreZustand from "@/hooks/useStoreZustand";
 import { listPathAndIdDom } from "@Constants/data_noname"
 import { usePathname, useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { useEffectActive_NavbarModal, useEffectRedirect_NavbarModal } from '@/hooks/navbar/useEffectNavbarModal'
+import { useEffectActive_NavbarModal } from '@/hooks/navbar/useEffectNavbarModal'
 import { useHoverSliderModalNav } from '@/hooks/navbar/useHoverSliderModalNav'
 import { removeSplash } from '@/utils/removeSplash'
 
 
 function NavbarModalSection({ }) {
 
-    const router = useRouter()
+
     const buttonMenuRef = useRef<HTMLButtonElement>(null)
     const { indexItemNavbar, prevIndexItemNavbar } = useStoreZustand();
 
@@ -26,54 +26,54 @@ function NavbarModalSection({ }) {
     const DomEffect = useRef<HTMLDivElement>(null)
     const MaskRef = useRef<HTMLDivElement>(null)
     const SectionRef = useRef<HTMLElement>(null)
-
-    const { stateTransition } = useStoreZustand()
+    const listBtnRedirectRef = useRef<any>([])
     // const [stateToggle,setStateToggle] = useState<boolean>(false)
     const pathName = usePathname()
     const pathNameFormat = removeSplash({ pathName: pathName })
+
     // useEffect(() => {
-    //     localStorage.setItem("page_mount","false")
-    // },[])
-    // useEffectActive_NavbarModal({
-    //     stateTransition: stateTransition,
-    //      SectionRef: SectionRef.current,
-    //      MaskRef: MaskRef.current,
-    //      DomEffect: DomEffect.current,
-    //      SliderImage: SliderImage.current,
-    //      pathNameFormat: pathNameFormat,
-    //  })
+    //     if (indexItemNavbar >= 0 && prevIndexItemNavbar >= 0) {
+    //         console.log(indexItemNavbar, prevIndexItemNavbar)
+    //         indexOfSlider.current++
+    // useHoverSliderModalNav({
+    //     prevState: prevIndexItemNavbar,
+    //     navbarModalImages: navbarModalImages.current,
+    //     nextState: indexItemNavbar,
+    //     indexOfSlider: indexOfSlider.current
+    // })
+    //     }
+    // }, [indexItemNavbar, prevIndexItemNavbar])
+  
     useEffect(() => {
-        if (indexItemNavbar >= 0 && prevIndexItemNavbar >= 0) {
-            console.log(indexItemNavbar,prevIndexItemNavbar)
-            indexOfSlider.current++
-            // useHoverSliderModalNav({
-            //     prevState: prevIndexItemNavbar,
-            //     navbarModalImages: navbarModalImages.current,
-            //     nextState: indexItemNavbar,
-            //     indexOfSlider: indexOfSlider.current
-            // })
-        }
-    }, [indexItemNavbar, prevIndexItemNavbar])
+        const listBtnRedirectNode = document.querySelectorAll(`.${s.main_line}`)
+        listBtnRedirectRef.current = Array.from(listBtnRedirectNode)
+    }, [])
 
 
+    useEffectActive_NavbarModal({
+        btnMenu: buttonMenuRef.current,
+        SectionRef: SectionRef.current,
+        MaskRef: MaskRef.current,
+        DomEffect: DomEffect.current,
+        SliderImage: SliderImage.current,
+        pathNameFormat: pathNameFormat,
+        listBtnRedirect: listBtnRedirectRef.current
+    })
 
-
-
-    const handleRedirect = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-        e.preventDefault();
-        const linkTarget = (e.currentTarget as HTMLAnchorElement).dataset.link;
-
-        if (linkTarget === pathName) return
-        // router.push(`${linkTarget}`)
-        // useEffectRedirect_NavbarModal({
-        //     SectionRef: SectionRef.current,
-        //     MaskRef: MaskRef.current,
-        //     DomEffect: DomEffect.current,
-        // })
-    }
 
     return (
         <>
+            <button ref={buttonMenuRef} className={s.button_menu} id="button_menu" >
+                <div className={s.lable}>
+                    Menu
+                </div>
+                <div className={s.icon}>
+                    <svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" className={s.icon_close}>
+                        <line x1="13.788" y1="1.28816" x2="1.06011" y2="14.0161" stroke="currentColor" strokeWidth="1.2" style={{ strokeDashoffset: '0', strokeDasharray: 'none' }}></line>
+                        <line x1="1.06049" y1="1.43963" x2="13.7884" y2="14.1675" stroke="currentColor" strokeWidth="1.2" style={{ strokeDashoffset: '0', strokeDasharray: 'none' }}></line>
+                    </svg>
+                </div>
+            </button>
             <section className={s.navbar_modal_section} ref={SectionRef}>
                 <div className={s.wrapper} ref={MaskRef}>
                     <div className={s.container} ref={DomEffect}>
@@ -96,16 +96,16 @@ function NavbarModalSection({ }) {
                         </ul>
                         <ul className={s.main}>
                             <li className={s.main_link}>
-                                <a onClick={handleRedirect} data-link="/work" className={s.main_line}>Dự án</a>
+                                <a data-link="/work" className={s.main_line}>Dự án</a>
                             </li>
                             <li className={s.main_link}>
-                                <a onClick={handleRedirect} data-link="/about" className={s.main_line}>20 Studio</a>
+                                <a data-link="/about" className={s.main_line}>20 Studio</a>
                             </li>
                             <li className={s.main_link}>
-                                <a onClick={handleRedirect} data-link="/" className={s.main_line}>Dịch vụ</a>
+                                <a data-link="/" className={s.main_line}>Dịch vụ</a>
                             </li>
                             <li className={s.main_link}>
-                                <a onClick={handleRedirect} data-link="/contact" className={s.main_line}>Liên hệ</a>
+                                <a data-link="/contact" className={s.main_line}>Liên hệ</a>
                             </li>
                         </ul>
                         <ul className={s.social}>

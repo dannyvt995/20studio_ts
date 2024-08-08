@@ -9,9 +9,6 @@ import Layout_1 from '@/components/new/Some_Component_For_Post/Layout_1';
 import Layout_2 from '@/components/new/Some_Component_For_Post/Layout_2';
 import Layout_3 from '@/components/new/Some_Component_For_Post/Layout_3';
 import Layout_4 from '@/components/new/Some_Component_For_Post/Layout_4';
-import useAnimationHeading from '@Hooks/gsap/useAnimationHeading';
-import useAnimationHeadingTag from '@Hooks/gsap/useAnimationHeadingTag';
-import useAnimationParagraph from '@Hooks/gsap/useAnimationParagraph';
 import { project1_page } from '@/constants/page_props';
 
 function Project1(): JSX.Element {

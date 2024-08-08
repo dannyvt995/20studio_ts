@@ -1,13 +1,39 @@
-import React from 'react'
+import {useRef,ReactElement} from 'react'
 import s from './style.module.css'
 import cn from 'classnames'
 import StarIcon from '@/components/Icon/StarIcon'
 import Image from 'next/image'
+import gsap from 'gsap'
+import { useGSAP } from '@gsap/react'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+gsap.registerPlugin(ScrollTrigger)
+interface IProps {
+    propsForGsap: any,
+}
+export default function Intro({propsForGsap}:IProps): ReactElement  {
+    const triggleSection = useRef<HTMLDivElement>(null)
+    useGSAP(() => {
 
+   
+          const tl2 = gsap.timeline({paused:false})
+          const disAction = [-1,0,1]
+          tl2.to(`.${s.image}`, {
+              y: (index) => disAction[index] * window.innerHeight * .123, // calc(100vh * -1.2)
+        
+              scrollTrigger: {
+               scroller: propsForGsap.scrollerRef,
+                  trigger: triggleSection.current,
+                  start: "-70% top",
+                  end: "70% top",
+                  scrub: .95,
+              }
+          });
+      
+      }, []);
+  
 
-export default function Intro(): React.ReactElement  {
     return (
-        <section className={cn(s.aboutus_intro,'light_background')}>
+        <section className={cn(s.aboutus_intro,'light_background')} ref={triggleSection}>
             <div className="container">
                 <ul className={s.images}>
                     <li className={s.image}>

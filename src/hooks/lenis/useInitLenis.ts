@@ -26,12 +26,14 @@ export function useInitLenis({ firstLoad }: { firstLoad?: boolean }) {
     gsap.registerPlugin(ScrollTrigger)
     let timeoutId: NodeJS.Timeout;
     let lenisRef: Lenis | null
-    let domScroll: HTMLElement | null;
+    let domWrapper: HTMLElement| null;
+    let domScroll: HTMLElement| null;
     let ButtonNavbar: HTMLElement | null;
     let NavbarDeskop: HTMLElement | null;
     const flag = 1220;
     if (stateTransition == 'entered' || stateTransition == 'none') {
       console.log("INIT LENIS---")
+      domWrapper = document.getElementById(`wrapper_this`)
       domScroll = document.getElementById(`${pathNameFormat}page`)
       ButtonNavbar = document.getElementById("button_menu")
       NavbarDeskop = document.getElementById("navbar_deskop")
@@ -46,16 +48,17 @@ export function useInitLenis({ firstLoad }: { firstLoad?: boolean }) {
       NavbarDeskop.style.display = `block`;
       ButtonNavbar.style.display = `none`;
 
+
+
       lenisRef = new Lenis({
-        wrapper: domScroll as HTMLElement,
-        lerp: 0.072,
-        smoothWheel:true,
-        //  duration:1.5,
-        //    easing: (t: number) => 1 - Math.pow(1 - t, 2)
+        wrapper:domScroll as HTMLElement,
+        lerp: 0.042,
       })
+
+
       lenisRef.stop()
       lenisRef.on('scroll', ({ scroll }: { scroll: number }) => {
-
+      
         if (NavbarDeskop && ButtonNavbar) {
           if (scroll > flag) {
             NavbarDeskop.style.display = `none`;
@@ -68,10 +71,10 @@ export function useInitLenis({ firstLoad }: { firstLoad?: boolean }) {
       });
 
 
-
+      lenisRef.on('scroll', ScrollTrigger.update)
 
       gsap.ticker.add(update)
-      ScrollTrigger.defaults({ scroller: domScroll });
+  //    ScrollTrigger.defaults({ scroller: domScroll });
 
 
       timeoutId = setTimeout(() => {
@@ -85,6 +88,7 @@ export function useInitLenis({ firstLoad }: { firstLoad?: boolean }) {
       lenisRef?.raf(time * 1420);
 
     }
+    gsap.ticker.lagSmoothing(0)
     return () => {
       console.log("clear ref lenis")
       if (lenisRef) {

@@ -16,8 +16,8 @@ import { ScrollTrigger } from 'gsap/all'
 import useStoreZustand from '@Hooks/useStoreZustand';
 import { usePathname } from 'next/navigation'
 import { removeSplash } from '@/utils/removeSplash'
-
 gsap.registerPlugin(ScrollTrigger)
+
 interface IHeroSection {
     pageName: string,
     state?: string,
@@ -28,62 +28,44 @@ interface IHeroSection {
 export default function HeroSection({ pageName, propsForGsap, propsHeroSection }: IHeroSection) {
     const triggleSection = useRef<HTMLDivElement>(null)
     const backgroundImg = useRef<HTMLDivElement>(null)
-    const { stateTransition } = useStoreZustand()
     const pathName = usePathname()
     const pathNameFormat = removeSplash({pathName:pathName})
-    useEffect(() => {
-        // if(triggleSection.current) {
-        //     const tpElements = triggleSection.current.querySelectorAll(`.${s.ip}`);
-        //     const elementsArray = Array.from(tpElements);
-
-        //     gsap.to(elementsArray,{
-        //         delay: .5,
-        //         y: 0,
-        //         stagger:.1,
-        //         duration:1
-        //     })
-        // }
-
-    }, [triggleSection])
+   
+   
     useGSAP(() => {
 
-        if (isMobile()) return
-   
-        if (triggleSection.current && pathNameFormat === pageName) {
-            console.log("2 time????????????",stateTransition,pathNameFormat)
-            const desIntro = triggleSection.current.querySelectorAll(`.${s.ip}`);
-            const arrdesIntro = Array.from(desIntro);
-            const titIntro = triggleSection.current.querySelectorAll(`.${s.tp}`);
-            const arrtitIntro = Array.from(titIntro);
-            const tim = gsap.timeline().to(arrdesIntro, {
-                y: 0,
-                stagger: .1,
-                duration: 1
-            }).to(arrtitIntro, {
-
-                y: 0,
-                stagger: .1,
-                duration: 1
-            }, '<')
-            if (stateTransition === "entered") {
-
-                gsap.to(backgroundImg.current, {
-                    y: window.innerHeight * .64, // calc(100vh * -1.2)
-                    scrollTrigger: {
-                        scroller: propsForGsap.scrollerRef,
-                        trigger: triggleSection.current,
-                        start: "top top",
-                        end: "bottom top",
-                        scrub: true,
-                    }
-                });
+      //  if (isMobile()) return
+        const tl1 = gsap.timeline({delay:.1,paused:true})
+        tl1.to(`.${s.ip}`, {
+            y: 0,
+            opacity:1,
+            rotateZ:0,
+            stagger: .1,
+            duration: 1
+        }).to(`.${s.tp}`, {
+            y: 0,
+            opacity:1,
+            rotateZ:0,
+            stagger: .1,
+            duration:1
+        }, '<')
+        const tl2 = gsap.timeline({paused:true})
+        tl2.to(`.${s.background}`, {
+            y: window.innerHeight * .64, // calc(100vh * -1.2)
+            scrollTrigger: {
+                scroller: propsForGsap.scrollerRef,
+                trigger: triggleSection.current,
+                start: "top top",
+                end: "bottom top",
+                scrub: .95,
             }
-
+        });
+        if (pathNameFormat === pageName) {
+            console.log("useGSAP running...")
+            tl1.play()
+            tl2.play()
         }
-
-
-
-    }, { dependencies: [stateTransition] });
+    }, []);
 
     if (pageName === 'home') {
         return (

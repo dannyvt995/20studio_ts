@@ -181,6 +181,8 @@ const PageTransition: React.FC<PageTransitionProps> = ({
             timeout={timeTransition * 1000}
             unmountOnExit={true}
             onEnter={(node: any) => {
+                document.body.style.pointerEvents = 'none'
+                   document.body.style.userSelect = 'none'
               transitionKeyRef.current = transitionKey
              //setStateTransition('enter')
               enterPage({
@@ -191,6 +193,8 @@ const PageTransition: React.FC<PageTransitionProps> = ({
               })
             }}
             onEntered={(node:any) => {
+              document.body.style.pointerEvents = 'auto'
+                   document.body.style.userSelect = 'auto'
            //   setStateTransition('entered')
             }}
             onExit={(node: any) => {

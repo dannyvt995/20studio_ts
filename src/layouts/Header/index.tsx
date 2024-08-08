@@ -9,7 +9,6 @@ const Header: React.FC = (): React.ReactElement => {
   return (
     <header className='header' >
       <NavbarSectionDeskop/>
-      <ButtonMenu />
       <NavbarModalSection />
     </header>
   );

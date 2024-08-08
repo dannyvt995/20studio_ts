@@ -22,5 +22,5 @@ const NavbarSectionDeskop = forwardRef<HTMLButtonElement>((props, ref) => (
     </ul>
 </nav>
 ))
-NavbarSectionDeskop.displayName = 'ButtonMenu';
+NavbarSectionDeskop.displayName = 'NavbarDeskop';
 export default NavbarSectionDeskop
