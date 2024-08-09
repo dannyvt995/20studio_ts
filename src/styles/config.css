@@ -1,4 +1,4 @@
-/* @font-face {
+@font-face {
     font-family: BeautiqueDisplay;
     src: url('/fonts/BeautiqueDisplay/BeautiqueDisplay-Bold.otf');
     font-weight: 400
@@ -6,9 +6,9 @@
 
   @font-face {
     font-family: "Lausanne-300";
-    src: url('/fonts/TWKLausanne.woff2');
+    src: url('/fonts/p/BT-BeauSans-Medium.ttf');
     font-weight: 300
-  } */
+  }
   a{
     text-decoration: none;
   }
