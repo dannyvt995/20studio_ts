@@ -8,7 +8,7 @@ export default function DetailWorkPage() {
   return (
     <div className='DetailWorkPage'>
 
-      <ProjectText disableTitle={false}/>
+   {/*    <ProjectText disableTitle={false}/> */}
       <GridImage1/>
       <GridImage2/>
     </div>

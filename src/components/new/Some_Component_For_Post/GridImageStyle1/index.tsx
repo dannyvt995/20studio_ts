@@ -1,50 +1,33 @@
 "use client"
-import {useEffect,useRef} from 'react'
+import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
+import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import s from './style.module.css'
 import Image from 'next/image'
-export default function GridImage1({ propsForGsap }:{propsForGsap?:any}) {
+
+export default function GridImage1({ propsForGsap }: { propsForGsap?: any }) {
     const triggleSection = useRef(null)
     const domEffectTop = useRef(null)
     const domEffectBot = useRef(null)
-    const timelineRef = useRef(null)
-
-    // useEffect(() => {
-    //     if ( state === 'entered') {
-    //         if(window.innerWidth < 620) return
-    //         gsap.registerPlugin(ScrollTrigger)
-    //         console.log("Reinit/init scrolltriggle on component child on FooterSection")
-
-    //         const ctx = gsap.context(() => {
-    //             timelineRef.current = gsap.timeline({
-    //                 scrollTrigger: {
-    //                     scroller: propsForGsap.scrollerRef,
-    //                     trigger: triggleSection.current,
-    //                     start: "top bottom",
-    //                     end: "bottom top",
-    //                     scrub: true
-    //                 }
-    //             })
-    //             timelineRef.current
-    //             .set(domEffectBot.current,{x:-500})
-    //             .to(domEffectTop.current,{
-    //                 x: -200
-    //             }).to(domEffectBot.current,{
-    //                 x: 0
-    //             },"<")
-    //             return () => {
-    //                 ctx.revert();
-    //                 timelineRef.current?.kill()
-    //                 timelineRef.current = null
-    //                 triggleSection.current = null
-    //                 domEffectBot.current = null
-    //                 domEffectTop.current = null
-    //             }
-    //         });
-
-    //     }
-    // }, [propsForGsap])
+    useGSAP(() => {
+        gsap.registerPlugin(ScrollTrigger)
+        gsap.timeline({
+            scrollTrigger: {
+                scroller: propsForGsap.scrollerRef,
+                trigger: triggleSection.current,
+                start: "top bottom",
+                end: "bottom top",
+                scrub: true
+            }
+        })
+            .set(domEffectBot.current, { x: -500 })
+            .to(domEffectTop.current, {
+                x: -200
+            }).to(domEffectBot.current, {
+                x: 0
+            }, "<")
+    })
     return (
         <section className={s.GridImage1} ref={triggleSection}>
             <div className={s.container}>

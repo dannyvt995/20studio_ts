@@ -17,14 +17,14 @@ function Project1(): JSX.Element {
     return (
         <div id="work1page">
             <IntroWorkPage altbackgroundImage={"image_cache_services1"}   propsForGsap={project1_page.propsForGsap}  backgroundImage={"/clone/services1.webp"}/>
-            <ProjectText disableTitle={false}/>
+            <ProjectText scroller="#work1page" randomID='hoho123' disableTitle={false}/>
              <GridImage1 propsForGsap={project1_page.propsForGsap}/>
-             <ProjectText disableTitle={true}/>
+             <ProjectText scroller="#work1page" randomID='ghhe123' disableTitle={true}/>
              <div className='cream_background'>
-                <ProjectText disableTitle={false}/>
+                <ProjectText scroller="#work1page" randomID='bobo123' disableTitle={false}/>
              </div>
              <div className='dark_background'>
-                <ProjectText disableTitle={false}/>
+                <ProjectText scroller="#work1page" randomID='tete123' disableTitle={false}/>
              </div>
              <Layout_1/>
              <Layout_2/>

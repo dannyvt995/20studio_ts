@@ -12,7 +12,10 @@
 }
 
 
-
+.para {
+    color: #0d0e13;
+    will-change: transform,opacity;
+}
 .label {
     color: #0d0e13;
     color: var(--color-dark-grey);
