@@ -126,7 +126,7 @@ export default function HeroSection({ pageName, propsForGsap, propsHeroSection }
                 </div>
                 <div className={s.background} ref={backgroundImg}>
 
-                    <Image src={`${propsHeroSection.backgroundImage}`} alt="d" width={0} height={0} sizes="100vw" style={propsHeroSection.backgroundSize} />
+                    <Image src={`${propsHeroSection.backgroundImage}`} alt="image_cache_banner_home" width={0} height={0} sizes="100vw" style={propsHeroSection.backgroundSize} />
                 </div>
             </section>
         )
@@ -189,7 +189,7 @@ export default function HeroSection({ pageName, propsForGsap, propsHeroSection }
                 </div>
                 <div className={s.background} ref={backgroundImg}>
 
-                    <Image src={`${propsHeroSection.backgroundImage}`} alt="d" width={0} height={0} sizes="100vw" style={propsHeroSection.backgroundSize} />
+                    <Image src={`${propsHeroSection.backgroundImage}`} alt="image_cache_banner_about" width={0} height={0} sizes="100vw" style={propsHeroSection.backgroundSize} />
                 </div>
             </section>
         )

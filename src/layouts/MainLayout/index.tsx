@@ -15,9 +15,6 @@ export default function MainLayout({ children }: PropsWithChildren): React.React
       <RouterControls>
         {children}
       </RouterControls>
-      {/* <LenisScroller>
-        {children}
-      </LenisScroller> */}
     </main>
   );
 }

@@ -3,17 +3,10 @@
 
 import { PageTransition } from '@Layouts/TransitionPage';
 
-import { usePathname, useRouter } from "next/navigation";
-
-import { useRef, useEffect } from "react";
-import gsap from "gsap";
+import { usePathname } from "next/navigation";
 
 
-import NavbarSectionDeskop from '@Components/new/NavbarSectionDeskop';
-import ButtonMenu from '@Components/new/ButtonMenu'
-import NavbarModalSection from '@/components/new/NavbarModalSection';
-
-const listPathAndIdDom = {
+/* const listPathAndIdDom = {
     pages: [
         '/',
         '/home',
@@ -63,18 +56,7 @@ const pages = [
     }
 ];
 
-function removeSplash(target: string) {
-    let value
-    if (listPathAndIdDom.pagesWork.includes(target)) {
-        value = target.replace(/\/work\//g, "");
-
-    } else {
-        value = target.replace(/\//g, "");
-        if (value == '') value = "home"
-    }
-
-    return value
-}
+ */
 interface IRouterControls {
     children: React.ReactNode
 }

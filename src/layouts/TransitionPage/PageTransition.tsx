@@ -216,7 +216,7 @@ const PageTransition: React.FC<PageTransitionProps> = ({
               document.body.style.pointerEvents = 'auto'
                    document.body.style.userSelect = 'auto'
                    // nên set 1 state tại đây , là cần thiết
-           //   setStateTransition('entered')
+          setStateTransition('entered')
 
            // tạm thời return index < 100 với các page type 2
            if(transitionKeyRef.current == '/work/work1' || transitionKeyRef.current == '/work/work2'  || transitionKeyRef.current == '/work/work3'  || transitionKeyRef.current == '/work/work4') {

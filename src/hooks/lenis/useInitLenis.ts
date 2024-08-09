@@ -11,6 +11,7 @@ import { removeSplash } from '@Utils/removeSplash'
 
 
 export function useInitLenis({ firstLoad }: { firstLoad?: boolean }) {
+  console.log("useInitLenis--OutRound")
   const pathName = usePathname()
   const pathNameFormat = removeSplash({ pathName: pathName })
   const { stateTransition } = useStoreZustand()
@@ -22,7 +23,7 @@ export function useInitLenis({ firstLoad }: { firstLoad?: boolean }) {
     if (isMobile() || pathName === '/work' || pathName === '/3d') return
 
 
-
+    console.log("useInitLenis--OnRound!!!!")
     gsap.registerPlugin(ScrollTrigger)
     let timeoutId: NodeJS.Timeout;
     let lenisRef: Lenis | null

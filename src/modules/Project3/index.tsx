@@ -7,7 +7,7 @@ function Project3(): JSX.Element {
    
     return (
         <div id="work3page">
-            <IntroWorkPage  propsForGsap={project1_page.propsForGsap}  backgroundImage={"/clone/services3.webp"}/>
+            <IntroWorkPage altbackgroundImage={"image_cache_services3"}  propsForGsap={project1_page.propsForGsap}  backgroundImage={"/clone/services3.webp"}/>
         
         </div>
     )

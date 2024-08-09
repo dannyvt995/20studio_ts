@@ -5,14 +5,16 @@ import s from './style.module.css'
 import Image from 'next/image'
 import { useGSAP } from '@gsap/react';
 import { isMobile } from '@/utils/responsive';
-import ImagePreload from '@/components/ImagePreload'
+
 interface IIntroWorkPage {
     state?:string,
     propsForGsap?: any,
-    backgroundImage?: any
+    backgroundImage?: any,
+    altbackgroundImage: string 
+
 }
 
-function IntroWorkPage({ backgroundImage,state }: IIntroWorkPage) {
+function IntroWorkPage({ altbackgroundImage, backgroundImage,state }: IIntroWorkPage) {
     const triggleSection = useRef<HTMLUListElement>(null)
 
      useGSAP(() => {
@@ -24,7 +26,7 @@ function IntroWorkPage({ backgroundImage,state }: IIntroWorkPage) {
     return (
         <section className={s.IntroWorkPage} ref={triggleSection}>
             <div className={s.background}>
-                <ImagePreload alt="alt" src={backgroundImage} width={0} height={0}style={{ width: "100%", height: "auto" }} className={s.project_image} />
+                <Image alt={altbackgroundImage} src={backgroundImage} width={0} height={0} sizes='100vw' style={{ width: "100%", height: "auto" }} className={s.project_image} />
             </div>
             <div className={s.container}>
                 <div className={s.text_1}>

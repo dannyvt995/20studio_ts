@@ -3,7 +3,6 @@ import Image from 'next/image'
 import React, { memo } from 'react'
 
 function CacheImageGroup() {
-  console.log("Rerender là gãy")
   return (
     <div style={{
         visibility: 'hidden',
@@ -13,8 +12,8 @@ function CacheImageGroup() {
         height: 0
     }}>
         {/* Image sẽ đc load trước */}
-         <Image src={"/home/banner.png"} width={0} height={0} sizes="100vw" alt="image_cache_1" priority/>
-         <Image src={"/about/banner.webp"} width={0} height={0} sizes="100vw"  alt="image_cache_2" priority/>
+         <Image src={"/home/banner.png"} width={0} height={0} sizes="100vw" alt="image_cache_banner_home" priority/>
+         <Image src={"/about/banner.webp"} width={0} height={0} sizes="100vw"  alt="image_cache_banner_about" priority/>
          <Image src={"/clone/services1.webp"} width={0} height={0} sizes="100vw" alt="image_cache_services1" priority/>
          <Image src={"/clone/services2.webp"} width={0} height={0} sizes="100vw" alt="image_cache_services2" priority/>
          <Image src={"/clone/services3.webp"} width={0} height={0} sizes="100vw" alt="image_cache_services3" priority/>
