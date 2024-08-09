@@ -6,7 +6,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { isMobile } from '@Utils/responsive';
 import { usePathname } from 'next/navigation';
 import useStoreZustand from '@Hooks/useStoreZustand';
-import { useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { removeSplash } from '@Utils/removeSplash'
 
 
@@ -15,8 +15,8 @@ export function useInitLenis({ firstLoad }: { firstLoad?: boolean }) {
   const pathName = usePathname()
   const pathNameFormat = removeSplash({ pathName: pathName })
   const { stateTransition } = useStoreZustand()
-
-
+  const stateCheck = useRef<boolean>(false)
+  const [hasScrolledPastFlag, setHasScrolledPastFlag] = useState(false); // Trạng thái để kiểm tra
   useEffect(() => {
     // some condition
     if (!firstLoad) return
@@ -61,12 +61,15 @@ export function useInitLenis({ firstLoad }: { firstLoad?: boolean }) {
       lenisRef.on('scroll', ({ scroll }: { scroll: number }) => {
       
         if (NavbarDeskop && ButtonNavbar) {
+      
           if (scroll > flag) {
             NavbarDeskop.style.display = `none`;
             ButtonNavbar.style.display = `flex`;
-          } else if (scroll < flag) {
+
+          } else if (scroll <= flag ) {
             NavbarDeskop.style.display = `block`;
             ButtonNavbar.style.display = `none`;
+         
           }
         }
       });

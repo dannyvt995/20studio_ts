@@ -46,8 +46,7 @@
 }
 .title {
     font-weight:300;
-    font-family: Lausanne-300;
-    font-family: var(--font-f-lausanne-300);
+    font-family: "BS-Medium";
     font-size: 7.7333333333vw;
     font-size: var(--font-s-h2);
     letter-spacing: -.2666666667vw;
@@ -128,8 +127,7 @@
         margin-top: 3.6805555556vw;
     }
     .aboutus_intro  .body ul li p{
-        font-family: Lausanne-300;
-        font-family: var(--font-f-lausanne-300);
+        font-family: "BS-Medium";
         font-size: 3.7333333333vw;
         font-size: var(--font-s-p);
         letter-spacing: .0266666667vw;

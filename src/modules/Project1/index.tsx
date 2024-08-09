@@ -10,6 +10,7 @@ import Layout_2 from '@/components/new/Some_Component_For_Post/Layout_2';
 import Layout_3 from '@/components/new/Some_Component_For_Post/Layout_3';
 import Layout_4 from '@/components/new/Some_Component_For_Post/Layout_4';
 import { project1_page } from '@/constants/page_props';
+import FooterRedirect from '@/components/new/FooterRedirect';
 
 function Project1(): JSX.Element {
    
@@ -26,10 +27,12 @@ function Project1(): JSX.Element {
              <div className='dark_background'>
                 <ProjectText scroller="#work1page" randomID='tete123' disableTitle={false}/>
              </div>
-             <Layout_1/>
+       {/*       <Layout_1/>
              <Layout_2/>
              <Layout_3/>
-             <Layout_4/>
+             <Layout_4/> */}
+             <FooterRedirect currentId={1} targetRedirect='2' scroller="#work1page"/>
+            
         </div>
     )
 }

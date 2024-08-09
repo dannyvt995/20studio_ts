@@ -7,6 +7,8 @@ import PageTransitionWrapper from './PageTransitionWrapper';
 
 
 import { usePathname } from 'next/navigation';
+
+
 import HomePage from '@Modules/HomePage';
 import AboutPage from '@Modules/AboutPage';
 import ContactPage from '@Modules/ContactPage';
@@ -23,6 +25,7 @@ import useStoreZustand from '@Hooks/useStoreZustand';
 import { useInitLenis } from '@Hooks/lenis/useInitLenis';
 import { propsGsap } from "@Constants/gsap_props"
 import { gsap } from "gsap"
+import TrackNavbar from '@/components/new/TrackNavbar';
 
 
 interface PageTransitionProps {
@@ -174,6 +177,7 @@ const PageTransition: React.FC<PageTransitionProps> = ({
       return (
         <PageTransitionWrapper state={state}>
           <div id='wrapper_this'  >
+           
             {contentDomReference}
           </div>
         </PageTransitionWrapper>

@@ -15,8 +15,7 @@
     color: #0d0e13;
     color: var(--color-dark-grey);
     display: inline-flex;
-    font-family: Lausanne-400;
-    font-family: var(--font-f-lausanne-400);
+    font-family: "BD-Medium";
     font-size: 3.7333333333vw;
     font-size: var(--font-s-label);
     height: 7.7333333333vw;
@@ -38,7 +37,6 @@
     font-family: Lausanne-300;
     font-family: var(--font-f-lausanne-300);
     font-size: 16vw;
-    font-size: var(--font-s-h1);
     letter-spacing: -.4vw;
     letter-spacing: var(--font-ls-h1);
     line-height: 16vw;
@@ -49,8 +47,7 @@
     line-height: 12vw;
 }
  .body p {
-    font-family: Lausanne-300;
-    font-family: var(--font-f-lausanne-300);
+  font-family: "BS-Medium";
     font-size: 4.8vw;
     font-size: var(--font-s-h4);
     letter-spacing: 0;
@@ -122,7 +119,7 @@
         order: 2;
     }
      .title .title_line{
-        font-size:8.6vw !important;
+        font-size:6.6vw !important;
     }
       .title_mask {
         height: 10.0694444444vw;

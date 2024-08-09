@@ -112,12 +112,12 @@ export default function HeroSection({ pageName, propsForGsap, propsHeroSection }
                         <ul className="list2">
                             <li className={s.list_item}>
                                 <a href="mailto:creatiflow.danny@gmail.com" className={s.list_link}>
-                                    20stuido@gmail.com
+                                    vphcm@20studio.vn
                                 </a>
                             </li>
                             <li className={s.list_item}>
                                 <a href="tel:+389984639" className={s.list_link}>
-                                    +012.34.6789
+                                    0123.456.789
                                 </a>
                             </li>
 
@@ -175,12 +175,12 @@ export default function HeroSection({ pageName, propsForGsap, propsHeroSection }
                         <ul className="list2">
                             <li className={s.list_item}>
                                 <a href="mailto:creatiflow.danny@gmail.com" className={s.list_link}>
-                                    20stuido@gmail.com
+                                    vphcm@20studio.vn
                                 </a>
                             </li>
                             <li className={s.list_item}>
                                 <a href="tel:+389984639" className={s.list_link}>
-                                    +012.34.6789
+                                    0123.456.789
                                 </a>
                             </li>
 

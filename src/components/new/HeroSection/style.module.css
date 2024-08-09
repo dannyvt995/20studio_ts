@@ -40,8 +40,8 @@
   
 
     
-    font-family: Lausanne-300;
-    font-family: var(--font-f-lausanne-300);
+    font-family: BS-Medium;
+
     font-size: 4.8vw;
     font-size: var(--font-s-h4);
     letter-spacing: 0;
@@ -71,20 +71,19 @@
 
 
     font-weight: 300;
-    font-size: 16.5vw;
+    font-size: 14vw;
    /*  font-size: var(--font-s-h1);  */
     font-family: Lausanne-300;
     font-family: var(--font-f-lausanne-300);
 
     letter-spacing: -.4vw;
     letter-spacing: var(--font-ls-h1);
-    line-height: 17vw;
+    line-height: 15vw;
 /*     line-height: var(--font-lh-h1); */
   
 }
 .hero_section .body > p > span{
-    font-family: Lausanne-300;
-    font-family: var(--font-f-lausanne-300);
+    font-family: BS-Medium;
     font-size: 4.8vw;
     font-size: var(--font-s-h4);
     letter-spacing: 0;
@@ -97,8 +96,7 @@
 }
 .hero_section .list_link,
 .hero_section .link {
-    font-family: Lausanne-300;
-    font-family: var(--font-f-lausanne-300);
+    font-family: BS-Medium;
     font-size: 3.7333333333vw;
     font-size: var(--font-s-p);
     letter-spacing: .0266666667vw;

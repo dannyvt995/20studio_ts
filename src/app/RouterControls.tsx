@@ -1,6 +1,7 @@
 "use client"
 
 
+
 import { PageTransition } from '@Layouts/TransitionPage';
 
 import { usePathname } from "next/navigation";
@@ -67,9 +68,13 @@ export default function RouterControls({ children }: IRouterControls) {
   
    
     return (
+        <>
+       
         <PageTransition transitionKey={pathName}>
             {children}
         </PageTransition>
+        </>
+   
     )
 
 }

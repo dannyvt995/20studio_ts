@@ -34,8 +34,7 @@
 .footer_section .body  {
     color: hsla(28, 37%, 81%, .8);
     color: var(--color-sand-08);
-    font-family: Lausanne-300;
-    font-family: var(--font-f-lausanne-300);
+    font-family: "BS-Medium";
     font-size: 4.8vw;
     font-size: var(--font-s-h4);
     letter-spacing: 0;
@@ -109,8 +108,7 @@
 .footer_section .item a{
     color: hsla(28, 37%, 81%, .8);
     color: var(--color-sand-08);
-    font-family: Lausanne-300;
-    font-family: var(--font-f-lausanne-300);
+    font-family: "BS-Medium";
     font-size: 3.7333333333vw;
     font-size: var(--font-s-p);
     letter-spacing: .0266666667vw;
@@ -126,8 +124,7 @@
 }
 
 .footer_section .link .circle {
-    font-family: Lausanne-300;
-    font-family: var(--font-f-lausanne-300);
+    font-family: "BS-Medium";
     font-size: 4.2666666667vw;
     font-size: var(--font-s-cta);
     letter-spacing: 0;

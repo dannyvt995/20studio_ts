@@ -20,8 +20,7 @@
     height:100vh;
 }
 .work_page  .subtitle .iii{
-    font-family: "Lausanne-300";
-    font-family: var(--font-f-lausanne-300);
+    font-family: "BS-Medium";
     font-size: 3.7333333333vw;
     font-size: var(--font-s-p);
     letter-spacing: .0266666667vw;
@@ -39,9 +38,7 @@
     width:20%;
 }
 .work_page .title span{
-    font-weight:300;
-    font-family: "Lausanne-300";
-    font-family: var(--font-f-lausanne-300);
+    font-family: "BD-Medium";
     font-size: 7.7333333333vw;
     font-size: var(--font-s-h2);
     letter-spacing: -.2666666667vw;
@@ -52,8 +49,7 @@
 .work_page .indicator {
     bottom: 3.6805555556vw;
     display: flex;
-    font-family: "Lausanne-300";
-    font-family: var(--font-f-lausanne-300);
+    font-family: "BS-Medium";
     font-size: 3.7333333333vw;
     font-size: var(--font-s-p-small);
     height: 1.3888888889vw;

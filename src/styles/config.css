@@ -6,15 +6,23 @@
 
   @font-face {
     font-family: "Lausanne-300";
-    src: url('/fonts/p/BT-BeauSans-Medium.ttf');
+    src: url('/fonts/BeautiqueDisplay/BeautiqueDisplay-Medium.otf');
+    font-weight: 300
+  }
+
+  @font-face {
+    font-family: "BD-Medium";
+    src: url('/fonts/BeautiqueDisplay/BeautiqueDisplay-Medium.otf');
+    font-weight: 300
+  }
+  @font-face {
+    font-family: "BS-Medium";
+    src: url('/fonts/BeauSans/BT-BeauSans-Medium.ttf');
     font-weight: 300
   }
   a{
     text-decoration: none;
   }
-div,p,a,span {
-   
-}
 ul {
     list-style-type:none;
     margin:0;

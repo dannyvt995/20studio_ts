@@ -24,7 +24,7 @@ const propsGsap = {
 }
 
 interface Props {
-    btnMenu: any;
+    btnMenu?: any;
     stateTransition?: string;
     SectionRef: any;
     MaskRef: any;
@@ -46,7 +46,6 @@ export const useEffectActive_NavbarModal = (
     let ButtonMenu: any = null
     let DomContent: any = null
 
-    ButtonMenu = btnMenu
 
  
     Timeline = gsap.timeline({
@@ -59,6 +58,9 @@ export const useEffectActive_NavbarModal = (
         // update DomContent when path change
         NavbarDeskop = document.getElementById(`navbar`)
         DomContent = document.getElementById(`${pathNameFormat}page`)
+        
+        ButtonMenu = document.getElementById(`button_menu`)
+        if (ButtonMenu) ButtonMenu.addEventListener("click", handleClickMenu);
         Timeline.set(SectionRef, { zIndex: 500, pointerEvents: 'none' })
             .set(MaskRef, { clipPath: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)' })
             .set(DomEffect, {
@@ -82,6 +84,11 @@ export const useEffectActive_NavbarModal = (
                 y: 0,
                 ...propsGsap.props_openNav
             }, '<').reverse();
+
+            return () => {
+                ButtonMenu.removeEventListener("click", handleClickMenu);
+                ButtonMenu = null
+            }
     }, [pathName,SliderImage,SectionRef,MaskRef,DomEffect])
 
     listBtnRedirect.forEach((item:any) => {
@@ -90,7 +97,7 @@ export const useEffectActive_NavbarModal = (
             const linkTarget = (e.currentTarget as HTMLAnchorElement).dataset.link;
     
             if (linkTarget === pathNameFormat) return;
-            // bug will exist in here , so set to false
+      
             Timeline.reversed(!Timeline.reversed());
             router.push(`${linkTarget}`);
         });
@@ -101,13 +108,12 @@ export const useEffectActive_NavbarModal = (
     
     };
 
-    if (ButtonMenu) ButtonMenu.addEventListener("click", handleClickMenu);
+   
     return () => {
         Timeline.kill()
         Timeline = null
         NavbarDeskop = null
-        ButtonMenu.removeEventListener("click", handleClickMenu);
-        ButtonMenu = null
+       
         DomContent = null
     };
 
