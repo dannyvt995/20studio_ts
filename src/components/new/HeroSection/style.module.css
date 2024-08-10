@@ -94,7 +94,17 @@
 .hero_section .list_item {
     line-height: 2.2222222222vw;
 }
-.hero_section .list_link,
+.hero_section .list_link {
+    font-family: BS-Medium;
+    font-size: 3.7333333333vw;
+    font-size: var(--font-s-p);
+    letter-spacing: .0266666667vw;
+    letter-spacing: var(--font-ls-p);
+    line-height: 5.6vw;
+    line-height: var(--font-lh-p);
+    position: relative;
+    will-change: transform;
+}
 .hero_section .link {
     font-family: BS-Medium;
     font-size: 3.7333333333vw;

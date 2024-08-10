@@ -16,6 +16,9 @@ import { ScrollTrigger } from 'gsap/all'
 import useStoreZustand from '@Hooks/useStoreZustand';
 import { usePathname } from 'next/navigation'
 import { removeSplash } from '@/utils/removeSplash'
+import ButtonHoverNew2 from '../ButtonHoverNew2'
+import IconSVG from '@Components/Icon/IconSVG'
+import ButtonHoverNew from '../ButtonHoverNew'
 gsap.registerPlugin(ScrollTrigger)
 
 interface IHeroSection {
@@ -29,25 +32,25 @@ export default function HeroSection({ pageName, propsForGsap, propsHeroSection }
     const triggleSection = useRef<HTMLDivElement>(null)
     const backgroundImg = useRef<HTMLDivElement>(null)
     const pathName = usePathname()
-    const pathNameFormat = removeSplash({pathName:pathName})
-   
-   
+    const pathNameFormat = removeSplash({ pathName: pathName })
+
+
     useGSAP(() => {
 
-      //  if (isMobile()) return
-        const tl1 = gsap.timeline({delay:.1,paused:true})
+        //  if (isMobile()) return
+        const tl1 = gsap.timeline({ delay: .1, paused: true })
         tl1.to(`.${s.ip}`, {
             y: 0,
-            opacity:1,
-            rotateZ:0,
+            opacity: 1,
+            rotateZ: 0,
             stagger: .1,
             duration: 1
         }).to(`.${s.tp}`, {
             y: 0,
-            opacity:1,
-            rotateZ:0,
+            opacity: 1,
+            rotateZ: 0,
             stagger: .1,
-            duration:1
+            duration: 1
         }, '<')
         // const tl2 = gsap.timeline({paused:true})
         // tl2.to(`.${s.background}`, {
@@ -91,22 +94,38 @@ export default function HeroSection({ pageName, propsForGsap, propsHeroSection }
 
                         </div>
 
-                        <Link className={s.link} href="/about" >Về 20 Studio</Link>
+                        <ButtonHoverNew2 icon={<IconSVG src='/icon/arrow-right.svg' />} targetRedirect='/about' classAdd={s.link}>
+                            Về 20 Studio
+                        </ButtonHoverNew2>
+
                         <ul className={s.list1}>
                             <li className={s.list_item}>
-                                <Link className={s.list_link} href={"/work"}>Dự án</Link>
-                            </li>
-                            <li className={s.list_item}>
 
-                                <Link className={s.list_link} href={"/about"}>20 Studio</Link>
-                            </li>
-                            <li className={s.list_item}>
-                                <Link className={s.list_link} href={"/contact"}>Liên hệ</Link>
+                                <ButtonHoverNew classAdd={s.list_link} targetRedirect='/work'>
+                                    Dự án
+                                </ButtonHoverNew>
 
                             </li>
                             <li className={s.list_item}>
-                                <Link className={s.list_link} href={"/"}>Dịch vụ</Link>
+                                <ButtonHoverNew classAdd={s.list_link} targetRedirect='/about'>
+                                    Về chúng tôi
+                                </ButtonHoverNew>
 
+                            </li>
+                            <li className={s.list_item}>
+
+                                <ButtonHoverNew classAdd={s.list_link} targetRedirect='/contact'>
+                                    Liên hệ
+                                </ButtonHoverNew>
+
+
+
+                            </li>
+                            <li className={s.list_item}>
+
+                                <ButtonHoverNew classAdd={s.list_link} targetRedirect='/home'>
+                                    Dịch vụ
+                                </ButtonHoverNew>
                             </li>
                         </ul>
                         <ul className="list2">
@@ -154,22 +173,38 @@ export default function HeroSection({ pageName, propsForGsap, propsHeroSection }
 
                         </div>
 
-                        <Link className={s.link} href="/about" >Về 20 Studio</Link>
+             
+                        <ButtonHoverNew2 icon={<IconSVG src='/icon/arrow-right.svg' />} targetRedirect='/about' classAdd={s.link}>
+                            Về 20 Studio
+                        </ButtonHoverNew2>
                         <ul className={s.list1}>
                             <li className={s.list_item}>
-                                <Link className={s.list_link} href={"/work"}>Dự án</Link>
-                            </li>
-                            <li className={s.list_item}>
 
-                                <Link className={s.list_link} href={"/about"}>20 Studio</Link>
-                            </li>
-                            <li className={s.list_item}>
-                                <Link className={s.list_link} href={"/contact"}>Liên hệ</Link>
+                                <ButtonHoverNew classAdd={s.list_link} targetRedirect='/work'>
+                                    Dự án
+                                </ButtonHoverNew>
 
                             </li>
                             <li className={s.list_item}>
-                                <Link className={s.list_link} href={"/"}>Dịch vụ</Link>
+                                <ButtonHoverNew classAdd={s.list_link} targetRedirect='/about'>
+                                    Về chúng tôi
+                                </ButtonHoverNew>
 
+                            </li>
+                            <li className={s.list_item}>
+
+                                <ButtonHoverNew classAdd={s.list_link} targetRedirect='/contact'>
+                                    Liên hệ
+                                </ButtonHoverNew>
+
+
+
+                            </li>
+                            <li className={s.list_item}>
+
+                                <ButtonHoverNew classAdd={s.list_link} targetRedirect='/home'>
+                                    Dịch vụ
+                                </ButtonHoverNew>
                             </li>
                         </ul>
                         <ul className="list2">

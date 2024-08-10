@@ -1,7 +1,7 @@
 import React from 'react';
 import cn from 'classnames'
 import s from './style.module.css'
-import StarIcon from '@/components/Icon/StarIcon';
+import IconSVG from '@/components/Icon/IconSVG';
 interface IOurPartners {
     backgroundClass: string
 }
@@ -15,7 +15,7 @@ const OurPartners = ({ backgroundClass }: IOurPartners) => {
                 </div>
                 <div className={cn(s.row1,s.tag)}>
                     <span >
-                        <StarIcon src='/icon/star.svg'/>
+                        <IconSVG src='/icon/star.svg'/>
                     </span>
                     <p>Khách hàng</p>
                 </div>

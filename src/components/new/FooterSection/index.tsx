@@ -8,6 +8,10 @@ import Link from 'next/link';
 import { isMobile } from '@/utils/responsive';
 import { useGSAP } from '@gsap/react';
 import useStoreZustand from '@Hooks/useStoreZustand';
+import ButtonHoverNew from '../ButtonHoverNew';
+import ButtonHoverNew2 from '../ButtonHoverNew2';
+import IconSVG from '@/components/Icon/IconSVG';
+import classNames from 'classnames';
 
 interface IFooterSection {
     state?:string,
@@ -72,16 +76,25 @@ function FooterSection({ propsForGsap,state }: IFooterSection) {
                 </ul>
                 <ul className={s.nav_footer}>
                     <li className={s.item}>
-                        <Link href={"/work"}>Dự án</Link>
+                   
+                    <ButtonHoverNew  targetRedirect='/work'>
+                    Dự án
+                   </ButtonHoverNew>
                     </li>
                     <li className={s.item}>
-                        <Link href={"/"}>Dịch vụ</Link>
+                    <ButtonHoverNew targetRedirect='/home'>
+                    Dịch vụ
+                   </ButtonHoverNew>
                     </li>
                     <li className={s.item}>
-                        <Link href={"/about"}>20 Studio</Link>
+                    <ButtonHoverNew  targetRedirect='/about'>
+                   Về chúng tôi
+                   </ButtonHoverNew>
                     </li>
                     <li className={s.item}>
-                        <Link href={"/contact"}>Liên hệ</Link>
+                    <ButtonHoverNew  targetRedirect='/contact'>
+                   Liên hệ
+                   </ButtonHoverNew>
                     </li>
                 </ul>
                 <ul className={s.social}>
@@ -96,13 +109,14 @@ function FooterSection({ propsForGsap,state }: IFooterSection) {
                         </a>
                     </li>
                 </ul>
-                <a className={s.link}>
-                    <div className={s.wrap}>
-                        <div className={s.circle} >
-                            Về chúng tôi
-                        </div>
-                    </div>
-                </a>
+       {/* lỗi */}
+                <ButtonHoverNew2 
+                icon={<IconSVG src='/icon/arrow-right.svg' />} 
+                targetRedirect='/about' 
+                classAdd={classNames(s.link,s.wrap,s.circle)}>
+                    Về chúng tôi
+                        </ButtonHoverNew2>
+               
             </div>
         </section>
     )

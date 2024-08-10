@@ -5,14 +5,14 @@ import s from './style.module.css'
 import Image from 'next/image'
 
 
-import StarIcon from '@/components/Icon/StarIcon'
+import IconSVG from '@/components/Icon/IconSVG'
 export default function ServicesSection() {
     return (
         <section className={cn(s.servcies_section,s.light_background)} id="servcies_section">
             <div className={s.container}>
                 <div className={s.text}>
                     <h2 className={s.lable}>
-                        <StarIcon src='/icon/star.svg' className={s.icon}/>
+                        <IconSVG src='/icon/star.svg' className={s.icon}/>
                         Danh mục sản phẩm</h2>
                     <h3 className={s.title}>Dự án</h3>
                     <div className={s.body}>

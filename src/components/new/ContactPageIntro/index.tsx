@@ -2,15 +2,18 @@ import React from 'react'
 import cn from 'classnames'
 import s from './style.module.css'
 
-import ImagePreload from '@/components/ImagePreload'
+
 import Link from 'next/link'
+import Image from 'next/image'
+import ButtonHoverNew2 from '../ButtonHoverNew2'
+import IconSVG from '@/components/Icon/IconSVG'
 export default function ContactPageIntro() {
     return (
         <section className={s.ContactPageIntro}>
             <div className={s.container}>
                 <div className={s.image}>
                    
-              {/*   <ImagePreload  src="/home/banner.png" width={0} height={0}  style={{width:'auto',height:'100%',    position: 'absolute',left:'50%',transform: 'translateX(-50%)'}} alt="e" /> */}
+                <Image  src="/home/banner.png" width={0} height={0} sizes='100vw'  style={{width:'auto',height:'100%',    position: 'absolute',left:'50%',transform: 'translateX(-50%)'}} alt="image_cache_banner_home" />
                 </div>
               
                 <h1 className={s.h1}>Contact</h1>
@@ -23,14 +26,22 @@ export default function ContactPageIntro() {
                     <div className={s.body}><p>Sẵn sàng để cất cánh? Mess, tweet, tin nhắn và chúng tôi sẽ liên hệ lại sớm nhất có thể.</p></div>
                     <ul className={s.contact}>
                         <li className={s.contact_item}>
-                            <a href="mailto:hello@20stu.com" className={cn(s.link,s.is_dark)}>
+                        <ButtonHoverNew2 
+                            icon={<IconSVG src='/icon/arrow-right.svg' />} 
+                            targetRedirect='mailto:vphcm@studio.vn' 
+                            classAdd={cn(s.link,s.is_dark)}>
                             vphcm@20studio.com
-                            </a>
+                        </ButtonHoverNew2>
+                           
                         </li>
                         <li className={s.contact_item}>
-                            <a href="tel:+11 789 1234" className={cn(s.link,s.is_dark)}>
-                                +11 222 333 444
-                            </a>
+                        <ButtonHoverNew2 
+                            icon={<IconSVG src='/icon/arrow-right.svg' />} 
+                            targetRedirect='0902706605' 
+                            classAdd={cn(s.link,s.is_dark)}>
+                            090.270.6605
+                        </ButtonHoverNew2>
+                           
                         </li>
                     </ul>
                 </div>
@@ -40,7 +51,15 @@ export default function ContactPageIntro() {
                         Quận 3,<br/>
                         Hồ Chí Minh
                     </a>
-                    <Link href={'/'} className={s.link}>Xem bản đồ</Link>
+
+                    <ButtonHoverNew2 
+                            icon={<IconSVG src='/icon/arrow-right.svg' />} 
+                            targetRedirect='0902706605' 
+                            classAdd={cn(s.link,s.is_dark)}>
+                            Xem bản đồ
+                        </ButtonHoverNew2>
+
+                   
                 </div>
             </div>
         </section>

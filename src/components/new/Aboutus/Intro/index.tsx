@@ -1,7 +1,7 @@
 import {useRef,ReactElement} from 'react'
 import s from './style.module.css'
 import cn from 'classnames'
-import StarIcon from '@/components/Icon/StarIcon'
+import IconSVG from '@/components/Icon/IconSVG'
 import Image from 'next/image'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
@@ -70,7 +70,7 @@ export default function Intro({propsForGsap}:IProps): ReactElement  {
                 </ul>
                 <div className={s.text}>
                     <h2 className={s.label}>
-                        <StarIcon src='/icon/star.svg' className={s.icon}/>
+                        <IconSVG src='/icon/star.svg' className={s.icon}/>
                         Lĩnh vực hoạt động
                     </h2>
                     <h2 className={s.title}>20Studio là một mạng lưới các nhà cung cấp thời trang được thiết kế hệ thống theo quy trình bài bản.</h2>
