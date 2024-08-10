@@ -29,8 +29,13 @@
 }
  .logo {
     position:fixed;
-    top:-10vw;
-    left:4.1vw;
+    top:5vw;
+    left:5vw;
+}
+.link_about {
+    position: fixed;
+    bottom:5vw;
+    right:5vw;
 }
  .images {
     overflow: hidden;
@@ -66,7 +71,23 @@
     grid-column: 2 / 6;
 }
 
- .link_item,
+ .link_item{
+    color: hsla(33, 14%, 88%, .6);
+    color: var(--color-light-grey-06);
+    display: inline-flex;
+    font-family: "Lausanne-300";
+    font-family: var(--font-f-lausanne-300);
+    font-size: 3.7333333333vw;
+    font-size: var(--font-s-p);
+    letter-spacing: .0266666667vw;
+    letter-spacing: var(--font-ls-p);
+    line-height: 5.6vw;
+    line-height: var(--font-lh-p);
+    position: relative;
+    transform-origin: top left;
+    transition: color .5s;
+    will-change: transform;
+ }
  .logo{
     color: hsla(33, 14%, 88%, .6);
     color: var(--color-light-grey-06);
@@ -83,29 +104,37 @@
     transform-origin: top left;
     transition: color .5s;
     will-change: transform;
+    height: fit-content;
 }
 .navbar_modal_section  .sub_link:last-child {
     margin-left: auto;
 }
+.main_link {
+    margin-bottom: .5rem;
+}
+
 @media (min-width: 601px) {
      .container {
         will-change: transform;
         grid-column-gap: 2.2222222222vw;
         grid-template-columns: repeat(12, 1fr);
+        grid-template-rows: repeat(1, 1fr);
+        height: 100vh;
         margin:  0 !important;
     }
      .images {
         height: 30.1388888889vw;
-        left: 19.7916666667vw;
         overflow: hidden;
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
         width: 21.3194444444vw;
+        grid-column: 4 / 11;
     }
      .main {
         grid-column: 8 / 11;
-        margin-bottom: 1.8055555556vw;
+        height: fit-content;
+        margin: auto 0;
     }
      .main_line {
         font-family: "Lausanne-300";
@@ -122,12 +151,9 @@
         grid-column: 8 / 13;
     }
      .sub {
-        align-items: flex-end;
-        bottom: -8.9666666667vw;
-        display: flex;
-        left: 4.1666666667vw;
         position: absolute;
-        width: 61.8888888889vw;
+       bottom: 5vw;
+       left: 5vw;
     }
 }
 

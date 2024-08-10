@@ -1,9 +1,11 @@
 "use client"
 
 import gsap from 'gsap';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { removeSplash } from '@/utils/removeSplash'
 import { usePathname,useRouter } from 'next/navigation'
+
+
 const propsGsap = {
     props_openNav: {
         duration: 1,
@@ -40,6 +42,8 @@ export const useEffectActive_NavbarModal = (
     const pathName = usePathname()
     const pathNameFormat = removeSplash({ pathName: pathName })
     const router = useRouter()
+
+
     console.log("HOOK NAVBAR MODAL...")
     let Timeline: any = null
     let NavbarDeskop: any = null
@@ -55,6 +59,7 @@ export const useEffectActive_NavbarModal = (
         }
     });
     useEffect(() => {
+        console.log("NEED 1 time ++++++HOOK NAVBAR MODAL...")
         // update DomContent when path change
         NavbarDeskop = document.getElementById(`navbar`)
         DomContent = document.getElementById(`${pathNameFormat}page`)
@@ -84,27 +89,30 @@ export const useEffectActive_NavbarModal = (
                 y: 0,
                 ...propsGsap.props_openNav
             }, '<').reverse();
-
+            window.timelineNavbar = Timeline
             return () => {
                 ButtonMenu.removeEventListener("click", handleClickMenu);
                 ButtonMenu = null
             }
     }, [pathName,SliderImage,SectionRef,MaskRef,DomEffect])
 
-    listBtnRedirect.forEach((item:any) => {
-        item.addEventListener('click', (e:any) => {
-            e.preventDefault();
-            const linkTarget = (e.currentTarget as HTMLAnchorElement).dataset.link;
+    // listBtnRedirect.forEach((item:any) => {
+    //     item.addEventListener('click', (e:any) => {
+    //         e.preventDefault();
+    //         const linkTarget = (e.currentTarget as HTMLAnchorElement).dataset.link;
     
-            if (linkTarget === pathNameFormat) return;
+    //         if (linkTarget === pathNameFormat) return;
       
-            Timeline.reversed(!Timeline.reversed());
-            router.push(`${linkTarget}`);
-        });
-    });
+    //         if(window.timelineNavbar) window.timelineNavbar.reversed(!window.timelineNavbar.reversed());
+    //         router.push(`${linkTarget}`);
+    //     });
+    // });
 
+
+
+   
     const handleClickMenu = () => {
-        Timeline.reversed(!Timeline.reversed());
+        if(window.timelineNavbar) window.timelineNavbar.reversed(!window.timelineNavbar.reversed());
     
     };
 

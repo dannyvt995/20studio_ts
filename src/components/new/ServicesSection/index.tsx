@@ -1,14 +1,44 @@
 'use client';
-import React from 'react'
+import {useEffect, useRef} from 'react'
 import cn from 'classnames'
 import s from './style.module.css'
 import Image from 'next/image'
-
-
+ 
 import IconSVG from '@/components/Icon/IconSVG'
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+gsap.registerPlugin(useGSAP)
 export default function ServicesSection() {
+    const container = useRef<any>()
+    const listItemRef = useRef<any>()
+    const {contextSafe} = useGSAP({scope:container})
+    const timelines = useRef<Record<number, gsap.core.Timeline>>({});
+    useEffect(() => {
+        const items = listItemRef.current.children;
+        for (let i = 0; i < items.length; i++) {
+          const infoElement = items[i].querySelector(`.${s.info}`);
+          timelines.current[i] = gsap.timeline({ paused: true })
+            .fromTo(infoElement,{
+                x: 0,
+            },{
+                x: 100,
+                duration: 0.5,
+                   ease: "power3.in"
+            })
+          
+        }
+      }, []);
+    const actionGsap = (e:any) => {
+        const id = e.currentTarget.getAttribute('data-id');
+        timelines.current[id].play(0);
+      };
+    
+      const disableGsap = (e:any) => {
+        const id = e.currentTarget.getAttribute('data-id');
+        timelines.current[id].reverse();
+      };
     return (
-        <section className={cn(s.servcies_section,s.light_background)} id="servcies_section">
+        <section ref={container} className={cn(s.servcies_section,s.light_background)} id="servcies_section">
             <div className={s.container}>
                 <div className={s.text}>
                     <h2 className={s.lable}>
@@ -20,32 +50,52 @@ export default function ServicesSection() {
                     </div>
                 </div>
             </div>
-            <div className={s.services}>
-                <a className={s.service}>
+            <div className={s.services} ref={listItemRef}>
+                <a className={s.service}
+                    data-id="0"
+                    onMouseEnter={(e) => actionGsap(e)}
+                    onMouseLeave={(e) => disableGsap(e)}
+                >
                     <div className={s.block}>
                         <Image src="/clone/ser1.jpg" width={0} height={0} sizes="100vw" style={{ width: "100%", height: "auto" }} alt="services1" />
                     </div>
                     <p className={s.info}>
-                        <span><strong>Chinh’s Major Project - </strong>Phát triển mẫu</span>
+                        <span className={s.nameprj}>Chinh’s Major Project - </span>
+                        <span className={s.jobdes}>Phát triển mẫu</span>
                     </p>
                 </a>
-                <a className={s.service}>
+                <a className={s.service}
+                 data-id="1"
+                 onMouseEnter={(e) => actionGsap(e)}
+                 onMouseLeave={(e) => disableGsap(e)}
+                >
                     <div className={s.block}>
                     <Image src="/clone/ser2.jpg" width={0} height={0} sizes="100vw" style={{ width: "100%", height: "auto" }} alt="services1" />
                     </div>
                     <p className={s.info}>
-                        <span><strong>Nét Project - </strong>Phát triển mẫu</span>
+                        <span className={s.nameprj}>Nét Project - </span>
+                        <span className={s.jobdes}>Phát triển mẫu</span>
                     </p>
                 </a>
-                <a className={s.service}>
+                <a className={s.service}
+                         data-id="2"
+                         onMouseEnter={(e) => actionGsap(e)}
+                         onMouseLeave={(e) => disableGsap(e)}
+                >
                     <div className={s.block}>
                     <Image src="/clone/ser3.jpg" width={0} height={0} sizes="100vw" style={{ width: "100%", height: "auto" }} alt="services1" />
                     </div>
                     <p className={s.info}>
-                        <span><strong>Lung Tung - </strong>Quản lí sản xuất</span>
+                    <span className={s.nameprj}>Lung Tung - </span>
+                    <span className={s.jobdes}>Quản lí sản xuất</span>
+                      
                     </p>
                 </a>
-                <a className={s.service}>
+                <a className={s.service}
+                         data-id="3"
+                         onMouseEnter={(e) => actionGsap(e)}
+                         onMouseLeave={(e) => disableGsap(e)}
+                >
                     <div className={s.block}>
                         <Image
                             src="/clone/services1.webp"
@@ -53,7 +103,8 @@ export default function ServicesSection() {
                         />
                     </div>
                     <p className={s.info}>
-                        <span><strong>20Project -</strong>Thiết kế đồ hoạ</span>
+                        <span className={s.nameprj}>20 Project - </span>
+                        <span className={s.jobdes}>Thiết kế đồ hoạ</span>
                     </p>
                 </a>
             </div>

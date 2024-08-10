@@ -19,11 +19,12 @@ export default function FooterRedirect({scroller,targetRedirect,currentId}:{scro
                 scroller:scroller,
                 trigger:container.current,
                 onUpdate:(self) => {
-               
+                    
                     cirRefIc.current.style.strokeDasharray = `${self.progress * 120}px, ${110-100*self.progress}px`
                   
-                    if(self.progress > 0.99) {
-                       
+                    if(self.progress > 0.90) {
+                      
+                         document.body.style.pointerEvents = 'none'
                         gsap.timeline({
                             onComplete:() => {
                               setTimeout(() => {
@@ -31,7 +32,7 @@ export default function FooterRedirect({scroller,targetRedirect,currentId}:{scro
                               },500)
                             }
                         })
-                        .to(window, { duration: .2, scrollTo: container.current })
+                  .to(window, { duration: .2, scrollTo: container.current })
                         .to(`#bg_fr_${currentId}`,{
                             scale:1,
                             duration:.7

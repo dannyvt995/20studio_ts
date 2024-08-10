@@ -15,8 +15,7 @@ export function useInitLenis({ firstLoad }: { firstLoad?: boolean }) {
   const pathName = usePathname()
   const pathNameFormat = removeSplash({ pathName: pathName })
   const { stateTransition } = useStoreZustand()
-  const stateCheck = useRef<boolean>(false)
-  const [hasScrolledPastFlag, setHasScrolledPastFlag] = useState(false); // Trạng thái để kiểm tra
+ 
   useEffect(() => {
     // some condition
     if (!firstLoad) return
@@ -45,6 +44,7 @@ export function useInitLenis({ firstLoad }: { firstLoad?: boolean }) {
         return;
       }
 
+      
 
       NavbarDeskop.style.display = `block`;
       ButtonNavbar.style.display = `none`;
@@ -83,7 +83,7 @@ export function useInitLenis({ firstLoad }: { firstLoad?: boolean }) {
 
       timeoutId = setTimeout(() => {
         window.lenis = lenisRef;
-        lenisRef?.start()
+        window.lenis?.start()
         ScrollTrigger.refresh()
       }, 1000)
 

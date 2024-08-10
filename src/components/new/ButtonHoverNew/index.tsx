@@ -1,20 +1,24 @@
 "use client"
 import cn from 'classnames';
 import Link from 'next/link';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import s from './style.module.css';
+
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
+import { useRouter } from 'next/navigation';
 gsap.registerPlugin(useGSAP)
 interface ButtonHoverNewProps {
     children: React.ReactNode;
     classAdd?: string;
     targetRedirect?:string;
+    btnNavbar?:boolean
 }
 
-const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children,targetRedirect,classAdd }) => {
+const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children,btnNavbar,targetRedirect,classAdd }) => {
     const linkRef = useRef<HTMLAnchorElement>(null);
     const timelineRef = useRef<any>(null)
+    const router = useRouter()
     const easeOps = "power4.inOut"
     const durationOps = 0.5
     const { contextSafe } = useGSAP({ scope: linkRef }); 
@@ -65,10 +69,18 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children,targetRedirect
             }
         };
     }, []);
+    const handleRedirectFromNavbar = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+        event.preventDefault()
+ 
+        if(window.timelineNavbar) {
+            window.timelineNavbar.reversed(!window.timelineNavbar.reversed());
+            router.push(`${targetRedirect}`);
+        }
 
-  
+    }
+   
     return (
-        <Link href={targetRedirect ? targetRedirect : '#'} ref={linkRef} className={cn(s.btn_hover_underline,classAdd)}>
+        <Link  onClick={btnNavbar ? handleRedirectFromNavbar : undefined} href={btnNavbar ? 'javascript:void(0)' : (targetRedirect || '#')} ref={linkRef} className={cn(s.btn_hover_underline,classAdd)}>
             {children}
         </Link>
     );

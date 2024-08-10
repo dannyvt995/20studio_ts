@@ -11,6 +11,9 @@ import Link from 'next/link'
 import { useEffectActive_NavbarModal } from '@/hooks/navbar/useEffectNavbarModal'
 import { useHoverSliderModalNav } from '@/hooks/navbar/useHoverSliderModalNav'
 import { removeSplash } from '@/utils/removeSplash'
+import ButtonHoverNew from '../ButtonHoverNew'
+import ButtonHoverNew2 from '../ButtonHoverNew2'
+import IconSVG from '@/components/Icon/IconSVG'
 
 
 function NavbarModalSection({ }) {
@@ -43,7 +46,7 @@ function NavbarModalSection({ }) {
     // })
     //     }
     // }, [indexItemNavbar, prevIndexItemNavbar])
-  
+
     useEffect(() => {
         const listBtnRedirectNode = document.querySelectorAll(`.${s.main_line}`)
         listBtnRedirectRef.current = Array.from(listBtnRedirectNode)
@@ -63,7 +66,7 @@ function NavbarModalSection({ }) {
 
     return (
         <>
-          
+
             <section className={s.navbar_modal_section} ref={SectionRef}>
                 <div className={s.wrapper} ref={MaskRef}>
                     <div className={s.container} ref={DomEffect}>
@@ -86,16 +89,28 @@ function NavbarModalSection({ }) {
                         </ul>
                         <ul className={s.main}>
                             <li className={s.main_link}>
-                                <a data-link="/work" className={s.main_line}>Dự án</a>
+                                <ButtonHoverNew btnNavbar={true} targetRedirect='/work' classAdd={s.main_line}>
+                                    Dự án
+                                </ButtonHoverNew>
+
                             </li>
                             <li className={s.main_link}>
-                                <a data-link="/about" className={s.main_line}>20 Studio</a>
+                                <ButtonHoverNew btnNavbar={true} targetRedirect='/about' classAdd={s.main_line}>
+                                    20 Studio
+                                </ButtonHoverNew>
+
                             </li>
                             <li className={s.main_link}>
-                                <a data-link="/" className={s.main_line}>Dịch vụ</a>
+                                <ButtonHoverNew btnNavbar={true} targetRedirect='/' classAdd={s.main_line}>
+                                    Dịch vụ
+                                </ButtonHoverNew>
+
                             </li>
                             <li className={s.main_link}>
-                                <a data-link="/contact" className={s.main_line}>Liên hệ</a>
+                                <ButtonHoverNew btnNavbar={true} targetRedirect='/contact' classAdd={s.main_line}>
+                                    Liên hệ
+                                </ButtonHoverNew>
+
                             </li>
                         </ul>
                         <ul className={s.social}>
@@ -119,6 +134,12 @@ function NavbarModalSection({ }) {
                                 {/*    <ButtonHoverUnderLineNew eventPass={handleClick} data_type="outsite" noName={"var(--font-lh-p)"} data_link="/about" classStyle="link-item">Về chúng tôi</ButtonHoverUnderLineNew> */}
                             </li>
                         </ul>
+                        <div className={s.link_about}>
+
+                            <ButtonHoverNew2 icon={<IconSVG src='/icon/arrow-right.svg' />} targetRedirect='/about' classAdd={s.link}>
+                                Về 20 Studio
+                            </ButtonHoverNew2>
+                        </div>
                     </div>
 
                 </div>

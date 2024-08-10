@@ -97,9 +97,8 @@
     }
 
     .footer_section .link {
-   /*      grid-column: 11 / 13;
-        margin-top: auto; */
-        position: absolute !important;
+        grid-column: 11 / 13;
+       
         bottom: 3vw;
         right: 8vw;
 

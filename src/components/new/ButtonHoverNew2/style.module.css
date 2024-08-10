@@ -4,6 +4,7 @@
     align-items: center;
     height: fit-content !important;
     width: fit-content !important;
+    color: white;
 }
 .text {
     position: relative;

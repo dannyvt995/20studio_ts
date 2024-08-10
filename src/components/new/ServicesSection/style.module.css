@@ -160,15 +160,20 @@
 }
 .servcies_section .info {
     color: rgba(13, 14, 19, .6);
-    color: var(--color-dark-grey-06);
-    font-family: Lausanne-300;
-    font-family: var(--font-f-lausanne-300);
-    font-size: 3.7333333333vw;
-    font-size: var(--font-s-p-small);
-    letter-spacing: .0266666667vw;
-    letter-spacing: var(--font-ls-p-small);
-    line-height: 5.6vw;
-    line-height: var(--font-lh-p-small);
+    height:3vw;
     overflow: hidden;
-}
 
+}
+.servcies_section .info * {
+    font-size: 1.4vw;
+
+    will-change: transform;
+
+}
+.nameprj {
+    font-family: "BS-Medium";
+   
+}
+.jobdes {
+    font-family: "BD-Medium";
+}
