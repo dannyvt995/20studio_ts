@@ -15,10 +15,10 @@ function HomePage(): JSX.Element {
         <div id="homepage">
             <HeroSection pageName="home" propsForGsap={home_page.propsForGsap} propsHeroSection={home_page.propsHeroSection}/>
            
-           
+        {/*     <SliderImageHover/> */}
             <ServicesSection />
             <FAQSection/>
-           {/*  <SliderImageHover/> */}
+           
             <LetContact  propsForGsap={home_page.propsForGsap}/>
             <FooterSection propsForGsap={home_page.propsForGsap}/>
         </div>

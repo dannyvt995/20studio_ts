@@ -1,24 +1,29 @@
 @font-face {
     font-family: BeautiqueDisplay;
     src: url('/fonts/BeautiqueDisplay/BeautiqueDisplay-Bold.otf');
-    font-weight: 400
+   
   }
 
   @font-face {
     font-family: "Lausanne-300";
     src: url('/fonts/BeautiqueDisplay/BeautiqueDisplay-Medium.otf');
-    font-weight: 300
+ 
   }
 
   @font-face {
     font-family: "BD-Medium";
     src: url('/fonts/BeautiqueDisplay/BeautiqueDisplay-Medium.otf');
-    font-weight: 300
+
   }
   @font-face {
     font-family: "BS-Medium";
     src: url('/fonts/BeauSans/BT-BeauSans-Medium.ttf');
-    font-weight: 300
+    
+  }
+  @font-face {
+    font-family: "BS-Regular";
+    src: url('/fonts/BeauSans/BT-BeauSans-Regular.ttf');
+   
   }
   a{
     text-decoration: none;

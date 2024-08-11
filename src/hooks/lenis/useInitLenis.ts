@@ -19,7 +19,7 @@ export function useInitLenis({ firstLoad }: { firstLoad?: boolean }) {
   useEffect(() => {
     // some condition
     if (!firstLoad) return
-    if (isMobile() || pathName === '/work' || pathName === '/3d') return
+    if ( pathName === '/work' || pathName === '/3d') return
 
 
     console.log("useInitLenis--OnRound!!!!")
@@ -54,6 +54,7 @@ export function useInitLenis({ firstLoad }: { firstLoad?: boolean }) {
       lenisRef = new Lenis({
         wrapper:domScroll as HTMLElement,
         lerp: 0.072,
+        syncTouch:true,
       })
 
 

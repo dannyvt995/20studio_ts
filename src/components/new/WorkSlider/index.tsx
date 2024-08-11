@@ -252,51 +252,49 @@ export default function WorkSlider() {
         <div className={s.title} ref={titlesRef}>
 
           <div className={s.active}>
-            <span className={s.ii}><span className={s.iii}>100 Years</span></span>
-            <span className={s.ii}><span className={s.iii}>Columbia</span></span>
+            <span className={s.ii}><span className={s.iii}>Chinhs</span></span>
+            <span className={s.ii}><span className={s.iii}>Major</span></span>
+            <span className={s.ii}><span className={s.iii}>Project</span></span>
           </div>
           <div>
-            <span className={s.ii}><span className={s.iii}>Trao</span></span>
-            <span className={s.ii}><span className={s.iii}>Studio</span></span>
-            <span className={s.ii}><span className={s.iii}>Pictures</span></span>
+            <span className={s.ii}><span className={s.iii}>Nét</span></span>
+            <span className={s.ii}><span className={s.iii}>Project</span></span>
           </div>
           <div>
-            <span className={s.ii}><span className={s.iii}>Modien</span></span>
-            <span className={s.ii}><span className={s.iii}>Pictures</span></span>
+            <span className={s.ii}><span className={s.iii}>Lung</span></span>
+            <span className={s.ii}><span className={s.iii}>Tung</span></span>
             <span className={s.ii}><span className={s.iii}>Studio</span></span>
           </div>
           <div>
-            <span className={s.ii}><span className={s.iii}>Tacobeva</span></span>
-            <span className={s.ii}><span className={s.iii}>Studio</span></span>
-            <span className={s.ii}><span className={s.iii}>Years</span></span>
+            <span className={s.ii}><span className={s.iii}>20 Project</span></span>
+            <span className={s.ii}><span className={s.iii}>Design</span></span>
           </div>
         </div>
         <div className={s.subtitle} ref={subtitlesRef}>
           <div className={s.active}>
-            <span className={s.ii}><span className={s.iii}>1..Celebrating a Century of Cinema</span></span>
-            <span className={s.ii}><span className={s.iii}>Century of Cinema</span></span>
-            <span className={s.ii}><span className={s.iii}></span></span>
+            <span className={s.ii}><span className={s.iii}>Phát triển mẫu</span></span>
+            <span className={s.ii}><span className={s.iii}>Thêm 1 dòng</span></span>
+      
           </div>
           <div>
-            <span className={s.ii}><span className={s.iii}>2..100 Columbia Pictures 100 of 100</span></span>
-            <span className={s.ii}><span className={s.iii}>Columbia Columbia Columbia</span></span>
-            <span className={s.ii}><span className={s.iii}>Columbia Columbia </span></span>
+            <span className={s.ii}><span className={s.iii}>Phát triển mẫu</span></span>
+            <span className={s.ii}><span className={s.iii}>Thêm 1 dòng</span></span>
+           
           </div>
           <div>
-            <span className={s.ii}><span className={s.iii}>3..Columbia Columbia Columbia</span></span>
-            <span className={s.ii}><span className={s.iii}>umbiaumbia</span></span>
-            <span className={s.ii}><span className={s.iii}>umbiaumbia</span></span>
+            <span className={s.ii}><span className={s.iii}>Quản lý sản xuất</span></span>
+            <span className={s.ii}><span className={s.iii}>Thêm 1 dòng</span></span>
           </div>
           <div>
-            <span className={s.ii}><span className={s.iii}>4..100 100100 Columbia Columbia</span></span>
-            <span className={s.ii}><span className={s.iii}>00 Colu00 Colu</span></span>
-            <span className={s.ii}><span className={s.iii}>00 Colu</span></span>
+          <span className={s.ii}><span className={s.iii}>Quản lý sản xuất</span></span>
+          <span className={s.ii}><span className={s.iii}>Thiết kế đồ hoạ</span></span>
           </div>
         </div>
       </div>
       <div className={s.indicator}>
         <span className={s.current} >01</span>
-        <span className={s.total}>10</span>
+        <span className={s.splash} >/</span>
+        <span className={s.total}>04</span>
       </div>
 
       <div className={s.thumbnails} ref={thumbnailsRef}>

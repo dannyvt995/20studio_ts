@@ -1,3 +1,50 @@
+
+.wrapper{
+    width:70%;
+    height:fit-content;
+    position:absolute;
+    margin:auto;
+    background:#ccc;
+    overflow:hidden;
+    z-index: 99;
+  }
+  
+  .wrapper::after {
+    width:70%;
+    height:48px;
+    content:"";
+    position:absolute;
+    border:solid 1px rgb(255, 0, 0);
+  }
+  
+  .box{
+    width:350px;
+    height:fit-content;
+    position:absolute;
+    background:red;
+    font-size:25px;
+    line-height:50px;
+    text-align:center;
+    color: var(--color-just-black);
+    
+  }
+  
+  
+  
+  .boxes {
+    position:relative;
+    left:-350px;
+    height: 50px;
+  }
+  
+
+
+
+
+
+
+
+
 section {
     position:relative;
     box-sizing: border-box;

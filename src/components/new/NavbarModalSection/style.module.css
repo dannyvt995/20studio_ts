@@ -137,14 +137,14 @@
         margin: auto 0;
     }
      .main_line {
+        margin-bottom:.5rem;
         font-family: "Lausanne-300";
         font-family: var(--font-f-lausanne-300);
         font-size: 7.7333333333vw;
         font-size: var(--font-s-h2);
         letter-spacing: -.2666666667vw;
         letter-spacing: var(--font-ls-h2);
-        line-height: 9.0666666667vw;
-        line-height: var(--font-lh-h2);
+        line-height: 100%;
         will-change: transform;
     }
      .social {

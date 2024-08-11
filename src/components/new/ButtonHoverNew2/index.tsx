@@ -26,12 +26,12 @@ const ButtonHoverNew2: React.FC<ButtonHoverNew2Props> = ({ children,icon,targetR
         })
         .to(`.${s.text}`,{
           "--line-width" : "0%",
-          x:17,
+          x:15,
     
         })
         .to(`.${s.icon}`,{
           opacity:1,
-          x:"-150%",
+          x:"-155%",
      
         },"<")
       .to(`.${s.circleZoom}`,{

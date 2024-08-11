@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import s from './style.module.css'
 import Link from 'next/link';
 import gsap from 'gsap'
@@ -10,21 +10,58 @@ gsap.registerPlugin(useGSAP)
 export default function NavbarSectionDeskop() {
     const container = useRef<any>()
     const buttonMenuRef = useRef<any>()
+    const timelineBtnMenu = useRef<gsap.core.Timeline>()
+    useEffect(() => {
+        timelineBtnMenu.current = gsap.timeline()
+        .fromTo(`.${s.icon}`,{
+            rotate:45,
+        },{
+            rotate:180,
+            ease:"power3.inOut",
+            duration:.5
+        })
+        .fromTo(`.${s.lableMenu}`,{
+            y:0
+        },{
+            y:"-100%",
+            duration:.5
+        },"<")
+        .fromTo(`.${s.lableClose}`,{
+            y:"100%"
+        },{
+            y:0,
+            duration:.5
+        },"<").reverse()
+    },[buttonMenuRef])
+
     useGSAP(() => {
         gsap.to(`.${s.nav_item}`,{
             delay:.5,
             y: 0,
+            ease:"power3.out",
             duration:1,
             stagger:.1
         })
     },{scope:container})
+
+    const {contextSafe} = useGSAP({scope:buttonMenuRef})
     // set triggle từ hero section và lấy state từ đó
-   
+    const handleClickMenu = contextSafe(() => {
+        if(window.timelineNavbar && timelineBtnMenu.current){
+            window.timelineNavbar.reversed(!window.timelineNavbar.reversed());
+            timelineBtnMenu.current.reversed(!timelineBtnMenu.current.reversed());
+        }else{
+            alert("Err on window var global >>>>>>>>")
+        }
+        
+
+    })
     return (
         <>
-          <button ref={buttonMenuRef} className={s.button_menu} id="button_menu" >
+          <button onClick={handleClickMenu} ref={buttonMenuRef} className={s.button_menu} id="button_menu" >
                 <h3 className={s.lable}>
-                    Menu
+                    <span className={s.lableMenu}>Menu</span>
+                    <span className={s.lableClose}>Close</span>
                 </h3>
                 <div className={s.icon}>
                     <svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" className={s.icon_close}>

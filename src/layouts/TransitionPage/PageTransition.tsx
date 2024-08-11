@@ -1,5 +1,5 @@
 
-import React, { useMemo, useEffect, useRef,useState,useCallback } from 'react';
+import React, { useMemo, useEffect, useRef, useState, useCallback } from 'react';
 import { Transition, TransitionGroup } from 'react-transition-group';
 
 import PageTransitionGroup from './PageTransitionGroup';
@@ -25,7 +25,8 @@ import useStoreZustand from '@Hooks/useStoreZustand';
 import { useInitLenis } from '@Hooks/lenis/useInitLenis';
 import { propsGsap } from "@Constants/gsap_props"
 import { gsap } from "gsap"
-import TrackNavbar from '@/components/new/TrackNavbar';
+import { useGSAP } from '@gsap/react';
+gsap.registerPlugin(useGSAP)
 
 
 interface PageTransitionProps {
@@ -40,41 +41,42 @@ const PageTransition: React.FC<PageTransitionProps> = ({
 
   console.log("##############   PageTransition render")
   const pathName = usePathname()
-  const pathNameFormat = removeSplash({pathName:pathName})
-
+  const pathNameFormat = removeSplash({ pathName: pathName })
+  const listUrlProjects = ['/work/work1', '/work/work2', '/work/work3', '/work/work4'];
   const timeTransition = 1.5
   const indexRef = useRef(100)
   const scopeRef = useRef(null)
-  
-  const { setStateTransition } = useStoreZustand()
+
+const { setStateTransition } = useStoreZustand()
   const transitionKeyRef = useRef<string | null>(null)
   const isWorkPage = useRef<boolean>(false)
   const [firstLoadPage, setFirstLoadPage] = useState(false);
 
-
+  const {contextSafe} = useGSAP({scope:scopeRef})
   useEffect(() => {
 
     transitionFirst(pathNameFormat)
     setFirstLoadPage(true)
-  },[])
+  }, [])
 
   useInitLenis({
-    firstLoad:firstLoadPage
+    firstLoad: firstLoadPage
   });
 
-  function transitionFirst(pn : string) {
-      console.log("Enter page ================>")
-      
-      const this_page = document.getElementById(`${pn}page`)
-      enterPage({
-        node: this_page?.parentElement,
-        nodeChild:this_page,
-        nodeParent:this_page,
-        index: 10
-      })
-      setStateTransition('entered')
+  function transitionFirst(pn: string) {
+    console.log("Enter page ================>")
+
+    const this_page = document.getElementById(`${pn}page`)
+    enterPage({
+      node: this_page?.parentElement,
+      nodeChild: this_page,
+      nodeParent: this_page,
+      index: 10
+    })
+  setStateTransition('entered')
   }
-  const enterPage = ({node,nodeChild,nodeParent,index}:{node:any,nodeChild:any,nodeParent:any,index:number}) => {
+
+  const enterPage = contextSafe(({ node, nodeChild, nodeParent, index }: { node: any, nodeChild: any, nodeParent: any, index: number }) => {
     //gsap will be run on here
     let cloneNode: any = node
     let cloneNodeChild: any = nodeChild
@@ -83,64 +85,64 @@ const PageTransition: React.FC<PageTransitionProps> = ({
 
     timeline = gsap.timeline();
     timeline
-        .set(cloneNodeParent as HTMLDivElement, { zIndex: index })
-        .set(cloneNode, { ...propsGsap.pathBot })
-        .set(cloneNodeChild as HTMLDivElement, {
-            ...propsGsap.pageEnter_tranform,
-            ...propsGsap.brightness100,
-        })
-        .to(cloneNode as HTMLDivElement, {
-            ...propsGsap.pathOpen,
-            ...propsGsap.config
-        })
-        .to(cloneNodeChild as HTMLDivElement, {
-            ...propsGsap.pageDefault,
-            ...propsGsap.brightness100,
-            ...propsGsap.config
-        }, '<')
+      .set(cloneNodeParent as HTMLDivElement, { zIndex: index })
+      .set(cloneNode, { ...propsGsap.pathBot })
+      .set(cloneNodeChild as HTMLDivElement, {
+        ...propsGsap.pageEnter_tranform,
+        ...propsGsap.brightness100,
+      })
+      .to(cloneNode as HTMLDivElement, {
+        ...propsGsap.pathOpen,
+        ...propsGsap.config
+      })
+      .to(cloneNodeChild as HTMLDivElement, {
+        ...propsGsap.pageDefault,
+        ...propsGsap.brightness100,
+        ...propsGsap.config
+      }, '<')
 
     return () => {
-        if (timeline) {
-            timeline.kill();
-            timeline = null;
-        }
-        if (cloneNodeParent) {
-            cloneNodeParent = null
-        }
-        if (cloneNodeChild) {
-            gsap.set(cloneNodeChild as HTMLDivElement, { clearProps: 'all' }); // Clear all applied properties
-            cloneNodeChild = null;
-        }
+      if (timeline) {
+        timeline.kill();
+        timeline = null;
+      }
+      if (cloneNodeParent) {
+        cloneNodeParent = null
+      }
+      if (cloneNodeChild) {
+        gsap.set(cloneNodeChild as HTMLDivElement, { clearProps: 'all' }); 
+        cloneNodeChild = null;
+      }
     };
-  }
-  
-  const exitPage = ({nodeChild}:{nodeChild:HTMLDivElement}) => {
+  })
+
+  const exitPage = contextSafe(({ nodeChild }: { nodeChild: HTMLDivElement }) => {
     //gsap will be run on here
-    let cloneNode : any = nodeChild
-    let timeline : any
+    let cloneNode: any = nodeChild
+    let timeline: any
     timeline = gsap.timeline();
 
     timeline
-        .set(cloneNode as HTMLElement, {
-            ...propsGsap.brightness100,
-        })
-        .to(cloneNode as HTMLElement, {
-            ...propsGsap.pageExit_tranform,
-            ...propsGsap.brightness16,
-            ...propsGsap.props_exitAnim
-        });
+      .set(cloneNode as HTMLElement, {
+        ...propsGsap.brightness100,
+      })
+      .to(cloneNode as HTMLElement, {
+        ...propsGsap.pageExit_tranform,
+        ...propsGsap.brightness16,
+        ...propsGsap.props_exitAnim
+      });
 
     return () => {
-        if (timeline) {
-            timeline.kill();
-            timeline = null;
-        }
-        if(cloneNode) {
-            gsap.set(cloneNode as HTMLDivElement, { clearProps: 'all' });
-            cloneNode = null
-        }
+      if (timeline) {
+        timeline.kill();
+        timeline = null;
+      }
+      if (cloneNode) {
+        gsap.set(cloneNode as HTMLDivElement, { clearProps: 'all' });
+        cloneNode = null
+      }
     };
-  }
+  })
 
   const getContentDomReference = useMemo(() => {
     const PageContentRef = (state: string) => {
@@ -151,33 +153,33 @@ const PageTransition: React.FC<PageTransitionProps> = ({
           contentDomReference = <HomePage />;
           break;
         case '/about':
-          contentDomReference = <AboutPage  />;
+          contentDomReference = <AboutPage />;
           break;
         case '/contact':
           contentDomReference = <ContactPage />;
           break;
         case '/work':
-          contentDomReference = <WorkPage/>;
+          contentDomReference = <WorkPage />;
           break;
         case '/work/work1':
           contentDomReference = <Project1 />;
           break;
-          case '/work/work2':
-            contentDomReference = <Project2 />;
-            break;
-            case '/work/work3':
-              contentDomReference = <Project3 />;
-              break;
-              case '/work/work4':
-                contentDomReference = <Project4/>;
-                break;
+        case '/work/work2':
+          contentDomReference = <Project2 />;
+          break;
+        case '/work/work3':
+          contentDomReference = <Project3 />;
+          break;
+        case '/work/work4':
+          contentDomReference = <Project4 />;
+          break;
         default:
           return <h1>404 Page</h1>;
       }
       return (
         <PageTransitionWrapper state={state}>
           <div id='wrapper_this'  >
-           
+
             {contentDomReference}
           </div>
         </PageTransitionWrapper>
@@ -195,45 +197,46 @@ const PageTransition: React.FC<PageTransitionProps> = ({
             key={transitionKey}
             timeout={timeTransition * 1000}
             unmountOnExit={true}
-            
+
             onEnter={(node: any) => {
-              console.log(transitionKey)
-                document.body.style.pointerEvents = 'none'
-                   document.body.style.userSelect = 'none'
+              document.body.style.pointerEvents = 'none'
+              document.body.style.userSelect = 'none'
               transitionKeyRef.current = transitionKey
-             //setStateTransition('enter')
-             if(transitionKey !== '/work/work1' && transitionKey !== '/work/work2' && transitionKey !== '/work/work3' && transitionKey !== '/work/work4') {
+              //setStateTransition('enter')
+              if (!listUrlProjects.includes(transitionKey)) {
                 enterPage({
                   node: node.children[0],
-                  nodeChild:node.children[0].children[0],
-                  nodeParent:node,
+                  nodeChild: node.children[0].children[0],
+                  nodeParent: node,
                   index: indexRef.current++
                 })
-             }else{
-              //set page type 2 thành index lớn và return thành nhỏ hơn 100 trong entered
-              node.style.zIndex = 444
-              node.children[0].style.clipPath = 'none'
-             }
+              } else {
+                //set page type 2 thành index lớn và return thành nhỏ hơn 100 trong entered
+                node.style.zIndex = 444
+                node.children[0].style.clipPath = 'none'
+              }
+
+            }}
+            onEntered={(node: any) => {
+              document.body.style.pointerEvents = 'auto'
+              document.body.style.userSelect = 'auto'
+              // nên set 1 state tại đây , là cần thiết
+              setStateTransition('entered')
+
+              // tạm thời return index < 100 với các page type 2
+              if(transitionKeyRef.current) {
+                if (listUrlProjects.includes(transitionKeyRef.current)) {
+                  node.style.zIndex = 70
+                }
+              }
              
             }}
-            onEntered={(node:any) => {
-              document.body.style.pointerEvents = 'auto'
-                   document.body.style.userSelect = 'auto'
-                   // nên set 1 state tại đây , là cần thiết
-          setStateTransition('entered')
-
-           // tạm thời return index < 100 với các page type 2
-           if(transitionKeyRef.current == '/work/work1' || transitionKeyRef.current == '/work/work2'  || transitionKeyRef.current == '/work/work3'  || transitionKeyRef.current == '/work/work4') {
-            node.style.zIndex = 70
-           }
-            }}
             onExit={(node: any) => {
-            //  setStateTransition('exit')
-      
-           if(transitionKeyRef.current !== '/work/work1' && transitionKeyRef.current !== '/work/work2' && transitionKeyRef.current !== '/work/work3' && transitionKeyRef.current !== '/work/work4') {
-             exitPage({nodeChild:node.children[0].children[0]})
-           }
-         
+              if(transitionKeyRef.current) {
+                if (!listUrlProjects.includes(transitionKeyRef.current)) {
+                  exitPage({ nodeChild: node.children[0].children[0] })
+                }
+              }
             }}
           >
             {state => getContentDomReference(state)}

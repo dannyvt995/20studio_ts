@@ -14,7 +14,11 @@ export const Mask = ({ children }: { children: React.ReactElement }): React.Reac
     const helloRef = React.cloneElement(children, { ...{ ref: refContent}})
     useEffect(() => {
         if (refContent.current) {
-            gsap.timeline()
+            gsap.timeline({
+                onComplete:() => {
+                    gsap.set(refContent.current,{clearProps:"all"})
+                }
+            })
                 .set(refContent.current, { x: -500,y:200,rotate:-20,scale:.2 })
                 .to(refContent.current, { duration: 1, x: 0,y:0,rotate:0,scale:1., ease: "power2.out" });
         }
@@ -46,7 +50,7 @@ export const Button = ({ children, data_link }: { children: string, data_link: s
             buttonElement.removeEventListener("mouseenter", enterAnimation);
             buttonElement.removeEventListener("mouseleave", leaveAnimation);
         };
-    }, [selectedItemNavbar]);
+    }, []);
     return (
         <button data-link={data_link} ref={ButtonRef}>{children}</button>
     )
@@ -77,6 +81,7 @@ export const WrapperMask = ({ img }: { img: string }) => {
 WrapperMask.displayName = 'WrapperMask'
 
 export const SliderImage = () => {
+    
     const maxToSlice = 32;
     const { indexItemNavbar } = useStoreZustand();
     const [outs, setOuts] = React.useState<(JSX.Element | null)[]>([]);
@@ -87,16 +92,16 @@ export const SliderImage = () => {
        
         switch (indexItemNavbar) {
             case 1:
-                newOut = <WrapperMask key={count} img={"/home/banner.png"} />;
+                newOut = <WrapperMask key={count} img={"/clone/ser2.jpg"} />;
                 break;
             case 2:
-                newOut = <WrapperMask key={count} img={"/home/form_contact_bgsection.png"} />;
+                newOut = <WrapperMask key={count} img={"/about/banner.webp"} />;
                 break;
             case 3:
                 newOut = <WrapperMask key={count} img={"/clone/ser1.jpg"} />;
                 break;
             case 4:
-                newOut = <WrapperMask key={count} img={"/clone/ser2.jpg"} />;
+                newOut = <WrapperMask key={count} img={"/home/banner.png"} />;
                 break;
             default:
                 newOut = <WrapperMask key={count} img={"/home/banner.png"} />;
@@ -126,10 +131,10 @@ export const SliderImage = () => {
 SliderImage.displayName = 'SliderImage'
 
 const SliderImageHover = memo((): React.ReactElement => {
-
+   
     return (
         <>
-            <ListButton />
+          {/*   <ListButton /> */}
             <SliderImage />
         </>
 

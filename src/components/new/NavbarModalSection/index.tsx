@@ -14,11 +14,12 @@ import { removeSplash } from '@/utils/removeSplash'
 import ButtonHoverNew from '../ButtonHoverNew'
 import ButtonHoverNew2 from '../ButtonHoverNew2'
 import IconSVG from '@/components/Icon/IconSVG'
+import SliderImageHover from '@/components/SliderImageHover'
 
 
 function NavbarModalSection({ }) {
 
-
+    
     const buttonMenuRef = useRef<HTMLButtonElement>(null)
     const { indexItemNavbar, prevIndexItemNavbar } = useStoreZustand();
 
@@ -69,12 +70,16 @@ function NavbarModalSection({ }) {
 
             <section className={s.navbar_modal_section} ref={SectionRef}>
                 <div className={s.wrapper} ref={MaskRef}>
+              
+                
                     <div className={s.container} ref={DomEffect}>
+                   
                         <div className={s.logo}>
                             20 STUDIO
                         </div>
                         <ul className={s.images} ref={SliderImage}>
-                            <li>
+                        <SliderImageHover/>
+                       {/*      <li>
                                 <Image src="/home/banner.png" width={0} height={0} sizes="100vw" style={{ position: 'relative', width: 'auto', height: '100%', left: '50%', transform: 'translateX(-50%)' }} alt="logo narbar modal" />
                             </li>
                             <li>
@@ -85,36 +90,46 @@ function NavbarModalSection({ }) {
                             </li>
                             <li>
                                 <Image src="/home/ser3.webp" width={0} height={0} sizes="100vw" style={{ position: 'relative', width: 'auto', height: '100%', left: '50%', transform: 'translateX(-50%)' }} alt="logo narbar modal" />
-                            </li>
+                            </li> */}
                         </ul>
                         <ul className={s.main}>
                             <li className={s.main_link}>
-                                <ButtonHoverNew btnNavbar={true} targetRedirect='/work' classAdd={s.main_line}>
+                                <ButtonHoverNew btnNavbar={true} data_id={0} targetRedirect='/work' classAdd={s.main_line}>
                                     Dự án
                                 </ButtonHoverNew>
 
                             </li>
                             <li className={s.main_link}>
-                                <ButtonHoverNew btnNavbar={true} targetRedirect='/about' classAdd={s.main_line}>
+                                <ButtonHoverNew btnNavbar={true} data_id={1} targetRedirect='/about' classAdd={s.main_line}>
                                     20 Studio
                                 </ButtonHoverNew>
 
                             </li>
                             <li className={s.main_link}>
-                                <ButtonHoverNew btnNavbar={true} targetRedirect='/' classAdd={s.main_line}>
+                                <ButtonHoverNew btnNavbar={true} data_id={2} targetRedirect='/' classAdd={s.main_line}>
                                     Dịch vụ
                                 </ButtonHoverNew>
 
                             </li>
                             <li className={s.main_link}>
-                                <ButtonHoverNew btnNavbar={true} targetRedirect='/contact' classAdd={s.main_line}>
+                                <ButtonHoverNew btnNavbar={true} data_id={3} targetRedirect='/contact' classAdd={s.main_line}>
                                     Liên hệ
                                 </ButtonHoverNew>
 
                             </li>
+                            <li className={s.social_link}>
+                                <a className="link-item">Linked</a>
+                            </li>
+                            <li className={s.social_link}>
+                                <a className="link-item">Facebook</a>
+                            </li>
+                            <li className={s.social_link}>
+                                <a className="link-item">Instagram</a>
+                            </li>
                         </ul>
                         <ul className={s.social}>
                             <li className={s.social_link}>
+                               
                                 {/*   <ButtonHoverUnderLineNew eventPass={handleClick} data_type="outsite" noName={"var(--font-lh-p)"} data_link="/" classStyle="link-item">Facebook</ButtonHoverUnderLineNew> */}
                             </li>
                             <li className={s.social_link}>

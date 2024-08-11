@@ -52,20 +52,21 @@ export const useEffectActive_NavbarModal = (
 
 
  
-    Timeline = gsap.timeline({
-        paused: true,
-        onComplete: () => {
-            gsap.set(SectionRef, { pointerEvents: 'auto' })
-        }
-    });
+   
     useEffect(() => {
         console.log("NEED 1 time ++++++HOOK NAVBAR MODAL...")
         // update DomContent when path change
         NavbarDeskop = document.getElementById(`navbar`)
         DomContent = document.getElementById(`${pathNameFormat}page`)
         
-        ButtonMenu = document.getElementById(`button_menu`)
-        if (ButtonMenu) ButtonMenu.addEventListener("click", handleClickMenu);
+      /*   ButtonMenu = document.getElementById(`button_menu`)
+        if (ButtonMenu) ButtonMenu.addEventListener("click", handleClickMenu); */
+        Timeline = gsap.timeline({
+            paused: true,
+            onComplete: () => {
+                gsap.set(SectionRef, { pointerEvents: 'auto' })
+            }
+        });
         Timeline.set(SectionRef, { zIndex: 500, pointerEvents: 'none' })
             .set(MaskRef, { clipPath: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)' })
             .set(DomEffect, {
@@ -91,8 +92,8 @@ export const useEffectActive_NavbarModal = (
             }, '<').reverse();
             window.timelineNavbar = Timeline
             return () => {
-                ButtonMenu.removeEventListener("click", handleClickMenu);
-                ButtonMenu = null
+             /*    ButtonMenu.removeEventListener("click", handleClickMenu);
+                ButtonMenu = null */
             }
     }, [pathName,SliderImage,SectionRef,MaskRef,DomEffect])
 
@@ -111,10 +112,10 @@ export const useEffectActive_NavbarModal = (
 
 
    
-    const handleClickMenu = () => {
+    /* const handleClickMenu = () => {
         if(window.timelineNavbar) window.timelineNavbar.reversed(!window.timelineNavbar.reversed());
     
-    };
+    }; */
 
    
     return () => {

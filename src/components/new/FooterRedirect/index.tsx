@@ -29,21 +29,21 @@ export default function FooterRedirect({scroller,targetRedirect,currentId}:{scro
                             onComplete:() => {
                               setTimeout(() => {
                                 router.push(`/work/work${targetRedirect}`)
-                              },500)
+                              },900)
                             }
                         })
-                  .to(window, { duration: .2, scrollTo: container.current })
+                        .to(window, { duration: .1, scrollTo: container.current })
                         .to(`#bg_fr_${currentId}`,{
                             scale:1,
-                            duration:.7
+                            duration:.4
                         })
                         .to(`#info_fr_${currentId}`,{
                             opacity:0,
-                            duration:.7
+                            duration:.4
                         },'<')
                         .to(`#image_fr_${currentId}`,{
                             clipPath: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)',
-                            duration:.7
+                            duration:.4
                         },'<')
                      
                     }

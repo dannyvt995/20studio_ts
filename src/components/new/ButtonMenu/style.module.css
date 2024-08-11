@@ -21,6 +21,7 @@
     font-size: var(--font-s-p-small);
     letter-spacing: .0266666667vw;
     letter-spacing: var(--font-ls-p-small);
+    line-height: 192%;
     /* line-height: 5.6vw;
     line-height: var(--font-lh-p-small); */
 }

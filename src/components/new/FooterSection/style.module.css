@@ -98,11 +98,16 @@
 
     .footer_section .link {
         grid-column: 11 / 13;
-       
-        bottom: 3vw;
-        right: 8vw;
+     
 
     }
+}
+.footer_section .link {
+    color: hsla(28, 37%, 81%, .8);
+  
+}
+.footer_section .link > div:nth-child(3):after {
+    background-color:  hsla(28, 37%, 81%, .8);;
 }
 .footer_section .item a{
     color: hsla(28, 37%, 81%, .8);
@@ -116,11 +121,7 @@
     line-height: var(--font-lh-p);
     line-height: 8vw;
 }
-.footer_section .link {
-    display: flex;
-    position: relative;
-    justify-content: flex-end;
-}
+
 
 .footer_section .link .circle {
     font-family: "BS-Medium";

@@ -40,7 +40,7 @@
   
 
     
-    font-family: BS-Medium;
+    font-family: BS-Regular;
 
     font-size: 4.8vw;
     font-size: var(--font-s-h4);
@@ -71,19 +71,19 @@
 
 
     font-weight: 300;
-    font-size: 14vw;
+    font-size: 12vw;
    /*  font-size: var(--font-s-h1);  */
     font-family: Lausanne-300;
     font-family: var(--font-f-lausanne-300);
 
     letter-spacing: -.4vw;
     letter-spacing: var(--font-ls-h1);
-    line-height: 15vw;
+   /*  line-height: 15vw; */
 /*     line-height: var(--font-lh-h1); */
   
 }
 .hero_section .body > p > span{
-    font-family: BS-Medium;
+    font-family: BS-Regular;
     font-size: 4.8vw;
     font-size: var(--font-s-h4);
     letter-spacing: 0;

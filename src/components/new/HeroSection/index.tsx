@@ -81,9 +81,9 @@ export default function HeroSection({ pageName, propsForGsap, propsHeroSection }
                             <span><span className={s.ip}>mang lại trải nghiệm đặc biệt và tinh tế cho khách hàng của mình.</span></span>
                         </p>
                         <h1 className={s.title}>
-                            <span><span className={s.tp}>Design</span></span>
-                            <span><span className={s.tp}>Fashion</span></span>
-                            <span><span className={s.tp}>Experience</span></span>
+                            <span><span className={s.tp}>Thiết kế</span></span>
+                            <span><span className={s.tp}>Trải nghiệm</span></span>
+                            <span><span className={s.tp}>Thời Trang</span></span>
                         </h1>
                     </div>
 
