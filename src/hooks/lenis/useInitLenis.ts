@@ -59,9 +59,13 @@ export function useInitLenis({ firstLoad }: { firstLoad?: boolean }) {
 
 
       lenisRef.stop()
+      if(isMobile()) {
+        NavbarDeskop.style.display = `none`;
+        ButtonNavbar.style.display = `flex`;
+      }
       lenisRef.on('scroll', ({ scroll }: { scroll: number }) => {
       
-        if (NavbarDeskop && ButtonNavbar) {
+        if (NavbarDeskop && ButtonNavbar && !isMobile()) {
       
           if (scroll > flag) {
             NavbarDeskop.style.display = `none`;

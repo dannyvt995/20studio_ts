@@ -58,3 +58,10 @@
 .background img {
     transform: scale(1.2);
 }
+
+@media (max-width:601px) {
+    .background img{
+        height: 100% !important;
+        width: auto !important;
+    }
+}

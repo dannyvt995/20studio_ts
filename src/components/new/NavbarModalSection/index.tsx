@@ -15,6 +15,7 @@ import ButtonHoverNew from '../ButtonHoverNew'
 import ButtonHoverNew2 from '../ButtonHoverNew2'
 import IconSVG from '@/components/Icon/IconSVG'
 import SliderImageHover from '@/components/SliderImageHover'
+import { isMobile } from '@/utils/responsive'
 
 
 function NavbarModalSection({ }) {
@@ -22,7 +23,6 @@ function NavbarModalSection({ }) {
     
     const buttonMenuRef = useRef<HTMLButtonElement>(null)
     const { indexItemNavbar, prevIndexItemNavbar } = useStoreZustand();
-
 
     const indexOfSlider = useRef<number>(5)
     const SliderImage = useRef<HTMLUListElement>(null)
@@ -34,6 +34,12 @@ function NavbarModalSection({ }) {
     // const [stateToggle,setStateToggle] = useState<boolean>(false)
     const pathName = usePathname()
     const pathNameFormat = removeSplash({ pathName: pathName })
+
+    const [isClient, setIsClient] = useState(false);
+
+    useEffect(() => {
+        if(isMobile()) setIsClient(true);
+    }, []);
 
     // useEffect(() => {
     //     if (indexItemNavbar >= 0 && prevIndexItemNavbar >= 0) {
@@ -78,7 +84,8 @@ function NavbarModalSection({ }) {
                             20 STUDIO
                         </div>
                         <ul className={s.images} ref={SliderImage}>
-                        <SliderImageHover/>
+                            {isClient ? <></> : <SliderImageHover/>}
+                        
                        {/*      <li>
                                 <Image src="/home/banner.png" width={0} height={0} sizes="100vw" style={{ position: 'relative', width: 'auto', height: '100%', left: '50%', transform: 'translateX(-50%)' }} alt="logo narbar modal" />
                             </li>

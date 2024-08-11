@@ -8,6 +8,7 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { useRouter } from 'next/navigation';
 import useStoreZustand from '@/hooks/useStoreZustand';
+import { isMobile } from '@/utils/responsive';
 
 gsap.registerPlugin(useGSAP)
 interface ButtonHoverNewProps {
@@ -30,7 +31,7 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children,data_id,btnNav
     const { selectedItemNavbar } = useStoreZustand();
     const { contextSafe } = useGSAP({ scope: linkRef }); 
     useEffect(() => {
-   
+        if(isMobile()) return
         timelineRef.current = gsap.timeline({ paused: true });
         timelineRef.current.fromTo(linkRef.current, {
             "--line-width": "0%",
@@ -55,7 +56,7 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children,data_id,btnNav
 
         const enterAnimation = contextSafe((e:any) => {
             timelineRef.current.tweenFromTo(0, "midway");
-            selectedItemNavbar(data_id as number);
+            if(btnNavbar) selectedItemNavbar(data_id as number);
 
         });
         const leaveAnimation = contextSafe(() => {

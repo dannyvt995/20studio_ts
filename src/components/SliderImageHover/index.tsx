@@ -4,6 +4,7 @@ import { gsap } from 'gsap';
 import Image from 'next/image';
 import s from './style.module.css'
 import useStoreZustand from '@/hooks/useStoreZustand';
+import { isMobile } from '@/utils/responsive';
 
 type typeRef = HTMLDivElement | HTMLButtonElement;
 
@@ -118,6 +119,7 @@ export const SliderImage = () => {
     };
 
     useEffect(() => {
+      
         updateOuts();
     }, [indexItemNavbar]);
 

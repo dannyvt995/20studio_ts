@@ -68,12 +68,17 @@
 }
 
 @media (max-width: 601px) {
-  
+    .container {
+        margin: 0 8vw !important;
+    }
      .services {
         margin-top:8vw !important;
     }
      .service {
         margin-bottom:8vw !important;
+    }
+    .body{
+        font-size: 1rem !important;
     }
 }
 

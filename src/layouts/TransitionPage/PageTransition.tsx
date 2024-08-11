@@ -49,6 +49,7 @@ const PageTransition: React.FC<PageTransitionProps> = ({
 
 const { setStateTransition } = useStoreZustand()
   const transitionKeyRef = useRef<string | null>(null)
+  const currentKeyRef = useRef<string | null>(null)
   const isWorkPage = useRef<boolean>(false)
   const [firstLoadPage, setFirstLoadPage] = useState(false);
 
@@ -74,6 +75,7 @@ const { setStateTransition } = useStoreZustand()
       index: 10
     })
   setStateTransition('entered')
+  currentKeyRef.current = pathName
   }
 
   const enterPage = contextSafe(({ node, nodeChild, nodeParent, index }: { node: any, nodeChild: any, nodeParent: any, index: number }) => {
@@ -202,8 +204,8 @@ const { setStateTransition } = useStoreZustand()
               document.body.style.pointerEvents = 'none'
               document.body.style.userSelect = 'none'
               transitionKeyRef.current = transitionKey
-              //setStateTransition('enter')
-              if (!listUrlProjects.includes(transitionKey)) {
+      
+              if (!listUrlProjects.includes(transitionKey) ) {
                 enterPage({
                   node: node.children[0],
                   nodeChild: node.children[0].children[0],
@@ -211,9 +213,22 @@ const { setStateTransition } = useStoreZustand()
                   index: indexRef.current++
                 })
               } else {
-                //set page type 2 thành index lớn và return thành nhỏ hơn 100 trong entered
-                node.style.zIndex = 444
-                node.children[0].style.clipPath = 'none'
+                if(currentKeyRef.current && currentKeyRef.current !== '/work' && !listUrlProjects.includes(currentKeyRef.current)) {
+                
+                    enterPage({
+                      node: node.children[0],
+                      nodeChild: node.children[0].children[0],
+                      nodeParent: node,
+                      index: indexRef.current++
+                    })
+                 
+                  
+                }else{
+                  //set page type 2 thành index lớn và return thành nhỏ hơn 100 trong entered
+                  node.style.zIndex = 444
+                  node.children[0].style.clipPath = 'none'
+                }
+           
               }
 
             }}
@@ -222,7 +237,7 @@ const { setStateTransition } = useStoreZustand()
               document.body.style.userSelect = 'auto'
               // nên set 1 state tại đây , là cần thiết
               setStateTransition('entered')
-
+              currentKeyRef.current = pathName
               // tạm thời return index < 100 với các page type 2
               if(transitionKeyRef.current) {
                 if (listUrlProjects.includes(transitionKeyRef.current)) {
@@ -235,6 +250,12 @@ const { setStateTransition } = useStoreZustand()
               if(transitionKeyRef.current) {
                 if (!listUrlProjects.includes(transitionKeyRef.current)) {
                   exitPage({ nodeChild: node.children[0].children[0] })
+                }else{
+             
+                  if(currentKeyRef.current !== '/work'){
+                    console.log("EXIT from page not is work")
+                    exitPage({ nodeChild: node.children[0].children[0] })
+                  }
                 }
               }
             }}

@@ -10,7 +10,7 @@
     position: relative;
     height: fit-content;
     
-    font-size: 1vw !important;
+   
     line-height: 142%;
 }
 .text::after {

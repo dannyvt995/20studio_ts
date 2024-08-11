@@ -128,7 +128,6 @@
     }
      .text_1 {
         height:fit-content !important;
-        margin-top: 42vh!important;
     }
      .IntroWorkPage {
         height:100vh !important;
@@ -136,8 +135,7 @@
      .background > img{
         width: auto !important;
         height: 100% !important;
-        transform: translateX(-50%) !important;
-        left: 50% !important;
+       
         position: relative !important;
     }
      .text_2 .info {

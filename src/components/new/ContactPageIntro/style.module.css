@@ -9,7 +9,7 @@
 
 }
 .container {
-/*     margin: 0 8vw; */
+    margin: 0 8vw;
     position: relative;
     height:fit-content;
 }
@@ -55,6 +55,13 @@
     letter-spacing: var(--font-ls-p-small);
     line-height: 5.6vw;
     line-height: var(--font-lh-p-small);
+}
+
+
+@media (max-width: 601px) {
+    .container {
+        padding:40vw 0 21.3333333333vw;
+    }
 }
 @media (min-width: 601px) {
     

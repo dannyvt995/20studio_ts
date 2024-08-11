@@ -7,6 +7,7 @@ import Image from 'next/image'
 import IconSVG from '@/components/Icon/IconSVG'
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
+import Link from 'next/link';
 gsap.registerPlugin(useGSAP)
 export default function ServicesSection() {
     const container = useRef<any>()
@@ -54,10 +55,12 @@ export default function ServicesSection() {
                 </div>
             </div>
             <div className={s.services} ref={listItemRef}>
-                <a className={s.service}
+               
+                <Link className={s.service}
                     data-id="0"
                     onMouseEnter={(e) => actionGsap(e)}
                     onMouseLeave={(e) => disableGsap(e)}
+                    href='/work/work1'
                 >
                     <div className={s.block}>
                         <Image priority src="/clone/ser1.jpg" width={0} height={0} sizes="100vw" style={{ width: "100%", height: "auto" }} alt="services1" />
@@ -69,11 +72,12 @@ export default function ServicesSection() {
                         </p>
                     </div>
                    
-                </a>
-                <a className={s.service}
+                </Link>
+                <Link className={s.service}
                     data-id="1"
                     onMouseEnter={(e) => actionGsap(e)}
                     onMouseLeave={(e) => disableGsap(e)}
+                         href='/work/work2'
                 >
                     <div className={s.block}>
                         <Image priority src="/clone/ser2.jpg" width={0} height={0} sizes="100vw" style={{ width: "100%", height: "auto" }} alt="services1" />
@@ -85,11 +89,12 @@ export default function ServicesSection() {
                     </p>
                     </div>
                    
-                </a>
-                <a className={s.service}
+                </Link>
+                <Link className={s.service}
                     data-id="2"
                     onMouseEnter={(e) => actionGsap(e)}
                     onMouseLeave={(e) => disableGsap(e)}
+                         href='/work/work3'
                 >
                     <div className={s.block}>
                         <Image priority src="/clone/ser3.jpg" width={0} height={0} sizes="100vw" style={{ width: "100%", height: "auto" }} alt="services1" />
@@ -102,11 +107,12 @@ export default function ServicesSection() {
                     </p>
                     </div>
                     
-                </a>
-                <a className={s.service}
+                </Link>
+                <Link className={s.service}
                     data-id="3"
                     onMouseEnter={(e) => actionGsap(e)}
                     onMouseLeave={(e) => disableGsap(e)}
+                         href='/work/work4'
                 >
                     <div className={s.block}>
                         <Image
@@ -123,7 +129,7 @@ export default function ServicesSection() {
 
                     </div>
                    
-                </a>
+                </Link>
             </div>
         </section>
     )

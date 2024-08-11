@@ -95,6 +95,11 @@
     position: absolute;
     right: 0;
 }
+@media (max-width: 601px) {
+  .container {
+    margin: 0 8vw !important;
+  }
+}
 @media (min-width: 601px) {
       .aboutus_minded {
         padding: 0 0 0 0;

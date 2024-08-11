@@ -1,14 +1,14 @@
 
-.faq_section .container {
+.container {
     display:grid;
     grid-column-gap: 2.2222222222vw;
     grid-template-columns: repeat(12, 1fr);
     margin: 0 8.3333333333vw;
 }
-.faq_section .title {
+.title {
     margin: 0 0 6.4vw;
 }
-.faq_section .title.is_normal .title_line{
+.title.is_normal .title_line{
     font-weight: 300;
     font-family: Lausanne-300;
     font-family: var(--font-f-lausanne-300);
@@ -22,16 +22,16 @@
 }
 
 
-.faq_section .dif{
+.dif{
     grid-column: 4 / 11;
 }
-.faq_section .dif .item {
+.dif .item {
     padding-top:1.5vw;
 }
-.faq_section .dif .item:last-child {
+.dif .item:last-child {
     padding-bottom:1.5vw;
 }
-.faq_section .dif .item p {
+.dif .item p {
     font-family: "BS-Medium";
     font-size: 3.7333333333vw;
     font-size: var(--font-s-p-small);
@@ -41,19 +41,19 @@
     line-height: var(--font-lh-p-small);
 }
 
-.faq_section .dif .item > span:first-child p  {
+.dif .item > span:first-child p  {
     max-width: 50%;
 }
-.faq_section .dif .item {
+.dif .item {
     display:flex;
 }
-.faq_section .dif .item > span:first-child {
+.dif .item > span:first-child {
     width:50%;
 }
-.faq_section .dif .item > span:last-child {
+.dif .item > span:last-child {
     width:50%;
 }
-.faq_section .label {
+.label {
     color: #0d0e13;
     color: var(--color-dark-grey);
     display: inline-flex;
@@ -72,7 +72,7 @@
     position: relative;
 }
 
-.faq_section  .text {
+ .text {
     font-weight:600;
     font-family: Lausanne-300;
     font-family: var(--font-f-lausanne-300);
@@ -81,14 +81,14 @@
 
 }
 
-.faq_section .icon {
+.icon {
     height: 3.2vw;
     position: absolute;
     transform: translate(-5.3333333333vw, 2.1333333333vw);
     width: 3.2vw;
     z-index: 1;
 }
-.faq_section .text {
+.text {
     display: flex;
     position: relative;
     transform-origin: top left;
@@ -100,27 +100,48 @@
     .has-padding-bottom {
         padding-bottom: 10.4166666667vw;
     }
-    .faq_section .title.is-normal {
+    .title.is-normal {
         margin: 0 0 1.6666666667vw;
     }
-    .faq_section  .title {
+     .title {
         grid-column: 4 / 13;
     }
-    .faq_section .label {
+    .label {
         height: 2.3611111111vw;
         line-height: 2.5694444444vw;
         padding-left: 1.5277777778vw;
     }
-    .faq_section .label {
+    .label {
         grid-column: 2 / 4;
     }
-    .faq_section .body {
+    .body {
         grid-column: 4 / 8;
     }
-    .faq_section .icon {
+    .icon {
         height: .8333333333vw;
         transform: translate(-1.4930555556vw, .7638888889vw);
         width: .8333333333vw;
         will-change: transform;
+    }
+}
+
+
+@media (max-width: 601px) {
+    .title {
+        grid-row: 2!important;
+       
+        grid-column: 1 / 12 !important;
+    }
+    .title_line {
+        font-size: 3.6rem !important;
+        line-height: 100% !important;
+    }
+    .label{
+        grid-row: 1!important;
+        margin-bottom: 1rem;
+    }
+    .dif {
+        grid-row: 3!important;
+        grid-column: 1 / 13 !important;
     }
 }
