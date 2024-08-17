@@ -188,11 +188,8 @@ export default function WorkSlider() {
   }
   function removeElementAtIndex(array:any, n:any) {
     if (n < 0 || n >= array.length) {
-      // Kiểm tra xem chỉ số n có hợp lệ không
       return array;
     }
-    
-    // Tạo một bản sao của mảng gốc và loại bỏ phần tử tại vị trí n
     return array.slice(0, n).concat(array.slice(n + 1));
   }
   
@@ -207,9 +204,7 @@ export default function WorkSlider() {
       onComplete: () => {
         // gsap.set(ListChildBackgroundRef.current[valueRef.current][0].children, {
         //   opacity:0
-  
         // })
-  
        router.push(targetUrl)
       }
     })
@@ -252,22 +247,21 @@ export default function WorkSlider() {
         <div className={s.title} ref={titlesRef}>
 
           <div className={s.active}>
-            <span className={s.ii}><span className={s.iii}>Chinhs</span></span>
-            <span className={s.ii}><span className={s.iii}>Major</span></span>
+            <span className={s.ii}><span className={s.iii}>Unwanted</span></span>
             <span className={s.ii}><span className={s.iii}>Project</span></span>
           </div>
           <div>
             <span className={s.ii}><span className={s.iii}>Nét</span></span>
-            <span className={s.ii}><span className={s.iii}>Project</span></span>
+            <span className={s.ii}><span className={s.iii}>Collection</span></span>
           </div>
           <div>
-            <span className={s.ii}><span className={s.iii}>Lung</span></span>
-            <span className={s.ii}><span className={s.iii}>Tung</span></span>
-            <span className={s.ii}><span className={s.iii}>Studio</span></span>
+            <span className={s.ii}><span className={s.iii}>Lung Tung</span></span>
+            <span className={s.ii}><span className={s.iii}>Collection 2</span></span>
+
           </div>
           <div>
-            <span className={s.ii}><span className={s.iii}>20 Project</span></span>
-            <span className={s.ii}><span className={s.iii}>Design</span></span>
+            <span className={s.ii}><span className={s.iii}>20 Studio</span></span>
+            <span className={s.ii}><span className={s.iii}>Website</span></span>
           </div>
         </div>
         <div className={s.subtitle} ref={subtitlesRef}>
@@ -300,16 +294,16 @@ export default function WorkSlider() {
       <div className={s.thumbnails} ref={thumbnailsRef}>
         <div className={cn(s.thumbnail, s.active)}>
 
-          <Image src="/clone/services1.webp" alt="job1" width={0} height={0} sizes="100vw" style={{ width: "100%", height: "auto" }} className="thumbnail-image" /></div>
+          <Image src="/clone/services1.webp" alt="image_cache_services1" width={0} height={0} sizes="100vw" style={{ width: "100%", height: "auto" }} className="thumbnail-image" /></div>
         <div className={s.thumbnail}>
 
-          <Image src="/clone/services2.webp" alt="job1" width={0} height={0} sizes="100vw" style={{ width: "100%", height: "auto" }} className="thumbnail-image" /></div>
+          <Image src="/clone/services2.webp" alt="image_cache_services2" width={0} height={0} sizes="100vw" style={{ width: "100%", height: "auto" }} className="thumbnail-image" /></div>
         <div className={s.thumbnail}>
 
-          <Image src="/clone/services3.webp" alt="job1" width={0} height={0} sizes="100vw" style={{ width: "100%", height: "auto" }} className="thumbnail-image" /></div>
+          <Image src="/clone/services3.webp" alt="image_cache_services3" width={0} height={0} sizes="100vw" style={{ width: "100%", height: "auto" }} className="thumbnail-image" /></div>
         <div className={s.thumbnail}>
 
-          <Image src="/clone/services4.webp" alt="job1" width={0} height={0} sizes="100vw" style={{ width: "100%", height: "auto" }} className="thumbnail-image" /></div>
+          <Image src="/clone/services4.webp" alt="image_cache_services4" width={0} height={0} sizes="100vw" style={{ width: "100%", height: "auto" }} className="thumbnail-image" /></div>
 
       </div>
       <div className={s.projects} ref={backgroundsRef}>

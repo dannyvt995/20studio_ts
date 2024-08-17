@@ -4,7 +4,8 @@
     align-items: center;
     height: fit-content !important;
     width: fit-content !important;
-    color: white;
+    color: inherit;
+
 }
 .text {
     position: relative;

@@ -13,7 +13,7 @@ function AboutPage(): JSX.Element {
   
     return (
         <div id="aboutpage">
-            <HeroSection pageName="about" propsForGsap={about_page.propsForGsap} propsHeroSection={about_page.propsHeroSection} />
+            <HeroSection pageName="about" propsForGsap={about_page.propsForGsap} content={about_page.content.heroSection} />
 
             <Intro  propsForGsap={about_page.propsForGsap}/>
 

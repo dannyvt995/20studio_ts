@@ -55,16 +55,15 @@ function FooterSection({ propsForGsap,state }: IFooterSection) {
             <div className={s.container} ref={domEffect}>
                 <div className={s.title}>
                     <div>Our</div>
-                    <div>Story</div>
+                    <div>Mission</div>
                 </div>
-                <p className={s.body}>20Studio mong muốn đồng hành cùng bạn và tạo ra những sản phẩm chất lượng nhất với giá thành cạnh tranh theo đúng thời hạn cam kết.</p>
+                <p className={s.body}>20Studio wishes to accompany you and create the best quality products at competitive prices within the committed deadline.</p>
                 <div className={s.divider}></div>
                 <ul className={s.address}>
                     <li className={s.item}>
                         <a >
-                            30 Lý Chính Thắng<br />
-                            P. Võ Thị Sáu<br />
-                            Quận 3, HCM.
+                            345 Hoang Van Thu<br />
+                            P.6, Q.Tan Binh, HCMC.
 
                         </a>
                     </li>
@@ -78,22 +77,22 @@ function FooterSection({ propsForGsap,state }: IFooterSection) {
                     <li className={s.item}>
                    
                     <ButtonHoverNew  targetRedirect='/work'>
-                    Dự án
+                    Project
                    </ButtonHoverNew>
                     </li>
                     <li className={s.item}>
                     <ButtonHoverNew targetRedirect='/home'>
-                    Dịch vụ
+                    Service
                    </ButtonHoverNew>
                     </li>
                     <li className={s.item}>
                     <ButtonHoverNew  targetRedirect='/about'>
-                   Về chúng tôi
+                   About us
                    </ButtonHoverNew>
                     </li>
                     <li className={s.item}>
                     <ButtonHoverNew  targetRedirect='/contact'>
-                   Liên hệ
+                   Contact
                    </ButtonHoverNew>
                     </li>
                 </ul>
@@ -101,6 +100,11 @@ function FooterSection({ propsForGsap,state }: IFooterSection) {
                     <li className={s.item}>
                         <a>
                             Facebook
+                        </a>
+                    </li>
+                    <li className={s.item}>
+                        <a>
+                            Linked
                         </a>
                     </li>
                     <li className={s.item}>
@@ -114,7 +118,7 @@ function FooterSection({ propsForGsap,state }: IFooterSection) {
                 icon={<IconSVG src='/icon/arrow-right.svg' />} 
                 targetRedirect='/about' 
                 classAdd={classNames(s.link,s.wrap,s.circle)}>
-                    Về chúng tôi
+                    Our mission
                         </ButtonHoverNew2>
                
             </div>

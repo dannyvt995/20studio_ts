@@ -47,10 +47,10 @@ export default function ServicesSection() {
                 <div className={s.text}>
                     <h2 className={s.lable}>
                         <IconSVG src='/icon/star.svg' className={s.icon} />
-                        Danh mục sản phẩm</h2>
-                    <h3 className={s.title}>Dự án</h3>
+                        Project list</h2>
+                    <h3 className={s.title}>Project</h3>
                     <div className={s.body}>
-                        <p>Các dự án hân hạnh được đồng hành cùng khách hàng trong năm qua</p>
+                        <p>Projects are pleased to accompany customers in the past year.</p>
                     </div>
                 </div>
             </div>
@@ -63,12 +63,12 @@ export default function ServicesSection() {
                     href='/work/work1'
                 >
                     <div className={s.block}>
-                        <Image priority src="/clone/ser1.jpg" width={0} height={0} sizes="100vw" style={{ width: "100%", height: "auto" }} alt="services1" />
+                        <Image  src="/clone/services1.webp" width={0} height={0} sizes="100vw" style={{ width: "100%", height: "auto" }} alt="image_cache_services1" />
                     </div>
                     <div className={s.w_info}>
                         <p className={s.info}>
                             <span className={s.nameprj}>Chinh’s Major Project - </span>
-                            <span className={s.jobdes}>Phát triển mẫu</span>
+                            <span className={s.jobdes}>Sample Development</span>
                         </p>
                     </div>
                    
@@ -80,12 +80,12 @@ export default function ServicesSection() {
                          href='/work/work2'
                 >
                     <div className={s.block}>
-                        <Image priority src="/clone/ser2.jpg" width={0} height={0} sizes="100vw" style={{ width: "100%", height: "auto" }} alt="services1" />
+                        <Image  src="/clone/services2.webp" width={0} height={0} sizes="100vw" style={{ width: "100%", height: "auto" }} alt="image_cache_services2" />
                     </div>
                     <div className={s.w_info}>
                     <p className={s.info}>
                         <span className={s.nameprj}>Nét Project - </span>
-                        <span className={s.jobdes}>Phát triển mẫu</span>
+                        <span className={s.jobdes}>Sample Development</span>
                     </p>
                     </div>
                    
@@ -97,12 +97,12 @@ export default function ServicesSection() {
                          href='/work/work3'
                 >
                     <div className={s.block}>
-                        <Image priority src="/clone/ser3.jpg" width={0} height={0} sizes="100vw" style={{ width: "100%", height: "auto" }} alt="services1" />
+                        <Image  src="/clone/services3.webp" width={0} height={0} sizes="100vw" style={{ width: "100%", height: "auto" }} alt="image_cache_services3" />
                     </div>
                     <div className={s.w_info}>
                     <p className={s.info}>
                         <span className={s.nameprj}>Lung Tung - </span>
-                        <span className={s.jobdes}>Quản lí sản xuất</span>
+                        <span className={s.jobdes}>Fashion Design</span>
 
                     </p>
                     </div>
@@ -116,15 +116,15 @@ export default function ServicesSection() {
                 >
                     <div className={s.block}>
                         <Image
-                            priority
-                            src="/clone/services1.webp"
-                            width={0} height={0} sizes="100vw" style={{ width: "100%", height: "auto" }} alt="services1"
+                            
+                            src="/clone/services4.webp"
+                            width={0} height={0} sizes="100vw" style={{ width: "100%", height: "auto" }} alt="image_cache_services4"
                         />
                     </div>
                     <div className={s.w_info}>
                         <p className={s.info}>
-                            <span className={s.nameprj}>20 Project - </span>
-                            <span className={s.jobdes}>Thiết kế đồ hoạ</span>
+                            <span className={s.nameprj}>20Studio - </span>
+                            <span className={s.jobdes}>Website Development</span>
                         </p>
 
                     </div>

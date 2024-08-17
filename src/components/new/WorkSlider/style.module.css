@@ -102,13 +102,19 @@
     top: 0;
     width: 100%;
     z-index:1;
+  
   /*   pointer-events: none;
     user-select: none; */
 
 }
 .work_page .projects button {
-    border:none;
-    outline:none;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    background: none;
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
 }
 .work_page .project_image {
     height: 124.5833333333vw;

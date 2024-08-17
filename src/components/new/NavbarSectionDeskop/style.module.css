@@ -12,14 +12,27 @@
 }
 
 .nav_list {
+    position: relative;
     display: flex;
-    overflow: hidden;
+   
+}
+.this_icon {
+    position: absolute;
+    bottom:-.7vw;
+    left:calc(calc(6vw  /  2) - .35vw);
+    width: .7vw;
+    height: .7vw;
+    color: white;
+    will-change: transform;
+    transform-origin: center center;
 }
 .nav_list  > .nav_item:not(:first-child) {
-    margin-left: 2.0833333333vw;
+    /* margin-left: 2.0833333333vw; */
     
 }
 .nav_item {
+    width: 6vw;
+    text-align: center;
     will-change: transform;
     transform: translateY(100%);
 }

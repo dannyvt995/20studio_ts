@@ -4,6 +4,7 @@ import gsap from 'gsap';
 import { useEffect, useRef } from 'react';
 import { removeSplash } from '@/utils/removeSplash'
 import { usePathname,useRouter } from 'next/navigation'
+import useStoreZustand from '../useStoreZustand';
 
 
 const propsGsap = {
@@ -42,7 +43,7 @@ export const useEffectActive_NavbarModal = (
     const pathName = usePathname()
     const pathNameFormat = removeSplash({ pathName: pathName })
     const router = useRouter()
-
+    const {stateTransition} = useStoreZustand()
 
     console.log("HOOK NAVBAR MODAL...")
     let Timeline: any = null
@@ -54,6 +55,7 @@ export const useEffectActive_NavbarModal = (
  
    
     useEffect(() => {
+        if(stateTransition !== 'entered') return
         console.log("NEED 1 time ++++++HOOK NAVBAR MODAL...")
         // update DomContent when path change
         NavbarDeskop = document.getElementById(`navbar`)

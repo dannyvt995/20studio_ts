@@ -25,10 +25,10 @@ interface IHeroSection {
     pageName: string,
     state?: string,
     propsForGsap: any,
-    propsHeroSection: any,
+    content: any,
 }
 
-export default function HeroSection({ pageName, propsForGsap, propsHeroSection }: IHeroSection) {
+export default function HeroSection({ pageName, propsForGsap, content }: IHeroSection) {
     const triggleSection = useRef<HTMLDivElement>(null)
     const backgroundImg = useRef<HTMLDivElement>(null)
     const pathName = usePathname()
@@ -72,60 +72,54 @@ export default function HeroSection({ pageName, propsForGsap, propsHeroSection }
 
     if (pageName === 'home') {
         return (
-            <section className={cn(s.hero_section, propsHeroSection.classAdd)} id="hero_section" ref={triggleSection}>
+            <section className={cn(s.hero_section, content.classAdd)} id="hero_section" ref={triggleSection}>
                 <div className="container">
                     <div className={s.text_1}>
                         <p className={s.intro}>
-                            <span><span className={s.ip}>20studio là một công ty thời trang toàn cầu</span></span>
-                            <span><span className={s.ip}>chuyên tạo ra sản phẩm độc đáo và phong cách</span></span>
-                            <span><span className={s.ip}>mang lại trải nghiệm đặc biệt và tinh tế cho khách hàng của mình.</span></span>
+                            <span><span className={s.ip}>We are a global creative fashion studio base</span></span>
+                            <span><span className={s.ip}>in Ho Chi Minh city. We work with artist, designer and manufactures</span></span>
+                            <span><span className={s.ip}>on clients projectsto produce outstanding works.</span></span>
                         </p>
                         <h1 className={s.title}>
-                            <span><span className={s.tp}>Thiết kế</span></span>
-                            <span><span className={s.tp}>Trải nghiệm</span></span>
-                            <span><span className={s.tp}>Thời Trang</span></span>
+                            <span><span className={s.tp}>Fashion</span></span>
+                            <span><span className={s.tp}>Creative</span></span>
+                            <span><span className={s.tp}>Production</span></span>
                         </h1>
                     </div>
 
 
                     <div className={s.text_2}>
                         <div className={s.body}>
-                            <p><span className="">Tận dụng sự kết hợp giữa sự sáng tạo và kỹ thuật chuyên môn, chúng tôi cam kết mang đến những sản phẩm chất lượng cao và độc đáo, từ ý tưởng ban đầu đến sản phẩm hoàn thiện. Hãy để 20studio trở thành đối tác đáng tin cậy của bạn trong việc thúc đẩy sự thành công của thương hiệu thời trang của bạn.</span></p>
+                            <p><span className="">Beside designing and fashion production, 20Studio work on projects of all types including brand and product development, digital experience design, social media design, production management and fashion business solutions.</span></p>
 
                         </div>
 
                         <ButtonHoverNew2 icon={<IconSVG src='/icon/arrow-right.svg' />} targetRedirect='/about' classAdd={s.link}>
-                            Về 20 Studio
+                            Explore our services
                         </ButtonHoverNew2>
 
                         <ul className={s.list1}>
                             <li className={s.list_item}>
 
                                 <ButtonHoverNew classAdd={s.list_link} targetRedirect='/work'>
-                                    Dự án
+                                    Project
                                 </ButtonHoverNew>
 
                             </li>
                             <li className={s.list_item}>
                                 <ButtonHoverNew classAdd={s.list_link} targetRedirect='/about'>
-                                    Về chúng tôi
+                                    About us
                                 </ButtonHoverNew>
 
                             </li>
                             <li className={s.list_item}>
 
                                 <ButtonHoverNew classAdd={s.list_link} targetRedirect='/contact'>
-                                    Liên hệ
+                                    Contact
                                 </ButtonHoverNew>
 
 
 
-                            </li>
-                            <li className={s.list_item}>
-
-                                <ButtonHoverNew classAdd={s.list_link} targetRedirect='/home'>
-                                    Dịch vụ
-                                </ButtonHoverNew>
                             </li>
                         </ul>
                         <ul className="list2">
@@ -145,56 +139,51 @@ export default function HeroSection({ pageName, propsForGsap, propsHeroSection }
                 </div>
                 <div className={s.background} ref={backgroundImg}>
 
-                    <Image src={`${propsHeroSection.backgroundImage}`} alt="image_cache_banner_home" width={0} height={0} sizes="100vw" style={propsHeroSection.backgroundSize} />
+                    <Image src={`${content.backgroundImage}`} alt="image_cache_banner_home" width={0} height={0} sizes="100vw" style={content.backgroundSize} />
                 </div>
             </section>
         )
     } else if (pageName === 'about') {
         return (
-            <section className={cn(s.hero_section, propsHeroSection.classAdd)} id="hero_section" ref={triggleSection}>
-                <div className="container">
+            <section className={cn(s.hero_section, content.classAdd)} id="hero_section" ref={triggleSection}>
+                <div className="container" style={{paddingTop:'55vh'}}>
                     <div className={s.text_1}>
-                        <p className={s.intro}>
+                    {/*     <p className={s.intro}>
                             <span><span className={s.ip}>20studio là một công ty thời trang toàn cầu</span></span>
                             <span><span className={s.ip}>chuyên tạo ra sản phẩm độc đáo và phong cách</span></span>
                             <span><span className={s.ip}>mang lại trải nghiệm đặc biệt và tinh tế cho khách hàng của mình.</span></span>
-                        </p>
+                        </p> */}
                         <h1 className={s.title}>
                             <span><span className={s.tp}>Design</span></span>
                             <span><span className={s.tp}>Fashion</span></span>
-                            <span><span className={s.tp}>Experience</span></span>
+                            <span><span className={s.tp}>Digital Exp</span></span>
                         </h1>
                     </div>
 
 
                     <div className={s.text_2}>
                         <div className={s.body}>
-                            <p><span className="">Tận dụng sự kết hợp giữa sự sáng tạo và kỹ thuật chuyên môn, chúng tôi cam kết mang đến những sản phẩm chất lượng cao và độc đáo, từ ý tưởng ban đầu đến sản phẩm hoàn thiện. Hãy để 20studio trở thành đối tác đáng tin cậy của bạn trong việc thúc đẩy sự thành công của thương hiệu thời trang của bạn.</span></p>
+                            <p><span className="">Beside designing and fashion production, 20Studio work on projects of all types including brand and product development, digital experience design, social media design, production management and fashion business solutions.</span></p>
 
                         </div>
 
              
                         <ButtonHoverNew2 icon={<IconSVG src='/icon/arrow-right.svg' />} targetRedirect='/about' classAdd={s.link}>
-                            Về 20 Studio
+                            Our mission
                         </ButtonHoverNew2>
                         <ul className={s.list1}>
                             <li className={s.list_item}>
 
                                 <ButtonHoverNew classAdd={s.list_link} targetRedirect='/work'>
-                                    Dự án
+                                    Project
                                 </ButtonHoverNew>
 
                             </li>
-                            <li className={s.list_item}>
-                                <ButtonHoverNew classAdd={s.list_link} targetRedirect='/about'>
-                                    Về chúng tôi
-                                </ButtonHoverNew>
-
-                            </li>
+                       
                             <li className={s.list_item}>
 
                                 <ButtonHoverNew classAdd={s.list_link} targetRedirect='/contact'>
-                                    Liên hệ
+                                   Contact
                                 </ButtonHoverNew>
 
 
@@ -203,7 +192,7 @@ export default function HeroSection({ pageName, propsForGsap, propsHeroSection }
                             <li className={s.list_item}>
 
                                 <ButtonHoverNew classAdd={s.list_link} targetRedirect='/home'>
-                                    Dịch vụ
+                                    Service
                                 </ButtonHoverNew>
                             </li>
                         </ul>
@@ -224,7 +213,7 @@ export default function HeroSection({ pageName, propsForGsap, propsHeroSection }
                 </div>
                 <div className={s.background} ref={backgroundImg}>
 
-                    <Image src={`${propsHeroSection.backgroundImage}`} alt="image_cache_banner_about" width={0} height={0} sizes="100vw" style={propsHeroSection.backgroundSize} />
+                    <Image src={`${content.backgroundImage}`} alt="image_cache_banner_about" width={0} height={0} sizes="100vw" style={content.backgroundSize} />
                 </div>
             </section>
         )

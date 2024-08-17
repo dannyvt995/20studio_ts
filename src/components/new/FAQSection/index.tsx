@@ -6,8 +6,8 @@ export default function FAQSection() {
     <section className={cn(s.faq_section,s.has_padding_top_and_bottom,s.white_bg)}>
          <div className={s.container}>
          <h2 className={cn(s.title ,s.is_normal)}>
-            <div className={s.title_line}>Câu hỏi</div>
-            <div className={s.title_line}>thường gặp</div>
+            <div className={s.title_line}>FAQ’S</div>
+          {/*   <div className={s.title_line}>thường gặp</div> */}
           </h2>
 
         <h2 className={s.label}>
@@ -17,20 +17,20 @@ export default function FAQSection() {
         <div className={s.dif}>
             <ul className={s.list_item}>
                 <li className={s.item}>
-                    <span><p>Thời gian lên mẫu kéo dài bao lâu?</p></span>
+                    <span><p>What is the lead time of sample develop?</p></span>
                     <span><p>Thời gian lên mẫu sẽ phụ thuộc vào độ phức tạp của mẫu, nhưng thông thường sẽ kéo dài từ 2 đến 5 ngày</p></span>
                 </li>
                 <li className={s.item}>
-                    <span><p>Thời gian sản xuất kéo dài bao lâu?</p></span>
-                    <span><p>Thời gian sản xuất sẽ phụ thuộc vào số lượng và thông tin đơn hàng, thông thường cho số lượng 200 đơn vị sản phẩm đơn giản như áo thun sẽ cần 5 ngày để hoàn thành</p></span>
+                    <span><p>What is the production leadtime?</p></span>
+                    <span><p>It depend on the quantity and complexity of the order. Normally takes 5 to 14 working days to be done.</p></span>
                 </li>
                 <li className={s.item}>
-                    <span><p>Tôi cần cung cấp những thông tin gì cho 20Studio?</p></span>
-                    <span><p>Bạn sẽ cần cung cấp các thông tin liên quan tới mẫu mã, số lượng và các yêu cầu đặc biệt liên quan đến đơn hàng, những thông tin sẽ được trao đổi kỹ lưỡng ở các cuộc họp giữa khách hàng và 20Studio</p></span>
+                    <span><p>What information do I need to provide?</p></span>
+                    <span><p>You will be provide a form to fill in, the information will be on quality, quantity, specs and construction details.</p></span>
                 </li>
                 <li className={s.item}>
-                    <span><p>20Studio cung cấp những dịch vụ nào?</p></span>
-                    <span><p>Chúng tôi có khả năng cung cấp các dịch vụ từ thiết kế, phát triển sản phẩm, sản xuất, xây dựng hệ thống, website, quản lí hình ảnh, quản lí sản xuất...</p></span>
+                    <span><p>What are services that 20Studio provide?</p></span>
+                    <span><p>We focus on providing fashion design, fashion mass production, image production, website development, marketing strategies and fashion business solutions.</p></span>
                 </li>
             </ul>
         </div>

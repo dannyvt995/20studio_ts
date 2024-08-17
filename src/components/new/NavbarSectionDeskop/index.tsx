@@ -1,16 +1,22 @@
 import React, { useEffect, useRef } from 'react'
 import s from './style.module.css'
-import Link from 'next/link';
+
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react';
 import ButtonHoverNew from '../ButtonHoverNew';
+import { usePathname } from 'next/navigation';
+import IconSVG from '@/components/Icon/IconSVG';
 
 gsap.registerPlugin(useGSAP)
 
 export default function NavbarSectionDeskop() {
+    
+    console.log("NavbarSectionDeskopNavbarSectionDeskopNavbarSectionDeskopNavbarSectionDeskopNavbarSectionDeskop")
+    
     const container = useRef<any>()
     const buttonMenuRef = useRef<any>()
     const timelineBtnMenu = useRef<gsap.core.Timeline>()
+    const pathName = usePathname()
     useEffect(() => {
         timelineBtnMenu.current = gsap.timeline()
         .fromTo(`.${s.icon}`,{
@@ -44,6 +50,29 @@ export default function NavbarSectionDeskop() {
         })
     },{scope:container})
 
+    useGSAP(() => {
+        let unit = window.innerWidth /100 * 6
+        let sv = 0
+        let isActive = true
+        if(pathName === '/home'){
+            sv = 0
+        }else if(pathName === '/work'){
+            sv = unit
+        }else if(pathName === '/about'){
+            sv = unit * 2
+        }else if(pathName === '/contact'){
+            sv = unit * 3
+        }else{
+            sv = unit
+        }
+        gsap.to(`.${s.this_icon}`,{
+            x: sv,
+            rotate:(sv/unit) * 90,
+            ease:"power3.out",
+            duration:1,
+        })
+    },{dependencies:[pathName]})
+
     const {contextSafe} = useGSAP({scope:buttonMenuRef})
     // set triggle từ hero section và lấy state từ đó
     const handleClickMenu = contextSafe(() => {
@@ -56,6 +85,10 @@ export default function NavbarSectionDeskop() {
         
 
     })
+
+
+
+   
     return (
         <>
           <button onClick={handleClickMenu} ref={buttonMenuRef} className={s.button_menu} id="button_menu" >
@@ -72,24 +105,27 @@ export default function NavbarSectionDeskop() {
             </button>
             <nav ref={container} className={s.nav} id='navbar_deskop'>
             <ul className={s.nav_list}>
+                <span className={s.this_icon}>
+                    <IconSVG src='/icon/star.svg'/>
+                </span>
                 <li className={s.nav_item}>
-                   <ButtonHoverNew targetRedirect='/home'>
+                   <ButtonHoverNew isActive={pathName === '/home' || pathName === '/'} targetRedirect='/home'>
                     Home
                    </ButtonHoverNew>
                 </li>
                 <li className={s.nav_item}>
-                   <ButtonHoverNew  targetRedirect='/work'>
-                   Dự án
+                   <ButtonHoverNew isActive={pathName === '/work'} targetRedirect='/work'>
+                   Project
                    </ButtonHoverNew>
                 </li>
                 <li className={s.nav_item}>
-                   <ButtonHoverNew  targetRedirect='/about'>
-                   Về chúng tôi
+                   <ButtonHoverNew isActive={pathName === '/about'}  targetRedirect='/about'>
+                   About us
                    </ButtonHoverNew>
                 </li>
                 <li className={s.nav_item}>
-                   <ButtonHoverNew  targetRedirect='/contact'>
-                   Liên hệ
+                   <ButtonHoverNew isActive={pathName === '/contact'} targetRedirect='/contact'>
+                   Contact
                    </ButtonHoverNew>
                 </li>
                 

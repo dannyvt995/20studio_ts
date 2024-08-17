@@ -11,19 +11,16 @@ export default function Advantage(): JSX.Element {
             <div className="container">
                 <h2 className={s.label}>
                     <IconSVG src='/icon/star.svg' className={s.icon} />
-                    Quy trình của 20Studio
+                    Our procedure
                 </h2>
-                <div className={s.intro}><p>Để đảm bảo chất lượng và thời gian cho khách hàng, 20studio cung cấp quy trình làm việc đầy đủ và nhanh chóng nhất.</p></div>
+                <div className={s.intro}><p>We believe that all good things are achieved by those who are willing to put in passion, courage and craftsmanship.</p></div>
                 <div className={s.items}>
                     <div className={s.item}>
                         <span className={s.index}>01</span>
-                        <h3 className={s.subtitle}>Nhận yêu cầu từ khách hàng</h3>
+                        <h3 className={s.subtitle}>Briefing</h3>
                         <div className={s.body}>
                             <p>
-                                Trao đổi yêu cầu<br />
-                                Điền mẫu thông tin đơn hàng<br />
-                                Xét duyệt đơn hàng<br />
-                                Nhận thông tin từ khách hàng bao gồm: mô tả ý tưởng, hình ảnh mẫu, ảnh thiết kế, mẫu có sẵn.
+                            Meet with the client to understand their needs, goals, and vision. Gather all necessary information and share initial ideas to ensure alignment.
                             </p>
                         </div>
                     </div>
@@ -32,11 +29,10 @@ export default function Advantage(): JSX.Element {
                             02
                         </span>
                         <h3 className={s.subtitle}>
-                            Đề xuất & Báo giá
+                        Consulting & Quotation
                         </h3>
                         <div className={s.body}>
-                            <p>Khách hàng nhận báo giá, trao đổi và tư vấn thêm về giá thành sản phẩm
-                                <br />→ Tiếp nhận thanh toán đợt 1.</p>
+                            <p>Provide expert advice and present a detailed quotation covering design, materials, and production costs. Finalize the contract once the client agrees.</p>
                         </div>
                     </div>
 
@@ -45,18 +41,11 @@ export default function Advantage(): JSX.Element {
                             03
                         </span>
                         <h3 className={s.subtitle}>
-                            Thực hiện dịch vụ
+                        Project Execution
                         </h3>
-                        <div className={s.body}
-                        >
-                            <p>Với từng dịch vụ sẽ có các quy trình thiết kế riêng cho theo nhu cầu của khách hàng.</p>
-                            <ul>
-                                <li>Phát Triển Mẫu</li>
-                                <li>Sản Xuất</li>
-                                <li>Thiết Kế & Rập</li>
-                                <li>Quản lí Sản Xuất</li>
-                                <li>Website & Thương Mại</li>
-                            </ul>
+                        <div className={s.body}>
+                            <p>Begin the design and production process, collaborating with the client for approvals and ensuring quality throughout.</p>
+           
                         </div>
                     </div>
                     <div className={s.item}>
@@ -64,10 +53,10 @@ export default function Advantage(): JSX.Element {
                             04
                         </span>
                         <h3 className={s.subtitle}>
-                            Kiểm định & Bàn giao
+                        Final Review and Delivery
                         </h3>
                         <div className={s.body}>
-                            <p>Kiểm định chất lượng sản phẩm, kết quả của dịch vụ. Căn cứ vào các điều khoản thỏa thuận giữa hai bên, 20Studio tiến hành kiểm tra, đo lường và bàn giao kết quả cho khách hàng.</p>
+                            <p>Present the finished product, make any final adjustments, and deliver the project. Gather feedback and close the project.</p>
                         </div>
                     </div>
                 </div>

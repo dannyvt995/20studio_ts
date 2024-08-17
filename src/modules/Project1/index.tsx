@@ -17,21 +17,21 @@ function Project1(): JSX.Element {
    
     return (
         <div id="work1page">
-            <IntroWorkPage altbackgroundImage={"image_cache_services1"}   propsForGsap={project1_page.propsForGsap}  backgroundImage={"/clone/services1.webp"}/>
-            <ProjectText scroller="#work1page" randomID='hoho123' disableTitle={false}/>
+            <IntroWorkPage content={project1_page.content.introWorkPage} propsForGsap={project1_page.propsForGsap} />
+            <ProjectText scroller={project1_page.propsForGsap.scrollerRef} randomID='hoho123' disableTitle={false}/>
              <GridImage1 propsForGsap={project1_page.propsForGsap}/>
-             <ProjectText scroller="#work1page" randomID='ghhe123' disableTitle={true}/>
+             <ProjectText scroller={project1_page.propsForGsap.scrollerRef} randomID='ghhe123' disableTitle={true}/>
              <div className='cream_background'>
-                <ProjectText scroller="#work1page" randomID='bobo123' disableTitle={false}/>
+                <ProjectText scroller={project1_page.propsForGsap.scrollerRef} randomID='bobo123' disableTitle={false}/>
              </div>
              <div className='dark_background'>
-                <ProjectText scroller="#work1page" randomID='tete123' disableTitle={false}/>
+                <ProjectText scroller={project1_page.propsForGsap.scrollerRef} randomID='tete123' disableTitle={false}/>
              </div>
        {/*       <Layout_1/>
              <Layout_2/>
              <Layout_3/>
              <Layout_4/> */}
-             <FooterRedirect currentId={1} targetRedirect='2' scroller="#work1page"/>
+             <FooterRedirect currentId={1} targetRedirect='2' scroller={project1_page.propsForGsap.scrollerRef}/>
             
         </div>
     )

@@ -10,33 +10,31 @@ export default function Minded() {
                     <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" className={s.icon}>
                         <path d="M7.41908 4.56679L6.13722 0L4.85418 4.92566L0 6L4.85418 7.25435L6.13722 12L7.3276 7.25435L12 6L7.41908 4.56679Z" fill="currentColor"></path>
                     </svg>
-                    <div className={s.text}>What we believe</div>
+                    <div className={s.text}>How we work</div>
                 </h2>
                 <h2 className={s.title}>
                     <div className={s.title_mask}>
-                        <div className={s.title_line}>&quot;Agency&quot; </div>
+                        <div className={s.title_line}>A Fashion</div>
                     </div>
                     <div className={s.title_mask}>
-                        <div className={s.title_line}>— trong</div>
+                        <div className={s.title_line}>Agency</div>
                     </div>
-                    <div className={s.title_mask}>
+                  {/*   <div className={s.title_mask}>
                         <div className={s.title_line}>ngành thời trang</div>
-                    </div>
-                    {/*     <div className={s.title_mask}>
-                        <div className={s.title_line}>Converts</div>
                     </div> */}
+                 
                 </h2>
                 <div className={s.body}>
-                    <p>Tổ chức hoạt động như một “Agency”, 20Studio tạo ra giá trị bằng cách cung cấp các dịch vụ thiết kế, phát triển, xây dựng và quản lý cho các thương hiệu thời trang.</p>
-                    <p>Sát cánh cùng khách hàng trong hành trình phát triển thượng hiệu thời trang, xây dựng và sản xuất các bộ sưu tập cũng như hỗ trợ quản lí hình ảnh thương hiệu, kinh doanh và sản xuất.</p>
+                    <p>We’ve assembled a bespoke team of designers, innovators, manufactures and suppliers to work with teams across a client’s organization to help them find new sources of growth, whether that’s repositioning for new target audiences, innovating to create new products and services, improving the core product or removing the barriers to growth that stand in way of long-term success.</p>
+                    <p>Partnering with clients on their journey to develop fashion brands, we assist in creating and producing collections as well as supporting brand image management, business, and production.</p>
                 </div>
                 <blockquote className={s.quote}>
-                    “Với lợi thế am hiểu thị trường và ứng dụng công nghệ, chúng tôi có thể giúp khách hàng biến thiết kế của họ thành hiện thực”
+                    “With our market expertise and technology application, we can help clients turn their designs into reality”
                 </blockquote>
             </div>
             <div className={s.image} style={{ clipPath: "polygon(6.68% 0px, 93.32% 0px, 93.32% 100%, 6.68% 100%)" }}>
                 <Image
-                    src="/clone/aboutus/minded_1.webp"
+                    src="/about/minded.png"
                     width={0}
                     height={0}
                     sizes="100vw"

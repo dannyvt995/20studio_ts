@@ -121,7 +121,7 @@ export function  runSlider({
       .set(ListChildTitle[nextState], { yPercent: -100 * dir })
       .set(ListChildSub[nextState], { opacity: 0 })
       .set([ListBackgroundRef[prevState].children[0],ListBackgroundRef[nextState].children[0]],filterBrightness.light)
-      .set( ListBackgroundRef[nextState].children[0],{yPercent: 20 * dir})
+      .set( ListBackgroundRef[nextState].children[0],{yPercent: 20 * dir,scale:1.2})
       .set(ListChildThumbnail[nextState], {
         opacity: 1,
         clipPath: pathResultBaseDirection1,
@@ -173,7 +173,7 @@ export function  runSlider({
   
       }, "<")
       .to( ListBackgroundRef[nextState].children[0],{
-  
+        scale:1,
         yPercent: 0,
         duration: durationAnimation,
         ease: "power3.inOut",

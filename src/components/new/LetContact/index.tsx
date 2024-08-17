@@ -9,6 +9,8 @@ import s from './style.module.css'
 import Image from 'next/image'
 import { useGSAP } from '@gsap/react';
 import { isMobile } from '@/utils/responsive';
+import ButtonHoverNew2 from '../ButtonHoverNew2'
+import IconSVG from '@/components/Icon/IconSVG'
 gsap.registerPlugin(ScrollTrigger)
 interface ILetContact {
   propsForGsap: any
@@ -35,43 +37,46 @@ function LetContact({ propsForGsap }: ILetContact) {
   //     timeline.kill
   //   }
   // })
-  
+
 
   return (
     <section className={cn(s.letcontact_section, s.light_background)} >
       <div className={s.container}>
         <ul className={s.media_wrapper} ref={triggleSection}>
           <li className={s.media} ref={box1Ref}>
-            <Image sizes="100vw" alt="d" src="/clone/letcontact_center.webp" width={0} height={0} style={{ width: "100%", height: "auto" }} quality={42} />
+            <Image sizes="100vw" alt="d" src="/home/letcontact_c.png" width={0} height={0} style={{ width: "100%", height: "auto" }} quality={86} />
           </li>
           <li className={s.media}>
-            <Image sizes="100vw" alt="d" src="/clone/letcontact_top-left.webp" width={0} height={0} style={{ width: "auto", height: "100%" }} quality={42} />
+            <Image sizes="100vw" alt="d" src="/home/letcontact_tl.png" width={0} height={0} style={{ width: "100%", height: "auto" }} quality={86} />
           </li>
           <li className={s.media}>
-            <Image sizes="100vw" alt="d" src="/clone/media1_n.webp" width={0} height={0} style={{ width: "100%", height: "auto" }} quality={42} />
+            <Image sizes="100vw" alt="d" src="/home/letcontact_tr.png" width={0} height={0} style={{ width: "100%", height: "auto" }} quality={86} />
           </li>
           <li className={s.media}>
-            <Image sizes="100vw" alt="d" src="/clone/letcontact_bottom-right.webp" width={0} height={0} style={{ width: "100%", height: "auto" }} quality={42} /></li>
+            <Image sizes="100vw" alt="d" src="/home/letcontact_bl.png" width={0} height={0} style={{ width: "100%", height: "auto" }} quality={86} /></li>
           <li className={s.media}>
-            <Image sizes="100vw" alt="d" src="/clone/letcontact_bottom-left.webp" width={0} height={0} style={{ width: "100%", height: "auto" }} quality={42} />
+            <Image sizes="100vw" alt="d" src="/home/letcontact_br.png" width={0} height={0} style={{ width: "100%", height: "auto" }} quality={86} />
           </li>
         </ul>
         <div className={s.text}>
           <h2 className={s.lable}>
-            In the media
+            Contact us
           </h2>
           <h1 className={s.title}>
-            <div className={s.title_line}>Spread</div>
-            <div className={s.title_line}>the News</div>
+            <div className={s.title_line}>From vision</div>
+            <div className={s.title_line}>to reality</div>
           </h1>
           <div className={s.body}>
-            <p>Biến ý tưởng thú vị nhất thành hiện thực với nghiệp vụ và công nghệ.</p>
+            <p>Let&apos;s make dream come true</p>
           </div>
-          <a className={cn(s.link, s.is_dark)}>
-            <div className={s.wrap}>
-              Browse all news
-            </div>
-          </a>
+
+          <ButtonHoverNew2
+            icon={<IconSVG src='/icon/arrow-right.svg' />}
+            targetRedirect='mailto:vphcm@studio.vn'
+            classAdd={cn(s.link, s.is_dark,s.wrap)}>
+            Let&apos;s touch
+          </ButtonHoverNew2>
+       
         </div>
       </div>
 

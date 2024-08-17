@@ -15,22 +15,22 @@ export default function Us() {
                 </h2>  
                 <h3 className={s.title}>
                     <div className={s.title_mask}>
-                        <div className={s.title_line}>Tìm kiếm</div>
+                        <div className={s.title_line}>Design,</div>
                     </div>
                     <div className={s.title_mask}>
-                        <div className={s.title_line}>cơ hội</div>
+                        <div className={s.title_line}>Technology and</div>
                     </div>
                     <div className={s.title_mask}>
-                        <div className={s.title_line}>trong thử thách</div>
+                        <div className={s.title_line}>Experimenttation</div>
                     </div>
                 </h3>
                 <div className={s.body}>
-                    <p>Là những người trẻ xây dựng giấc mơ khởi nghiệp năm 20 tuổi, chúng tôi đại diện cho tinh thần sáng tạo, nhiệt huyết đầy nỗ lực và học hỏi không ngừng, bằng kỹ thuật hiện đại kết hợp với đội ngũ nhân lực đầy kinh nghiệm tạo ra những sản phẩm chất lượng nhất.</p>
+                    <p>We are a team* of like-minded design enthusiasts and tech aficionados that explore the digital frontier with grit and dedication. Intrigued by beauty, fascinated by technology and fuelled with an everlasting devotion to digital craftsmanship and meaningful aesthetics.</p>
                 </div>
                 <div className={s.images}>
                     <div className={s.image} >
                         <Image
-                            src="/clone/aboutus/us_1.jpg"
+                            src="/about/us1.png"
                             width={0}
                             height={0}
                             sizes="100vw"
@@ -40,7 +40,7 @@ export default function Us() {
                     </div>
                     <div className={s.image}>
                         <Image
-                            src="/clone/aboutus/us_2.jpg"
+                            src="/about/us2.png"
                             width={0}
                             height={0}
                             sizes="100vw"
@@ -50,7 +50,7 @@ export default function Us() {
                     </div>
                 </div>
                 <blockquote className={s.quote}>
-                    *20STUDIO mong muốn đồng hành cùng bạn và tạo ra những sản phẩm chất lượng nhất với giá thành cạnh tranh theo đúng thời hạn cam kết.
+                    *We believe in a fluid team approach that allows us to bring together the best designers, developers and agencies in the world in order to serve the needs of today’s clients.
                 </blockquote>
             </div>
         </section>

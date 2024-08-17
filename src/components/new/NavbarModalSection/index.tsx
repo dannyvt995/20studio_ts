@@ -19,8 +19,6 @@ import { isMobile } from '@/utils/responsive'
 
 
 function NavbarModalSection({ }) {
-
-    
     const buttonMenuRef = useRef<HTMLButtonElement>(null)
     const { indexItemNavbar, prevIndexItemNavbar } = useStoreZustand();
 
@@ -102,25 +100,25 @@ function NavbarModalSection({ }) {
                         <ul className={s.main}>
                             <li className={s.main_link}>
                                 <ButtonHoverNew btnNavbar={true} data_id={0} targetRedirect='/work' classAdd={s.main_line}>
-                                    Dự án
+                                    Project
                                 </ButtonHoverNew>
 
                             </li>
                             <li className={s.main_link}>
                                 <ButtonHoverNew btnNavbar={true} data_id={1} targetRedirect='/about' classAdd={s.main_line}>
-                                    20 Studio
+                                    About us
                                 </ButtonHoverNew>
 
                             </li>
                             <li className={s.main_link}>
                                 <ButtonHoverNew btnNavbar={true} data_id={2} targetRedirect='/' classAdd={s.main_line}>
-                                    Dịch vụ
+                                    Service
                                 </ButtonHoverNew>
 
                             </li>
                             <li className={s.main_link}>
                                 <ButtonHoverNew btnNavbar={true} data_id={3} targetRedirect='/contact' classAdd={s.main_line}>
-                                    Liên hệ
+                                    Contact
                                 </ButtonHoverNew>
 
                             </li>
@@ -159,7 +157,7 @@ function NavbarModalSection({ }) {
                         <div className={s.link_about}>
 
                             <ButtonHoverNew2 icon={<IconSVG src='/icon/arrow-right.svg' />} targetRedirect='/about' classAdd={s.link}>
-                                Về 20 Studio
+                                Our mission
                             </ButtonHoverNew2>
                         </div>
                     </div>
