@@ -68,6 +68,7 @@ const { setStateTransition } = useStoreZustand()
     console.log("Enter page ================>")
 
     const this_page = document.getElementById(`${pn}page`)
+
     enterPage({
       node: this_page?.parentElement,
       nodeChild: this_page,
@@ -103,19 +104,20 @@ const { setStateTransition } = useStoreZustand()
         ...propsGsap.config
       }, '<')
 
-    return () => {
-      if (timeline) {
-        timeline.kill();
-        timeline = null;
-      }
-      if (cloneNodeParent) {
-        cloneNodeParent = null
-      }
-      if (cloneNodeChild) {
-        gsap.set(cloneNodeChild as HTMLDivElement, { clearProps: 'all' }); 
-        cloneNodeChild = null;
-      }
-    };
+    // return () => {
+    //   console.log("///////////////CLEAN ENTERPAGE")
+    //   if (timeline) {
+    //     timeline.kill();
+    //     timeline = null;
+    //   }
+    //   if (cloneNodeParent) {
+    //     cloneNodeParent = null
+    //   }
+    //   if (cloneNodeChild) {
+    //     gsap.set(cloneNodeChild as HTMLDivElement, { clearProps: 'all' }); 
+    //     cloneNodeChild = null;
+    //   }
+    // };
   })
 
   const exitPage = contextSafe(({ nodeChild }: { nodeChild: HTMLDivElement }) => {
@@ -134,16 +136,17 @@ const { setStateTransition } = useStoreZustand()
         ...propsGsap.props_exitAnim
       });
 
-    return () => {
-      if (timeline) {
-        timeline.kill();
-        timeline = null;
-      }
-      if (cloneNode) {
-        gsap.set(cloneNode as HTMLDivElement, { clearProps: 'all' });
-        cloneNode = null
-      }
-    };
+    // return () => {
+    //   console.log("///////////////CLEAN EXITPAGE")
+    //   if (timeline) {
+    //     timeline.kill();
+    //     timeline = null;
+    //   }
+    //   if (cloneNode) {
+    //     gsap.set(cloneNode as HTMLDivElement, { clearProps: 'all' });
+    //     cloneNode = null
+    //   }
+    // };
   })
 
   const getContentDomReference = useMemo(() => {

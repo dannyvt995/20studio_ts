@@ -9,12 +9,12 @@ import React, { PropsWithChildren } from 'react';
 export default function MainLayout({ children }: PropsWithChildren): React.ReactElement {
 
   return (
-    <main>
+    <>
       <Header/>
       <CacheImage/>
       <RouterControls>
         {children}
       </RouterControls>
-    </main>
+    </>
   );
 }

@@ -28,10 +28,12 @@ export default function RootLayout({
   return (
     <html lang="en" >
       <body className={barlow.className} suppressHydrationWarning={true}>
-    
+      <main>
       <MainLayout>
         {children}
       </MainLayout>
+      </main>
+
      
       </body>
     </html>

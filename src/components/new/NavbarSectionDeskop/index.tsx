@@ -16,6 +16,7 @@ export default function NavbarSectionDeskop() {
     const container = useRef<any>()
     const buttonMenuRef = useRef<any>()
     const timelineBtnMenu = useRef<gsap.core.Timeline>()
+    const mainNavbar = useRef<any>(null)
     const pathName = usePathname()
     useEffect(() => {
         timelineBtnMenu.current = gsap.timeline()
@@ -38,6 +39,10 @@ export default function NavbarSectionDeskop() {
             y:0,
             duration:.5
         },"<").reverse()
+        window.timelineBtnNavbar = timelineBtnMenu.current
+        return () => {
+            window.timelineBtnNavbar = null
+        }
     },[buttonMenuRef])
 
     useGSAP(() => {
@@ -54,7 +59,7 @@ export default function NavbarSectionDeskop() {
         let unit = window.innerWidth /100 * 6
         let sv = 0
         let isActive = true
-        if(pathName === '/home'){
+        if(pathName === '/home' || pathName === '/' ){
             sv = 0
         }else if(pathName === '/work'){
             sv = unit
@@ -75,10 +80,16 @@ export default function NavbarSectionDeskop() {
 
     const {contextSafe} = useGSAP({scope:buttonMenuRef})
     // set triggle từ hero section và lấy state từ đó
+
+useEffect(() => {
+    mainNavbar.current = document.getElementById("main_navbar")
+},[])
+
     const handleClickMenu = contextSafe(() => {
-        if(window.timelineNavbar && timelineBtnMenu.current){
+        if(window.timelineNavbar && window.timelineBtnNavbar){
+        mainNavbar.current.style.pointerEvents =  'auto'
             window.timelineNavbar.reversed(!window.timelineNavbar.reversed());
-            timelineBtnMenu.current.reversed(!timelineBtnMenu.current.reversed());
+            window.timelineBtnNavbar.reversed(!window.timelineBtnNavbar.reversed());
         }else{
             alert("Err on window var global >>>>>>>>")
         }

@@ -1,10 +1,13 @@
-import {useEffect,useRef} from 'react'
+import {memo, useEffect,useRef} from 'react'
 import s from './style.module.css'
 
 import Link from 'next/link';
 import cn from 'classnames';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
+import useStoreZustand from '@/hooks/useStoreZustand';
+import { isMobile } from '@/utils/responsive';
+
 gsap.registerPlugin(useGSAP)
 interface ButtonHoverNew2Props {
     children: React.ReactNode;
@@ -16,10 +19,14 @@ interface ButtonHoverNew2Props {
 const ButtonHoverNew2: React.FC<ButtonHoverNew2Props> = ({ children,icon,targetRedirect,classAdd }) => {
   const linkRef = useRef<any>()
   const { contextSafe } = useGSAP({ scope: linkRef }); 
+  const {stateTransition} = useStoreZustand()
+
+
+
   useEffect(() => {
      
-      
-
+    if(stateTransition !== 'entered') return
+    if(isMobile()) return
     const enterAnimation = contextSafe(() => {
         gsap.timeline({
           defaults:{   duration:.5 , ease:"power3.out"}
@@ -77,7 +84,7 @@ const ButtonHoverNew2: React.FC<ButtonHoverNew2Props> = ({ children,icon,targetR
 
 
   return (
-  
+    
     <Link ref={linkRef} href={targetRedirect ? "#" : '#'} className={cn(s.btn_hover_underline2,classAdd)}>
         <div className={s.icon}>{icon}</div>
         <div className={s.outline}>
@@ -88,4 +95,4 @@ const ButtonHoverNew2: React.FC<ButtonHoverNew2Props> = ({ children,icon,targetR
     </Link>
   )
 }
-export default ButtonHoverNew2;
+export default memo(ButtonHoverNew2);

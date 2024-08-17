@@ -1,4 +1,4 @@
-
+"use client"
 import WorkSlider from '@/components/new/WorkSlider';
 import { IPageModule } from '@/types/common';
 import { memo } from 'react';

@@ -22,7 +22,7 @@ interface ButtonHoverNewProps {
 
 const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children,isActive,data_id,btnNavbar,targetRedirect,classAdd }) => {
       
-    console.log("re-redner")
+
 
     const linkRef = useRef<HTMLAnchorElement>(null);
     const timelineRef = useRef<gsap.core.Timeline>()
@@ -32,32 +32,41 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children,isActive,data_
     const { selectedItemNavbar } = useStoreZustand();
     const { contextSafe } = useGSAP({ scope: linkRef }); 
     const pathName = usePathname()
-    
-useEffect(() => {
-    timelineRef.current = gsap.timeline({ paused: true });
-    timelineRef.current.fromTo(linkRef.current, {
-        "--line-width": "0%",
-        "--line-left": "0%",
-    }, {
-        "--line-width": "100%",
-        duration: durationOps,
-        ease: easeOps,
-    });
+    const mainNavbar = useRef<any>(null)
+     const {stateTransition} = useStoreZustand()
+    useEffect(() => {
+        if(stateTransition !== 'entered') return
+        if(btnNavbar){
+            mainNavbar.current = document.getElementById("main_navbar")
+        }
+        timelineRef.current = gsap.timeline({ paused: true });
+        timelineRef.current.fromTo(linkRef.current, {
+            "--line-width": "0%",
+            "--line-left": "0%",
+        }, {
+            "--line-width": "100%",
+            duration: durationOps,
+            ease: easeOps,
+        });
 
-    timelineRef.current.add("midway");
-    timelineRef.current.fromTo(linkRef.current, {
-        "--line-width": "100%",
-        "--line-left": "0%",
-    }, {
-        "--line-width": "0%",
-        "--line-left": "100%",
-        duration: durationOps,
-        ease: easeOps,
-        immediateRender: false,
-    });
-},[linkRef.current])
+        timelineRef.current.add("midway");
+        timelineRef.current.fromTo(linkRef.current, {
+            "--line-width": "100%",
+            "--line-left": "0%",
+        }, {
+            "--line-width": "0%",
+            "--line-left": "100%",
+            duration: durationOps,
+            ease: easeOps,
+            immediateRender: false,
+        });
+    },[linkRef.current])
+
+
 
     useEffect(() => {
+       
+   
         if(isMobile()) return
      
       
@@ -98,18 +107,25 @@ useEffect(() => {
     }, [pathName]);
 
     const handleRedirect = useCallback((event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+       // không set  event.preventDefault(); 
+       // vì cho funct này chạy song song với e mặc định
         if(timelineRef.current) {
             timelineRef.current.play();
         }
     }, []);
     const handleRedirectFromNavbar = useCallback((event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
         event.preventDefault();
-     
-       
-        if (window.timelineNavbar) {
+    
+        mainNavbar.current.style.pointerEvents =  'none'
+        if(timelineRef.current) {
+            timelineRef.current.play();
+        }
+        if (window.timelineNavbar && window.timelineBtnNavbar) {
             window.timelineNavbar.reversed(!window.timelineNavbar.reversed());
-            
+            window.timelineBtnNavbar.reversed(!window.timelineBtnNavbar.reversed());
             router.push(targetRedirect || '#')
+        }else{
+            alert("Err on window var global >>>>>>>>")
         }
     }, []);
    

@@ -11,6 +11,7 @@ interface IProps {
     propsForGsap: any,
 }
 export default function Intro({propsForGsap}:IProps): ReactElement  {
+   
     const triggleSection = useRef<HTMLDivElement>(null)
     useGSAP(() => {
 

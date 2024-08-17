@@ -1,11 +1,12 @@
 'use client';
 import React, { memo, useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
+import gsap from 'gsap';
+
 import Image from 'next/image';
 import s from './style.module.css'
 import useStoreZustand from '@/hooks/useStoreZustand';
-import { isMobile } from '@/utils/responsive';
-
+import { useGSAP } from '@gsap/react';
+gsap.registerPlugin(useGSAP)
 type typeRef = HTMLDivElement | HTMLButtonElement;
 
 
@@ -13,7 +14,7 @@ type typeRef = HTMLDivElement | HTMLButtonElement;
 export const Mask = ({ children }: { children: React.ReactElement }): React.ReactElement => {
     const refContent = useRef<typeRef>(null)
     const helloRef = React.cloneElement(children, { ...{ ref: refContent}})
-    useEffect(() => {
+    useGSAP(() => {
         if (refContent.current) {
             gsap.timeline({
                 onComplete:() => {
@@ -23,52 +24,11 @@ export const Mask = ({ children }: { children: React.ReactElement }): React.Reac
                 .set(refContent.current, { x: -500,y:200,rotate:-20,scale:.2 })
                 .to(refContent.current, { duration: 1, x: 0,y:0,rotate:0,scale:1., ease: "power2.out" });
         }
-    }, [refContent])
+    })
     return helloRef;
 };
 
 Mask.displayName = 'MeskRef'
-
-export const Button = ({ children, data_link }: { children: string, data_link: string }) => {
-    const ButtonRef = useRef<HTMLButtonElement>(null)
-    const { selectedItemNavbar } = useStoreZustand();
-    useEffect(() => {
-        const buttonElement = ButtonRef.current;
-        if (!buttonElement) return;
-        
-        const enterAnimation = (e: MouseEvent) => {
-            let targetIndex = buttonElement.getAttribute("data-link");
-            selectedItemNavbar(targetIndex as any);
-        };
-     
-        const leaveAnimation = () => {
-            //setTimeoutactiveherer
-        };
-
-        buttonElement.addEventListener("mouseenter", enterAnimation);
-        buttonElement.addEventListener("mouseleave", leaveAnimation);
-        return () => {
-            buttonElement.removeEventListener("mouseenter", enterAnimation);
-            buttonElement.removeEventListener("mouseleave", leaveAnimation);
-        };
-    }, []);
-    return (
-        <button data-link={data_link} ref={ButtonRef}>{children}</button>
-    )
-}
-Button.displayName = 'Button'
-
-export const ListButton = memo(() => {
-    return (
-        <div className={s.item_button} >
-            <Button data_link="0">Item1</Button>
-            <Button data_link="1">Item1</Button>
-            <Button data_link="2">Item1</Button>
-            <Button data_link="3">Item1</Button>
-        </div>
-    )
-})
-ListButton.displayName = 'ListButton'
 
 export const WrapperMask = ({ img }: { img: string }) => {
     return (
@@ -136,7 +96,6 @@ const SliderImageHover = memo((): React.ReactElement => {
    
     return (
         <>
-          {/*   <ListButton /> */}
             <SliderImage />
         </>
 

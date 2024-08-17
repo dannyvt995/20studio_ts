@@ -22,7 +22,7 @@ export default function FooterRedirect({scroller,targetRedirect,currentId}:{scro
                     
                     cirRefIc.current.style.strokeDasharray = `${self.progress * 120}px, ${110-100*self.progress}px`
                   
-                    if(self.progress > 0.90) {
+                    if(self.progress > 0.99) {
                       
                          document.body.style.pointerEvents = 'none'
                         gsap.timeline({

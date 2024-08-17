@@ -53,14 +53,17 @@ export const useEffectActive_NavbarModal = (
 
 
  
-   
+    
+    // có vấn đề ở d09a6y ,
+    // hook này luôn phải chạy khi path change vì phải có dom content
+    // => timeline và window ko dc clean
     useEffect(() => {
         if(stateTransition !== 'entered') return
         console.log("NEED 1 time ++++++HOOK NAVBAR MODAL...")
         // update DomContent when path change
         NavbarDeskop = document.getElementById(`navbar`)
         DomContent = document.getElementById(`${pathNameFormat}page`)
-        
+       
       /*   ButtonMenu = document.getElementById(`button_menu`)
         if (ButtonMenu) ButtonMenu.addEventListener("click", handleClickMenu); */
         Timeline = gsap.timeline({
@@ -93,10 +96,7 @@ export const useEffectActive_NavbarModal = (
                 ...propsGsap.props_openNav
             }, '<').reverse();
             window.timelineNavbar = Timeline
-            return () => {
-             /*    ButtonMenu.removeEventListener("click", handleClickMenu);
-                ButtonMenu = null */
-            }
+           
     }, [pathName,SliderImage,SectionRef,MaskRef,DomEffect])
 
     // listBtnRedirect.forEach((item:any) => {

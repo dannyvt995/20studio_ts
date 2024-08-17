@@ -1,3 +1,4 @@
+"use client"
 import HeroSection from '@Components/new/HeroSection';
 import Advantage from "@Components/new/Aboutus/Advantage";
 import Intro from "@Components/new/Aboutus/Intro";
@@ -16,13 +17,7 @@ function AboutPage(): JSX.Element {
             <HeroSection pageName="about" propsForGsap={about_page.propsForGsap} content={about_page.content.heroSection} />
 
             <Intro  propsForGsap={about_page.propsForGsap}/>
-
-            {/* lazy load from here */}
-            {/* lazy load from here */}
-            {/* lazy load from here */}
-
             <Advantage />
-
             <SectionTitleBlend  propsForGsap={about_page.propsForGsap} />
             <Minded />
             <Us />

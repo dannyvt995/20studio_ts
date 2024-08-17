@@ -97,7 +97,7 @@ function NavbarModalSection({ }) {
                                 <Image src="/home/ser3.webp" width={0} height={0} sizes="100vw" style={{ position: 'relative', width: 'auto', height: '100%', left: '50%', transform: 'translateX(-50%)' }} alt="logo narbar modal" />
                             </li> */}
                         </ul>
-                        <ul className={s.main}>
+                        <ul className={s.main} id='main_navbar'>
                             <li className={s.main_link}>
                                 <ButtonHoverNew btnNavbar={true} data_id={0} targetRedirect='/work' classAdd={s.main_line}>
                                     Project

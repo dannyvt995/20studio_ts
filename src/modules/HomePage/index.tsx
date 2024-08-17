@@ -18,7 +18,6 @@ function HomePage(): JSX.Element {
 
             <ServicesSection />
             <FAQSection/>
-           
             <LetContact  propsForGsap={home_page.propsForGsap}/>
             <FooterSection propsForGsap={home_page.propsForGsap}/>
         </div>

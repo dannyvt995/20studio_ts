@@ -1,3 +1,4 @@
+"use client"
 import ContactPageIntro from '@Components/new/ContactPageIntro';
 import FooterSection from '@Components/new/FooterSection';
 import { contact_page } from '@Constants/page_props';

@@ -1,5 +1,5 @@
 "use client"
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, memo } from 'react'
 import React from 'react'
 
 import s from './style.module.css'
@@ -24,16 +24,15 @@ gsap.registerPlugin(ScrollTrigger)
 interface IHeroSection {
     pageName: string,
     state?: string,
-    propsForGsap: any,
+    propsForGsap?: any,
     content: any,
 }
 
-export default function HeroSection({ pageName, propsForGsap, content }: IHeroSection) {
+ function HeroSection({ pageName, content }: IHeroSection) {
     const triggleSection = useRef<HTMLDivElement>(null)
     const backgroundImg = useRef<HTMLDivElement>(null)
     const pathName = usePathname()
     const pathNameFormat = removeSplash({ pathName: pathName })
-
 
     useGSAP(() => {
 
@@ -139,7 +138,7 @@ export default function HeroSection({ pageName, propsForGsap, content }: IHeroSe
                 </div>
                 <div className={s.background} ref={backgroundImg}>
 
-                    <Image src={`${content.backgroundImage}`} alt="image_cache_banner_home" width={0} height={0} sizes="100vw" style={content.backgroundSize} />
+                    <Image priority  src={`${content.backgroundImage}`} alt="image_cache_banner_home" width={0} height={0} sizes="100vw" style={content.backgroundSize} />
                 </div>
             </section>
         )
@@ -213,7 +212,7 @@ export default function HeroSection({ pageName, propsForGsap, content }: IHeroSe
                 </div>
                 <div className={s.background} ref={backgroundImg}>
 
-                    <Image src={`${content.backgroundImage}`} alt="image_cache_banner_about" width={0} height={0} sizes="100vw" style={content.backgroundSize} />
+                    <Image priority  src={`${content.backgroundImage}`} alt="image_cache_banner_about" width={0} height={0} sizes="100vw" style={content.backgroundSize} />
                 </div>
             </section>
         )
@@ -221,3 +220,4 @@ export default function HeroSection({ pageName, propsForGsap, content }: IHeroSe
 
 }
 
+export default memo(HeroSection)
