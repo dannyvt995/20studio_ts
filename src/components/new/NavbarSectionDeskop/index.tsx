@@ -11,7 +11,7 @@ gsap.registerPlugin(useGSAP)
 
 export default function NavbarSectionDeskop() {
     
-    console.log("NavbarSectionDeskopNavbarSectionDeskopNavbarSectionDeskopNavbarSectionDeskopNavbarSectionDeskop")
+    console.log("%cNavbarDeskop_render","color:green;font-weight:bold")
     
     const container = useRef<any>()
     const buttonMenuRef = useRef<any>()
@@ -20,25 +20,36 @@ export default function NavbarSectionDeskop() {
     const pathName = usePathname()
     const {stateEnterPage} = useStoreZustand()
 
-    const [isEnterPage,setIsEnterPage] = useState(false)
+    const unit = useRef<number>(0)
+    const target = useRef<number>(0)
+    const [isEnterPage,setIsEnterPage] = useState(true)
     useEffect(() => {
-        setIsEnterPage(true)
+      
+        unit.current = window.innerWidth /100 * 6
+        
+        switch(pathName) {
+            case '/home':
+            case '/':
+                target.current = 0;
+                break;
+            case '/work':
+                target.current = unit.current;
+                break;
+            case '/about':
+                target.current = unit.current * 2;
+                break;
+            case '/contact':
+                target.current = unit.current * 3;
+                break;
+            default:
+                target.current = unit.current;
+        }
+        
+
     },[])
 
-    let unit = window.innerWidth /100 * 6
-    let sv = 0
+  
 
-    if(pathName === '/home' || pathName === '/' ){
-        sv = 0
-    }else if(pathName === '/work'){
-        sv = unit
-    }else if(pathName === '/about'){
-        sv = unit * 2
-    }else if(pathName === '/contact'){
-        sv = unit * 3
-    }else{
-        sv = unit
-    }
 
 
     useEffect(() => {
@@ -72,46 +83,69 @@ export default function NavbarSectionDeskop() {
     },[buttonMenuRef,stateEnterPage])
 
     useGSAP(() => {
-        if(stateEnterPage) {
+        if(isEnterPage && stateEnterPage) {
+            console.log("%cFire Anim Navbar First Time !!","color:green")
             gsap.timeline({
                 onComplete:() => {
                     setIsEnterPage(false)
                 }
             }).set(`.${s.this_icon}`,{
-                x: sv,
+                x: target.current,
                 scale:0,
-                rotate:90,
-            },'<')
+                rotate:0,
+            })
             .to(`.${s.nav_item}`,{
                 delay:.1,
                 y: 0,
                 ease:"power3.out",
                 duration:1,
                 stagger:.1
-            })
+            },'<')
             .to(`.${s.this_icon}`,{
                 opacity:1,
                 scale:1,
-                rotate:0,
+                rotate:90,
                 duration:1,
             },'<')
 
         }
-    },{scope:container,dependencies:[stateEnterPage]})
+    },{scope:container,dependencies:[isEnterPage,stateEnterPage]})
 
     useGSAP(() => {
-      
-        if(!isEnterPage) {
     
+        if(!isEnterPage) {
+            console.log("%cToggle Anim Icon !!","color:green")
+            switch(pathName) {
+                case '/home':
+                case '/':
+                    target.current = 0;
+                    break;
+                case '/work':
+                    target.current = unit.current;
+                    break;
+                case '/about':
+                    target.current = unit.current * 2;
+                    break;
+                case '/contact':
+                    target.current = unit.current * 3;
+                    break;
+                default:
+                    target.current = unit.current;
+            }
             gsap.to(`.${s.this_icon}`,{
-                x: sv,
-                rotate:(sv/unit) * 90,
+                x: target.current,
+                rotate:(target.current/unit.current) * 90,
                 ease:"power3.out",
                 duration:1,
             })
+          
+          
         }
+    
         
-      
+       
+        
+     
       
     },{dependencies:[pathName,isEnterPage]})
 

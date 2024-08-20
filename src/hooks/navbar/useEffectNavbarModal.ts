@@ -58,10 +58,10 @@ export const useEffectActive_NavbarModal = (
     // hook này luôn phải chạy khi path change vì phải có dom content
     // => timeline và window ko dc clean
     useEffect(() => {
-        console.log("render qua1 nhie62u \n\n\n\n")
+   
         if(stateTransition !== 'entered') return
         if(!stateEnterPage) return
-        console.log("NEED 1 time ++++++HOOK NAVBAR MODAL...")
+        console.log("%cHOOK NAVBAR Running Update!!!!!","color:orange")
         // update DomContent when path change
         NavbarDeskop = document.getElementById(`navbar`)
         DomContent = document.getElementById(`${pathNameFormat}page`)
