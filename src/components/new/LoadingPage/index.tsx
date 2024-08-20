@@ -1,75 +1,46 @@
 "use client"
-import Image from 'next/image'
-import React, { useState, useEffect, useRef, memo } from 'react'
+
+import React, { useRef, memo } from 'react'
 import s from './style.module.css'
 import useStoreZustand from '@/hooks/useStoreZustand'
-import CacheImageGroup from '../CacheImageGroup'
+import gsap from 'gsap'
+import { useGSAP } from '@gsap/react'
+gsap.registerPlugin(useGSAP)
 
 function LoadingPage() {
-  const [progress, setProgress] = useState(0);
-  const {stateEnterPage,setStateEnterPage} = useStoreZustand()
+  console.log('%cLoadingPage_Render!', 'color: red;')
+
   const container = useRef<HTMLDivElement>(null)
-  useEffect(() => {
-    let start:any = null;
-    const duration = 1000; // 1 giây
-    const updateProgress = (timestamp:any) => {
-      if (!start) start = timestamp;
-      const elapsed = timestamp - start;
-      const progressPercentage = Math.min((elapsed / duration) * 100, 100);
-      setProgress(progressPercentage);
+  const { setStateEnterPage, stateEnterPage } = useStoreZustand()
+  useGSAP(() => {
+    if (stateEnterPage) return
+    console.log('%cFire anim loading page', 'color: red;font-weight:bold;text-decoration: underline')
 
-      if (elapsed < duration) {
-        requestAnimationFrame(updateProgress); // Tiếp tục gọi cho đến khi đủ thời gian
+    gsap.timeline({
+      onComplete: () => {
+        setTimeout(() => {
+          setStateEnterPage()
+        }, 700);
+
+        setTimeout(() => {
+          gsap.set(container.current, { delay: 1.2, opacity: 0 })
+          console.log('%c///// END anim loading page, disable this', 'color: red;font-weight:bold;text-decoration: underline')
+        }, 1200)
       }
-    };
-
-    requestAnimationFrame(updateProgress); // Bắt đầu vòng lặp
-
-    return () => setProgress(0); // Reset progress khi component bị unmount
-  }, []);
-
-  useEffect(() => {
-    if (progress === 100) {
-      // Gọi setStateEnterPage sau 720ms
-      const timeoutId = setTimeout(() => {
-        setStateEnterPage();
-
-        // Ẩn container sau 1000ms
-        const hideTimeoutId = setTimeout(() => {
-          if (container.current) {
-            container.current.style.display = 'none';
-          }
-        }, 1500);
-
-        // Cleanup
-        return () => clearTimeout(hideTimeoutId);
-
-      }, 720);
-
-      // Cleanup
-      return () => clearTimeout(timeoutId);
-    }
-  }, [progress, setStateEnterPage]);
-
-
+    })/* .to(`.${s.progressBar}`, {
+      x: `100%`,
+      duration: 1
+    },"<") */.to(`.${s.logo}`, {
+  
+      clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+      duration: 1
+    },"<")
+  }, { scope: container })
 
   return (
     <div className={s.loadingPage} ref={container}>
-  
-      <div style={{ width: '100%', backgroundColor: 'black' }}>
-        <div
-          style={{
-            width: `100vw`,
-            height: '8px',
-            backgroundColor: 'white',
-            transform: `translateX(${progress}%)`,
-            willChange:'transform',
-            transition: '0.3s ease-out',
-          }}
-        />
-      </div>
-
-      <CacheImageGroup/>
+  {/*     <div className={s.progressBar} /> */}
+      <div className={s.logo}>20 Studio</div>
     </div>
   )
 }

@@ -43,9 +43,9 @@ export const useEffectActive_NavbarModal = (
     const pathName = usePathname()
     const pathNameFormat = removeSplash({ pathName: pathName })
     const router = useRouter()
-    const {stateTransition} = useStoreZustand()
+    const {stateTransition,stateEnterPage} = useStoreZustand()
 
-    console.log("HOOK NAVBAR MODAL...")
+    console.log("%cHOOK NAVBAR MODAL Running","color:orange")
     let Timeline: any = null
     let NavbarDeskop: any = null
     let ButtonMenu: any = null
@@ -58,7 +58,9 @@ export const useEffectActive_NavbarModal = (
     // hook này luôn phải chạy khi path change vì phải có dom content
     // => timeline và window ko dc clean
     useEffect(() => {
+        console.log("render qua1 nhie62u \n\n\n\n")
         if(stateTransition !== 'entered') return
+        if(!stateEnterPage) return
         console.log("NEED 1 time ++++++HOOK NAVBAR MODAL...")
         // update DomContent when path change
         NavbarDeskop = document.getElementById(`navbar`)
@@ -97,7 +99,7 @@ export const useEffectActive_NavbarModal = (
             }, '<').reverse();
             window.timelineNavbar = Timeline
            
-    }, [pathName,SliderImage,SectionRef,MaskRef,DomEffect])
+    }, [pathName,SliderImage,SectionRef,MaskRef,DomEffect,stateEnterPage,stateTransition])
 
     // listBtnRedirect.forEach((item:any) => {
     //     item.addEventListener('click', (e:any) => {

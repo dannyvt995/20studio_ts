@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import s from './style.module.css'
 
 import gsap from 'gsap'
@@ -19,8 +19,31 @@ export default function NavbarSectionDeskop() {
     const mainNavbar = useRef<any>(null)
     const pathName = usePathname()
     const {stateEnterPage} = useStoreZustand()
+
+    const [isEnterPage,setIsEnterPage] = useState(false)
     useEffect(() => {
-       
+        setIsEnterPage(true)
+    },[])
+
+    let unit = window.innerWidth /100 * 6
+    let sv = 0
+
+    if(pathName === '/home' || pathName === '/' ){
+        sv = 0
+    }else if(pathName === '/work'){
+        sv = unit
+    }else if(pathName === '/about'){
+        sv = unit * 2
+    }else if(pathName === '/contact'){
+        sv = unit * 3
+    }else{
+        sv = unit
+    }
+
+
+    useEffect(() => {
+        if(!stateEnterPage) return
+        console.log("%cInit Navbar Timeline !!","color:green")
         timelineBtnMenu.current = gsap.timeline()
         .fromTo(`.${s.icon}`,{
             rotate:45,
@@ -44,55 +67,64 @@ export default function NavbarSectionDeskop() {
         window.timelineBtnNavbar = timelineBtnMenu.current
         return () => {
             window.timelineBtnNavbar = null
+            if(timelineBtnMenu.current) timelineBtnMenu.current.kill()
         }
-    },[buttonMenuRef])
+    },[buttonMenuRef,stateEnterPage])
 
     useGSAP(() => {
         if(stateEnterPage) {
-          
-            gsap.to(`.${s.nav_item}`,{
+            gsap.timeline({
+                onComplete:() => {
+                    setIsEnterPage(false)
+                }
+            }).set(`.${s.this_icon}`,{
+                x: sv,
+                scale:0,
+                rotate:90,
+            },'<')
+            .to(`.${s.nav_item}`,{
                 delay:.1,
                 y: 0,
                 ease:"power3.out",
                 duration:1,
                 stagger:.1
             })
+            .to(`.${s.this_icon}`,{
+                opacity:1,
+                scale:1,
+                rotate:0,
+                duration:1,
+            },'<')
+
         }
     },{scope:container,dependencies:[stateEnterPage]})
 
     useGSAP(() => {
-        let unit = window.innerWidth /100 * 6
-        let sv = 0
-        let isActive = true
-        if(pathName === '/home' || pathName === '/' ){
-            sv = 0
-        }else if(pathName === '/work'){
-            sv = unit
-        }else if(pathName === '/about'){
-            sv = unit * 2
-        }else if(pathName === '/contact'){
-            sv = unit * 3
-        }else{
-            sv = unit
+      
+        if(!isEnterPage) {
+    
+            gsap.to(`.${s.this_icon}`,{
+                x: sv,
+                rotate:(sv/unit) * 90,
+                ease:"power3.out",
+                duration:1,
+            })
         }
-        gsap.to(`.${s.this_icon}`,{
-            x: sv,
-            rotate:(sv/unit) * 90,
-            ease:"power3.out",
-            duration:1,
-        })
-    },{dependencies:[pathName]})
+        
+      
+      
+    },{dependencies:[pathName,isEnterPage]})
 
     const {contextSafe} = useGSAP({scope:buttonMenuRef})
     // set triggle từ hero section và lấy state từ đó
 
-useEffect(() => {
-    mainNavbar.current = document.getElementById("main_navbar")
-},[])
+    useEffect(() => {
+        mainNavbar.current = document.getElementById("main_navbar")
+    },[])
 
     const handleClickMenu = contextSafe(() => {
         if(window.timelineNavbar && window.timelineBtnNavbar){
-        mainNavbar.current.style.pointerEvents =  'auto'
+            mainNavbar.current.style.pointerEvents =  'auto'
             window.timelineNavbar.reversed(!window.timelineNavbar.reversed());
             window.timelineBtnNavbar.reversed(!window.timelineBtnNavbar.reversed());
         }else{
@@ -120,10 +152,11 @@ useEffect(() => {
                 </div>
             </button>
             <nav ref={container} className={s.nav} id='navbar_deskop'>
-            <ul className={s.nav_list}>
-                <span className={s.this_icon}>
+            <span className={s.this_icon}>
                     <IconSVG src='/icon/star.svg'/>
                 </span>
+            <ul className={s.nav_list}>
+       
                 <li className={s.nav_item}>
                    <ButtonHoverNew isActive={pathName === '/home' || pathName === '/'} targetRedirect='/home'>
                     Home

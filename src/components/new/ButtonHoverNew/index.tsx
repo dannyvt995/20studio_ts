@@ -121,13 +121,16 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children,isActive,data_
         if(timelineRef.current) {
             timelineRef.current.play();
         }
-        if (window.timelineNavbar && window.timelineBtnNavbar) {
-            window.timelineNavbar.reversed(!window.timelineNavbar.reversed());
-            window.timelineBtnNavbar.reversed(!window.timelineBtnNavbar.reversed());
-            router.push(targetRedirect || '#')
-        }else{
-            alert("Err on window var global >>>>>>>>")
+        if(stateTransition === 'entered') {
+            if (window.timelineNavbar && window.timelineBtnNavbar) {
+                window.timelineNavbar.reversed(!window.timelineNavbar.reversed());
+                window.timelineBtnNavbar.reversed(!window.timelineBtnNavbar.reversed());
+                router.push(targetRedirect || '#')
+            }else{
+                alert("Err on window var global >>>>>>>>")
+            }
         }
+      
     }, []);
    
     return (

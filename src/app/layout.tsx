@@ -14,6 +14,7 @@ import "@/styles/config_clone.css";
 import { barlow } from '@Constants/font';
 import RouterControls from "./RouterControls";
 import MainLayout from "@/layouts/MainLayout";
+import LoadingPage from "@/components/new/LoadingPage";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -29,8 +30,10 @@ export default function RootLayout({
     <html lang="en" >
       <body className={barlow.className} suppressHydrationWarning={true}>
       <main>
+      <LoadingPage/>
+   
       <MainLayout>
-        {children}
+        <h1>Hi</h1>
       </MainLayout>
       </main>
 

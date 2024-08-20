@@ -6,3 +6,35 @@
     display: flex;
     align-items: center;
 }
+.progressBar {
+    width: 100vw;
+    height: 8px;
+    background-color: white;
+   
+    will-change:'transform';
+    transition: 0.3s ease-out;
+}
+.logo {
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+ 
+ /*    background-image: url(
+"https://media.geeksforgeeks.org/wp-content/uploads/20231218222854/1.png"); */
+background-color: whitesmoke;
+      background-repeat: no-repeat;
+      background-size:cover;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+   
+      font-size: 5vw;
+      letter-spacing: 7px;
+      text-align: center;
+      font-weight: bold;
+      text-transform: uppercase;
+      font-family: "BD-Medium";
+      -webkit-font-smoothing: antialiased;
+      clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
+     
+}

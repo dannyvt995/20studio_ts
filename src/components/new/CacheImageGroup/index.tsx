@@ -1,11 +1,9 @@
 "use client"
-
 import Image from "next/image"
 import { memo } from "react"
 
-
 function CacheImageGroup() {
- 
+  console.log("%cCacheImageGroup","color:blue")
   return (
     <div style={{
       visibility: 'hidden',

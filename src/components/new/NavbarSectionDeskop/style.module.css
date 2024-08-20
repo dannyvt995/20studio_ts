@@ -14,7 +14,7 @@
 .nav_list {
     position: relative;
     display: flex;
-   
+    overflow: hidden;
 }
 .this_icon {
     position: absolute;
@@ -23,7 +23,8 @@
     width: .7vw;
     height: .7vw;
     color: white;
-    will-change: transform;
+    will-change: transform,opacity;
+    opacity: 0;
     transform-origin: center center;
 }
 .nav_list  > .nav_item:not(:first-child) {
@@ -35,6 +36,7 @@
     text-align: center;
     will-change: transform;
     transform: translateY(100%);
+ 
 }
 .nav_item a {
     transform-origin: top left;
