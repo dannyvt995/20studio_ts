@@ -8,6 +8,9 @@ interface IStoreZustand {
   //button navbar state
   stateMenuIsOpen: boolean;
   setStateMenuIsOpen: () => void;
+  //loadingPage
+  stateEnterPage: boolean;
+  setStateEnterPage: () => void;
   //transition
   stateTransition: string;
   setStateTransition: (key: string) => void;
@@ -32,6 +35,12 @@ const useStoreZustand = create<IStoreZustand>((set) => ({
   stateMenuIsOpen: false,
   setStateMenuIsOpen: () => {
     set((state) => ({ stateMenuIsOpen: !state.stateMenuIsOpen }));
+  },
+
+  //loadingPage
+  stateEnterPage: false,
+  setStateEnterPage: () => {
+    set((state) => ({ stateEnterPage: !state.stateEnterPage }));
   },
 
 

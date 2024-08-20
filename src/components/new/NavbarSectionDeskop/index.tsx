@@ -6,7 +6,7 @@ import { useGSAP } from '@gsap/react';
 import ButtonHoverNew from '../ButtonHoverNew';
 import { usePathname } from 'next/navigation';
 import IconSVG from '@/components/Icon/IconSVG';
-
+import useStoreZustand from '@/hooks/useStoreZustand';
 gsap.registerPlugin(useGSAP)
 
 export default function NavbarSectionDeskop() {
@@ -18,7 +18,9 @@ export default function NavbarSectionDeskop() {
     const timelineBtnMenu = useRef<gsap.core.Timeline>()
     const mainNavbar = useRef<any>(null)
     const pathName = usePathname()
+    const {stateEnterPage} = useStoreZustand()
     useEffect(() => {
+       
         timelineBtnMenu.current = gsap.timeline()
         .fromTo(`.${s.icon}`,{
             rotate:45,
@@ -46,14 +48,17 @@ export default function NavbarSectionDeskop() {
     },[buttonMenuRef])
 
     useGSAP(() => {
-        gsap.to(`.${s.nav_item}`,{
-            delay:.5,
-            y: 0,
-            ease:"power3.out",
-            duration:1,
-            stagger:.1
-        })
-    },{scope:container})
+        if(stateEnterPage) {
+          
+            gsap.to(`.${s.nav_item}`,{
+                delay:.1,
+                y: 0,
+                ease:"power3.out",
+                duration:1,
+                stagger:.1
+            })
+        }
+    },{scope:container,dependencies:[stateEnterPage]})
 
     useGSAP(() => {
         let unit = window.innerWidth /100 * 6

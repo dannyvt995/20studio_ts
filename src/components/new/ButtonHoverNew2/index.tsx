@@ -26,6 +26,7 @@ const ButtonHoverNew2: React.FC<ButtonHoverNew2Props> = ({ children,icon,targetR
   useEffect(() => {
      
     if(stateTransition !== 'entered') return
+  
     if(isMobile()) return
     const enterAnimation = contextSafe(() => {
         gsap.timeline({
@@ -80,7 +81,7 @@ const ButtonHoverNew2: React.FC<ButtonHoverNew2Props> = ({ children,icon,targetR
             linkRef.current.removeEventListener('mouseleave', leaveAnimation);
         }
     };
-}, []);
+}, [stateTransition]);
 
 
   return (

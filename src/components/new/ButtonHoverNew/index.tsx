@@ -35,7 +35,7 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children,isActive,data_
     const mainNavbar = useRef<any>(null)
      const {stateTransition} = useStoreZustand()
     useEffect(() => {
-        if(stateTransition !== 'entered') return
+     
         if(btnNavbar){
             mainNavbar.current = document.getElementById("main_navbar")
         }
@@ -60,7 +60,7 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children,isActive,data_
             ease: easeOps,
             immediateRender: false,
         });
-    },[linkRef.current])
+    },[])
 
 
 
@@ -68,7 +68,8 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children,isActive,data_
        
    
         if(isMobile()) return
-     
+        if(stateTransition !== 'entered') return
+        console.log("ButtonHoverNew2ButtonHoverNew2ButtonHoverNew2")
       
 
         const enterAnimation = contextSafe((e:any) => {
@@ -104,7 +105,7 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children,isActive,data_
                 linkRef.current.removeEventListener('mouseleave', leaveAnimation);
             }
         };
-    }, [pathName]);
+    }, [stateTransition,pathName]);
 
     const handleRedirect = useCallback((event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
        // không set  event.preventDefault(); 

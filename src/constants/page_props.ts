@@ -47,6 +47,24 @@ export const project1_page = {
             role:["Fashion Develop","Prototyping","Sourcing","Consulting"],
             date:"Jan 2023 - 3 weeks",
             client:"Fashion Designer Huynh Anh Thu"
+        },
+        gridImageSlider:{
+            img:[
+                "/work1/1.png",
+                "/work1/2.png",
+                "/work1/3.png",
+                "/work1/4.png",
+                "/work1/5.png",
+                "/work1/6.png",
+            ],
+            imgOrigin:[
+                "/work1/origin/1.png",
+                "/work1/origin/2.png",
+                "/work1/origin/3.png",
+                "/work1/origin/4.png",
+                "/work1/origin/5.png",
+                "/work1/origin/6.png",
+            ]
         }
     }
 }
@@ -66,6 +84,24 @@ export const project2_page = {
             role:["Fashion Develop","Prototyping","Sourcing","Consulting"],
             date:"Jan 2023 - 3 weeks",
             client:"Fashion Designer Huynh Anh Thu"
+        },
+        gridImageSlider:{
+            img:[
+                "/work2/1.png",
+                "/work2/2.png",
+                "/work2/3.png",
+                "/work2/4.png",
+                "/work2/5.png",
+                "/work2/6.png",
+            ],
+            imgOrigin:[
+                "/work2/origin/1.png",
+                "/work2/origin/2.png",
+                "/work2/origin/3.png",
+                "/work2/origin/4.png",
+                "/work2/origin/5.png",
+                "/work2/origin/6.png",
+            ]
         }
     }
 }

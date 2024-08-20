@@ -34,3 +34,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# asset
+
+/public/work1/origin
+/public/work2/origin

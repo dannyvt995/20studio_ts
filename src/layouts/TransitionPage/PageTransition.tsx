@@ -47,7 +47,7 @@ const PageTransition: React.FC<PageTransitionProps> = ({
   const indexRef = useRef(100)
   const scopeRef = useRef(null)
 
-const { setStateTransition } = useStoreZustand()
+const { setStateTransition,stateEnterPage } = useStoreZustand()
   const transitionKeyRef = useRef<string | null>(null)
   const currentKeyRef = useRef<string | null>(null)
   const isWorkPage = useRef<boolean>(false)
@@ -55,10 +55,12 @@ const { setStateTransition } = useStoreZustand()
 
   const {contextSafe} = useGSAP({scope:scopeRef})
   useEffect(() => {
+    if(stateEnterPage) {
+      transitionFirst(pathNameFormat)
+      setFirstLoadPage(true)
+    }
 
-    transitionFirst(pathNameFormat)
-    setFirstLoadPage(true)
-  }, [])
+  }, [stateEnterPage])
 
   useInitLenis({
     firstLoad: firstLoadPage
@@ -75,8 +77,8 @@ const { setStateTransition } = useStoreZustand()
       nodeParent: this_page,
       index: 10
     })
-  setStateTransition('entered')
-  currentKeyRef.current = pathName
+    setStateTransition('entered')
+    currentKeyRef.current = pathName
   }
 
   const enterPage = contextSafe(({ node, nodeChild, nodeParent, index }: { node: any, nodeChild: any, nodeParent: any, index: number }) => {
@@ -239,7 +241,7 @@ const { setStateTransition } = useStoreZustand()
               document.body.style.pointerEvents = 'auto'
               document.body.style.userSelect = 'auto'
               // nên set 1 state tại đây , là cần thiết
-              setStateTransition('entered')
+             setStateTransition('entered')
               currentKeyRef.current = pathName
               // tạm thời return index < 100 với các page type 2
               if(transitionKeyRef.current) {
