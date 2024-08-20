@@ -12,6 +12,7 @@ import Layout_4 from '@/components/new/Some_Component_For_Post/Layout_4';
 import { project1_page } from '@/constants/page_props';
 import FooterRedirect from '@/components/new/FooterRedirect';
 import GridImageSlider from '@/components/new/Some_Component_For_Post/GridImageSlider1';
+import LayoutCustom from '@/components/new/Some_Component_For_Post/LayoutCustom';
 
 function Project1(): JSX.Element {
    
@@ -21,9 +22,9 @@ function Project1(): JSX.Element {
             <IntroWorkPage content={project1_page.content.introWorkPage} propsForGsap={project1_page.propsForGsap} />
            {/*  <ProjectText scroller={project1_page.propsForGsap.scrollerRef} randomID='hoho123' disableTitle={false}/> */}
              <GridImageSlider content={project1_page.content.gridImageSlider} propsForGsap={project1_page.propsForGsap}/>
-             <ProjectText scroller={project1_page.propsForGsap.scrollerRef} randomID='ghhe123' disableTitle={true}/>
+            {/*  <ProjectText scroller={project1_page.propsForGsap.scrollerRef} randomID='ghhe123' disableTitle={true}/> */}
         
-            
+            <LayoutCustom content={project1_page.content.gridImageSlider} />
         
           {/*    <div className='cream_background'>
                 <ProjectText scroller={project1_page.propsForGsap.scrollerRef} randomID='bobo123' disableTitle={false}/>

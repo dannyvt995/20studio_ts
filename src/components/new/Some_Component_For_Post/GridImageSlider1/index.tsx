@@ -22,10 +22,10 @@ function GridImageSlider({ propsForGsap, content }:{propsForGsap:any, content:an
                 end: "bottom top",
                 scrub: true
             }
-        })
+        }) .set(domEffectTop.current, { x: -50 })
             .set(domEffectBot.current, { x: 200 })
             .to(domEffectTop.current, {
-                x: 100
+                x: 50
             }).to(domEffectBot.current, {
                 x: 0
             }, "<")
@@ -35,6 +35,10 @@ function GridImageSlider({ propsForGsap, content }:{propsForGsap:any, content:an
 
     return (
         <section className={s.GridImageSlider} ref={triggleSection}>
+                  <div className={s.titleProject}>
+                    <h2 className={s.nameProject}>Personal Prject of Bui Quang Duy</h2>
+                    <p className={s.infoProject}>Congratulations to Huyenh Anh Thu on achieving valedictorian!</p>
+                  </div>
             <div className={s.container}>
                 <div className={s.row} ref={domEffectTop}>
                     {content.img.slice(0, 3).map((src:string, index:number) => (

@@ -1,9 +1,12 @@
-
+.faq_section {
+    background-color: white;
+}
 .container {
     display:grid;
     grid-column-gap: 2.2222222222vw;
     grid-template-columns: repeat(12, 1fr);
     margin: 0 8.3333333333vw;
+
 }
 .title {
     margin: 0 0 6.4vw;

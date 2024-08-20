@@ -15,6 +15,7 @@ import "@/styles/config_clone.css";
 
 import MainLayout from "@/layouts/MainLayout";
 import LoadingPage from "@/components/new/LoadingPage";
+import ControlsState from "@/components/ControlsState";
 
 export const metadata: Metadata = {
   title: "20 Studio",
@@ -30,6 +31,7 @@ export default function RootLayout({
     <html lang="en" >
       <body  suppressHydrationWarning={true}>
       <main>
+     {/*    <ControlsState/> */}
       <LoadingPage/>
    
       <MainLayout>

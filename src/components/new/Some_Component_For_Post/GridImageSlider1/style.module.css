@@ -1,6 +1,7 @@
 .GridImageSlider {
     height:fit-content;
-    display:flex;
+
+    background-color: white;
 }
 .container {
     padding: 0;
@@ -40,6 +41,37 @@
 .row:nth-child(2) .media:nth-child(3) {
     width: 58.4vw;
 }
+
+
+
+.titleProject {
+    padding: 15vw 0;
+}
+
+.nameProject {
+    font-family: "BD-Medium";
+    font-size: 3.2vw;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.infoProject {
+    font-family: "BS-Medium";
+    font-size: 1.2vw;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+
+
+
+
+
+
+
+
+
+
 @media (min-width: 601px) {
      .row:first-child {
         margin-bottom: 2.0833333333vw;

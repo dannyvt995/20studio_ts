@@ -10,6 +10,7 @@ import { useRouter } from 'next/navigation';
 import useStoreZustand from '@/hooks/useStoreZustand';
 import { isMobile } from '@/utils/responsive';
 import { usePathname } from 'next/navigation';
+import IconSVG from '@/components/Icon/IconSVG';
 gsap.registerPlugin(useGSAP)
 interface ButtonHoverNewProps {
     children: React.ReactNode;
@@ -34,6 +35,7 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children,isActive,data_
     const pathName = usePathname()
     const mainNavbar = useRef<any>(null)
      const {stateTransition} = useStoreZustand()
+     const isActiveRef = useRef<boolean>(false)
     useEffect(() => {
      
         if(btnNavbar){
@@ -71,7 +73,11 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children,isActive,data_
         if(stateTransition !== 'entered') return
         console.log("ButtonHoverNew2ButtonHoverNew2ButtonHoverNew2")
       
-
+        if(pathName === targetRedirect) {
+            isActiveRef.current = true
+        }else {
+            isActiveRef.current = false
+        }
         const enterAnimation = contextSafe((e:any) => {
             if(timelineRef.current) {
                 if(pathName !== targetRedirect) {
@@ -138,7 +144,9 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children,isActive,data_
             className={cn(s.btn_hover_underline,classAdd)}
             data-link={btnNavbar ? data_id : 'none'}
         >
+            {btnNavbar ? <span className={s.iconBtnNavbar} style={isActiveRef.current ? {display:'flex'} : {}}><IconSVG src='/icon/star.svg' /></span> : <></>}
             {children}
+            
         </Link>
     );
 };

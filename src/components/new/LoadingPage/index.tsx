@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useRef, memo } from 'react'
+import React, { useRef, memo, useEffect } from 'react'
 import s from './style.module.css'
 import useStoreZustand from '@/hooks/useStoreZustand'
 import gsap from 'gsap'
@@ -11,7 +11,10 @@ function LoadingPage() {
   console.log('%cLoadingPage_Render!', 'color: red;')
 
   const container = useRef<HTMLDivElement>(null)
-  const { setStateEnterPage, stateEnterPage } = useStoreZustand()
+  const { stateEnterPage,setStateEnterPage } = useStoreZustand()
+
+
+
   useGSAP(() => {
     if (stateEnterPage) return
     console.log('%cFire anim loading page', 'color: red;font-weight:bold;text-decoration: underline')
@@ -36,6 +39,7 @@ function LoadingPage() {
       duration: 1
     },"<")
   }, { scope: container })
+
 
   return (
     <div className={s.loadingPage} ref={container}>
