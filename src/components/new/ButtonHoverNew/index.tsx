@@ -17,11 +17,12 @@ interface ButtonHoverNewProps {
     classAdd?: string;
     targetRedirect?:string;
     btnNavbar?:boolean;
+    btnNavbarFooter?:boolean;
     data_id?:number;
     isActive?:boolean
 }
 
-const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children,isActive,data_id,btnNavbar,targetRedirect,classAdd }) => {
+const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children,btnNavbarFooter,data_id,btnNavbar,targetRedirect,classAdd }) => {
       
 
 
@@ -145,6 +146,7 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children,isActive,data_
             data-link={btnNavbar ? data_id : 'none'}
         >
             {btnNavbar ? <span className={s.iconBtnNavbar} style={isActiveRef.current ? {display:'flex'} : {}}><IconSVG src='/icon/star.svg' /></span> : <></>}
+            {btnNavbarFooter ? <span className={s.iconBtnNavbar} style={isActiveRef.current ? {display:'flex'} : {}}><IconSVG src='/icon/star.svg' /></span> : <></>}
             {children}
             
         </Link>

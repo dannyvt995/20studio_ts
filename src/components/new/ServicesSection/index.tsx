@@ -12,13 +12,14 @@ gsap.registerPlugin(useGSAP)
 export default function ServicesSection() {
     const container = useRef<any>()
     const listItemRef = useRef<any>()
-    const { contextSafe } = useGSAP({ scope: container })
+    const { contextSafe } = useGSAP({ scope: listItemRef })
     const timelines = useRef<Record<number, gsap.core.Timeline>>({});
 
     useGSAP(() => {
         const items = listItemRef.current.children;
         for (let i = 0; i < items.length; i++) {
             const infoElement = items[i].querySelector(`.${s.info}`);
+            const imgElement = items[i].querySelector(`.${s.block} img`);
             timelines.current[i] = gsap.timeline({ paused: true })
                 .fromTo(infoElement, {
                     y: '100%',
@@ -26,7 +27,11 @@ export default function ServicesSection() {
                     y: 0,
                     duration: 0.5,
                     ease: "power3.out"
-                })
+                }).to(imgElement,{
+                    scale:1.1,
+                      duration:1,
+                    ease: "power3.inOut"
+                },"<")
 
         }
     }, { scope: container })
@@ -37,7 +42,7 @@ export default function ServicesSection() {
         timelines.current[id].play(0);
     })
 
-    const disableGsap = ((e: any) => {
+    const disableGsap = contextSafe((e: any) => {
         const id = e.currentTarget.getAttribute('data-id');
         timelines.current[id].reverse();
     })

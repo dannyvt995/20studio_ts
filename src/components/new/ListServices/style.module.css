@@ -150,7 +150,7 @@
         counter-reset: slideNo;
       }
   
-     /*  .carousel__slide::before {
+    /*   .carousel__slide::before {
         counter-increment: slideNo;
         content: counter(slideNo);
         position: absolute;

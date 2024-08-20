@@ -26,7 +26,7 @@ function ListServices() {
                                     <div>Fashion Design & Prototype Development</div>
                                     <div className={s.carousel}>
 
-                                        <div className={s.carousel__wrapper}>
+                                        <div className={s.carousel__wrapper} style={{ "--slide-width": "38vw" } as React.CSSProperties}>
 
                                             <div className={s.carousel__slide}>
                                                 <div className={s.carousel__image} >/ Fashion Design & Prototype Development</div>
@@ -52,30 +52,7 @@ function ListServices() {
                                                 <div className={s.carousel__image} >/ Fashion Design & Prototype Development</div>
 
                                             </div>
-                                            <div className={s.carousel__slide}>
-                                                <div className={s.carousel__image} >/ Fashion Design & Prototype Development</div>
 
-                                            </div>
-                                            <div className={s.carousel__slide}>
-                                                <div className={s.carousel__image} >/ Fashion Design & Prototype Development</div>
-
-                                            </div>
-                                            <div className={s.carousel__slide}>
-                                                <div className={s.carousel__image} >/ Fashion Design & Prototype Development</div>
-
-                                            </div>
-                                            <div className={s.carousel__slide}>
-                                                <div className={s.carousel__image} >/ Fashion Design & Prototype Development</div>
-
-                                            </div>
-                                            <div className={s.carousel__slide}>
-                                                <div className={s.carousel__image} >/ Fashion Design & Prototype Development</div>
-
-                                            </div>
-                                            <div className={s.carousel__slide}>
-                                                <div className={s.carousel__image} >/ Fashion Design & Prototype Development</div>
-
-                                            </div>
                                         </div>
                                     </div>
                                 </li>
@@ -83,7 +60,7 @@ function ListServices() {
                                     <div>Costume Design</div>
                                     <div className={s.carousel}>
 
-                                        <div className={s.carousel__wrapper}>
+                                        <div className={s.carousel__wrapper} style={{ "--slide-width": "20vw" } as React.CSSProperties}>
 
                                             <div className={s.carousel__slide}>
                                                 <div className={s.carousel__image} >/ Costume Design</div>
@@ -109,30 +86,7 @@ function ListServices() {
                                                 <div className={s.carousel__image} >/ Costume Design</div>
 
                                             </div>
-                                            <div className={s.carousel__slide}>
-                                                <div className={s.carousel__image} >/ Costume Design</div>
 
-                                            </div>
-                                            <div className={s.carousel__slide}>
-                                                <div className={s.carousel__image} >/ Costume Design</div>
-
-                                            </div>
-                                            <div className={s.carousel__slide}>
-                                                <div className={s.carousel__image} >/ Costume Design</div>
-
-                                            </div>
-                                            <div className={s.carousel__slide}>
-                                                <div className={s.carousel__image} >/ Costume Design</div>
-
-                                            </div>
-                                            <div className={s.carousel__slide}>
-                                                <div className={s.carousel__image} >/ Costume Design</div>
-
-                                            </div>
-                                            <div className={s.carousel__slide}>
-                                                <div className={s.carousel__image} >/ Costume Design</div>
-
-                                            </div>
                                         </div>
                                     </div>
                                 </li>
@@ -140,7 +94,7 @@ function ListServices() {
                                     <div>Sample Development</div>
                                     <div className={s.carousel}>
 
-                                        <div className={s.carousel__wrapper}>
+                                        <div className={s.carousel__wrapper} style={{ "--slide-width": "20vw" } as React.CSSProperties}>
 
                                             <div className={s.carousel__slide}>
                                                 <div className={s.carousel__image} >/ Sample Development</div>
@@ -166,30 +120,7 @@ function ListServices() {
                                                 <div className={s.carousel__image} >/ Sample Development</div>
 
                                             </div>
-                                            <div className={s.carousel__slide}>
-                                                <div className={s.carousel__image} >/ Sample Development</div>
 
-                                            </div>
-                                            <div className={s.carousel__slide}>
-                                                <div className={s.carousel__image} >/ Sample Development</div>
-
-                                            </div>
-                                            <div className={s.carousel__slide}>
-                                                <div className={s.carousel__image} >/ Sample Development</div>
-
-                                            </div>
-                                            <div className={s.carousel__slide}>
-                                                <div className={s.carousel__image} >/ Sample Development</div>
-
-                                            </div>
-                                            <div className={s.carousel__slide}>
-                                                <div className={s.carousel__image} >/ Sample Development</div>
-
-                                            </div>
-                                            <div className={s.carousel__slide}>
-                                                <div className={s.carousel__image} >/ Sample Development</div>
-
-                                            </div>
 
                                         </div>
                                     </div>
@@ -198,7 +129,7 @@ function ListServices() {
                                     <div>Art Direction & Project Management</div>
                                     <div className={s.carousel}>
 
-                                        <div className={s.carousel__wrapper}>
+                                        <div className={s.carousel__wrapper} style={{ "--slide-width": "30vw" } as React.CSSProperties}>
 
                                             <div className={s.carousel__slide}>
                                                 <div className={s.carousel__image} >/ Art Direction & Project Management</div>
@@ -224,30 +155,7 @@ function ListServices() {
                                                 <div className={s.carousel__image} >/ Art Direction & Project Management</div>
 
                                             </div>
-                                            <div className={s.carousel__slide}>
-                                                <div className={s.carousel__image} >/ Art Direction & Project Management</div>
 
-                                            </div>
-                                            <div className={s.carousel__slide}>
-                                                <div className={s.carousel__image} >/ Art Direction & Project Management</div>
-
-                                            </div>
-                                            <div className={s.carousel__slide}>
-                                                <div className={s.carousel__image} >/ Art Direction & Project Management</div>
-
-                                            </div>
-                                            <div className={s.carousel__slide}>
-                                                <div className={s.carousel__image} >/ Art Direction & Project Management</div>
-
-                                            </div>
-                                            <div className={s.carousel__slide}>
-                                                <div className={s.carousel__image} >/ Art Direction & Project Management</div>
-
-                                            </div>
-                                            <div className={s.carousel__slide}>
-                                                <div className={s.carousel__image} >/ Art Direction & Project Management</div>
-
-                                            </div>
 
                                         </div>
                                     </div>
@@ -261,7 +169,7 @@ function ListServices() {
                                     <div>Website & E-commerce Development</div>
                                     <div className={s.carousel}>
 
-                                        <div className={s.carousel__wrapper}>
+                                        <div className={s.carousel__wrapper} style={{ "--slide-width": "30vw" } as React.CSSProperties}>
 
                                             <div className={s.carousel__slide}>
                                                 <div className={s.carousel__image} >/ Website & E-commerce Development</div>
@@ -281,29 +189,6 @@ function ListServices() {
                                             <div className={s.carousel__slide}>
                                                 <div className={s.carousel__image} >/ Website & E-commerce Development</div>
                                             </div>
-                                            <div className={s.carousel__slide}>
-                                                <div className={s.carousel__image} >/ Website & E-commerce Development</div>
-                                            </div>
-                                            <div className={s.carousel__slide}>
-                                                <div className={s.carousel__image} >/ Website & E-commerce Development</div>
-                                            </div>
-                                            <div className={s.carousel__slide}>
-                                                <div className={s.carousel__image} >/ Website & E-commerce Development</div>
-                                            </div>
-                                            <div className={s.carousel__slide}>
-                                                <div className={s.carousel__image} >/ Website & E-commerce Development</div>
-                                            </div>
-                                            <div className={s.carousel__slide}>
-                                                <div className={s.carousel__image} >/ Website & E-commerce Development</div>
-                                            </div>
-                                            <div className={s.carousel__slide}>
-                                                <div className={s.carousel__image} >/ Website & E-commerce Development</div>
-                                            </div>
-
-
-
-
-
 
                                         </div>
                                     </div>
@@ -312,7 +197,7 @@ function ListServices() {
                                     <div>Photo, Video, 2D, 3D & Motion</div>
                                     <div className={s.carousel}>
 
-                                        <div className={s.carousel__wrapper}>
+                                        <div className={s.carousel__wrapper} style={{ "--slide-width": "30vw" } as React.CSSProperties}>
 
                                             <div className={s.carousel__slide}>
                                                 <div className={s.carousel__image} >/ Photo, Video, 2D, 3D & Motion</div>
@@ -336,34 +221,6 @@ function ListServices() {
                                             <div className={s.carousel__slide}>
                                                 <div className={s.carousel__image} >/ Photo, Video, 2D, 3D & Motion</div>
                                             </div>
-
-                                            <div className={s.carousel__slide}>
-                                                <div className={s.carousel__image} >/ Photo, Video, 2D, 3D & Motion</div>
-                                            </div>
-
-                                            <div className={s.carousel__slide}>
-                                                <div className={s.carousel__image} >/ Photo, Video, 2D, 3D & Motion</div>
-                                            </div>
-
-                                            <div className={s.carousel__slide}>
-                                                <div className={s.carousel__image} >/ Photo, Video, 2D, 3D & Motion</div>
-                                            </div>
-
-                                            <div className={s.carousel__slide}>
-                                                <div className={s.carousel__image} >/ Photo, Video, 2D, 3D & Motion</div>
-                                            </div>
-
-                                            <div className={s.carousel__slide}>
-                                                <div className={s.carousel__image} >/ Photo, Video, 2D, 3D & Motion</div>
-                                            </div>
-
-                                            <div className={s.carousel__slide}>
-                                                <div className={s.carousel__image} >/ Photo, Video, 2D, 3D & Motion</div>
-                                            </div>
-
-
-
-
 
                                         </div>
                                     </div>
@@ -377,7 +234,7 @@ function ListServices() {
                                     <div>Mass Production</div>
                                     <div className={s.carousel}>
 
-                                        <div className={s.carousel__wrapper}>
+                                        <div className={s.carousel__wrapper} style={{ "--slide-width": "20vw" } as React.CSSProperties}>
 
                                             <div className={s.carousel__slide}>
                                                 <div className={s.carousel__image} >/ Mass Production</div>
@@ -397,24 +254,7 @@ function ListServices() {
                                             <div className={s.carousel__slide}>
                                                 <div className={s.carousel__image} >/ Mass Production</div>
                                             </div>
-                                            <div className={s.carousel__slide}>
-                                                <div className={s.carousel__image} >/ Mass Production</div>
-                                            </div>
-                                            <div className={s.carousel__slide}>
-                                                <div className={s.carousel__image} >/ Mass Production</div>
-                                            </div>
-                                            <div className={s.carousel__slide}>
-                                                <div className={s.carousel__image} >/ Mass Production</div>
-                                            </div>
-                                            <div className={s.carousel__slide}>
-                                                <div className={s.carousel__image} >/ Mass Production</div>
-                                            </div>
-                                            <div className={s.carousel__slide}>
-                                                <div className={s.carousel__image} >/ Mass Production</div>
-                                            </div>
-                                            <div className={s.carousel__slide}>
-                                                <div className={s.carousel__image} >/ Mass Production</div>
-                                            </div>
+
 
                                         </div>
                                     </div>
@@ -423,26 +263,8 @@ function ListServices() {
                                     <div>Production Management</div>
                                     <div className={s.carousel}>
 
-                                        <div className={s.carousel__wrapper}>
+                                        <div className={s.carousel__wrapper} style={{ "--slide-width": "20vw" } as React.CSSProperties}>
 
-                                            <div className={s.carousel__slide}>
-                                                <div className={s.carousel__image} >/ Production Management</div>
-                                            </div>
-                                            <div className={s.carousel__slide}>
-                                                <div className={s.carousel__image} >/ Production Management</div>
-                                            </div>
-                                            <div className={s.carousel__slide}>
-                                                <div className={s.carousel__image} >/ Production Management</div>
-                                            </div>
-                                            <div className={s.carousel__slide}>
-                                                <div className={s.carousel__image} >/ Production Management</div>
-                                            </div>
-                                            <div className={s.carousel__slide}>
-                                                <div className={s.carousel__image} >/ Production Management</div>
-                                            </div>
-                                            <div className={s.carousel__slide}>
-                                                <div className={s.carousel__image} >/ Production Management</div>
-                                            </div>
                                             <div className={s.carousel__slide}>
                                                 <div className={s.carousel__image} >/ Production Management</div>
                                             </div>
@@ -470,7 +292,7 @@ function ListServices() {
                                     <div>Inventory Management</div>
                                     <div className={s.carousel}>
 
-                                        <div className={s.carousel__wrapper}>
+                                        <div className={s.carousel__wrapper} style={{ "--slide-width": "20vw" } as React.CSSProperties}>
 
                                             <div className={s.carousel__slide}>
                                                 <div className={s.carousel__image} >/ Inventory Management</div>
@@ -490,26 +312,6 @@ function ListServices() {
                                             <div className={s.carousel__slide}>
                                                 <div className={s.carousel__image} >/ Inventory Management</div>
                                             </div>
-                                            <div className={s.carousel__slide}>
-                                                <div className={s.carousel__image} >/ Inventory Management</div>
-                                            </div>
-                                            <div className={s.carousel__slide}>
-                                                <div className={s.carousel__image} >/ Inventory Management</div>
-                                            </div>
-                                            <div className={s.carousel__slide}>
-                                                <div className={s.carousel__image} >/ Inventory Management</div>
-                                            </div>
-                                            <div className={s.carousel__slide}>
-                                                <div className={s.carousel__image} >/ Inventory Management</div>
-                                            </div>
-                                            <div className={s.carousel__slide}>
-                                                <div className={s.carousel__image} >/ Inventory Management</div>
-                                            </div>
-                                            <div className={s.carousel__slide}>
-                                                <div className={s.carousel__image} >/ Inventory Management</div>
-                                            </div>
-
-
 
                                         </div>
                                     </div>

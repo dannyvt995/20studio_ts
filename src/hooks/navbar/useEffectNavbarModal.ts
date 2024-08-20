@@ -9,11 +9,11 @@ import useStoreZustand from '../useStoreZustand';
 
 const propsGsap = {
     props_openNav: {
-        duration: 1,
+        duration: 1.123,
         ease: "power3.inOut"
     },
     props_CloseNav: {
-        duration: 1,
+        duration: 1.36,
         ease: "power3.out"
     },
     props_Filter_Light: {
@@ -82,7 +82,15 @@ export const useEffectActive_NavbarModal = (
                 y: -window.innerHeight / 2,
             })
             .to(DomContent, {
-                rotate: 5,
+                
+         /*        onStart: function() {
+                 
+                    if (Timeline.reversed() === true) {
+                        console.log("KILL IT NOW====))))))))))")
+                        this.kill(); 
+                    }
+                }, */
+                rotate: 7,
                 scale: 1.1,
                 y: window.innerHeight / 3,
                 ...propsGsap.props_openNav
@@ -95,8 +103,10 @@ export const useEffectActive_NavbarModal = (
                 rotate: 0,
                 scale: 1,   
                 y: 0,
+              
                 ...propsGsap.props_openNav
-            }, '<').reverse();
+            }, '<')
+            Timeline.reverse();
             window.timelineNavbar = Timeline
            
     }, [pathName,SliderImage,SectionRef,MaskRef,DomEffect,stateEnterPage,stateTransition])

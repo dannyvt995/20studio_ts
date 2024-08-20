@@ -13,7 +13,8 @@ function LoadingPage() {
   const container = useRef<HTMLDivElement>(null)
   const { stateEnterPage,setStateEnterPage } = useStoreZustand()
 
-
+// const timeTransition = 1.456
+// const easeTransition = "power3.inOut"
 
   useGSAP(() => {
     if (stateEnterPage) return
@@ -22,7 +23,7 @@ function LoadingPage() {
     gsap.timeline({
       onComplete: () => {
        setStateEnterPage()
-       // gsap.to(`.${s.mask}`,{rotate: -7,y:'-40%',x:'-10%',duration:1})
+       gsap.to(`.${s.logo}`,{delay:.3,scale:.2,duration:1.345})
         setTimeout(() => {
           gsap.set(container.current, { delay: 1.2, opacity: 0 })
           console.log('%c///// END anim loading page, disable this', 'color: red;font-weight:bold;text-decoration: underline')
@@ -30,7 +31,7 @@ function LoadingPage() {
       }
     }).to(`.${s.progressBar}`, {
       clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
-      duration: 1.5,
+      duration: 1.2,
       ease:"power3.inOut"
     },"<")
   }, { scope: container })

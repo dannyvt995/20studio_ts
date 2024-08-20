@@ -76,22 +76,27 @@ function FooterSection({ propsForGsap,state }: IFooterSection) {
                 <ul className={s.nav_footer}>
                     <li className={s.item}>
                    
-                    <ButtonHoverNew  targetRedirect='/work'>
+                    <ButtonHoverNew targetRedirect='/work'>
                     Project
                    </ButtonHoverNew>
                     </li>
                     <li className={s.item}>
-                    <ButtonHoverNew targetRedirect='/home'>
-                    Service
+                    <ButtonHoverNew  btnNavbarFooter={true} targetRedirect='/home'>
+                    Home
                    </ButtonHoverNew>
                     </li>
                     <li className={s.item}>
-                    <ButtonHoverNew  targetRedirect='/about'>
+                    <ButtonHoverNew btnNavbarFooter={true} targetRedirect='/about'>
                    About us
                    </ButtonHoverNew>
                     </li>
                     <li className={s.item}>
-                    <ButtonHoverNew  targetRedirect='/contact'>
+                    <ButtonHoverNew targetRedirect='/service'>
+                   Service
+                   </ButtonHoverNew>
+                    </li>
+                    <li className={s.item}>
+                    <ButtonHoverNew btnNavbarFooter={true} targetRedirect='/contact'>
                    Contact
                    </ButtonHoverNew>
                     </li>

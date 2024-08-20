@@ -131,6 +131,7 @@
         grid-column-gap: 2.2222222222vw;
         grid-template-columns: repeat(12, 1fr);
     }
+  
      .service:first-child {
         grid-column: 2 / 8;
     }
@@ -174,7 +175,7 @@
 
 }
  .info * {
-    font-size: 1.4vw;
+    font-size: 1vw;
 
     will-change: transform;
 

@@ -13,9 +13,10 @@ import ButtonHoverNew2 from '../ButtonHoverNew2'
 import IconSVG from '@/components/Icon/IconSVG'
 gsap.registerPlugin(ScrollTrigger)
 interface ILetContact {
-  propsForGsap?: any
+  propsForGsap?: any,
+  disableImg?: boolean
 }
-function LetContact({ propsForGsap }: ILetContact) {
+function LetContact({ propsForGsap, disableImg }: ILetContact) {
   const triggleSection = useRef<HTMLUListElement>(null)
   const box1Ref = useRef<any>(null)
 
@@ -42,22 +43,26 @@ function LetContact({ propsForGsap }: ILetContact) {
   return (
     <section className={cn(s.letcontact_section, s.light_background)} >
       <div className={s.container}>
-        <ul className={s.media_wrapper} ref={triggleSection}>
-          <li className={s.media} ref={box1Ref}>
-            <Image sizes="100vw" alt="d" src="/home/letcontact_c.png" width={0} height={0} style={{ width: "100%", height: "auto" }} quality={86} />
-          </li>
-          <li className={s.media}>
-            <Image sizes="100vw" alt="d" src="/home/letcontact_tl.png" width={0} height={0} style={{ width: "100%", height: "auto" }} quality={86} />
-          </li>
-          <li className={s.media}>
-            <Image sizes="100vw" alt="d" src="/home/letcontact_tr.png" width={0} height={0} style={{ width: "100%", height: "auto" }} quality={86} />
-          </li>
-          <li className={s.media}>
-            <Image sizes="100vw" alt="d" src="/home/letcontact_bl.png" width={0} height={0} style={{ width: "100%", height: "auto" }} quality={86} /></li>
-          <li className={s.media}>
-            <Image sizes="100vw" alt="d" src="/home/letcontact_br.png" width={0} height={0} style={{ width: "100%", height: "auto" }} quality={86} />
-          </li>
-        </ul>
+        {disableImg ? <></> :
+          <ul className={s.media_wrapper} ref={triggleSection}>
+            <li className={s.media} ref={box1Ref}>
+              <Image sizes="100vw" alt="d" src="/home/letcontact_c.png" width={0} height={0} style={{ width: "100%", height: "auto" }} quality={86} />
+            </li>
+            <li className={s.media}>
+
+              <Image sizes="100vw" alt="d" src="/home/letcontact_tl.png" width={0} height={0} style={{ width: "100%", height: "auto" }} quality={86} />
+            </li>
+            <li className={s.media}>
+              <Image sizes="100vw" alt="d" src="/home/letcontact_tr.png" width={0} height={0} style={{ width: "100%", height: "auto" }} quality={86} />
+            </li>
+            <li className={s.media}>
+              <Image sizes="100vw" alt="d" src="/home/letcontact_bl.png" width={0} height={0} style={{ width: "100%", height: "auto" }} quality={86} /></li>
+            <li className={s.media}>
+              <Image sizes="100vw" alt="d" src="/home/letcontact_br.png" width={0} height={0} style={{ width: "100%", height: "auto" }} quality={86} />
+            </li>
+          </ul>
+        }
+
         <div className={s.text}>
           <h2 className={s.lable}>
             Contact us
@@ -73,10 +78,10 @@ function LetContact({ propsForGsap }: ILetContact) {
           <ButtonHoverNew2
             icon={<IconSVG src='/icon/arrow-right.svg' />}
             targetRedirect='mailto:vphcm@studio.vn'
-            classAdd={cn(s.link, s.is_dark,s.wrap)}>
+            classAdd={cn(s.link, s.is_dark, s.wrap)}>
             Let&apos;s touch
           </ButtonHoverNew2>
-       
+
         </div>
       </div>
 

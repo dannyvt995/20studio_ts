@@ -19,10 +19,10 @@
     width: 35.7333333333vw;
 }
 .media:nth-child(2) {
-    height: 19.7333333333vw;
+    width: 19.7333333333vw;
     left: 8vw;
     top: 19.2vw;
-    width: 35.2vw;
+    height: 35.2vw;
 }
 .media:nth-child(3) {
     height: 23.2vw;
@@ -127,16 +127,16 @@
         width: 25.9722222222vw;
     }
      .media:nth-child(2) {
-        height: 14.7916666667vw;
-        left: 9.0972222222vw;
-        top: 13.8888888889vw;
-        width: 26.3194444444vw;
+        width: 15.791667vw;
+        left: 16.097222vw;
+        top: -9.111111vw;
+        height: 26.3194444444vw;
     }
      .media:nth-child(3) {
         height: 17.1527777778vw;
-        left: 50.2638888889vw;
+        left: 50.263889vw;
         top: 4.2361111111vw;
-        width: 12.0833333333vw;
+        width: 22.083333vw;
     }
      .media:nth-child(4) {
         height: 17.6388888889vw;
@@ -146,9 +146,9 @@
     }
      .media:nth-child(5) {
         height: 26.3194444444vw;
-        left: 44.5833333333vw;
-        top: 39.9305555556vw;
-        width: 26.3194444444vw;
+        left: 50.583333vw;
+        top: 40.930556vw;
+        width: 18.319444vw;
     }
      .text {
         width: 40.5555555556vw;

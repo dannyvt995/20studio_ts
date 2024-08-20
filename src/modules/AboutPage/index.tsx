@@ -9,6 +9,7 @@ import Us from '@Components/new/Aboutus/Us';
 import { IPageModule } from '@/types/common';
 import { memo } from 'react';
 import { about_page } from '@Constants/page_props';
+import LetContact from '@/components/new/LetContact';
 
 function AboutPage(): JSX.Element {
   
@@ -21,6 +22,7 @@ function AboutPage(): JSX.Element {
             <SectionTitleBlend  propsForGsap={about_page.propsForGsap} />
             <Minded />
             <Us />
+            <LetContact disableImg={true}/>
             <FooterSection  propsForGsap={about_page.propsForGsap} />
         </div>
     )

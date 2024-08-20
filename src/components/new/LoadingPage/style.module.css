@@ -21,6 +21,7 @@
     position: relative;
     margin: auto;
     width: fit-content;
+    will-change: transform;
 }
 .progressBar {
     position: absolute;
