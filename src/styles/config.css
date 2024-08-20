@@ -33,6 +33,15 @@ ul {
     margin:0;
     padding:0;
 }
+
+:root {
+    --no-of-slides: 6;
+    --slides-in-view: 4;
+    --slide-width: 32vw;
+    --slide-height: 300px;
+    --iteration-time: 30s;
+  }
+  
 :root {
 
     --grid_margin_des: 8vw;

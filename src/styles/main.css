@@ -34,7 +34,7 @@
    
   
 }
-#aboutpage,#contactpage,#homepage,#workpage {
+#aboutpage,#contactpage,#homepage,#servicepage,#workpage {
   
     position:fixed;
     top:0;
@@ -45,7 +45,7 @@
     transform: scale(1.2) rotate(7deg) translateY(50%);
 
 }
-#aboutpage, #contactpage, #homepage, #workpage,#work1page,
+#aboutpage, #contactpage, #homepage,#servicepage, #workpage,#work1page,
 #work2page,
 #work3page,
 #work4page {

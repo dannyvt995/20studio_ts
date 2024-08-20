@@ -13,6 +13,7 @@ import HomePage from '@Modules/HomePage';
 import AboutPage from '@Modules/AboutPage';
 import ContactPage from '@Modules/ContactPage';
 import WorkPage from '@Modules/WorkPage';
+import ServicePage from '@/modules/ServicePage';
 import Project1 from '@Modules/Project1';
 import Project2 from '@Modules/Project2';
 import Project3 from '@Modules/Project3';
@@ -26,6 +27,7 @@ import { useInitLenis } from '@Hooks/lenis/useInitLenis';
 import { propsGsap } from "@Constants/gsap_props"
 import { gsap } from "gsap"
 import { useGSAP } from '@gsap/react';
+
 gsap.registerPlugin(useGSAP)
 
 
@@ -165,6 +167,9 @@ const { setStateTransition,stateEnterPage } = useStoreZustand()
         case '/contact':
           contentDomReference = <ContactPage />;
           break;
+          case '/service':
+            contentDomReference = <ServicePage />;
+            break;
         case '/work':
           contentDomReference = <WorkPage />;
           break;

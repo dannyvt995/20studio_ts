@@ -99,6 +99,12 @@ function NavbarModalSection({ }) {
                         </ul>
                         <ul className={s.main} id='main_navbar'>
                             <li className={s.main_link}>
+                                <ButtonHoverNew btnNavbar={true} data_id={3} targetRedirect='/home' classAdd={s.main_line}>
+                                    Home
+                                </ButtonHoverNew>
+
+                            </li>
+                            <li className={s.main_link}>
                                 <ButtonHoverNew btnNavbar={true} data_id={0} targetRedirect='/work' classAdd={s.main_line}>
                                     Project
                                 </ButtonHoverNew>
@@ -111,7 +117,7 @@ function NavbarModalSection({ }) {
 
                             </li>
                             <li className={s.main_link}>
-                                <ButtonHoverNew btnNavbar={true} data_id={2} targetRedirect='/' classAdd={s.main_line}>
+                                <ButtonHoverNew btnNavbar={true} data_id={2} targetRedirect='/service' classAdd={s.main_line}>
                                     Service
                                 </ButtonHoverNew>
 

@@ -38,8 +38,11 @@ export default function NavbarSectionDeskop() {
             case '/about':
                 target.current = unit.current * 2;
                 break;
+                case '/service':
+                    target.current = unit.current * 3;
+                    break;
             case '/contact':
-                target.current = unit.current * 3;
+                target.current = unit.current * 4;
                 break;
             default:
                 target.current = unit.current;
@@ -126,8 +129,11 @@ export default function NavbarSectionDeskop() {
                 case '/about':
                     target.current = unit.current * 2;
                     break;
+                    case '/service':
+                        target.current = unit.current * 3;
+                        break;
                 case '/contact':
-                    target.current = unit.current * 3;
+                    target.current = unit.current * 4;
                     break;
                 default:
                     target.current = unit.current;
@@ -204,6 +210,11 @@ export default function NavbarSectionDeskop() {
                 <li className={s.nav_item}>
                    <ButtonHoverNew isActive={pathName === '/about'}  targetRedirect='/about'>
                    About us
+                   </ButtonHoverNew>
+                </li>
+                <li className={s.nav_item}>
+                   <ButtonHoverNew isActive={pathName === '/service'}  targetRedirect='/service'>
+                   Service
                    </ButtonHoverNew>
                 </li>
                 <li className={s.nav_item}>

@@ -30,6 +30,14 @@ export const home_page = {
         }
     }
 }
+export const service_page = {
+    propsForGsap: {
+        scrollerRef: "#servicepage"
+    },
+    content:{
+       
+    }
+}
 
 export const project1_page = {
     propsForGsap: {

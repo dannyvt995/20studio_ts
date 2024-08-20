@@ -13,7 +13,7 @@ gsap.registerPlugin(useGSAP)
 
 export default function ContactPageIntro() {
     const container = useRef<any>()
-    useGSAP(() => {
+/*     useGSAP(() => {
         const colors = ["#0ae448","#ff8709", "#9d95ff", "#00bae2"];
 
         //initially colorize each box and position in a row
@@ -32,19 +32,19 @@ export default function ContactPageIntro() {
           },
           repeat: -1
         });
-    },{scope:container})
+    },{scope:container}) */
     return (
         <section className={s.ContactPageIntro} ref={container}>
 
 
-<div className="wrapper">
+{/* <div className="wrapper">
                     <div className="boxes">
                         <div className="box">1</div>
                         <div className="box">2</div>
                         <div className="box">3</div>
                         <div className="box">4</div>
                     </div>
-                </div>
+                </div> */}
 
 
 

@@ -13,7 +13,7 @@ import ButtonHoverNew2 from '../ButtonHoverNew2'
 import IconSVG from '@/components/Icon/IconSVG'
 gsap.registerPlugin(ScrollTrigger)
 interface ILetContact {
-  propsForGsap: any
+  propsForGsap?: any
 }
 function LetContact({ propsForGsap }: ILetContact) {
   const triggleSection = useRef<HTMLUListElement>(null)

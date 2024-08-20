@@ -21,30 +21,31 @@ function LoadingPage() {
 
     gsap.timeline({
       onComplete: () => {
-        setTimeout(() => {
-          setStateEnterPage()
-        }, 700);
-
+       setStateEnterPage()
+       // gsap.to(`.${s.mask}`,{rotate: -7,y:'-40%',x:'-10%',duration:1})
         setTimeout(() => {
           gsap.set(container.current, { delay: 1.2, opacity: 0 })
           console.log('%c///// END anim loading page, disable this', 'color: red;font-weight:bold;text-decoration: underline')
         }, 1200)
       }
-    })/* .to(`.${s.progressBar}`, {
-      x: `100%`,
-      duration: 1
-    },"<") */.to(`.${s.logo}`, {
-  
+    }).to(`.${s.progressBar}`, {
       clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
-      duration: 1
+      duration: 1.5,
+      ease:"power3.inOut"
     },"<")
   }, { scope: container })
 
 
   return (
     <div className={s.loadingPage} ref={container}>
-  {/*     <div className={s.progressBar} /> */}
-      <div className={s.logo}>20 Studio</div>
+      
+      <div className={s.mask}>
+        <div className={s.logo}>
+          <span className={s.brand}>20 Studio</span>
+          <div className={s.progressBar} />
+        </div>
+        <p className={s.quote}>From vision to reality</p>
+      </div>
     </div>
   )
 }

@@ -28,7 +28,7 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children,isActive,data_
     const linkRef = useRef<HTMLAnchorElement>(null);
     const timelineRef = useRef<gsap.core.Timeline>()
     const router = useRouter()
-    const easeOps = "power4.inOut"
+    const easeOps = "power3.inOut"
     const durationOps = 0.5
     const { selectedItemNavbar } = useStoreZustand();
     const { contextSafe } = useGSAP({ scope: linkRef }); 
@@ -64,7 +64,11 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children,isActive,data_
         });
     },[])
 
+  
 
+    useEffect(() => {
+        isActiveRef.current = (pathName === targetRedirect) || (pathName === '/' && targetRedirect === '/home');
+    }, [pathName]);
 
     useEffect(() => {
        
@@ -72,12 +76,8 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children,isActive,data_
         if(isMobile()) return
         if(stateTransition !== 'entered') return
         console.log("ButtonHoverNew2ButtonHoverNew2ButtonHoverNew2")
-      
-        if(pathName === targetRedirect) {
-            isActiveRef.current = true
-        }else {
-            isActiveRef.current = false
-        }
+        
+   
         const enterAnimation = contextSafe((e:any) => {
             if(timelineRef.current) {
                 if(pathName !== targetRedirect) {
