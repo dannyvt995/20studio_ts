@@ -42,7 +42,7 @@ function FooterSection({ propsForGsap,state }: IFooterSection) {
             .fromTo(domEffect.current, {
                 y: -window.innerHeight * .4, // calc(100vh * -1.2)
             }, { y: 0 })
-           },500)
+           },1000)
         }
 
         return () => clearTimeout(timeoutId); 
