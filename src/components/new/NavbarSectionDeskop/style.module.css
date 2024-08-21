@@ -7,7 +7,7 @@
     -moz-user-select: none;
     user-select: none;
     z-index: 999;
-
+    will-change: opacity;
     mix-blend-mode: difference;
 }
 
@@ -63,8 +63,8 @@
 .button_menu {
     color: #0d0e13;
     color: var(--white);
-    display: none;
-
+    display: flex;
+    will-change: opacity;
     padding: 8vw;
     position: fixed;
     right: 0;
@@ -82,14 +82,12 @@
     overflow: hidden;
 }
 .lableMenu {
-    font-family: Lausanne-300;
-    font-family: var(--font-f-lausanne-300);
+    font-family: "BD-Medium";
     font-size: 3.7333333333vw;
     font-size: var(--font-s-p-small);
     letter-spacing: .0266666667vw;
     letter-spacing: var(--font-ls-p-small);
-    line-height: 5.6vw;
-    line-height: var(--font-lh-p-small);
+    line-height: 150%;
 
        
     position: relative;
@@ -101,17 +99,12 @@
     top:0;
     left: 0;
     will-change: transform;
-
-
-
-    font-family: Lausanne-300;
-    font-family: var(--font-f-lausanne-300);
+    font-family: "BD-Medium";
     font-size: 3.7333333333vw;
     font-size: var(--font-s-p-small);
     letter-spacing: .0266666667vw;
     letter-spacing: var(--font-ls-p-small);
-    line-height: 5.6vw;
-    line-height: var(--font-lh-p-small);
+    line-height: 150%;
 
 }
 .icon {
@@ -129,10 +122,12 @@
    .button_menu {
         line-height: 1.3888888889vw;
         padding: 5.000001vw;
+        opacity: 0;
     }
    .icon {
         height: 1.25vw;
         margin-left: .8333333333vw;
+        margin-bottom: .1vw;
         width: 1.25vw;
         will-change: transform;
     }

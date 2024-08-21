@@ -125,9 +125,10 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children,btnNavbarFoote
         if(timelineRef.current) {
             timelineRef.current.play();
         }
-        if (window.timelineNavbar && window.timelineBtnNavbar) {
-            window.timelineNavbar.reversed(!window.timelineNavbar.reversed());
+        if (window.timelineNavbarModal && window.timelineBtnNavbar && window.timelineNavbarItem) {
+            window.timelineNavbarModal.reversed(!window.timelineNavbarModal.reversed());
             window.timelineBtnNavbar.reversed(!window.timelineBtnNavbar.reversed());
+            window.timelineNavbarItem.reversed(!window.timelineNavbarItem.reversed())
             router.push(targetRedirect || '#')
         }else{
             alert("Err on window var global >>>>>>>>")

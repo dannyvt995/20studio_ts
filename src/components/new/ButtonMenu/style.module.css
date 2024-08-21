@@ -1,7 +1,7 @@
 .button_menu {
     color: #0d0e13;
     color: var(--white);
-    display: none;
+    display: flex;
 
     padding: 8vw;
     position: fixed;

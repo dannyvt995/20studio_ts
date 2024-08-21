@@ -46,14 +46,17 @@ export function useInitLenis({ firstLoad }: { firstLoad?: boolean }) {
 
       
 
-      NavbarDeskop.style.display = `block`;
-      ButtonNavbar.style.display = `none`;
-
-
+      // NavbarDeskop.style.display = `block`;
+      // ButtonNavbar.style.display = `none`;
+    
+      NavbarDeskop.style.opacity = `1`;
+      ButtonNavbar.style.opacity = `0`;
+      NavbarDeskop.style.pointerEvents = `auto`;
+      ButtonNavbar.style.pointerEvents = `none`;
 
       lenisRef = new Lenis({
         wrapper:domScroll as HTMLElement,
-        lerp: 0.072,
+        lerp: 0.086,
         syncTouch:true,
       })
 
@@ -68,13 +71,15 @@ export function useInitLenis({ firstLoad }: { firstLoad?: boolean }) {
         if (NavbarDeskop && ButtonNavbar && !isMobile()) {
       
           if (scroll > flag) {
-            NavbarDeskop.style.display = `none`;
-            ButtonNavbar.style.display = `flex`;
-
+            NavbarDeskop.style.opacity = `0`;
+            ButtonNavbar.style.opacity = `1`;
+            NavbarDeskop.style.pointerEvents = `none`;
+            ButtonNavbar.style.pointerEvents = `auto`;
           } else if (scroll <= flag ) {
-            NavbarDeskop.style.display = `block`;
-            ButtonNavbar.style.display = `none`;
-         
+            NavbarDeskop.style.opacity = `1`;
+            ButtonNavbar.style.opacity = `0`;
+            NavbarDeskop.style.pointerEvents = `auto`;
+            ButtonNavbar.style.pointerEvents = `none`;
           }
         }
       });

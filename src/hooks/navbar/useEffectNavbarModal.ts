@@ -107,7 +107,7 @@ export const useEffectActive_NavbarModal = (
                 ...propsGsap.props_openNav
             }, '<')
             Timeline.reverse();
-            window.timelineNavbar = Timeline
+            window.timelineNavbarModal = Timeline
            
     }, [pathName,SliderImage,SectionRef,MaskRef,DomEffect,stateEnterPage,stateTransition])
 
@@ -118,7 +118,7 @@ export const useEffectActive_NavbarModal = (
     
     //         if (linkTarget === pathNameFormat) return;
       
-    //         if(window.timelineNavbar) window.timelineNavbar.reversed(!window.timelineNavbar.reversed());
+    //         if(window.timelineNavbarModal) window.timelineNavbarModal.reversed(!window.timelineNavbarModal.reversed());
     //         router.push(`${linkTarget}`);
     //     });
     // });
@@ -127,7 +127,7 @@ export const useEffectActive_NavbarModal = (
 
    
     /* const handleClickMenu = () => {
-        if(window.timelineNavbar) window.timelineNavbar.reversed(!window.timelineNavbar.reversed());
+        if(window.timelineNavbarModal) window.timelineNavbarModal.reversed(!window.timelineNavbarModal.reversed());
     
     }; */
 

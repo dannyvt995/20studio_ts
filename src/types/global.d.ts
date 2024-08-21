@@ -3,7 +3,8 @@ import gsap from 'gsap'
 declare global {
   interface Window {
     lenis?: Lenis | null;
-    timelineNavbar? : gsap.core.Timeline | null;
-    timelineBtnNavbar? : gsap.core.Timeline | null
+    timelineNavbarModal? : gsap.core.Timeline | null;
+    timelineBtnNavbar? : gsap.core.Timeline | null;
+    timelineNavbarItem? : gsap.core.Timeline | null
   }
 }

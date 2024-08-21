@@ -10,24 +10,25 @@ import useStoreZustand from '@/hooks/useStoreZustand';
 gsap.registerPlugin(useGSAP)
 
 function NavbarSectionDeskop() {
-    
-    console.log("%cNavbarDeskop_render","color:green;font-weight:bold")
-    
+
+    console.log("%cNavbarDeskop_render", "color:green;font-weight:bold")
+
     const container = useRef<any>()
     const buttonMenuRef = useRef<any>()
     const timelineBtnMenu = useRef<gsap.core.Timeline>()
+    const timelineNavbarItem = useRef<gsap.core.Timeline>()
     const mainNavbar = useRef<any>(null)
     const pathName = usePathname()
-    const {stateEnterPage} = useStoreZustand()
+    const { stateEnterPage } = useStoreZustand()
 
     const unit = useRef<number>(0)
     const target = useRef<number>(0)
-    const [isEnterPage,setIsEnterPage] = useState(true)
+    const [isEnterPage, setIsEnterPage] = useState(true)
     useEffect(() => {
-      
-        unit.current = window.innerWidth /100 * 6
-        
-        switch(pathName) {
+
+        unit.current = window.innerWidth / 100 * 6
+
+        switch (pathName) {
             case '/home':
             case '/':
                 target.current = 0;
@@ -38,87 +39,112 @@ function NavbarSectionDeskop() {
             case '/about':
                 target.current = unit.current * 2;
                 break;
-                case '/service':
-                    target.current = unit.current * 3;
-                    break;
+            case '/service':
+                target.current = unit.current * 3;
+                break;
             case '/contact':
                 target.current = unit.current * 4;
                 break;
             default:
                 target.current = unit.current;
         }
-        
 
-    },[])
 
-  
+    }, [])
+
+
 
 
 
     useEffect(() => {
-        if(!stateEnterPage) return
-        console.log("%cInit Navbar Timeline !!","color:green")
-        timelineBtnMenu.current = gsap.timeline()
-        .fromTo(`.${s.icon}`,{
-            rotate:45,
-        },{
-            rotate:180,
-            ease:"power3.inOut",
-            duration:.5
-        })
-        .fromTo(`.${s.lableMenu}`,{
-            y:0
-        },{
-            y:"-100%",
-            duration:.5
-        },"<")
-        .fromTo(`.${s.lableClose}`,{
-            y:"100%"
-        },{
-            y:0,
-            duration:.5
-        },"<").reverse()
+        if (!stateEnterPage) return
+        console.log("%cInit Navbar Timeline !!", "color:green")
+        timelineBtnMenu.current = gsap.timeline({paused:true})
+          
+            .fromTo(`.${s.icon}`, {
+                rotate: 45,
+            }, {
+                rotate: 180,
+                ease: "power3.inOut",
+                duration: .5
+            })
+        
+            .fromTo(`.${s.lableMenu}`, {
+                y: 0
+            }, {
+                y: "-100%",
+                ease: "power3.inOut",
+                duration: .5
+            },"<")
+     
+            .fromTo(`.${s.lableClose}`, {
+                y: "100%"
+            }, {
+                y: 0,
+                ease: "power3.inOut",
+                duration: .5
+            },"<").reverse()
         window.timelineBtnNavbar = timelineBtnMenu.current
+        
         return () => {
             window.timelineBtnNavbar = null
-            if(timelineBtnMenu.current) timelineBtnMenu.current.kill()
+            if (timelineBtnMenu.current) timelineBtnMenu.current.kill()
         }
-    },[buttonMenuRef,stateEnterPage])
+    }, [buttonMenuRef, stateEnterPage])
 
     useGSAP(() => {
-        if(isEnterPage && stateEnterPage) {
-            console.log("%cFire Anim Navbar First Time !!","color:green")
+        if (isEnterPage) {
+            console.log("Chạy lại à ??")
+            timelineNavbarItem.current = gsap.timeline({ defaults: {},paused:true })
+                .fromTo(`.${s.nav_item}`,
+                    {
+                        y: '100%',
+                    },
+                    {
+                        y: 0,
+                        duration: 1, ease: "power3.out",
+                        stagger: .1
+                    })
+            window.timelineNavbarItem = timelineNavbarItem.current
+
+            setTimeout(() => {
+                if (window.timelineNavbarItem) {
+                    window.timelineNavbarItem.play()
+                } else {
+                    alert("window.timelineNavbarItem err on NavbarSectionDeskop")
+                }
+            }, 1000)
+        }
+
+    }, { scope: container })
+
+    useGSAP(() => {
+        if (isEnterPage && stateEnterPage) {
+            console.log("%cFire Anim Navbar First Time !!", "color:green")
             gsap.timeline({
-                onComplete:() => {
+                onComplete: () => {
                     setIsEnterPage(false)
                 }
-            }).set(`.${s.this_icon}`,{
+            }).set(`.${s.this_icon}`, {
                 x: target.current,
-                scale:0,
-                rotate:0,
+                scale: 0,
+                rotate: 0,
             })
-            .to(`.${s.nav_item}`,{
-                delay:.1,
-                y: 0,
-                ease:"power3.out",
-                duration:1,
-                stagger:.1
-            },'<')
-            .to(`.${s.this_icon}`,{
-                opacity:1,
-                scale:1,
-                rotate:90,
-                duration:1,
-            },'<')
+                .to(`.${s.this_icon}`, {
+                    opacity: 1,
+                    scale: 1,
+                    rotate: 90,
+                    duration: 1,
+                }, '<')
 
         }
-    },{scope:container,dependencies:[isEnterPage,stateEnterPage]})
+    }, { scope: container, dependencies: [isEnterPage, stateEnterPage] })
 
     useGSAP(() => {
-    
-        if(!isEnterPage) {
-            console.log("%cToggle Anim Icon !!","color:green")
-            switch(pathName) {
+
+        if (!isEnterPage) {
+            console.log("%cToggle Anim Icon !!", "color:green")
+            switch (pathName) {
                 case '/home':
                 case '/':
                     target.current = 0;
@@ -129,57 +155,59 @@ function NavbarSectionDeskop() {
                 case '/about':
                     target.current = unit.current * 2;
                     break;
-                    case '/service':
-                        target.current = unit.current * 3;
-                        break;
+                case '/service':
+                    target.current = unit.current * 3;
+                    break;
                 case '/contact':
                     target.current = unit.current * 4;
                     break;
                 default:
                     target.current = unit.current;
             }
-            gsap.to(`.${s.this_icon}`,{
+            gsap.to(`.${s.this_icon}`, {
                 x: target.current,
-                rotate:(target.current/unit.current) * 90,
-                ease:"power3.out",
-                duration:1,
+                rotate: (target.current / unit.current) * 90,
+                ease: "power3.out",
+                duration: 1,
             })
-          
-          
-        }
-    
-        
-       
-        
-     
-      
-    },{dependencies:[pathName,isEnterPage]})
 
-    const {contextSafe} = useGSAP({scope:buttonMenuRef})
+
+        }
+
+
+
+
+
+
+    }, { dependencies: [pathName, isEnterPage] })
+
+    const { contextSafe } = useGSAP({ scope: buttonMenuRef })
     // set triggle từ hero section và lấy state từ đó
 
     useEffect(() => {
         mainNavbar.current = document.getElementById("main_navbar")
-    },[])
+    }, [])
 
     const handleClickMenu = contextSafe(() => {
-        if(window.timelineNavbar && window.timelineBtnNavbar){
-            mainNavbar.current.style.pointerEvents =  'auto'
-            window.timelineNavbar.reversed(!window.timelineNavbar.reversed());
-            window.timelineBtnNavbar.reversed(!window.timelineBtnNavbar.reversed());
-        }else{
+        if (window.timelineNavbarModal && window.timelineBtnNavbar && window.timelineNavbarItem) {
+            mainNavbar.current.style.pointerEvents = 'auto'
+            window.timelineNavbarModal.reversed(!window.timelineNavbarModal.reversed());
+         window.timelineBtnNavbar.reversed(!window.timelineBtnNavbar.reversed());
+        // window.timelineBtnNavbar.reverse();
+            window.timelineNavbarItem.reversed(!window.timelineNavbarItem.reversed())
+        } else {
             alert("Err on window var global >>>>>>>>")
         }
-        
+
 
     })
 
 
 
-   
+
     return (
         <>
-          <button onClick={handleClickMenu} ref={buttonMenuRef} className={s.button_menu} id="button_menu" >
+            <button onClick={handleClickMenu} ref={buttonMenuRef} className={s.button_menu} id="button_menu" >
                 <h3 className={s.lable}>
                     <span className={s.lableMenu}>Menu</span>
                     <span className={s.lableClose}>Close</span>
@@ -192,43 +220,43 @@ function NavbarSectionDeskop() {
                 </div>
             </button>
             <nav ref={container} className={s.nav} id='navbar_deskop'>
-            <span className={s.this_icon}>
-                    <IconSVG src='/icon/star.svg'/>
+                <span className={s.this_icon}>
+                    <IconSVG src='/icon/star.svg' />
                 </span>
-            <ul className={s.nav_list}>
-       
-                <li className={s.nav_item}>
-                   <ButtonHoverNew isActive={pathName === '/home' || pathName === '/'} targetRedirect='/home'>
-                    Home
-                   </ButtonHoverNew>
-                </li>
-                <li className={s.nav_item}>
-                   <ButtonHoverNew isActive={pathName === '/work'} targetRedirect='/work'>
-                   Project
-                   </ButtonHoverNew>
-                </li>
-                <li className={s.nav_item}>
-                   <ButtonHoverNew isActive={pathName === '/about'}  targetRedirect='/about'>
-                   About us
-                   </ButtonHoverNew>
-                </li>
-                <li className={s.nav_item}>
-                   <ButtonHoverNew isActive={pathName === '/service'}  targetRedirect='/service'>
-                   Service
-                   </ButtonHoverNew>
-                </li>
-                <li className={s.nav_item}>
-                   <ButtonHoverNew isActive={pathName === '/contact'} targetRedirect='/contact'>
-                   Contact
-                   </ButtonHoverNew>
-                </li>
-                
-            </ul>
-        </nav>
-        
+                <ul className={s.nav_list}>
+
+                    <li className={s.nav_item}>
+                        <ButtonHoverNew isActive={pathName === '/home' || pathName === '/'} targetRedirect='/home'>
+                            Home
+                        </ButtonHoverNew>
+                    </li>
+                    <li className={s.nav_item}>
+                        <ButtonHoverNew isActive={pathName === '/work'} targetRedirect='/work'>
+                            Project
+                        </ButtonHoverNew>
+                    </li>
+                    <li className={s.nav_item}>
+                        <ButtonHoverNew isActive={pathName === '/about'} targetRedirect='/about'>
+                            About us
+                        </ButtonHoverNew>
+                    </li>
+                    <li className={s.nav_item}>
+                        <ButtonHoverNew isActive={pathName === '/service'} targetRedirect='/service'>
+                            Service
+                        </ButtonHoverNew>
+                    </li>
+                    <li className={s.nav_item}>
+                        <ButtonHoverNew isActive={pathName === '/contact'} targetRedirect='/contact'>
+                            Contact
+                        </ButtonHoverNew>
+                    </li>
+
+                </ul>
+            </nav>
+
         </>
-       
+
     )
 }
 
-export default  memo(NavbarSectionDeskop)
+export default memo(NavbarSectionDeskop)
