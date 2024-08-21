@@ -76,16 +76,14 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children,btnNavbarFoote
    
         if(isMobile()) return
         if(stateTransition !== 'entered') return
-        console.log("ButtonHoverNew2ButtonHoverNew2ButtonHoverNew2")
+      
+   
         
    
         const enterAnimation = contextSafe((e:any) => {
             if(timelineRef.current) {
-                if(pathName !== targetRedirect) {
-                    timelineRef.current.tweenFromTo(0, "midway");
-                    if(btnNavbar) selectedItemNavbar(data_id as number);
-                }
-          
+                timelineRef.current.tweenFromTo(0, "midway");
+                if(btnNavbar) selectedItemNavbar(data_id as number);
             }
 
           
@@ -93,21 +91,20 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children,btnNavbarFoote
 
         const leaveAnimation = contextSafe(() => {
             if(timelineRef.current) {
-                if(pathName !== targetRedirect) {
-                    timelineRef.current.play();
-                }
-             
+                timelineRef.current.play();
             }
         });
 
-        if (linkRef.current ) {
+        if (linkRef.current && pathName !== targetRedirect) {
+            console.log("%cAddListenerToButton","color:yellow;border:1px solid white")
             linkRef.current.addEventListener('mouseenter', enterAnimation);
             linkRef.current.addEventListener('mouseleave', leaveAnimation);
         }
 
         return () => {
-       
+         
             if (linkRef.current) {
+                console.log("%cRemoveListenerOfButton","color:yellow;border:1px solid white")
                 linkRef.current.removeEventListener('mouseenter', enterAnimation);
                 linkRef.current.removeEventListener('mouseleave', leaveAnimation);
             }

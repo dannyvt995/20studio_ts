@@ -214,7 +214,6 @@ const { setStateTransition,stateEnterPage } = useStoreZustand()
               document.body.style.pointerEvents = 'none'
               document.body.style.userSelect = 'none'
               transitionKeyRef.current = transitionKey
-      
               if (!listUrlProjects.includes(transitionKey) ) {
                 enterPage({
                   node: node.children[0],
@@ -257,6 +256,7 @@ const { setStateTransition,stateEnterPage } = useStoreZustand()
              
             }}
             onExit={(node: any) => {
+           
               if(transitionKeyRef.current) {
                 if (!listUrlProjects.includes(transitionKeyRef.current)) {
                   exitPage({ nodeChild: node.children[0].children[0] })

@@ -3,7 +3,7 @@ import Image from "next/image"
 import { memo } from "react"
 
 function CacheImageGroup() {
-  console.log("%cCacheImageGroup","color:blue")
+  console.log("%cCacheImageGroup(Run 1 time)","color:blue;border:1px solid green")
   return (
     <div style={{
       visibility: 'hidden',
@@ -33,6 +33,13 @@ function CacheImageGroup() {
     <Image src={"/work2/4.png"} width={0} height={0} sizes="100vw" alt="image_cache_work" priority />
     <Image src={"/work2/5.png"} width={0} height={0} sizes="100vw" alt="image_cache_work" priority />
     <Image src={"/work2/6.png"} width={0} height={0} sizes="100vw" alt="image_cache_work" priority />
+    
+    <Image src={"/work3/1.png"} width={0} height={0} sizes="100vw" alt="image_cache_work" priority />
+    <Image src={"/work3/2.png"} width={0} height={0} sizes="100vw" alt="image_cache_work" priority />
+    <Image src={"/work3/3.png"} width={0} height={0} sizes="100vw" alt="image_cache_work" priority />
+    <Image src={"/work3/4.png"} width={0} height={0} sizes="100vw" alt="image_cache_work" priority />
+    <Image src={"/work3/5.png"} width={0} height={0} sizes="100vw" alt="image_cache_work" priority />
+    <Image src={"/work3/6.png"} width={0} height={0} sizes="100vw" alt="image_cache_work" priority />
   </div>
   )
 }

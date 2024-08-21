@@ -91,7 +91,7 @@ export const project2_page = {
             challenge:"We believe that all good things are achieved by those who are willing to put in passion, courage and craftsmanship.",
             role:["Fashion Develop","Prototyping","Sourcing","Consulting"],
             date:"Jan 2023 - 3 weeks",
-            client:"Fashion Designer Huynh Anh Thu"
+            client:"Nét Studio Fashion"
         },
         gridImageSlider:{
             img:[
@@ -128,7 +128,25 @@ export const project3_page = {
             challenge:"We believe that all good things are achieved by those who are willing to put in passion, courage and craftsmanship.",
             role:["Fashion Develop","Prototyping","Sourcing","Consulting"],
             date:"Jan 2023 - 3 weeks",
-            client:"Fashion Designer Huynh Anh Thu"
+            client:"Lungtung Studio"
+        },
+        gridImageSlider:{
+            img:[
+                "/work3/1.png",
+                "/work3/2.png",
+                "/work3/3.png",
+                "/work3/4.png",
+                "/work3/5.png",
+                "/work3/6.png",
+            ],
+            imgOrigin:[
+                "/work3/origin/1.png",
+                "/work3/origin/2.png",
+                "/work3/origin/3.png",
+                "/work3/origin/4.png",
+                "/work3/origin/5.png",
+                "/work3/origin/6.png",
+            ]
         }
     }
 }
@@ -146,8 +164,8 @@ export const project4_page = {
             des:"The beauty of Vietnamese calligraphy is expressed in fashion through techniques like hand-embellishment, deconstructing the traditional male áo dài, reassembling with metal rings, and multi-material weaving, creating a unique story in each outfit.",
             challenge:"We believe that all good things are achieved by those who are willing to put in passion, courage and craftsmanship.",
             role:["Fashion Develop","Prototyping","Sourcing","Consulting"],
-            date:"Jan 2023 - 3 weeks",
-            client:"Fashion Designer Huynh Anh Thu"
+            date:"Jan 2023 - 123 weeks",
+            client:"20Studio Brand"
         }
     }
 }

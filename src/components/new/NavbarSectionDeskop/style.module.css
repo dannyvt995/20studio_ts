@@ -1,7 +1,7 @@
 .nav {
     position: fixed;
     right: 3.4722222222vw;
-    top: 3.125vw;
+    top: 5.000001vw;
     transition: color .5s;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -128,7 +128,7 @@
 @media (min-width: 601px) {
    .button_menu {
         line-height: 1.3888888889vw;
-        padding: 3.14722222222vw;
+        padding: 5.000001vw;
     }
    .icon {
         height: 1.25vw;

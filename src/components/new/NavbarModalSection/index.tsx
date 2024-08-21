@@ -129,13 +129,13 @@ function NavbarModalSection({ }) {
 
                             </li>
                             <li className={s.social_link}>
-                                <a className="link-item">Linked</a>
+                                <a className={s.link_item}>Linked</a>
                             </li>
                             <li className={s.social_link}>
-                                <a className="link-item">Facebook</a>
+                                <a className={s.link_item}>Facebook</a>
                             </li>
                             <li className={s.social_link}>
-                                <a className="link-item">Instagram</a>
+                                <a className={s.link_item}>Instagram</a>
                             </li>
                         </ul>
                         <ul className={s.social}>

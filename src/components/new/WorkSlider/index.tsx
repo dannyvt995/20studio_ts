@@ -149,7 +149,7 @@ export default function WorkSlider() {
   function handleMouseDown() {
     if (stopNow.current === false) {
       stopNow.current = true
-      fireAnimation(-1)
+      fireAnimation(1)
 
     }
   }
@@ -157,7 +157,7 @@ export default function WorkSlider() {
 
     if (stopNow.current === false) {
       stopNow.current = true
-      fireAnimation(1)
+      fireAnimation(-1)
     }
   }
 

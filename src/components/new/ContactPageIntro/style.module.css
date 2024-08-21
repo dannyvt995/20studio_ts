@@ -9,7 +9,7 @@
 
 }
 .container {
-    margin: 0 8vw;
+  /*   margin: 0 8vw; */
     position: relative;
     height:fit-content;
 }

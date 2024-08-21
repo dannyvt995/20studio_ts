@@ -62,7 +62,7 @@ export default function ContactPageIntro() {
                     </div>
                 </h2>
                 <div className={s.left}>
-                    <div className={s.body}><p>Sẵn sàng để cất cánh? Mess, tweet, tin nhắn và chúng tôi sẽ liên hệ lại sớm nhất có thể.</p></div>
+                    <div className={s.body}><p>Ready to take off? Message, tweet, or text us, and we will get back to you as soon as possible.</p></div>
                     <ul className={s.contact}>
                         <li className={s.contact_item}>
                             <ButtonHoverNew2
@@ -86,9 +86,9 @@ export default function ContactPageIntro() {
                 </div>
                 <div className={s.right}>
                     <a className={s.address}>
-                        30 Lý Chính Thắng,<br />
-                        Quận 3,<br />
-                        Hồ Chí Minh
+                        340D Hoang Van Thu Street,<br />
+                        Ward 4, Tan Binh District,<br />
+                        Ho Chi Minh City, Viet Nam.
                     </a>
 
                     <ButtonHoverNew2

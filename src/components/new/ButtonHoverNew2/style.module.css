@@ -10,7 +10,7 @@
 .text {
     position: relative;
     height: fit-content;
-    
+    font-family: "BS-Regular";
    
     line-height: 142%;
 }
