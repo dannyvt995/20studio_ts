@@ -1,6 +1,6 @@
 "use client"
 const timeTransition = 1.345
-const easeTransition = "power3.inOut"
+const easeTransition = "power4.inOut"
 export const propsGsap = {
     pathOpen: {
         clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)'

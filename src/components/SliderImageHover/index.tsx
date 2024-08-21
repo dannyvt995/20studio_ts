@@ -41,7 +41,7 @@ export const WrapperMask = ({ img }: { img: string }) => {
 }
 WrapperMask.displayName = 'WrapperMask'
 
-export const SliderImage = () => {
+export const SliderImageNavbar = () => {
     
     const maxToSlice = 32;
     const { indexItemNavbar } = useStoreZustand();
@@ -90,13 +90,66 @@ export const SliderImage = () => {
     );
 };
 
-SliderImage.displayName = 'SliderImage'
+SliderImageNavbar.displayName = 'SliderImageNavbar'
 
-const SliderImageHover = memo((): React.ReactElement => {
+
+export const SliderImageService = () => {
+    
+    const maxToSlice = 32;
+    const { indexItemService } = useStoreZustand();
+    const [outs, setOuts] = React.useState<(JSX.Element | null)[]>([]);
+    const [count, setCount] = React.useState<number>(0);
+    const updateOuts = () => {
+        let newOut;
+        setCount(count+1)
+       
+        switch (indexItemService) {
+            case 1:
+                newOut = <WrapperMask key={count} img={"/clone/ser2.jpg"} />;
+                break;
+            case 2:
+                newOut = <WrapperMask key={count} img={"/about/banner.webp"} />;
+                break;
+            case 3:
+                newOut = <WrapperMask key={count} img={"/clone/ser1.jpg"} />;
+                break;
+            case 4:
+                newOut = <WrapperMask key={count} img={"/home/banner.png"} />;
+                break;
+            default:
+                newOut = <WrapperMask key={count} img={"/home/banner.png"} />;
+                break;
+        }
+      
+        setOuts(prevOuts => {
+            const updatedOuts = [...prevOuts, newOut];
+            if (updatedOuts.length > maxToSlice) {
+                return updatedOuts.slice(updatedOuts.length - (maxToSlice / 2), updatedOuts.length);
+            }
+            return updatedOuts;
+        });
+    };
+
+    useEffect(() => {
+      
+        updateOuts();
+    }, [indexItemService]);
+
+    return (
+        <div className={s.list_image}>
+            {outs.map(out => out)}
+        </div>
+    );
+};
+
+SliderImageService.displayName = 'SliderImageService'
+
+const SliderImageHover = memo(({type}:{type:string}): React.ReactElement => {
    
     return (
         <>
-            <SliderImage />
+            {type === 'navbar' ?  <SliderImageNavbar /> : null}
+            {type === 'service' ?  <SliderImageService /> : null}
         </>
 
     );

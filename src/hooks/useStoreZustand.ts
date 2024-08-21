@@ -1,10 +1,16 @@
 import { create } from "zustand";
 
 interface IStoreZustand {
-  //slider
+  //slider Navbar
   indexItemNavbar: number;
   prevIndexItemNavbar: number;
   selectedItemNavbar: (index: number) => void;
+
+  //slider Service
+  indexItemService: number;
+  prevIndexItemService: number;
+  selectedItemService: (index: number) => void;
+
   //button navbar state
   stateMenuIsOpen: boolean;
   setStateMenuIsOpen: () => void;
@@ -20,7 +26,7 @@ interface IStoreZustand {
 }
 
 const useStoreZustand = create<IStoreZustand>((set) => ({
-  //slider
+  //slider Navbar
   indexItemNavbar: -1,
   prevIndexItemNavbar: -1,
   selectedItemNavbar: (index: number) => {
@@ -29,6 +35,16 @@ const useStoreZustand = create<IStoreZustand>((set) => ({
       indexItemNavbar: Number(index),
     }));
   },
+
+//slider Service
+indexItemService: -1,
+prevIndexItemService: -1,
+selectedItemService: (index: number) => {
+  set((state) => ({
+    prevIndexItemService: state.indexItemService,
+    indexItemService: Number(index),
+  }));
+},
 
 
   //button navbar state

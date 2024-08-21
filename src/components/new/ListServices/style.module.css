@@ -32,17 +32,30 @@
 }
 
 .list {
-    grid-column: 3/9;
+    grid-column: 3/13;
     grid-row: 2;
+    display: flex;
+    position: relative;
+}
+.waperList {
+  width: 50%;
+  position: relative;
 }
 .gallery {
-    grid-column: 9/13;
-    grid-row: 2;
-    overflow: hidden;
+  position: absolute;
+  right: 0;
+  top:0;
+  height: 100%;
+  width: 42%;
+  overflow: hidden;
 }
 .gallery img {
-    width: 100%;
-    height: auto;
+  height: 100%;
+  width: auto ;
+  display: block;
+  position: absolute;
+  transform: translateY(-50%);
+  top: 50%;
 }
 .scope {
     cursor: pointer;
@@ -62,7 +75,7 @@
 }
 .scope li:hover .carousel {
     transform: translateY(-100%);
-    transition: transform 200ms ease-in-out;
+    transition: transform 420ms ease;
     will-change: transform; 
 }
 .carousel {

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { memo, useEffect, useRef, useState } from 'react'
 import s from './style.module.css'
 
 import gsap from 'gsap'
@@ -9,7 +9,7 @@ import IconSVG from '@/components/Icon/IconSVG';
 import useStoreZustand from '@/hooks/useStoreZustand';
 gsap.registerPlugin(useGSAP)
 
-export default function NavbarSectionDeskop() {
+function NavbarSectionDeskop() {
     
     console.log("%cNavbarDeskop_render","color:green;font-weight:bold")
     
@@ -230,3 +230,5 @@ export default function NavbarSectionDeskop() {
        
     )
 }
+
+export default  memo(NavbarSectionDeskop)

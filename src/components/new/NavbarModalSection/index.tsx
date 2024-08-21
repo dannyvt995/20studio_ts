@@ -82,7 +82,7 @@ function NavbarModalSection({ }) {
                             20 STUDIO
                         </div>
                         <ul className={s.images} ref={SliderImage}>
-                            {isClient ? <></> : <SliderImageHover/>}
+                            {isClient ? <></> : <SliderImageHover type={"navbar"}/>}
                         
                        {/*      <li>
                                 <Image src="/home/banner.png" width={0} height={0} sizes="100vw" style={{ position: 'relative', width: 'auto', height: '100%', left: '50%', transform: 'translateX(-50%)' }} alt="logo narbar modal" />

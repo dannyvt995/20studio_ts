@@ -28,7 +28,7 @@ interface IHeroSection {
     content: any,
 }
 
- function HeroSection({ pageName, content }: IHeroSection) {
+function HeroSection({ pageName, content }: IHeroSection) {
     const triggleSection = useRef<HTMLDivElement>(null)
     const backgroundImg = useRef<HTMLDivElement>(null)
     const pathName = usePathname()
@@ -100,6 +100,13 @@ interface IHeroSection {
                         <ul className={s.list1}>
                             <li className={s.list_item}>
 
+                                <ButtonHoverNew classAdd={s.list_link} targetRedirect='/service'>
+                                    Service
+                                </ButtonHoverNew>
+
+                            </li>
+                            <li className={s.list_item}>
+
                                 <ButtonHoverNew classAdd={s.list_link} targetRedirect='/work'>
                                     Project
                                 </ButtonHoverNew>
@@ -138,16 +145,16 @@ interface IHeroSection {
                 </div>
                 <div className={s.background} ref={backgroundImg}>
 
-                    <Image priority  src={`${content.backgroundImage}`} alt="image_cache_banner_home" width={0} height={0} sizes="100vw" style={content.backgroundSize} />
+                    <Image priority src={`${content.backgroundImage}`} alt="image_cache_banner_home" width={0} height={0} sizes="100vw" style={content.backgroundSize} />
                 </div>
             </section>
         )
     } else if (pageName === 'about') {
         return (
             <section className={cn(s.hero_section, content.classAdd)} id="hero_section" ref={triggleSection}>
-                <div className="container" style={{paddingTop:'55vh'}}>
+                <div className="container" style={{ paddingTop: '55vh' }}>
                     <div className={s.text_1}>
-                    {/*     <p className={s.intro}>
+                        {/*     <p className={s.intro}>
                             <span><span className={s.ip}>20studio là một công ty thời trang toàn cầu</span></span>
                             <span><span className={s.ip}>chuyên tạo ra sản phẩm độc đáo và phong cách</span></span>
                             <span><span className={s.ip}>mang lại trải nghiệm đặc biệt và tinh tế cho khách hàng của mình.</span></span>
@@ -166,11 +173,12 @@ interface IHeroSection {
 
                         </div>
 
-             
+
                         <ButtonHoverNew2 icon={<IconSVG src='/icon/arrow-right.svg' />} targetRedirect='/about' classAdd={s.link}>
                             Our mission
                         </ButtonHoverNew2>
                         <ul className={s.list1}>
+
                             <li className={s.list_item}>
 
                                 <ButtonHoverNew classAdd={s.list_link} targetRedirect='/work'>
@@ -178,11 +186,11 @@ interface IHeroSection {
                                 </ButtonHoverNew>
 
                             </li>
-                       
+
                             <li className={s.list_item}>
 
                                 <ButtonHoverNew classAdd={s.list_link} targetRedirect='/contact'>
-                                   Contact
+                                    Contact
                                 </ButtonHoverNew>
 
 
@@ -190,9 +198,16 @@ interface IHeroSection {
                             </li>
                             <li className={s.list_item}>
 
-                                <ButtonHoverNew classAdd={s.list_link} targetRedirect='/home'>
+                                <ButtonHoverNew classAdd={s.list_link} targetRedirect='/service'>
                                     Service
                                 </ButtonHoverNew>
+                            </li>
+                            <li className={s.list_item}>
+
+                                <ButtonHoverNew classAdd={s.list_link} targetRedirect='/home'>
+                                    Home
+                                </ButtonHoverNew>
+
                             </li>
                         </ul>
                         <ul className="list2">
@@ -212,7 +227,7 @@ interface IHeroSection {
                 </div>
                 <div className={s.background} ref={backgroundImg}>
 
-                    <Image priority  src={`${content.backgroundImage}`} alt="image_cache_banner_about" width={0} height={0} sizes="100vw" style={content.backgroundSize} />
+                    <Image priority src={`${content.backgroundImage}`} alt="image_cache_banner_about" width={0} height={0} sizes="100vw" style={content.backgroundSize} />
                 </div>
             </section>
         )
