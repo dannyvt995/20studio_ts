@@ -266,22 +266,22 @@ export default function WorkSlider() {
         </div>
         <div className={s.subtitle} ref={subtitlesRef}>
           <div className={s.active}>
-            <span className={s.ii}><span className={s.iii}>Phát triển mẫu</span></span>
-            <span className={s.ii}><span className={s.iii}>Thêm 1 dòng</span></span>
+            <span className={s.ii}><span className={s.iii}>Sample management</span></span>
+           {/*  <span className={s.ii}><span className={s.iii}>Thêm 1 dòng</span></span> */}
       
           </div>
           <div>
-            <span className={s.ii}><span className={s.iii}>Phát triển mẫu</span></span>
-            <span className={s.ii}><span className={s.iii}>Thêm 1 dòng</span></span>
+            <span className={s.ii}><span className={s.iii}>Sample management</span></span>
+            {/* <span className={s.ii}><span className={s.iii}>Thêm 1 dòng</span></span> */}
            
           </div>
           <div>
-            <span className={s.ii}><span className={s.iii}>Quản lý sản xuất</span></span>
-            <span className={s.ii}><span className={s.iii}>Thêm 1 dòng</span></span>
+            <span className={s.ii}><span className={s.iii}>Production management</span></span>
+            {/* <span className={s.ii}><span className={s.iii}>Thêm 1 dòng</span></span> */}
           </div>
           <div>
-          <span className={s.ii}><span className={s.iii}>Quản lý sản xuất</span></span>
-          <span className={s.ii}><span className={s.iii}>Thiết kế đồ hoạ</span></span>
+          <span className={s.ii}><span className={s.iii}>Web development</span></span>
+        {/*   <span className={s.ii}><span className={s.iii}>Thiết kế đồ hoạ</span></span> */}
           </div>
         </div>
       </div>

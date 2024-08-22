@@ -62,15 +62,16 @@ function FooterSection({ propsForGsap,state }: IFooterSection) {
                 <ul className={s.address}>
                     <li className={s.item}>
                         <a >
-                            345 Hoang Van Thu<br />
-                            P.6, Q.Tan Binh, HCMC.
+                            340D Hoang Van Thu Street,<br />
+                            Ward 4, Tan Binh District,<br /> HCMC.
 
                         </a>
                     </li>
+                 
                     <li className={s.item}>
-                        <a>
-                            vphcm@20studio.com
-                        </a>
+                             <a href="mailto:20studio.contact@gmail.com" >
+                                    20studio.contact@gmail.com
+                                </a>
                     </li>
                 </ul>
                 <ul className={s.nav_footer}>

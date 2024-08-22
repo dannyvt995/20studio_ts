@@ -75,8 +75,8 @@ function HeroSection({ pageName, content }: IHeroSection) {
                 <div className="container">
                     <div className={s.text_1}>
                         <p className={s.intro}>
-                            <span><span className={s.ip}>We are a global creative fashion studio base</span></span>
-                            <span><span className={s.ip}>in Ho Chi Minh city. We work with artist, designer and manufactures</span></span>
+                            <span><span className={s.ip}>We are a global creative fashion studio base in</span></span>
+                            <span><span className={s.ip}>Ho Chi Minh city. We work with artist, designer and manufactures</span></span>
                             <span><span className={s.ip}>on clients projectsto produce outstanding works.</span></span>
                         </p>
                         <h1 className={s.title}>
@@ -130,13 +130,13 @@ function HeroSection({ pageName, content }: IHeroSection) {
                         </ul>
                         <ul className="list2">
                             <li className={s.list_item}>
-                                <a href="mailto:creatiflow.danny@gmail.com" className={s.list_link}>
-                                    vphcm@20studio.vn
+                                <a href="mailto:20studio.contact@gmail.com" className={s.list_link}>
+                                    20studio.contact@gmail.com
                                 </a>
                             </li>
                             <li className={s.list_item}>
-                                <a href="tel:+389984639" className={s.list_link}>
-                                    0123.456.789
+                                <a href="tel:0362237164" className={s.list_link}>
+                                    036.223.7164
                                 </a>
                             </li>
 
@@ -211,14 +211,14 @@ function HeroSection({ pageName, content }: IHeroSection) {
                             </li>
                         </ul>
                         <ul className="list2">
-                            <li className={s.list_item}>
-                                <a href="mailto:creatiflow.danny@gmail.com" className={s.list_link}>
-                                    vphcm@20studio.vn
+                        <li className={s.list_item}>
+                                <a href="mailto:20studio.contact@gmail.com" className={s.list_link}>
+                                    20studio.contact@gmail.com
                                 </a>
                             </li>
                             <li className={s.list_item}>
-                                <a href="tel:+389984639" className={s.list_link}>
-                                    0123.456.789
+                                <a href="tel:0362237164" className={s.list_link}>
+                                    036.223.7164
                                 </a>
                             </li>
 

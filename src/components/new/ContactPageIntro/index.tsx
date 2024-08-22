@@ -67,18 +67,18 @@ export default function ContactPageIntro() {
                         <li className={s.contact_item}>
                             <ButtonHoverNew2
                                 icon={<IconSVG src='/icon/arrow-right.svg' />}
-                                targetRedirect='mailto:vphcm@studio.vn'
+                                targetRedirect='mailto:20studio.contact@gmail.com'
                                 classAdd={cn(s.link, s.is_dark)}>
-                                vphcm@20studio.com
+                                20studio.contact@gmail.com
                             </ButtonHoverNew2>
 
                         </li>
                         <li className={s.contact_item}>
                             <ButtonHoverNew2
                                 icon={<IconSVG src='/icon/arrow-right.svg' />}
-                                targetRedirect='0902706605'
+                                targetRedirect='0362237164'
                                 classAdd={cn(s.link, s.is_dark)}>
-                                090.270.6605
+                                036.223.7164
                             </ButtonHoverNew2>
 
                         </li>
@@ -93,7 +93,7 @@ export default function ContactPageIntro() {
 
                     <ButtonHoverNew2
                         icon={<IconSVG src='/icon/arrow-right.svg' />}
-                        targetRedirect='0902706605'
+                        targetRedirect='0362237164'
                         classAdd={cn(s.link, s.is_dark)}>
                         Xem bản đồ
                     </ButtonHoverNew2>
