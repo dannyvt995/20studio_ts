@@ -47,8 +47,7 @@
 }
 .address {
     display: block;
-    font-family: Lausanne-300;
-    font-family: var(--font-f-lausanne-300);
+    font-family: "BS-Medium";
     font-size: 3.7333333333vw;
     font-size: var(--font-s-p-small);
     letter-spacing: .0266666667vw;
@@ -57,7 +56,7 @@
     line-height: var(--font-lh-p-small);
 }
 
-
+.line{opacity: 0;}
 @media (max-width: 601px) {
     .container {
         padding:40vw 0 21.3333333333vw;
@@ -97,6 +96,8 @@
         letter-spacing: var(--font-ls-h1);
         line-height: 16vw;
         line-height: var(--font-lh-h1);
+
+ 
        
     }
     .left,
@@ -142,3 +143,85 @@
         margin-bottom: 2.7777777778vw;
     }
 }
+
+
+
+.marquee {
+    position: relative;
+    height: fit-content;
+}
+
+
+@keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(var(--slide-width__contactpage) * -1));
+    }
+  }
+  
+  .carousel__wrapper {
+ 
+    display: flex;
+    /*justify-content: center;*/
+    align-items: center;
+    
+    width: calc(var(--slides-in-view__contactpage) * var(--slide-width__contactpage));
+    overflow: hidden;
+
+    margin: 0 auto;
+
+
+  }
+  
+  .carousel {
+
+
+    
+    overflow: hidden;
+    width: calc(2 * var(--no-of-slides__contactpage));
+
+    position: absolute;
+    top:0;
+    left: 0;
+    /* width: 100vw; */
+    height: 100%;
+    
+  }
+  
+  .carousel__slide {
+    animation: scroll var(--iteration-time__contactpage) linear infinite;
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 auto;
+    width: var(--slide-width__contactpage);
+  /*   height: var(--slide-height); */
+    box-sizing: border-box;
+    /*border: 1px dotted darkblue;*/
+  }
+  
+  .carousel__image {
+    font-size: 8vw;
+    line-height: 100%;
+    font-family: "BS-Regular";
+    padding: 1rem 0;
+  }
+  /* just for analysis remove this 3 rules later*/
+      /* .carousel__slide {
+        position: relative;
+      }
+  
+      .carousel {
+        counter-reset: slideNo;
+      }
+  
+      .carousel__slide::before {
+        counter-increment: slideNo;
+        content: counter(slideNo);
+        position: absolute;
+        top: 0%;
+        left: 50%;
+        font-size: 2rem;
+        color: lime;
+      } */

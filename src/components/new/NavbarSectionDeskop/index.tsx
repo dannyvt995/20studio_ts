@@ -7,25 +7,31 @@ import ButtonHoverNew from '../ButtonHoverNew';
 import { usePathname } from 'next/navigation';
 import IconSVG from '@/components/Icon/IconSVG';
 import useStoreZustand from '@/hooks/useStoreZustand';
+import { isMobile } from '@/utils/responsive';
 gsap.registerPlugin(useGSAP)
 
 function NavbarSectionDeskop() {
 
     console.log("%cNavbarDeskop_render", "color:green;font-weight:bold")
 
-    const container = useRef<any>()
-    const buttonMenuRef = useRef<any>()
+    const navbarDeskopRef = useRef<any>(null)
+    const buttonMenuRef = useRef<any>(null)
     const timelineBtnMenu = useRef<gsap.core.Timeline>()
     const timelineNavbarItem = useRef<gsap.core.Timeline>()
     const mainNavbar = useRef<any>(null)
     const pathName = usePathname()
-    const { stateEnterPage } = useStoreZustand()
+    const { stateEnterPage , stateVarGlobalLenis} = useStoreZustand()
 
     const unit = useRef<number>(0)
     const target = useRef<number>(0)
     const [isEnterPage, setIsEnterPage] = useState(true)
     useEffect(() => {
-
+     
+  
+        if(isMobile()) {
+            navbarDeskopRef.current.style.display = `none`;
+            buttonMenuRef.current.style.display = `flex`;
+        }
         unit.current = window.innerWidth / 100 * 6
 
         switch (pathName) {
@@ -51,8 +57,46 @@ function NavbarSectionDeskop() {
 
 
     }, [])
+    const flag = 1220;
 
 
+    useEffect(() => {
+        if(navbarDeskopRef.current && buttonMenuRef.current) {
+            navbarDeskopRef.current.style.opacity = `1`;
+            buttonMenuRef.current.style.opacity = `0`;
+            navbarDeskopRef.current.style.visibility = `visible`;
+            buttonMenuRef.current.style.visibility = `hidden`;
+        }
+    },[pathName])
+
+    // useEffect(() => {
+    //     console.log("%cGET GLOBAL LENIS FOR NAVBAR...", "color:pink");
+    //     if(stateVarGlobalLenis ===  false) return
+    //     const handleScroll = ({ scroll } : {scroll:number}) => {
+    //         if (!navbarDeskopRef.current || !buttonMenuRef.current) return;
+    //         if (scroll > flag) {
+    //             navbarDeskopRef.current.style.opacity = `0`;
+    //             buttonMenuRef.current.style.opacity = `1`;
+    //             navbarDeskopRef.current.style.pointerEvents = `none`;
+    //             buttonMenuRef.current.style.pointerEvents = `auto`;
+    //         } else if (scroll <= flag) {
+    //             navbarDeskopRef.current.style.opacity = `1`;
+    //             buttonMenuRef.current.style.opacity = `0`;
+    //             navbarDeskopRef.current.style.pointerEvents = `auto`;
+    //             buttonMenuRef.current.style.pointerEvents = `none`;
+    //         }
+    //     };
+
+    //     if (window.lenis) {
+    //         window.lenis.on('scroll', handleScroll);
+    //     }
+
+    //     return () => {
+    //         if (window.lenis) {
+    //             window.lenis.off('scroll', handleScroll);
+    //         }
+    //     };
+    // },[stateVarGlobalLenis])
 
 
 
@@ -95,7 +139,7 @@ function NavbarSectionDeskop() {
     useGSAP(() => {
         if (isEnterPage) {
             console.log("Chạy lại à ??")
-            timelineNavbarItem.current = gsap.timeline({ defaults: {},paused:true })
+            timelineNavbarItem.current = gsap.timeline({ defaults: {delay:.5},paused:true })
                 .fromTo(`.${s.nav_item}`,
                     {
                         y: '100%',
@@ -116,7 +160,7 @@ function NavbarSectionDeskop() {
             }, 1000)
         }
 
-    }, { scope: container })
+    }, { scope: navbarDeskopRef })
 
     useGSAP(() => {
         if (isEnterPage && stateEnterPage) {
@@ -138,7 +182,7 @@ function NavbarSectionDeskop() {
                 }, '<')
 
         }
-    }, { scope: container, dependencies: [isEnterPage, stateEnterPage] })
+    }, { scope: navbarDeskopRef, dependencies: [isEnterPage, stateEnterPage] })
 
     useGSAP(() => {
 
@@ -219,7 +263,7 @@ function NavbarSectionDeskop() {
                     </svg>
                 </div>
             </button>
-            <nav ref={container} className={s.nav} id='navbar_deskop'>
+            <nav ref={navbarDeskopRef} className={s.nav} id='navbar_deskop'>
                 <span className={s.this_icon}>
                     <IconSVG src='/icon/star.svg' />
                 </span>

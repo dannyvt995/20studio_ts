@@ -38,10 +38,24 @@ ul {
     --no-of-slides: 3;
     --slides-in-view: 2;
     --slide-width: 40vw;
+
+
     --slide-height: 300px;
     --iteration-time: 20s;
   }
   
+
+  :root {
+    --no-of-slides__contactpage: 2;
+    --slides-in-view__contactpage: 1;
+    --slide-width__contactpage:325vw;
+    
+
+    --slide-height__contactpage: 400px;
+    --iteration-time__contactpage:20s;
+  }
+  
+
 :root {
 
     --grid_margin_des: 8vw;
@@ -93,7 +107,7 @@ ul {
     --font-ls-h1: -0.4vw;
     --font-s-h2: 7.7333333333vw;
     --font-lh-h2: 9.0666666667vw;
-    --font-ls-h2: -0.2666666667vw;
+    --font-ls-h2: .1266666667vw;
     --font-s-h3: 6.4vw;
     --font-lh-h3: 8vw;
     --font-ls-h3: -0.1333333333vw;
@@ -133,7 +147,7 @@ ul {
         --font-ls-h1: -0.3472222222vw;
         --font-s-h2: 3.6111111111vw;
         --font-lh-h2: 4.4444444444vw;
-        --font-ls-h2: -0.1041666667vw;
+        --font-ls-h2: .1266666667vw;
         --font-s-h3: 2.2222222222vw;
         --font-lh-h3: 2.7777777778vw;
         --font-ls-h3: -0.0069444444vw;
@@ -204,7 +218,7 @@ ul.format,ol.format {
     padding: 0;
 }
 p,a,button,span,div {
-    font-size: var(--fsdf);
+   
 }
 a,
 button:hover {

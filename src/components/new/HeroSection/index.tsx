@@ -37,7 +37,7 @@ function HeroSection({ pageName, content }: IHeroSection) {
     useGSAP(() => {
 
         //  if (isMobile()) return
-        const tl1 = gsap.timeline({ delay: .1, paused: true })
+        const tl1 = gsap.timeline({ delay: .7, paused: true })
         tl1.to(`.${s.ip}`, {
             y: 0,
             opacity: 1,
@@ -145,7 +145,7 @@ function HeroSection({ pageName, content }: IHeroSection) {
                 </div>
                 <div className={s.background} ref={backgroundImg}>
 
-                    <Image priority src={`${content.backgroundImage}`} alt="image_cache_banner_home" width={0} height={0} sizes="100vw" style={content.backgroundSize} />
+                    <Image quality={100} priority src={`${content.backgroundImage}`} alt="image_cache_banner_home" width={0} height={0} sizes="100vw" style={content.backgroundSize} />
                 </div>
             </section>
         )
@@ -174,7 +174,7 @@ function HeroSection({ pageName, content }: IHeroSection) {
                         </div>
 
 
-                        <ButtonHoverNew2 icon={<IconSVG src='/icon/arrow-right.svg' />} targetRedirect='/about' classAdd={s.link}>
+                        <ButtonHoverNew2 icon={<IconSVG src='/icon/arrow-right.svg' />} targetRedirect='/service' classAdd={s.link}>
                             Our mission
                         </ButtonHoverNew2>
                         <ul className={s.list1}>
@@ -227,7 +227,7 @@ function HeroSection({ pageName, content }: IHeroSection) {
                 </div>
                 <div className={s.background} ref={backgroundImg}>
 
-                    <Image priority src={`${content.backgroundImage}`} alt="image_cache_banner_about" width={0} height={0} sizes="100vw" style={content.backgroundSize} />
+                    <Image quality={100} priority src={`${content.backgroundImage}`} alt="image_cache_banner_about" width={0} height={0} sizes="100vw" style={content.backgroundSize} />
                 </div>
             </section>
         )

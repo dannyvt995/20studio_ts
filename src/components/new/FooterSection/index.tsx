@@ -122,9 +122,9 @@ function FooterSection({ propsForGsap,state }: IFooterSection) {
        {/* lỗi */}
                 <ButtonHoverNew2 
                 icon={<IconSVG src='/icon/arrow-right.svg' />} 
-                targetRedirect='/about' 
+                targetRedirect='/service' 
                 classAdd={classNames(s.link,s.wrap,s.circle)}>
-                    Our mission
+                    Our service
                         </ButtonHoverNew2>
                
             </div>

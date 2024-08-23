@@ -56,6 +56,9 @@ const { setStateTransition,stateEnterPage } = useStoreZustand()
   const [firstLoadPage, setFirstLoadPage] = useState(false);
 
   const {contextSafe} = useGSAP({scope:scopeRef})
+
+
+  
   useEffect(() => {
     if(stateEnterPage) {
       transitionFirst(pathNameFormat)
@@ -239,7 +242,6 @@ const { setStateTransition,stateEnterPage } = useStoreZustand()
                 }
            
               }
-
             }}
             onEntered={(node: any) => {
               document.body.style.pointerEvents = 'auto'

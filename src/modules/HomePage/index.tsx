@@ -10,7 +10,7 @@ import FAQSection from '@Components/new/FAQSection';
 import { home_page } from '@Constants/page_props';
 
 function HomePage(): JSX.Element {
-   
+
     return (
         <div id="homepage">
             <HeroSection pageName="home" propsForGsap={home_page.propsForGsap} content={home_page.content.heroSection}/>

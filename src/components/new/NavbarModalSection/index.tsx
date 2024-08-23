@@ -160,12 +160,12 @@ function NavbarModalSection({ }) {
                                 {/*    <ButtonHoverUnderLineNew eventPass={handleClick} data_type="outsite" noName={"var(--font-lh-p)"} data_link="/about" classStyle="link-item">Về chúng tôi</ButtonHoverUnderLineNew> */}
                             </li>
                         </ul>
-                        <div className={s.link_about}>
+{/*                         <div className={s.link_about}>
 
                             <ButtonHoverNew2 icon={<IconSVG src='/icon/arrow-right.svg' />} targetRedirect='/about' classAdd={s.link}>
                                 Our mission
                             </ButtonHoverNew2>
-                        </div>
+                        </div> */}
                     </div>
 
                 </div>

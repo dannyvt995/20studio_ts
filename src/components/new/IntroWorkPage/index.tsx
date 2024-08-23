@@ -25,7 +25,7 @@ function IntroWorkPage({ content}: IIntroWorkPage) {
     return (
         <section className={s.IntroWorkPage} ref={triggleSection}>
             <div className={s.background}>
-                <Image alt={content.img[1]} src={content.img[0]} width={0} height={0} sizes='100vw' style={{ width: "auto", height: "100%" }} className={s.project_image} />
+                <Image  quality={100} alt={content.img[1]} src={content.img[0]} width={0} height={0} sizes='100vw' style={{ width: "auto", height: "100%" }} className={s.project_image} />
             </div>
             <div className={s.container}>
                 <div className={s.text_1}>

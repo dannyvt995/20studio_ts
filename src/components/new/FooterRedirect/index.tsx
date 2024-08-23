@@ -21,7 +21,7 @@ export default function FooterRedirect({scroller,targetRedirect,currentId}:{scro
                 onUpdate:(self) => {
                     
                     cirRefIc.current.style.strokeDasharray = `${self.progress * 120}px, ${110-100*self.progress}px`
-                    console.log(self.progress)
+                    
                     if(self.progress > 0.90) {
                         
                          document.body.style.pointerEvents = 'none'
@@ -32,7 +32,7 @@ export default function FooterRedirect({scroller,targetRedirect,currentId}:{scro
                               },900)
                             }
                         })
-                        .to(window, { duration: .1, scrollTo: container.current })
+                        .to(window, { duration: .4,scrollTo: { y: `.${s.footer_redirect}`, offsetY: 150 } })
                         .to(`#bg_fr_${currentId}`,{
                             scale:1,
                             duration:.4
@@ -59,7 +59,7 @@ export default function FooterRedirect({scroller,targetRedirect,currentId}:{scro
     })
   return (
     <>
-    <section className={s.footer_redirect} ref={container}>
+    <section className={s.footer_redirect} ref={container} >
         <div className={s.wrapper}>
             <div className={s.info} id={`info_fr_${currentId}`}>
                 <h3>Next To Project {targetRedirect}</h3>

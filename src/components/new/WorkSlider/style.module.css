@@ -39,8 +39,8 @@
 }
 .work_page .title span{
     font-family: "BD-Medium";
-    font-size: 7.7333333333vw;
-    font-size: var(--font-s-h2);
+    font-size: 3.033333333vw;
+  
     letter-spacing: -.2666666667vw;
     letter-spacing: var(--font-ls-h2);
     line-height: 9.0666666667vw;
@@ -169,7 +169,7 @@
 .work_page  .title {
     position:relative;
     width:100%;
-    height: calc(var(--font-s-h2) * 3.5);/*  // 3 dòng */
+    height: calc(var(--font-s-h2) * 2.5);/*  // 3 dòng */
 }
 .work_page  .title > div{
     display: flex;
@@ -205,7 +205,7 @@
     width:100%;
     position:relative;
     overflow:hidden;
-    height:33%; /* lấy 3 row */
+    height:50%; /* lấy 3 row */
 }
 .work_page .title .iii {
     position:absolute;

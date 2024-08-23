@@ -1,6 +1,6 @@
 
 .wrapper{
-    width:70%;
+    width:100%;
     height:fit-content;
     position:absolute;
     margin:auto;
@@ -10,7 +10,7 @@
   }
   
   .wrapper::after {
-    width:70%;
+    width:100%;
     height:48px;
     content:"";
     position:absolute;
@@ -33,7 +33,7 @@
   
   .boxes {
     position:relative;
-    left:-350px;
+   
     height: 50px;
   }
   

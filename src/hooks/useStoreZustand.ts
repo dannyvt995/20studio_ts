@@ -14,9 +14,16 @@ interface IStoreZustand {
   //button navbar state
   stateMenuIsOpen: boolean;
   setStateMenuIsOpen: () => void;
+
   //loadingPage
   stateEnterPage: boolean;
   setStateEnterPage: () => void;
+
+
+    //lenis global
+    stateVarGlobalLenis: boolean;
+    setStateVarGlobalLenis: () => void;
+
   //transition
   stateTransition: string;
   setStateTransition: (key: string) => void;
@@ -59,7 +66,12 @@ selectedItemService: (index: number) => {
     set((state) => ({ stateEnterPage: !state.stateEnterPage }));
   },
 
-
+  //lenis global
+  stateVarGlobalLenis: false,
+  setStateVarGlobalLenis: () => {
+    set((state) => ({ stateVarGlobalLenis: !state.stateVarGlobalLenis }));
+  },
+  
   //transition
   stateTransition: 'none',
   setStateTransition: (key: string) => {

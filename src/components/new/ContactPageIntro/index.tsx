@@ -13,54 +13,65 @@ gsap.registerPlugin(useGSAP)
 
 export default function ContactPageIntro() {
     const container = useRef<any>()
-/*     useGSAP(() => {
-        const colors = ["#0ae448","#ff8709", "#9d95ff", "#00bae2"];
-
-        //initially colorize each box and position in a row
-        gsap.set(".box", {
-          backgroundColor: (i) => colors[i % colors.length],
-          x: (i) => i * 350
-        });
-        
-        
-        gsap.to(".box", {
-          duration: 10,
-          ease: "none",
-          x: `+=${window.innerWidth}`, //move each box 500px to right
-          modifiers: {
-            x: gsap.utils.unitize(x => parseFloat(x) % window.innerWidth) //force x value to be between 0 and 500 using modulus
-          },
-          repeat: -1
-        });
-    },{scope:container}) */
+      /*   useGSAP(() => {
+            const colors = ["#0ae448","#ff8709", "#9d95ff", "#00bae2"];
+    
+            //initially colorize each box and position in a row
+            gsap.set(".box", {
+              backgroundColor: (i) => colors[i % colors.length],
+              x: (i) => i * 350
+            });
+            
+            
+            gsap.to(".box", {
+              duration: 10,
+              ease: "none",
+              x: `+=${window.innerWidth}`, //move each box 500px to right
+              modifiers: {
+                x: gsap.utils.unitize(x => parseFloat(x) % window.innerWidth) //force x value to be between 0 and 500 using modulus
+              },
+              repeat: -1
+            });
+        },{scope:container}) */
     return (
         <section className={s.ContactPageIntro} ref={container}>
 
 
-{/* <div className="wrapper">
+          {/*   <div className="wrapper">
                     <div className="boxes">
                         <div className="box">1</div>
                         <div className="box">2</div>
                         <div className="box">3</div>
-                        <div className="box">4</div>
                     </div>
-                </div> */}
-
+                </div>
+ */}
 
 
             <div className={s.container}>
-               
+
                 <div className={s.image}>
 
-                    <Image src="/home/banner.png" width={0} height={0} sizes='100vw' style={{ width: 'auto', height: '100%', position: 'absolute', left: '50%', transform: 'translateX(-50%)' }} alt="image_cache_banner_home" />
+                    <Image  quality={100} src="/home/banner.png" width={0} height={0} sizes='100vw' style={{ width: 'auto', height: '100%', position: 'absolute', left: '50%', transform: 'translateX(-50%)' }} alt="image_cache_banner_home" />
                 </div>
 
                 <h1 className={s.h1}>Contact</h1>
-                <h2 className={s.title}>
+                <div className={s.title}>
                     <div className={s.marquee}>
-                        <div className={s.line}>Get in touch · 保持联系 · Ponerse en contacto · Neem contact op · </div>
+                        <div className={s.line}>· Get in touch · Liên lạc · اتصل - Связаться - 連絡する</div>
+                        <div className={s.carousel}>
+
+                            <div className={s.carousel__wrapper}>
+
+                                <div className={s.carousel__slide}>
+                                    <h3 className={s.carousel__image} >· Get in touch · 联系 · Liên lạc · Связаться · Contactum facere · Prendre contact</h3>
+                                </div>
+                                <div className={s.carousel__slide}>
+                                    <h3 className={s.carousel__image} >· Get in touch · 联系 · Liên lạc · 연락하다 · Prendre contact · Связаться · اتصل</h3>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </h2>
+                </div>
                 <div className={s.left}>
                     <div className={s.body}><p>Ready to take off? Message, tweet, or text us, and we will get back to you as soon as possible.</p></div>
                     <ul className={s.contact}>
