@@ -11,7 +11,7 @@
     position: relative;
     height: fit-content;
     font-family: "BS-Regular";
-   
+    width: max-content;
     line-height: 142%;
 }
 .text::after {

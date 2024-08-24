@@ -4,7 +4,7 @@ import IntroWorkPage from '@/components/new/IntroWorkPage';
 import ProjectText from '@/components/new/ProjectText';
 import GridImageSlider1 from '@/components/new/Some_Component_For_Post/GridImageSlider1';
 import LayoutCustom from '@/components/new/Some_Component_For_Post/LayoutCustom';
-import { project2_page } from '@/constants/page_props';
+import { project2_page,project3_page } from '@/constants/page_props';
 
 function Project2(): JSX.Element {
    
@@ -16,7 +16,7 @@ function Project2(): JSX.Element {
            {/*  <ProjectText scroller={project2_page.propsForGsap.scrollerRef} randomID='koko123' disableTitle={false}/> */}
             <LayoutCustom content={project2_page.content.gridImageSlider} />
       
-            <FooterRedirect currentId={2}  targetRedirect='3' scroller={project2_page.propsForGsap.scrollerRef}/>
+            <FooterRedirect content={project3_page.content} currentId={2}  targetRedirect='3' scroller={project2_page.propsForGsap.scrollerRef}/>
             
         </div>
     )

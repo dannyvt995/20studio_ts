@@ -91,11 +91,7 @@ function FooterSection({ propsForGsap,state }: IFooterSection) {
                    About us
                    </ButtonHoverNew>
                     </li>
-                    <li className={s.item}>
-                    <ButtonHoverNew targetRedirect='/service'>
-                   Service
-                   </ButtonHoverNew>
-                    </li>
+                    
                     <li className={s.item}>
                     <ButtonHoverNew btnNavbarFooter={true} targetRedirect='/contact'>
                    Contact

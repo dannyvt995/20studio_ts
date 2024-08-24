@@ -3,10 +3,11 @@
     background: var(--color-dark-grey);
     color: #fff;
     color: var(--color-white);
-    height: 175vh;
-    height: calc(var(--vh, 1vh)* 175);
+   /*  height: 175vh;
+    height: calc(var(--vh, 1vh)* 175); */
     pointer-events: none;
     position: relative;
+    width: 100%;
 }
  .container {
    /*  margin: 0 8vw; */
@@ -139,7 +140,9 @@
 }
 @media (min-width: 601px) {
     .IntroWorkPage{
-        height: 134.2138888889vw !important;
+        /* height: 134.2138888889vw !important; */
+        
+        aspect-ratio: 16/18;
         overflow: hidden;
     }
      .background {

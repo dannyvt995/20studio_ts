@@ -8,6 +8,7 @@ import IconSVG from '@/components/Icon/IconSVG'
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import Link from 'next/link';
+import { isMobile } from '@/utils/responsive';
 gsap.registerPlugin(useGSAP)
 export default function ServicesSection() {
     const container = useRef<any>()
@@ -16,6 +17,7 @@ export default function ServicesSection() {
     const timelines = useRef<Record<number, gsap.core.Timeline>>({});
 
     useGSAP(() => {
+        if(isMobile()) return
         const items = listItemRef.current.children;
         for (let i = 0; i < items.length; i++) {
             const infoElement = items[i].querySelector(`.${s.info}`);
@@ -38,14 +40,17 @@ export default function ServicesSection() {
 
 
     const actionGsap = contextSafe((e: any) => {
+        if(isMobile()) return
         const id = e.currentTarget.getAttribute('data-id');
         timelines.current[id].play(0);
     })
 
     const disableGsap = contextSafe((e: any) => {
+        if(isMobile()) return
         const id = e.currentTarget.getAttribute('data-id');
         timelines.current[id].reverse();
     })
+
     return (
         <section ref={container} className={cn(s.servcies_section, s.light_background)} id="servcies_section">
             <div className={s.container}>

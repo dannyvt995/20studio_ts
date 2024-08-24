@@ -4,48 +4,47 @@
 import { memo, useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
+import { useGSAP } from '@gsap/react'
 import cn from 'classnames'
 import s from './style.module.css'
 import Image from 'next/image'
-import { useGSAP } from '@gsap/react';
 import { isMobile } from '@/utils/responsive';
 import ButtonHoverNew2 from '../ButtonHoverNew2'
 import IconSVG from '@/components/Icon/IconSVG'
-gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(ScrollTrigger,useGSAP)
 interface ILetContact {
   propsForGsap?: any,
   disableImg?: boolean
 }
 function LetContact({ propsForGsap, disableImg }: ILetContact) {
   const triggleSection = useRef<HTMLUListElement>(null)
-  const box1Ref = useRef<any>(null)
 
+  const container = useRef<any>(null)
   const dirAction = [0, -1, 1, -1, 1]
-  // useEffect(() => {
-  //   const timeline = gsap.timeline({
-  //     scrollTrigger: {
-  //       scroller: propsForGsap.scrollerRef,
-  //       trigger: triggleSection.current,
-  //       start: "top bottom",
-  //       end: "bottom top",
-  //       scrub: .95,
-  //     }
-  //   })
-  //   timeline.to(box1Ref.current, {
-  //     x: 500
-  //   })
-  //   return () => {
-  //     timeline.kill
-  //   }
-  // })
 
+
+  useGSAP(() => {
+    if(isMobile() || disableImg) return
+    gsap.timeline({
+      scrollTrigger: {
+        scroller: propsForGsap.scrollerRef,
+        trigger: triggleSection.current,
+        start: "top bottom",
+        end: "bottom top",
+        scrub: true,
+      }
+    })
+    .to(`.${s.media}`, {
+      x:(i) => dirAction[i] * 70,
+    })
+  })
 
   return (
-    <section className={cn(s.letcontact_section, s.light_background)} >
+    <section className={cn(s.letcontact_section, s.light_background)} ref={container} >
       <div className={s.container}>
         {disableImg ? <></> :
           <ul className={s.media_wrapper} ref={triggleSection}>
-            <li className={s.media} ref={box1Ref}>
+            <li className={s.media}>
               <Image sizes="100vw" alt="d" src="/home/letcontact_c.png" width={0} height={0} style={{ width: "100%", height: "auto" }} quality={100} />
             </li>
             <li className={s.media}>

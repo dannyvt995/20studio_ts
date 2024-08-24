@@ -18,7 +18,7 @@ export default function FAQSection() {
             <ul className={s.list_item}>
                 <li className={s.item}>
                     <span><p>What is the lead time of sample develop?</p></span>
-                    <span><p>Thời gian lên mẫu sẽ phụ thuộc vào độ phức tạp của mẫu, nhưng thông thường sẽ kéo dài từ 2 đến 5 ngày</p></span>
+                    <span><p>Sample preparation time will depend on the complexity of the sample, but will usually last from 2 to 5 days.</p></span>
                 </li>
                 <li className={s.item}>
                     <span><p>What is the production leadtime?</p></span>

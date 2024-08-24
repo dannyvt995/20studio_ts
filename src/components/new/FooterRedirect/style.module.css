@@ -14,7 +14,7 @@
     color: aliceblue;
     z-index: 9;
     top:-10vw;
-    left:20vw;
+    left:15vw;
     will-change: transform,opacity;
 }
 .info h3 {

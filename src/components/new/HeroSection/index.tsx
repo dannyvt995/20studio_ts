@@ -128,7 +128,7 @@ function HeroSection({ pageName, content }: IHeroSection) {
 
                             </li>
                         </ul>
-                        <ul className="list2">
+                        <ul className={s.list2}>
                             <li className={s.list_item}>
                                 <a href="mailto:20studio.contact@gmail.com" className={s.list_link}>
                                     20studio.contact@gmail.com
@@ -210,7 +210,7 @@ function HeroSection({ pageName, content }: IHeroSection) {
 
                             </li>
                         </ul>
-                        <ul className="list2">
+                        <ul className={s.list2}>
                         <li className={s.list_item}>
                                 <a href="mailto:20studio.contact@gmail.com" className={s.list_link}>
                                     20studio.contact@gmail.com

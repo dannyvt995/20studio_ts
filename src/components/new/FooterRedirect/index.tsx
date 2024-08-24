@@ -8,7 +8,7 @@ import { useRouter } from 'next/navigation'
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 gsap.registerPlugin(ScrollTrigger,ScrollToPlugin,useGSAP)
 
-export default function FooterRedirect({scroller,targetRedirect,currentId}:{scroller:string,targetRedirect:string,currentId:number}) {
+export default function FooterRedirect({content,scroller,targetRedirect,currentId}:{content:any,scroller:string,targetRedirect:string,currentId:number}) {
     const container = useRef<any>(null)
     const cirRefIc = useRef<any>(null)
     const router = useRouter()
@@ -60,9 +60,9 @@ export default function FooterRedirect({scroller,targetRedirect,currentId}:{scro
                      
                     }
                 },
-             
+                start:"top 120% ",
                 end:"top top",
-              //  markers:true,
+                //markers:true,
                 scrub:true,
             },
             y :window.innerHeight * .5
@@ -74,7 +74,7 @@ export default function FooterRedirect({scroller,targetRedirect,currentId}:{scro
     <section className={s.footer_redirect} ref={container} >
         <div className={s.wrapper}>
             <div className={s.info} id={`info_fr_${currentId}`}>
-                <h3>Next To Project {targetRedirect}</h3>
+                <h3>{content.introWorkPage.name[0]}<br></br>{content.introWorkPage.name[1]}</h3>
                 <p>Custom 20 studio hello {targetRedirect}</p>
                 <div className={s.ic}>
                 <svg data-v-41220c7b="" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" className={s.icon}>

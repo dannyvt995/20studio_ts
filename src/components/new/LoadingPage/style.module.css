@@ -20,8 +20,13 @@
 .logo {
     position: relative;
     margin: auto;
-    width: fit-content;
+    width: 20vw;
     will-change: transform;
+}
+.logo  svg {
+    width: 100%;
+    height: fit-content;
+    padding-bottom: 1.23rem;
 }
 .progressBar {
     position: absolute;
@@ -29,7 +34,7 @@
     left:50%;
     transform: translate(-50%,0%);
     width: 100%;
-    height: .36vw;
+    height: .27vw;
     background-color: white;
    
     will-change:transform;
@@ -53,7 +58,7 @@ background-color: whitesmoke;
     text-align: center;
     font-weight: bold;
     text-transform: uppercase;
-    font-family: "Bs-Medium";
+    font-family: "BD-Medium";
     -webkit-font-smoothing: antialiased;
     /*   clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%); */
      
