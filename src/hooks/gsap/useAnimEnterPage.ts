@@ -1,6 +1,6 @@
 "use client"
 
-import { propsGsap } from "@Constants/gsap_props"
+import { propsGsapTransitionPage } from "@Constants/gsap_props"
 import { gsap } from "gsap"
 
 export function useAnimEnterPage({ node, indexRef }: { node: HTMLDivElement, indexRef: any }) {
@@ -13,19 +13,19 @@ export function useAnimEnterPage({ node, indexRef }: { node: HTMLDivElement, ind
     timeline = gsap.timeline();
     timeline
         .set(cloneNodeParent as HTMLDivElement, { zIndex: indexRef })
-        .set(cloneNode, { ...propsGsap.pathBot })
+        .set(cloneNode, { ...propsGsapTransitionPage.pathBot })
         .set(cloneNodeChild as HTMLDivElement, {
-            ...propsGsap.pageEnter_tranform,
-            ...propsGsap.brightness100,
+            ...propsGsapTransitionPage.pageEnter_tranform,
+            ...propsGsapTransitionPage.brightness100,
         })
         .to(cloneNode as HTMLDivElement, {
-            ...propsGsap.pathOpen,
-            ...propsGsap.config
+            ...propsGsapTransitionPage.pathOpen,
+            ...propsGsapTransitionPage.config
         })
         .to(cloneNodeChild as HTMLDivElement, {
-            ...propsGsap.pageDefault,
-            ...propsGsap.brightness100,
-            ...propsGsap.config
+            ...propsGsapTransitionPage.pageDefault,
+            ...propsGsapTransitionPage.brightness100,
+            ...propsGsapTransitionPage.config
         }, '<')
 
     return () => {

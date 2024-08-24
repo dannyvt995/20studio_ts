@@ -24,7 +24,7 @@ import { removeSplash } from '@Utils/removeSplash'
 import { isMobile } from '@Utils/responsive';
 import useStoreZustand from '@Hooks/useStoreZustand';
 import { useInitLenis } from '@Hooks/lenis/useInitLenis';
-import { propsGsap } from "@Constants/gsap_props"
+import { propsGsapTransitionPage } from "@Constants/gsap_props"
 import { gsap } from "gsap"
 import { useGSAP } from '@gsap/react';
 
@@ -94,19 +94,19 @@ const { setStateTransition,stateEnterPage } = useStoreZustand()
 
     gsap.timeline()
       .set(cloneNodeParent as HTMLDivElement, { zIndex: index })
-      .set(cloneNode, { ...propsGsap.pathBot })
+      .set(cloneNode, { ...propsGsapTransitionPage.pathBot })
       .set(cloneNodeChild as HTMLDivElement, {
-        ...propsGsap.pageEnter_tranform,
-        ...propsGsap.brightness100,
+        ...propsGsapTransitionPage.pageEnter_tranform,
+        ...propsGsapTransitionPage.brightness100,
       })
       .to(cloneNode as HTMLDivElement, {
-        ...propsGsap.pathOpen,
-        ...propsGsap.config
+        ...propsGsapTransitionPage.pathOpen,
+        ...propsGsapTransitionPage.config
       })
       .to(cloneNodeChild as HTMLDivElement, {
-        ...propsGsap.pageDefault,
-        ...propsGsap.brightness100,
-        ...propsGsap.config
+        ...propsGsapTransitionPage.pageDefault,
+        ...propsGsapTransitionPage.brightness100,
+        ...propsGsapTransitionPage.config
       }, '<')
 
   })
@@ -117,12 +117,12 @@ const { setStateTransition,stateEnterPage } = useStoreZustand()
 
     gsap.timeline()
       .set(cloneNode as HTMLElement, {
-        ...propsGsap.brightness100,
+        ...propsGsapTransitionPage.brightness100,
       })
       .to(cloneNode as HTMLElement, {
-        ...propsGsap.pageExit_tranform,
-        ...propsGsap.brightness16,
-        ...propsGsap.props_exitAnim
+        ...propsGsapTransitionPage.pageExit_tranform,
+        ...propsGsapTransitionPage.brightness16,
+        ...propsGsapTransitionPage.props_exitAnim
       });
 
   })
@@ -177,6 +177,7 @@ const { setStateTransition,stateEnterPage } = useStoreZustand()
 
   return (
     <div ref={scopeRef}>
+      {children}
       <PageTransitionGroup>
         <TransitionGroup component={null}>
           <Transition

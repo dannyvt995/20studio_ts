@@ -1,6 +1,6 @@
 "use client"
 import { gsap } from "gsap"
-import { propsGsap } from "@Constants/gsap_props"
+import { propsGsapTransitionPage } from "@Constants/gsap_props"
 
 export function useExitWorkPage({ node,indexWork }: { node: HTMLElement,indexWork:number }) {
     let timeline,title,subtitle,thumbnail,background
@@ -16,17 +16,17 @@ export function useExitWorkPage({ node,indexWork }: { node: HTMLElement,indexWor
     }).to(
         background, {
       scale: 1,
-      ...propsGsap.props_exitAnim
+      ...propsGsapTransitionPage.props_exitAnim
     }
     ).to(
         thumbnail, {
       clipPath: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)',
-      ...propsGsap.props_exitAnim
+      ...propsGsapTransitionPage.props_exitAnim
     }, "<")
     .to(
       [title, subtitle], {
       opacity: 0,
-      ...propsGsap.props_exitAnim
+      ...propsGsapTransitionPage.props_exitAnim
     }, "<")  
   
   

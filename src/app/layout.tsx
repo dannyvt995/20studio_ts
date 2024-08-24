@@ -35,7 +35,7 @@ export default function RootLayout({
       <LoadingPage/>
    
       <MainLayout>
-        <h1>20Studio</h1>
+        {children}
       </MainLayout>
       </main>
 

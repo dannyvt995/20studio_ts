@@ -235,7 +235,7 @@ function NavbarSectionDeskop() {
             window.timelineNavbarModal.reversed(!window.timelineNavbarModal.reversed());
          window.timelineBtnNavbar.reversed(!window.timelineBtnNavbar.reversed());
         // window.timelineBtnNavbar.reverse();
-            window.timelineNavbarItem.reversed(!window.timelineNavbarItem.reversed())
+            window.timelineNavbarItem.reversed(true)
         } else {
             alert("Err on window var global >>>>>>>>")
         }

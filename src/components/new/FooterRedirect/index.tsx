@@ -18,10 +18,11 @@ export default function FooterRedirect({content,scroller,targetRedirect,currentI
         timeline.current =   gsap.timeline({
             onComplete:() => {
               setTimeout(() => {
-                router.push(`/work/work${targetRedirect}`)
+       
                 if(window.timelineNavbarItem){
-                    //window.timelineNavbarItem.reversed(!window.timelineNavbarItem.reversed())
+                   window.timelineNavbarItem.reversed(false)
                   }
+                  router.push(`/work/work${targetRedirect}`)
               },720)
             },
             paused:true,
@@ -51,9 +52,9 @@ export default function FooterRedirect({content,scroller,targetRedirect,currentI
                         
                       document.body.style.pointerEvents = 'none'
                       if(window.timelineNavbarItem){
-                        //window.timelineNavbarItem.reversed(!window.timelineNavbarItem.reversed())
+                        window.timelineNavbarItem.reversed(true)
                       }
-                        window.lenis?.scrollTo(`.${s.footer_redirect}`,{duration:0.86,lerp:0.072,onComplete:() => {
+                        window.lenis?.scrollTo(`.${s.footer_redirect}`,{duration:1,lerp:0.072,onComplete:() => {
                             if(timeline.current) timeline.current.play()
                         }})
                         

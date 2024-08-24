@@ -1,7 +1,7 @@
 "use client"
 
 import { gsap } from "gsap"
-import { propsGsap } from "@Constants/gsap_props"
+import { propsGsapTransitionPage } from "@Constants/gsap_props"
 
 export function useAnimExitPage({ nodeChild }: { nodeChild:HTMLElement }) {
     let cloneNode : any = nodeChild
@@ -10,12 +10,12 @@ export function useAnimExitPage({ nodeChild }: { nodeChild:HTMLElement }) {
 
     timeline
         .set(cloneNode as HTMLElement, {
-            ...propsGsap.brightness100,
+            ...propsGsapTransitionPage.brightness100,
         })
         .to(cloneNode as HTMLElement, {
-            ...propsGsap.pageExit_tranform,
-            ...propsGsap.brightness16,
-            ...propsGsap.props_exitAnim
+            ...propsGsapTransitionPage.pageExit_tranform,
+            ...propsGsapTransitionPage.brightness16,
+            ...propsGsapTransitionPage.props_exitAnim
         });
 
     return () => {
