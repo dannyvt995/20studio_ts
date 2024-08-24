@@ -132,3 +132,11 @@
         will-change: transform;
     }
 }
+@media (max-width: 601px) {
+    .nav {
+        display: none !important;
+    }
+    .button_menu {
+        display: flex !important;
+    }
+}

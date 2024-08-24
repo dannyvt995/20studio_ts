@@ -41,7 +41,7 @@ const PageTransition: React.FC<PageTransitionProps> = ({
   ...rest
 }) => {
 
-  console.log("##############   PageTransition render")
+  // -+- console.log("##############   PageTransition render")
   const pathName = usePathname()
   const pathNameFormat = removeSplash({ pathName: pathName })
   const listUrlProjects = ['/work/work1', '/work/work2', '/work/work3', '/work/work4'];
@@ -72,7 +72,7 @@ const { setStateTransition,stateEnterPage } = useStoreZustand()
   });
 
   function transitionFirst(pn: string) {
-    console.log("Enter page ================>")
+    // -+- console.log("Enter page ================>")
 
     const this_page = document.getElementById(`${pn}page`)
 
@@ -87,14 +87,12 @@ const { setStateTransition,stateEnterPage } = useStoreZustand()
   }
 
   const enterPage = contextSafe(({ node, nodeChild, nodeParent, index }: { node: any, nodeChild: any, nodeParent: any, index: number }) => {
-    //gsap will be run on here
+
     let cloneNode: any = node
     let cloneNodeChild: any = nodeChild
     let cloneNodeParent: any = nodeParent
-    let timeline: any
 
-    timeline = gsap.timeline();
-    timeline
+    gsap.timeline()
       .set(cloneNodeParent as HTMLDivElement, { zIndex: index })
       .set(cloneNode, { ...propsGsap.pathBot })
       .set(cloneNodeChild as HTMLDivElement, {
@@ -111,29 +109,13 @@ const { setStateTransition,stateEnterPage } = useStoreZustand()
         ...propsGsap.config
       }, '<')
 
-    // return () => {
-    //   console.log("///////////////CLEAN ENTERPAGE")
-    //   if (timeline) {
-    //     timeline.kill();
-    //     timeline = null;
-    //   }
-    //   if (cloneNodeParent) {
-    //     cloneNodeParent = null
-    //   }
-    //   if (cloneNodeChild) {
-    //     gsap.set(cloneNodeChild as HTMLDivElement, { clearProps: 'all' }); 
-    //     cloneNodeChild = null;
-    //   }
-    // };
   })
 
   const exitPage = contextSafe(({ nodeChild }: { nodeChild: HTMLDivElement }) => {
-    //gsap will be run on here
-    let cloneNode: any = nodeChild
-    let timeline: any
-    timeline = gsap.timeline();
 
-    timeline
+    let cloneNode: any = nodeChild
+
+    gsap.timeline()
       .set(cloneNode as HTMLElement, {
         ...propsGsap.brightness100,
       })
@@ -143,17 +125,6 @@ const { setStateTransition,stateEnterPage } = useStoreZustand()
         ...propsGsap.props_exitAnim
       });
 
-    // return () => {
-    //   console.log("///////////////CLEAN EXITPAGE")
-    //   if (timeline) {
-    //     timeline.kill();
-    //     timeline = null;
-    //   }
-    //   if (cloneNode) {
-    //     gsap.set(cloneNode as HTMLDivElement, { clearProps: 'all' });
-    //     cloneNode = null
-    //   }
-    // };
   })
 
   const getContentDomReference = useMemo(() => {
@@ -265,7 +236,7 @@ const { setStateTransition,stateEnterPage } = useStoreZustand()
                 }else{
              
                   if(currentKeyRef.current !== '/work'){
-                    console.log("EXIT from page not is work")
+                    // -+- console.log("EXIT from page not is work")
                     exitPage({ nodeChild: node.children[0].children[0] })
                   }
                 }

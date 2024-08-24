@@ -63,7 +63,7 @@ function HeroSection({ pageName, content }: IHeroSection) {
         //     }
         // });
         if (pathNameFormat === pageName) {
-            console.log("useGSAP running...")
+            // -+- console.log("useGSAP running...")
             tl1.play()
             //tl2.play()
         }

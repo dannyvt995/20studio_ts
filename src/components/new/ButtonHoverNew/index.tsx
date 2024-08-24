@@ -96,7 +96,7 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children,btnNavbarFoote
         });
 
         if (linkRef.current && pathName !== targetRedirect) {
-            console.log("%cAddListenerToButton","color:yellow;border:1px solid white")
+            // -+- console.log("%cAddListenerToButton","color:yellow;border:1px solid white")
             linkRef.current.addEventListener('mouseenter', enterAnimation);
             linkRef.current.addEventListener('mouseleave', leaveAnimation);
         }
@@ -104,7 +104,7 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children,btnNavbarFoote
         return () => {
          
             if (linkRef.current) {
-                console.log("%cRemoveListenerOfButton","color:yellow;border:1px solid white")
+                // -+- console.log("%cRemoveListenerOfButton","color:yellow;border:1px solid white")
                 linkRef.current.removeEventListener('mouseenter', enterAnimation);
                 linkRef.current.removeEventListener('mouseleave', leaveAnimation);
             }

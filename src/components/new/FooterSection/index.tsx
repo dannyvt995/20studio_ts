@@ -27,7 +27,7 @@ function FooterSection({ propsForGsap,state }: IFooterSection) {
         if (isMobile()) return
         let timeoutId: NodeJS.Timeout;
         if (stateTransition === 'entered') {
-            console.log("FooterSection re-render")
+            // -+- console.log("FooterSection re-render")
             timeoutId = setTimeout(() => {
             gsap.timeline({
                 scrollTrigger:{

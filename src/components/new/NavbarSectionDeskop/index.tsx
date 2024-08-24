@@ -12,7 +12,7 @@ gsap.registerPlugin(useGSAP)
 
 function NavbarSectionDeskop() {
 
-    console.log("%cNavbarDeskop_render", "color:green;font-weight:bold")
+    // -+- console.log("%cNavbarDeskop_render", "color:green;font-weight:bold")
 
     const navbarDeskopRef = useRef<any>(null)
     const buttonMenuRef = useRef<any>(null)
@@ -28,10 +28,7 @@ function NavbarSectionDeskop() {
     useEffect(() => {
      
   
-        if(isMobile()) {
-            navbarDeskopRef.current.style.display = `none`;
-            buttonMenuRef.current.style.display = `flex`;
-        }
+        
         unit.current = window.innerWidth / 100 * 6
 
         switch (pathName) {
@@ -61,7 +58,7 @@ function NavbarSectionDeskop() {
 
 
     useEffect(() => {
-        if(navbarDeskopRef.current && buttonMenuRef.current) {
+        if(navbarDeskopRef.current && buttonMenuRef.current && !isMobile()) {
             navbarDeskopRef.current.style.opacity = `1`;
             buttonMenuRef.current.style.opacity = `0`;
             navbarDeskopRef.current.style.visibility = `visible`;
@@ -70,7 +67,7 @@ function NavbarSectionDeskop() {
     },[pathName])
 
     // useEffect(() => {
-    //     console.log("%cGET GLOBAL LENIS FOR NAVBAR...", "color:pink");
+    //     // -+- console.log("%cGET GLOBAL LENIS FOR NAVBAR...", "color:pink");
     //     if(stateVarGlobalLenis ===  false) return
     //     const handleScroll = ({ scroll } : {scroll:number}) => {
     //         if (!navbarDeskopRef.current || !buttonMenuRef.current) return;
@@ -102,7 +99,7 @@ function NavbarSectionDeskop() {
 
     useEffect(() => {
         if (!stateEnterPage) return
-        console.log("%cInit Navbar Timeline !!", "color:green")
+        // -+- console.log("%cInit Navbar Timeline !!", "color:green")
         timelineBtnMenu.current = gsap.timeline({paused:true})
           
             .fromTo(`.${s.icon}`, {
@@ -138,7 +135,7 @@ function NavbarSectionDeskop() {
 
     useGSAP(() => {
         if (isEnterPage) {
-            console.log("Chạy lại à ??")
+            // -+- console.log("Chạy lại à ??")
             timelineNavbarItem.current = gsap.timeline({ defaults: {delay:.5},paused:true })
                 .fromTo(`.${s.nav_item}`,
                     {
@@ -164,7 +161,7 @@ function NavbarSectionDeskop() {
 
     useGSAP(() => {
         if (isEnterPage && stateEnterPage) {
-            console.log("%cFire Anim Navbar First Time !!", "color:green")
+            // -+- console.log("%cFire Anim Navbar First Time !!", "color:green")
             gsap.timeline({
                 onComplete: () => {
                     setIsEnterPage(false)
@@ -187,7 +184,7 @@ function NavbarSectionDeskop() {
     useGSAP(() => {
 
         if (!isEnterPage) {
-            console.log("%cToggle Anim Icon !!", "color:green")
+            // -+- console.log("%cToggle Anim Icon !!", "color:green")
             switch (pathName) {
                 case '/home':
                 case '/':

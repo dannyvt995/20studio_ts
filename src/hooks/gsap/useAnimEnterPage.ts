@@ -8,7 +8,7 @@ export function useAnimEnterPage({ node, indexRef }: { node: HTMLDivElement, ind
     let cloneNode: any = node
     let cloneNodeChild: any = cloneNode.children[0]
     let cloneNodeParent: any = cloneNode.parentNode
-    console.log("indexRef", indexRef)
+    // -+- console.log("indexRef", indexRef)
     let timeline: any
     timeline = gsap.timeline();
     timeline

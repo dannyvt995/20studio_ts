@@ -34,6 +34,7 @@
     width: 100%;
     grid-column: 1 / 7;
     grid-row: 1;
+    aspect-ratio: 538/633;
 }
 .experimentation {
     grid-column: 2 / 7;
@@ -42,17 +43,21 @@
 .experimentationImg1 {
     grid-column: 3 / 7;
     grid-row: 3;
+    aspect-ratio: 529/732;
 }
 .experimentationImg2 {
     grid-column: 8 / 13;
     grid-row: 4;
     margin-top: -15vw;
+    aspect-ratio: 262/423;
 }
 .experimentationImg3 {
   position: absolute;
   left: 0;
   top:50%;
   width: 42vw;
+  aspect-ratio: 87/128;
+  
 }
 .prototyping {
     grid-column: 8 / 13;
@@ -62,4 +67,5 @@
     grid-column: 8 / 13;
     grid-row: 5;
     margin-top: 15vw;
+    aspect-ratio: 365/616;
 }

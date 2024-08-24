@@ -143,6 +143,8 @@
   /*   height: var(--slide-height); */
     box-sizing: border-box;
     /*border: 1px dotted darkblue;*/
+
+    will-change: transform;
   }
   
   .carousel__image {

@@ -3,7 +3,7 @@ import Image from "next/image"
 import { memo } from "react"
 
 function CacheImageGroup() {
-  console.log("%cCacheImageGroup(Run 1 time)","color:blue;border:1px solid green")
+  // -+- console.log("%cCacheImageGroup(Run 1 time)","color:blue;border:1px solid green")
   return (
     <div style={{
       visibility: 'hidden',

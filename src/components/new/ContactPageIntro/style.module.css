@@ -61,6 +61,16 @@
     .container {
         padding:40vw 0 21.3333333333vw;
     }
+    .image {
+        width: 72vw;
+        margin: auto;
+    }
+    .title {
+        top:50%;
+    }
+    .carousel {
+        height: auto !important;
+    }
 }
 @media (min-width: 601px) {
     

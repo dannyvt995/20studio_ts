@@ -11,7 +11,7 @@ import { removeSplash } from '@Utils/removeSplash'
 
 
 export function useInitLenis({ firstLoad }: { firstLoad?: boolean }) {
-  console.log("useInitLenis--OutRound")
+  // -+- console.log("useInitLenis--OutRound")
   const pathName = usePathname()
   const pathNameFormat = removeSplash({ pathName: pathName })
   const { stateTransition } = useStoreZustand()
@@ -22,7 +22,7 @@ export function useInitLenis({ firstLoad }: { firstLoad?: boolean }) {
     if ( pathName === '/work' || pathName === '/3d') return
 
 
-    console.log("useInitLenis--OnRound!!!!")
+    // -+- console.log("useInitLenis--OnRound!!!!")
     gsap.registerPlugin(ScrollTrigger)
     let timeoutId: NodeJS.Timeout;
    
@@ -32,7 +32,7 @@ export function useInitLenis({ firstLoad }: { firstLoad?: boolean }) {
     let NavbarDeskop: HTMLElement | null;
     const flag = 1220;
     if (stateTransition == 'entered' || stateTransition == 'none') {
-      console.log("INIT LENIS---")
+      // -+- console.log("INIT LENIS---")
       domScroll = document.getElementById(`${pathNameFormat}page`)
       ButtonNavbar = document.getElementById("button_menu")
       NavbarDeskop = document.getElementById("navbar_deskop")
@@ -92,7 +92,7 @@ export function useInitLenis({ firstLoad }: { firstLoad?: boolean }) {
 
     gsap.ticker.lagSmoothing(0)
     return () => {
-      console.log("clear ref lenis")
+      // -+- console.log("clear ref lenis")
       if (lenisRef.current) {
         lenisRef.current.destroy()
         gsap.ticker.remove(update)

@@ -45,7 +45,7 @@ export const useEffectActive_NavbarModal = (
     const router = useRouter()
     const {stateTransition,stateEnterPage} = useStoreZustand()
 
-    console.log("%cHOOK NAVBAR MODAL Running","color:orange")
+    // -+- console.log("%cHOOK NAVBAR MODAL Running","color:orange")
     let Timeline: any = null
     let NavbarDeskop: any = null
     let ButtonMenu: any = null
@@ -61,7 +61,7 @@ export const useEffectActive_NavbarModal = (
    
         if(stateTransition !== 'entered') return
         if(!stateEnterPage) return
-        console.log("%cHOOK NAVBAR Running Update!!!!!","color:orange")
+        // -+- console.log("%cHOOK NAVBAR Running Update!!!!!","color:orange")
         // update DomContent when path change
         NavbarDeskop = document.getElementById(`navbar`)
         DomContent = document.getElementById(`${pathNameFormat}page`)
@@ -86,7 +86,7 @@ export const useEffectActive_NavbarModal = (
          /*        onStart: function() {
                  
                     if (Timeline.reversed() === true) {
-                        console.log("KILL IT NOW====))))))))))")
+                        // -+- console.log("KILL IT NOW====))))))))))")
                         this.kill(); 
                     }
                 }, */

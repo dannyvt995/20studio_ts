@@ -7,7 +7,7 @@ interface IRouterControls {
 }
 
 export default function RouterControls({ children }: IRouterControls) {
-    console.log("##############   RouterControls render")
+    // -+- console.log("##############   RouterControls render")
     const pathName = usePathname()
     return (
         <PageTransition transitionKey={pathName}>

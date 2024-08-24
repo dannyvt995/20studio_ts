@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import s from './style.module.css'
 import Image from 'next/image'
 import gsap from 'gsap'
@@ -12,7 +12,32 @@ export default function FooterRedirect({scroller,targetRedirect,currentId}:{scro
     const container = useRef<any>(null)
     const cirRefIc = useRef<any>(null)
     const router = useRouter()
- 
+
+    const timeline = useRef<gsap.core.Timeline>()
+    useEffect(() => {
+        timeline.current =   gsap.timeline({
+            onComplete:() => {
+              setTimeout(() => {
+                router.push(`/work/work${targetRedirect}`)
+                if(window.timelineNavbarItem){
+                    //window.timelineNavbarItem.reversed(!window.timelineNavbarItem.reversed())
+                  }
+              },720)
+            },
+            paused:true,
+            defaults:{duration: 0.72 }
+        })
+
+        .to(`#bg_fr_${currentId}`,{
+            scale:1,
+        })
+        .to(`#info_fr_${currentId}`,{
+            opacity:0,
+        },'<')
+        .to(`#image_fr_${currentId}`,{
+            clipPath: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)',
+        },'<')
+    },[targetRedirect,currentId])
     useGSAP(() => {
         gsap.to(`.${s.info}`,{
             scrollTrigger:{
@@ -24,27 +49,14 @@ export default function FooterRedirect({scroller,targetRedirect,currentId}:{scro
                     
                     if(self.progress > 0.90) {
                         
-                         document.body.style.pointerEvents = 'none'
-                        gsap.timeline({
-                            onComplete:() => {
-                              setTimeout(() => {
-                                router.push(`/work/work${targetRedirect}`)
-                              },900)
-                            }
-                        })
-                        .to(window, { duration: .4,scrollTo: { y: `.${s.footer_redirect}`, offsetY: 150 } })
-                        .to(`#bg_fr_${currentId}`,{
-                            scale:1,
-                            duration:.4
-                        })
-                        .to(`#info_fr_${currentId}`,{
-                            opacity:0,
-                            duration:.4
-                        },'<')
-                        .to(`#image_fr_${currentId}`,{
-                            clipPath: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)',
-                            duration:.4
-                        },'<')
+                      document.body.style.pointerEvents = 'none'
+                      if(window.timelineNavbarItem){
+                        //window.timelineNavbarItem.reversed(!window.timelineNavbarItem.reversed())
+                      }
+                        window.lenis?.scrollTo(`.${s.footer_redirect}`,{duration:0.86,lerp:0.072,onComplete:() => {
+                            if(timeline.current) timeline.current.play()
+                        }})
+                        
                      
                     }
                 },

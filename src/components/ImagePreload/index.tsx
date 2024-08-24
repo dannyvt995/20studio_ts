@@ -11,7 +11,7 @@ const ImagePreload = forwardRef<HTMLImageElement, ImageProps>((props, ref) => {
     <Image
       ref={ref}
       quality={100}
-      onLoad={() => console.log("ImagePreload Component")}
+  
       className={`${props.className} ${s.imagePreload_origin}`}
       sizes={`100vw`}
       {...props}
