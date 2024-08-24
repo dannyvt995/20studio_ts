@@ -75,7 +75,7 @@ function HeroSection({ pageName, content }: IHeroSection) {
                 <div className="container">
                     <div className={s.text_1}>
                         <p className={s.intro}>
-                            <span><span className={s.ip}>We are a global creative fashion studio base in</span></span>
+                            <span><span className={s.ip}>We are a global creative fashion studio base in 2</span></span>
                             <span><span className={s.ip}>Ho Chi Minh city. We work with artist, designer and manufactures</span></span>
                             <span><span className={s.ip}>on clients projectsto produce outstanding works.</span></span>
                         </p>
