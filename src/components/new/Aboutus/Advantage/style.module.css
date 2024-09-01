@@ -123,6 +123,7 @@
         top: 10.9722222222vw;
     }
       .items {
+        padding-bottom: 10vw;
         display: grid;
         grid-column-gap: 2.2222222222vw;
         grid-template-columns: repeat(12, 1fr);
@@ -138,7 +139,7 @@
         grid-column: 2 / 5;
     }
       .item:nth-child(4) {
-        grid-column: 7 / 10;
+        grid-column: 7 / 11;
         margin-top: 10.4166666667vw;
     }
       .subtitle {

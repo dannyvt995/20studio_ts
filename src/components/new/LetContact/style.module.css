@@ -151,6 +151,6 @@
         width: 18.319444vw;
     }
      .text {
-        width: 40.5555555556vw;
+        width: fit-content;
     }
 }

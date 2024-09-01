@@ -11,12 +11,12 @@ import Image from 'next/image'
 import { isMobile } from '@/utils/responsive';
 import ButtonHoverNew2 from '../ButtonHoverNew2'
 import IconSVG from '@/components/Icon/IconSVG'
-gsap.registerPlugin(ScrollTrigger,useGSAP)
+gsap.registerPlugin(ScrollTrigger, useGSAP)
 interface ILetContact {
   propsForGsap?: any,
-  disableImg?: boolean
+  content: any
 }
-function LetContact({ propsForGsap, disableImg }: ILetContact) {
+function LetContact({ propsForGsap, content }: ILetContact) {
   const triggleSection = useRef<HTMLUListElement>(null)
 
   const container = useRef<any>(null)
@@ -24,7 +24,7 @@ function LetContact({ propsForGsap, disableImg }: ILetContact) {
 
 
   useGSAP(() => {
-    if(isMobile() || disableImg) return
+    if (isMobile() || content.disableImg) return
     gsap.timeline({
       scrollTrigger: {
         scroller: propsForGsap.scrollerRef,
@@ -34,15 +34,15 @@ function LetContact({ propsForGsap, disableImg }: ILetContact) {
         scrub: true,
       }
     })
-    .to(`.${s.media}`, {
-      x:(i) => dirAction[i] * 70,
-    })
+      .to(`.${s.media}`, {
+        x: (i) => dirAction[i] * 70,
+      })
   })
 
   return (
     <section className={cn(s.letcontact_section, s.light_background)} ref={container} >
       <div className={s.container}>
-        {disableImg ? <></> :
+        {content.disableImg ? <></> :
           <ul className={s.media_wrapper} ref={triggleSection}>
             <li className={s.media}>
               <Image sizes="100vw" alt="d" src="/home/letcontact_c.png" width={0} height={0} style={{ width: "100%", height: "auto" }} quality={100} />
@@ -64,22 +64,27 @@ function LetContact({ propsForGsap, disableImg }: ILetContact) {
 
         <div className={s.text}>
           <h2 className={s.lable}>
-            Contact us
+            {content.tag}
           </h2>
-          <h1 className={s.title}>
-            <div className={s.title_line}>From vision</div>
-            <div className={s.title_line}>to reality</div>
-          </h1>
+          {content.disableTit ? <></> :
+            <h1 className={s.title}>
+               {content.tit.map((item: any, index: any) => (
+                <div className={s.title_line} key={index}>{item}</div>
+               ))}
+            </h1>
+          }
           <div className={s.body}>
-            <p>Let&apos;s make dream come true</p>
+            <p>{content.more}</p>
           </div>
+          {content.disableBtn ? <></> :
+            <ButtonHoverNew2
+              icon={<IconSVG src='/icon/arrow-right.svg' />}
+              targetRedirect='mailto:vphcm@studio.vn'
+              classAdd={cn(s.link, s.is_dark, s.wrap)}>
+              Let&apos;s touch
+            </ButtonHoverNew2>
+          }
 
-          <ButtonHoverNew2
-            icon={<IconSVG src='/icon/arrow-right.svg' />}
-            targetRedirect='mailto:vphcm@studio.vn'
-            classAdd={cn(s.link, s.is_dark, s.wrap)}>
-            Let&apos;s touch
-          </ButtonHoverNew2>
 
         </div>
       </div>
@@ -88,4 +93,4 @@ function LetContact({ propsForGsap, disableImg }: ILetContact) {
   )
 }
 
-export default LetContact
+export default memo(LetContact)

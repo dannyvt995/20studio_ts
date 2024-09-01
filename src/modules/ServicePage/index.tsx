@@ -9,7 +9,7 @@ function ServicePage(): JSX.Element {
   return (
     <div id="servicepage">
         <ListServices/>
-        <LetContact propsForGsap={service_page.propsForGsap}/>
+        <LetContact content={service_page.content.letContact} propsForGsap={service_page.propsForGsap}/>
     </div>
   )
 }

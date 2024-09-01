@@ -18,11 +18,11 @@ function AboutPage(): JSX.Element {
             <HeroSection pageName="about" propsForGsap={about_page.propsForGsap} content={about_page.content.heroSection} />
 
             <Intro  propsForGsap={about_page.propsForGsap}/>
-            <Advantage />
+            <Advantage content={about_page.content.advantage}/>
             <SectionTitleBlend  propsForGsap={about_page.propsForGsap} />
             <Minded />
             <Us />
-            <LetContact disableImg={true}/>
+            <LetContact content={about_page.content.letContact}  propsForGsap={about_page.propsForGsap}/>
             <FooterSection  propsForGsap={about_page.propsForGsap} />
         </div>
     )

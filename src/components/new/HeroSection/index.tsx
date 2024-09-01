@@ -19,6 +19,7 @@ import { removeSplash } from '@/utils/removeSplash'
 import ButtonHoverNew2 from '../ButtonHoverNew2'
 import IconSVG from '@Components/Icon/IconSVG'
 import ButtonHoverNew from '../ButtonHoverNew'
+import { common } from '@Constants/page_props';
 gsap.registerPlugin(ScrollTrigger)
 
 interface IHeroSection {
@@ -69,170 +70,72 @@ function HeroSection({ pageName, content }: IHeroSection) {
         }
     }, []);
 
-    if (pageName === 'home') {
-        return (
-            <section className={cn(s.hero_section, content.classAdd)} id="hero_section" ref={triggleSection}>
-                <div className="container">
-                    <div className={s.text_1}>
+    return (
+        <section className={cn(s.hero_section, content.classAdd)} id="hero_section" ref={triggleSection}>
+            <div className="container" style={content.moreStyle}>
+                <div className={s.text_1}>
+                    {content.disableParaInro ? <></> :
                         <p className={s.intro}>
-                            <span><span className={s.ip}>We are a global creative fashion studio base in</span></span>
-                            <span><span className={s.ip}>Ho Chi Minh city. We work with artist, designer and manufactures</span></span>
-                            <span><span className={s.ip}>on clients projectsto produce outstanding works.</span></span>
+                            {content.paraIntro.map((item: any, index: any) => (
+                                <span key={index}><span className={s.ip}>{item}</span></span>
+                            ))}
                         </p>
-                        <h1 className={s.title}>
-                            <span><span className={s.tp}>Fashion</span></span>
-                            <span><span className={s.tp}>Creative</span></span>
-                            <span><span className={s.tp}>Production</span></span>
-                        </h1>
-                    </div>
+                    }
 
-
-                    <div className={s.text_2}>
-                        <div className={s.body}>
-                            <p><span className="">Beside designing and fashion production, 20Studio work on projects of all types including brand and product development, digital experience design, social media design, production management and fashion business solutions.</span></p>
-
-                        </div>
-
-                        <ButtonHoverNew2 icon={<IconSVG src='/icon/arrow-right.svg' />} targetRedirect='/about' classAdd={s.link}>
-                            Explore our services
-                        </ButtonHoverNew2>
-
-                        <ul className={s.list1}>
-                            <li className={s.list_item}>
-
-                                <ButtonHoverNew classAdd={s.list_link} targetRedirect='/service'>
-                                    Service
-                                </ButtonHoverNew>
-
-                            </li>
-                            <li className={s.list_item}>
-
-                                <ButtonHoverNew classAdd={s.list_link} targetRedirect='/work'>
-                                    Project
-                                </ButtonHoverNew>
-
-                            </li>
-                            <li className={s.list_item}>
-                                <ButtonHoverNew classAdd={s.list_link} targetRedirect='/about'>
-                                    About us
-                                </ButtonHoverNew>
-
-                            </li>
-                            <li className={s.list_item}>
-
-                                <ButtonHoverNew classAdd={s.list_link} targetRedirect='/contact'>
-                                    Contact
-                                </ButtonHoverNew>
-
-
-
-                            </li>
-                        </ul>
-                        <ul className={s.list2}>
-                            <li className={s.list_item}>
-                                <a href="mailto:20studio.contact@gmail.com" className={s.list_link}>
-                                    20studio.contact@gmail.com
-                                </a>
-                            </li>
-                            <li className={s.list_item}>
-                                <a href="tel:0362237164" className={s.list_link}>
-                                    036.223.7164
-                                </a>
-                            </li>
-
-                        </ul>
-                    </div>
+                    <h1 className={s.title}>
+                        {content.tit.map((item: any, index: any) => (
+                            <span key={index}><span className={s.tp}>{item}</span></span>
+                        ))}
+                    </h1>
                 </div>
-                <div className={s.background} ref={backgroundImg}>
 
-                    <Image quality={100} priority src={`${content.backgroundImage}`} alt="image_cache_banner_home" width={0} height={0} sizes="100vw" style={content.backgroundSize} />
-                </div>
-            </section>
-        )
-    } else if (pageName === 'about') {
-        return (
-            <section className={cn(s.hero_section, content.classAdd)} id="hero_section" ref={triggleSection}>
-                <div className="container" style={{ paddingTop: '55vh' }}>
-                    <div className={s.text_1}>
-                        {/*     <p className={s.intro}>
-                            <span><span className={s.ip}>20studio là một công ty thời trang toàn cầu</span></span>
-                            <span><span className={s.ip}>chuyên tạo ra sản phẩm độc đáo và phong cách</span></span>
-                            <span><span className={s.ip}>mang lại trải nghiệm đặc biệt và tinh tế cho khách hàng của mình.</span></span>
-                        </p> */}
-                        <h1 className={s.title}>
-                            <span><span className={s.tp}>Design</span></span>
-                            <span><span className={s.tp}>Fashion</span></span>
-                            <span><span className={s.tp}>Digital Exp</span></span>
-                        </h1>
+
+                <div className={s.text_2}>
+                    <div className={s.body}>
+                        <p><span className="">{content.morePara}</span></p>
+
                     </div>
 
 
-                    <div className={s.text_2}>
-                        <div className={s.body}>
-                            <p><span className="">Beside designing and fashion production, 20Studio work on projects of all types including brand and product development, digital experience design, social media design, production management and fashion business solutions.</span></p>
-
-                        </div>
-
-
-                        <ButtonHoverNew2 icon={<IconSVG src='/icon/arrow-right.svg' />} targetRedirect='/service' classAdd={s.link}>
-                            Our mission
-                        </ButtonHoverNew2>
-                        <ul className={s.list1}>
-
-                            <li className={s.list_item}>
-
-                                <ButtonHoverNew classAdd={s.list_link} targetRedirect='/work'>
-                                    Project
-                                </ButtonHoverNew>
-
-                            </li>
-
-                            <li className={s.list_item}>
-
-                                <ButtonHoverNew classAdd={s.list_link} targetRedirect='/contact'>
-                                    Contact
-                                </ButtonHoverNew>
+                    <ButtonHoverNew2 icon={<IconSVG src='/icon/arrow-right.svg' />} targetRedirect={content.btnMore[1]} classAdd={s.link}>
+                        {content.btnMore[0]}
+                    </ButtonHoverNew2>
+                    <ul className={s.list1}>
+                        {content.listBtn.map((item: string, index: any) => {
+                           
+                            return (
+                                <li className={s.list_item} key={index}  >
+                                    <ButtonHoverNew classAdd={s.list_link} targetRedirect={(common.listBtnUrl as any)[item]}>
+                                        {item}
+                                    </ButtonHoverNew>
+                                </li>
+                            )
+                        })}
 
 
-
-                            </li>
-                            <li className={s.list_item}>
-
-                                <ButtonHoverNew classAdd={s.list_link} targetRedirect='/service'>
-                                    Service
-                                </ButtonHoverNew>
-                            </li>
-                            <li className={s.list_item}>
-
-                                <ButtonHoverNew classAdd={s.list_link} targetRedirect='/home'>
-                                    Home
-                                </ButtonHoverNew>
-
-                            </li>
-                        </ul>
-                        <ul className={s.list2}>
+                    </ul>
+                    <ul className={s.list2}>
                         <li className={s.list_item}>
-                                <a href="mailto:20studio.contact@gmail.com" className={s.list_link}>
-                                    20studio.contact@gmail.com
-                                </a>
-                            </li>
-                            <li className={s.list_item}>
-                                <a href="tel:0362237164" className={s.list_link}>
-                                    036.223.7164
-                                </a>
-                            </li>
+                            <a href={common.infoContact.mail.href} className={s.list_link}>
+                                {common.infoContact.mail.display}
+                            </a>
+                        </li>
+                        <li className={s.list_item}>
+                            <a href={common.infoContact.phone.href} className={s.list_link}>
+                                {common.infoContact.phone.display}
+                            </a>
+                        </li>
 
-                        </ul>
-                    </div>
+                    </ul>
                 </div>
-                <div className={s.background} ref={backgroundImg}>
+            </div>
+            <div className={s.background} ref={backgroundImg}>
 
-                    <Image quality={100} priority src={`${content.backgroundImage}`} alt="image_cache_banner_about" width={0} height={0} sizes="100vw" style={content.backgroundSize} />
-                </div>
-            </section>
-        )
-    }
-
+                <Image quality={100} priority src={`${content.backgroundImage.url}`} alt="image_cache_banner_about" width={0} height={0} sizes="100vw" style={content.backgroundImage.size} />
+            </div>
+        </section>
+    )
 }
+
 
 export default memo(HeroSection)

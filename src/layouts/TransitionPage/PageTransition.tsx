@@ -18,6 +18,7 @@ import Project1 from '@Modules/Project1';
 import Project2 from '@Modules/Project2';
 import Project3 from '@Modules/Project3';
 import Project4 from '@Modules/Project4';
+import SustainabilityPage from '@Modules/SustainabilityPage';
 
 
 import { removeSplash } from '@Utils/removeSplash'
@@ -27,6 +28,7 @@ import { useInitLenis } from '@Hooks/lenis/useInitLenis';
 import { propsGsapTransitionPage } from "@Constants/gsap_props"
 import { gsap } from "gsap"
 import { useGSAP } from '@gsap/react';
+
 
 gsap.registerPlugin(useGSAP)
 
@@ -144,6 +146,9 @@ const { setStateTransition,stateEnterPage } = useStoreZustand()
           case '/service':
             contentDomReference = <ServicePage />;
             break;
+            case '/sustainability':
+              contentDomReference = <SustainabilityPage/>;
+              break;
         case '/work':
           contentDomReference = <WorkPage />;
           break;

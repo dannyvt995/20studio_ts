@@ -30,7 +30,7 @@
    
   
 }
-#aboutpage,#contactpage,#homepage,#servicepage,#workpage {
+#aboutpage,#contactpage,#homepage,#servicepage,#workpage,#sustainabilitypage {
   
     position:fixed;
     top:0;
@@ -44,7 +44,8 @@
 #aboutpage, #contactpage, #homepage,#servicepage, #workpage,#work1page,
 #work2page,
 #work3page,
-#work4page {
+#work4page,
+#sustainabilitypage {
     height: 100vh;
     /* overflow-y: scroll !important; */
     overflow: hidden !important;
