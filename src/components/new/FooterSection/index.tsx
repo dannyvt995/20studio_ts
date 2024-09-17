@@ -35,6 +35,7 @@ function FooterSection({ propsForGsap,state }: IFooterSection) {
                     trigger: triggleSection.current,
                     start: "top bottom",
                     end: "bottom bottom",
+                    
                     scrub:true,
                 }
             })

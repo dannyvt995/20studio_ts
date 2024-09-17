@@ -2,7 +2,7 @@
 import RouterControls from '@/app/RouterControls';
 import CacheImageGroup from '@/components/new/CacheImageGroup';
 
-import LoadingPage from '@/components/new/LoadingPage';
+
 import Header from '@Layouts/Header';
 
 import React, { memo, PropsWithChildren } from 'react';
@@ -15,6 +15,7 @@ function MainLayout({ children }: PropsWithChildren): React.ReactElement {
       <Header/>
     
       <CacheImageGroup/>
+    
       <RouterControls>
         {children}
       </RouterControls>

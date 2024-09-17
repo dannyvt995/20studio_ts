@@ -28,7 +28,9 @@ export const about_page = {
         scrollerRef: "#aboutpage"
     },
     content: {
+  
         heroSection: {
+            scrollerRef: "#aboutpage",
             classAdd: "dark_background",
             backgroundImage: {
                 url: "/about/banner.webp",
@@ -80,7 +82,9 @@ export const home_page = {
         scrollerRef: "#homepage"
     },
     content: {
+       
         heroSection: {
+            scrollerRef: "#homepage",
             classAdd: "dark_background",
             moreStyle:{},
             backgroundImage: {

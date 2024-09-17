@@ -185,3 +185,9 @@
         font-size: 3rem !important;
     }
 }
+
+.hero_section {
+   
+    background-size: 110% auto;
+    background-position-y:  var(--bg-y,70%);;
+}

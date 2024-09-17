@@ -20,7 +20,6 @@ import ButtonHoverNew2 from '../ButtonHoverNew2'
 import IconSVG from '@Components/Icon/IconSVG'
 import ButtonHoverNew from '../ButtonHoverNew'
 import { common } from '@Constants/page_props';
-gsap.registerPlugin(ScrollTrigger)
 
 interface IHeroSection {
     pageName: string,
@@ -36,6 +35,7 @@ function HeroSection({ pageName, content }: IHeroSection) {
     const pathNameFormat = removeSplash({ pathName: pathName })
     const { stateTransition } = useStoreZustand()
     const tl1 = useRef<gsap.core.Timeline>()
+    const tlBg = useRef<gsap.core.Timeline>()
     useGSAP(() => {
 
         //  if (isMobile()) return
@@ -60,9 +60,32 @@ function HeroSection({ pageName, content }: IHeroSection) {
 
         }
     }, {dependencies: [stateTransition]});
+    useGSAP(() => {
 
+        if (stateTransition === 'entered') {
+            gsap.timeline({
+                scrollTrigger: {
+                    scroller:content.scrollerRef,
+                    trigger: triggleSection.current,
+                    start:"top top ",
+                    end:"bottom 0%",
+                    
+                    markers:true,
+                    scrub:true,
+                }
+            }).fromTo(triggleSection.current,
+                {
+                    "--bg-y": "70%",
+                
+                }, {
+                "--bg-y": "-100%",
+            
+            });
+        }
+
+    }, {dependencies:[stateTransition]});
     return (
-        <section className={cn(s.hero_section, content.classAdd)} id="hero_section" ref={triggleSection}>
+        <section className={cn(s.hero_section, content.classAdd)} id="hero_section" ref={triggleSection} style={{backgroundImage:`url(${content.backgroundImage.url})`}}>
             <div className="container" style={content.moreStyle}>
                 <div className={s.text_1}>
                     {content.disableParaInro ? <></> :
@@ -120,10 +143,10 @@ function HeroSection({ pageName, content }: IHeroSection) {
                     </ul>
                 </div>
             </div>
-            <div className={s.background} ref={backgroundImg}>
+           {/*  <div className={s.background} ref={backgroundImg}>
 
                 <Image quality={100} priority src={`${content.backgroundImage.url}`} alt="image_cache_banner_about" width={0} height={0} sizes="100vw" style={content.backgroundImage.size} />
-            </div>
+            </div> */}
         </section>
     )
 }

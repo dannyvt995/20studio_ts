@@ -39,6 +39,7 @@ export default function Intro({propsForGsap}:IProps): ReactElement  {
                 <ul className={s.images}>
                     <li className={s.image}>
                         <Image
+                        loading="eager" 
                             src="/clone/aboutus/intro_1.jpg"
                             width={0}
                             height={0}
@@ -50,6 +51,7 @@ export default function Intro({propsForGsap}:IProps): ReactElement  {
                     </li>
                     <li className={s.image}>
                         <Image
+                        loading="eager" 
                             src="/about/intro2.png"
                             width={0}
                             height={0}
@@ -60,6 +62,7 @@ export default function Intro({propsForGsap}:IProps): ReactElement  {
                     </li>
                     <li className={s.image}>
                         <Image
+                        loading="eager" 
                             src="/about/intro3.png"
                             width={0}
                             height={0}
