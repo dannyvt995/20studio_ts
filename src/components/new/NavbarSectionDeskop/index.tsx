@@ -12,54 +12,58 @@ gsap.registerPlugin(useGSAP)
 
 function NavbarSectionDeskop() {
 
-    // -+- console.log("%cNavbarDeskop_render", "color:green;font-weight:bold")
+    // --^^ console.log("%cNavbarDeskop_render", "color:green;font-weight:bold")
 
     const navbarDeskopRef = useRef<any>(null)
     const buttonMenuRef = useRef<any>(null)
+    const navbarSectionDes = useRef<HTMLDivElement>(null)
     const timelineBtnMenu = useRef<gsap.core.Timeline>()
     const timelineNavbarItem = useRef<gsap.core.Timeline>()
+
+    const timelineStatusNavbarItem = useRef<gsap.core.Timeline>()
     const mainNavbar = useRef<any>(null)
     const pathName = usePathname()
-    const { stateEnterPage , stateVarGlobalLenis} = useStoreZustand()
+    const { stateEnterPage, stateVarGlobalLenis } = useStoreZustand()
 
     const unit = useRef<number>(0)
     const target = useRef<number>(0)
     const [isEnterPage, setIsEnterPage] = useState(true)
+    const isMenuOpen = useRef<boolean>(false)
     useEffect(() => {
-     
-  
-        
+
+
+
         unit.current = window.innerWidth / 100 * 6
 
         switch (pathName) {
             case '/home':
-                case '/home':
-                case '/':
-                    target.current = 0;
-                    break;
-                    case '/sustainability':
-                        target.current = unit.current;
-                        break;
-                case '/work':
-                    target.current = unit.current * 2;
-                    break;
-                case '/about':
-                    target.current = unit.current * 3;
-                    break;
-                case '/service':
-                    target.current = unit.current * 4;
-                    break;
-                case '/contact':
-                    target.current = unit.current * 5;
-                    break;
-                    case '/work/work1':
-                        case '/work/work2':
-                            case '/work/work3':
-                                case '/work/work4':
-                            target.current =  unit.current * 2;
-                            break;
-                default:
-                    target.current = unit.current;
+            case '/home':
+            case '/':
+                target.current = 0;
+                break;
+            case '/sustainability':
+                target.current = unit.current;
+                break;
+            case '/work':
+                target.current = unit.current * 2;
+                break;
+            case '/about':
+                target.current = unit.current * 3;
+                break;
+            case '/service':
+                target.current = unit.current * 4;
+                break;
+            case '/contact':
+                target.current = unit.current * 5;
+                break;
+            case '/work/work1':
+            case '/work/work2':
+            case '/work/work3':
+            case '/work/work4':
+                target.current = unit.current * 2;
+                break;
+            default:
+                target.current = unit.current;
         }
 
 
@@ -68,16 +72,16 @@ function NavbarSectionDeskop() {
 
 
     useEffect(() => {
-        if(navbarDeskopRef.current && buttonMenuRef.current && !isMobile()) {
+        if (navbarDeskopRef.current && buttonMenuRef.current && !isMobile()) {
             navbarDeskopRef.current.style.opacity = `1`;
             buttonMenuRef.current.style.opacity = `0`;
             navbarDeskopRef.current.style.visibility = `visible`;
             buttonMenuRef.current.style.visibility = `hidden`;
         }
-    },[pathName])
+    }, [pathName])
 
     // useEffect(() => {
-    //     // -+- console.log("%cGET GLOBAL LENIS FOR NAVBAR...", "color:pink");
+    //     // --^^ console.log("%cGET GLOBAL LENIS FOR NAVBAR...", "color:pink");
     //     if(stateVarGlobalLenis ===  false) return
     //     const handleScroll = ({ scroll } : {scroll:number}) => {
     //         if (!navbarDeskopRef.current || !buttonMenuRef.current) return;
@@ -109,9 +113,9 @@ function NavbarSectionDeskop() {
 
     useEffect(() => {
         if (!stateEnterPage) return
-        // -+- console.log("%cInit Navbar Timeline !!", "color:green")
-        timelineBtnMenu.current = gsap.timeline({paused:true})
-          
+        // --^^ console.log("%cInit Navbar Timeline !!", "color:green")
+        timelineBtnMenu.current = gsap.timeline({ paused: true })
+
             .fromTo(`.${s.icon}`, {
                 rotate: 45,
             }, {
@@ -119,24 +123,26 @@ function NavbarSectionDeskop() {
                 ease: "power3.inOut",
                 duration: .5
             })
-        
+
             .fromTo(`.${s.lableMenu}`, {
                 y: 0
             }, {
                 y: "-100%",
                 ease: "power3.inOut",
                 duration: .5
-            },"<")
-     
+            }, "<")
+
             .fromTo(`.${s.lableClose}`, {
                 y: "100%"
             }, {
                 y: 0,
                 ease: "power3.inOut",
                 duration: .5
-            },"<").reverse()
+            }, "<").reverse()
+
+
         window.timelineBtnNavbar = timelineBtnMenu.current
-        
+
         return () => {
             window.timelineBtnNavbar = null
             if (timelineBtnMenu.current) timelineBtnMenu.current.kill()
@@ -145,17 +151,20 @@ function NavbarSectionDeskop() {
 
     useGSAP(() => {
         if (isEnterPage) {
-            // -+- console.log("Chạy lại à ??")
-            timelineNavbarItem.current = gsap.timeline({ defaults: {delay:.5},paused:true })
-                .fromTo(`.${s.nav_item}`,
+            // --^^ console.log("Chạy lại à ??")
+            timelineNavbarItem.current = gsap.timeline({ defaults: { delay: .5 }, paused: true })
+                .to(`.${s.nav_item}`,
                     {
-                        y: '100%',
-                    },
-                    {
-                        y: 0,
+                        y: '0%',
                         duration: 1, ease: "power3.out",
                         stagger: .1
                     })
+            timelineStatusNavbarItem.current = gsap.timeline({ paused: true, overwrite: true })
+                .addLabel('closeMenu')   // Label cho trạng thái đóng menu
+                .set(`.${s.nav_item}`, { y: '100%' }, 'closeMenu') // Thiết lập hành động cho label closeMenu
+                .addLabel('openMenu')    // Label cho trạng thái mở menu
+                .set(`.${s.nav_item}`, { y: '0%' }, 'openMenu');
+
             window.timelineNavbarItem = timelineNavbarItem.current
 
             setTimeout(() => {
@@ -171,7 +180,7 @@ function NavbarSectionDeskop() {
 
     useGSAP(() => {
         if (isEnterPage && stateEnterPage) {
-            // -+- console.log("%cFire Anim Navbar First Time !!", "color:green")
+            // --^^ console.log("%cFire Anim Navbar First Time !!", "color:green")
             gsap.timeline({
                 onComplete: () => {
                     setIsEnterPage(false)
@@ -194,15 +203,15 @@ function NavbarSectionDeskop() {
     useGSAP(() => {
 
         if (!isEnterPage) {
-            // -+- console.log("%cToggle Anim Icon !!", "color:green")
+            // --^^ console.log("%cToggle Anim Icon !!", "color:green")
             switch (pathName) {
                 case '/home':
                 case '/':
                     target.current = 0;
                     break;
-                    case '/sustainability':
-                        target.current = unit.current;
-                        break;
+                case '/sustainability':
+                    target.current = unit.current;
+                    break;
                 case '/work':
                     target.current = unit.current * 2;
                     break;
@@ -215,12 +224,12 @@ function NavbarSectionDeskop() {
                 case '/contact':
                     target.current = unit.current * 5;
                     break;
-                    case '/work/work1':
-                        case '/work/work2':
-                            case '/work/work3':
-                                case '/work/work4':
-                            target.current =  unit.current * 2;
-                            break;
+                case '/work/work1':
+                case '/work/work2':
+                case '/work/work3':
+                case '/work/work4':
+                    target.current = unit.current * 2;
+                    break;
                 default:
                     target.current = unit.current;
             }
@@ -241,7 +250,7 @@ function NavbarSectionDeskop() {
 
     }, { dependencies: [pathName, isEnterPage] })
 
-    const { contextSafe } = useGSAP({ scope: buttonMenuRef })
+    const { contextSafe } = useGSAP({ scope: navbarSectionDes })
     // set triggle từ hero section và lấy state từ đó
 
     useEffect(() => {
@@ -249,12 +258,18 @@ function NavbarSectionDeskop() {
     }, [])
 
     const handleClickMenu = contextSafe(() => {
+        isMenuOpen.current = !isMenuOpen.current
         if (window.timelineNavbarModal && window.timelineBtnNavbar && window.timelineNavbarItem) {
             mainNavbar.current.style.pointerEvents = 'auto'
             window.timelineNavbarModal.reversed(!window.timelineNavbarModal.reversed());
-         window.timelineBtnNavbar.reversed(!window.timelineBtnNavbar.reversed());
-        // window.timelineBtnNavbar.reverse();
-            window.timelineNavbarItem.reversed(true)
+            window.timelineBtnNavbar.reversed(!window.timelineBtnNavbar.reversed());
+
+            if (isMenuOpen.current === true) {
+                gsap.set(`.${s.nav_item}`, { y: '100%' })
+            } else {
+                gsap.set(`.${s.nav_item}`, { y: '0%' })
+            }
+
         } else {
             alert("Err on window var global >>>>>>>>")
         }
@@ -266,7 +281,7 @@ function NavbarSectionDeskop() {
 
 
     return (
-        <>
+        <div ref={navbarSectionDes}>
             <button onClick={handleClickMenu} ref={buttonMenuRef} className={s.button_menu} id="button_menu" >
                 <h3 className={s.lable}>
                     <span className={s.lableMenu}>Menu</span>
@@ -279,7 +294,7 @@ function NavbarSectionDeskop() {
                     </svg>
                 </div>
             </button>
-           
+
             <nav ref={navbarDeskopRef} className={s.nav} id='navbar_deskop'>
                 {/* <div className={s.logo}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="2164" height="363" viewBox="0 0 2164 363" fill="white">
@@ -325,7 +340,7 @@ function NavbarSectionDeskop() {
                 </ul>
             </nav>
 
-        </>
+        </div>
 
     )
 }

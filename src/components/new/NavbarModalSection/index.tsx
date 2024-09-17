@@ -41,7 +41,7 @@ function NavbarModalSection({ }) {
 
     // useEffect(() => {
     //     if (indexItemNavbar >= 0 && prevIndexItemNavbar >= 0) {
-    //         // -+- console.log(indexItemNavbar, prevIndexItemNavbar)
+    //         // --^^ console.log(indexItemNavbar, prevIndexItemNavbar)
     //         indexOfSlider.current++
     // useHoverSliderModalNav({
     //     prevState: prevIndexItemNavbar,

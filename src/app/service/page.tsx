@@ -4,5 +4,5 @@ export const metadata: Metadata = {
   description: "Service from 20 Studio Team",
 };
 export default function Page() {
-    return <div style={{visibility:"hidden",width:0,height:0}}>Service page! Cái này cho bot gg đọc</div>
+    return <div style={{visibility:"hidden",width:0,height:0}}>Service page!</div>
   }

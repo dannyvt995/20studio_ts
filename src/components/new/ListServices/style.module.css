@@ -9,7 +9,7 @@
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: repeat(2, auto);;
     grid-row-gap: 2.2222222222vw;
-    padding-top: 8vw;
+    padding-top: 9.95vw;
 }
 
 .tag {

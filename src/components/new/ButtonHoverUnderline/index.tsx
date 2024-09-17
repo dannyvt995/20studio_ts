@@ -55,7 +55,7 @@ const ButtonHoverUnderline: React.FC<ButtonHoverUnderline> = ({
   if (auto_linkConvert !== "empty") {
     activeTab = pathName === auto_link;
   } else {
-    // -+- console.log(data_link)
+    // --^^ console.log(data_link)
     activeTab = pathName === data_link;
   }
 
@@ -97,7 +97,7 @@ const ButtonHoverUnderline: React.FC<ButtonHoverUnderline> = ({
   //     ease:easeOps,
   //     immediateRender: false,
   //   });
-  //  /*  // -+- console.log("ButtonHoverUnderline re-render") */
+  //  /*  // --^^ console.log("ButtonHoverUnderline re-render") */
   //   const enterAnimation = (e) => {
   //     let targetIndex = e.target.getAttribute("data_slider")
   //     timelineRef.current.tweenFromTo(0, "midway");

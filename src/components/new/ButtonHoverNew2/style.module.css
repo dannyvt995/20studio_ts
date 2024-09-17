@@ -21,7 +21,7 @@
     left:0;
     width: var(--line-width,100%);
     height: 1px;
-    background-color: aliceblue;
+    background-color: rgb(255, 255, 255);
 }
 .icon {
     position:absolute;

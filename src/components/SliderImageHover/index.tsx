@@ -148,8 +148,8 @@ const SliderImageHover = memo(({type}:{type:string}): React.ReactElement => {
    
     return (
         <>
-            {type === 'navbar' ?  <SliderImageNavbar /> : null}
-            {type === 'service' ?  <SliderImageService /> : null}
+          {/*   {type === 'navbar' ?  <SliderImageNavbar /> : null}
+            {type === 'service' ?  <SliderImageService /> : null} */}
         </>
 
     );

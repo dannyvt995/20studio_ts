@@ -19,10 +19,11 @@ interface ButtonHoverNewProps {
     btnNavbar?:boolean;
     btnNavbarFooter?:boolean;
     data_id?:number;
-    isActive?:boolean
+    isActive?:boolean;
+    wrapper?:React.ReactNode;
 }
 
-const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children,btnNavbarFooter,data_id,btnNavbar,targetRedirect,classAdd }) => {
+const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children,wrapper,btnNavbarFooter,data_id,btnNavbar,targetRedirect,classAdd }) => {
       
 
 
@@ -37,11 +38,11 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children,btnNavbarFoote
     const mainNavbar = useRef<any>(null)
      const {stateTransition} = useStoreZustand()
      const isActiveRef = useRef<boolean>(false)
+
+     
     useEffect(() => {
      
-        if(btnNavbar){
-            mainNavbar.current = document.getElementById("main_navbar")
-        }
+       
         timelineRef.current = gsap.timeline({ paused: true });
         timelineRef.current.fromTo(linkRef.current, {
             "--line-width": "0%",
@@ -63,6 +64,13 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children,btnNavbarFoote
             ease: easeOps,
             immediateRender: false,
         });
+
+        return () => {
+            if(timelineRef.current) {
+                timelineRef.current.kill();
+               
+            }
+        }
     },[])
 
   
@@ -83,7 +91,7 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children,btnNavbarFoote
         const enterAnimation = contextSafe((e:any) => {
             if(timelineRef.current) {
                 timelineRef.current.tweenFromTo(0, "midway");
-                if(btnNavbar) selectedItemNavbar(data_id as number);
+              if(btnNavbar) selectedItemNavbar(data_id as number);
             }
 
           
@@ -96,7 +104,7 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children,btnNavbarFoote
         });
 
         if (linkRef.current && pathName !== targetRedirect) {
-            // -+- console.log("%cAddListenerToButton","color:yellow;border:1px solid white")
+            // --^^ console.log("%c=>>AddListenerToButton","color:blue;border:1px solid gray")
             linkRef.current.addEventListener('mouseenter', enterAnimation);
             linkRef.current.addEventListener('mouseleave', leaveAnimation);
         }
@@ -104,7 +112,7 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children,btnNavbarFoote
         return () => {
          
             if (linkRef.current) {
-                // -+- console.log("%cRemoveListenerOfButton","color:yellow;border:1px solid white")
+                // --^^ console.log("%c<<=RemoveListenerOfButton","color:blue;border:1px solid gray")
                 linkRef.current.removeEventListener('mouseenter', enterAnimation);
                 linkRef.current.removeEventListener('mouseleave', leaveAnimation);
             }
@@ -117,19 +125,26 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children,btnNavbarFoote
         if(timelineRef.current) {
             timelineRef.current.play();
         }
+
+       
     }, []);
     const handleRedirectFromNavbar = useCallback((event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
         event.preventDefault();
-    
-        mainNavbar.current.style.pointerEvents =  'none'
+ 
+        // --^^ console.warn("timeline.play()")
+        const elW = document.getElementById("main_navbar")
+        if(elW) elW.style.pointerEvents =  'none'
+        
         if(timelineRef.current) {
             timelineRef.current.play();
         }
+        router.push(targetRedirect || '#')
         if (window.timelineNavbarModal && window.timelineBtnNavbar && window.timelineNavbarItem) {
+  
             window.timelineNavbarModal.reversed(!window.timelineNavbarModal.reversed());
             window.timelineBtnNavbar.reversed(!window.timelineBtnNavbar.reversed());
-            window.timelineNavbarItem.reversed(false)
-            router.push(targetRedirect || '#')
+            window.timelineNavbarItem.restart().play(0)
+            
         }else{
             alert("Err on window var global >>>>>>>>")
         }

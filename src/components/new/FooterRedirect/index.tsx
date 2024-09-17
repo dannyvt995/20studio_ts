@@ -52,7 +52,7 @@ export default function FooterRedirect({content,scroller,targetRedirect,currentI
                         
                       document.body.style.pointerEvents = 'none'
                       if(window.timelineNavbarItem){
-                        window.timelineNavbarItem.reversed(true)
+                        window.timelineNavbarItem.restart().play(0)
                       }
                         window.lenis?.scrollTo(`.${s.footer_redirect}`,{duration:1,lerp:0.072,onComplete:() => {
                             if(timeline.current) timeline.current.play()

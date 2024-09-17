@@ -34,12 +34,13 @@ function HeroSection({ pageName, content }: IHeroSection) {
     const backgroundImg = useRef<HTMLDivElement>(null)
     const pathName = usePathname()
     const pathNameFormat = removeSplash({ pathName: pathName })
-
+    const { stateTransition } = useStoreZustand()
+    const tl1 = useRef<gsap.core.Timeline>()
     useGSAP(() => {
 
         //  if (isMobile()) return
-        const tl1 = gsap.timeline({ delay: .7, paused: true })
-        tl1.to(`.${s.ip}`, {
+        tl1.current = gsap.timeline({ delay: .4, paused: true })
+        tl1.current.to(`.${s.ip}`, {
             y: 0,
             opacity: 1,
             rotateZ: 0,
@@ -52,23 +53,13 @@ function HeroSection({ pageName, content }: IHeroSection) {
             stagger: .1,
             duration: 1
         }, '<')
-        // const tl2 = gsap.timeline({paused:true})
-        // tl2.to(`.${s.background}`, {
-        //     y: window.innerHeight * .64, // calc(100vh * -1.2)
-        //     scrollTrigger: {
-        //         scroller: propsForGsap.scrollerRef,
-        //         trigger: triggleSection.current,
-        //         start: "top top",
-        //         end: "bottom top",
-        //         scrub: .95,
-        //     }
-        // });
-        if (pathNameFormat === pageName) {
-            // -+- console.log("useGSAP running...")
-            tl1.play()
-            //tl2.play()
+       
+        if (stateTransition == 'entered' || stateTransition == 'none') {
+            // --^^ console.log("useGSAP running...")
+            tl1.current.play()
+
         }
-    }, []);
+    }, {dependencies: [stateTransition]});
 
     return (
         <section className={cn(s.hero_section, content.classAdd)} id="hero_section" ref={triggleSection}>

@@ -102,7 +102,7 @@
     line-height: 5.6vw;
     line-height: var(--font-lh-p);
     position: relative;
-    will-change: transform;
+  
 }
  .link {
     font-family: BS-Medium;

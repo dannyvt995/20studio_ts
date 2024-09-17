@@ -80,7 +80,7 @@ function LetContact({ propsForGsap, content }: ILetContact) {
             <ButtonHoverNew2
               icon={<IconSVG src='/icon/arrow-right.svg' />}
               targetRedirect='mailto:vphcm@studio.vn'
-              classAdd={cn(s.link, s.is_dark, s.wrap)}>
+              classAdd={cn(s.link, s.is_white, s.wrap)}>
               Let&apos;s touch
             </ButtonHoverNew2>
           }

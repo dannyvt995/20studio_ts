@@ -43,7 +43,7 @@ const PageTransition: React.FC<PageTransitionProps> = ({
   ...rest
 }) => {
 
-  // -+- console.log("##############   PageTransition render")
+ 
   const pathName = usePathname()
   const pathNameFormat = removeSplash({ pathName: pathName })
   const listUrlProjects = ['/work/work1', '/work/work2', '/work/work3', '/work/work4'];
@@ -59,7 +59,7 @@ const { setStateTransition,stateEnterPage } = useStoreZustand()
 
   const {contextSafe} = useGSAP({scope:scopeRef})
 
-
+  // --^^ console.log("##############   PageTransition render")
   
   useEffect(() => {
     if(stateEnterPage) {
@@ -74,7 +74,7 @@ const { setStateTransition,stateEnterPage } = useStoreZustand()
   });
 
   function transitionFirst(pn: string) {
-    // -+- console.log("Enter page ================>")
+    // --^^ console.log("Enter page ================>")
 
     const this_page = document.getElementById(`${pn}page`)
 
@@ -191,6 +191,7 @@ const { setStateTransition,stateEnterPage } = useStoreZustand()
             unmountOnExit={true}
 
             onEnter={(node: any) => {
+              // --^^ console.log(`%c STATE ==> onEnter`,"color:black;font-weight:bold;font-weight:bold")
               document.body.style.pointerEvents = 'none'
               document.body.style.userSelect = 'none'
               transitionKeyRef.current = transitionKey
@@ -221,10 +222,11 @@ const { setStateTransition,stateEnterPage } = useStoreZustand()
               }
             }}
             onEntered={(node: any) => {
+              // --^^ console.log(`%c STATE ==> onEntered`,"color:black;font-weight:bold;font-weight:bold")
               document.body.style.pointerEvents = 'auto'
               document.body.style.userSelect = 'auto'
               // nên set 1 state tại đây , là cần thiết
-             setStateTransition('entered')
+            setStateTransition('entered')
               currentKeyRef.current = pathName
               // tạm thời return index < 100 với các page type 2
               if(transitionKeyRef.current) {
@@ -235,14 +237,14 @@ const { setStateTransition,stateEnterPage } = useStoreZustand()
              
             }}
             onExit={(node: any) => {
-           
+              // --^^ console.log(`%c STATE ==> onExit`,"color:black;font-weight:bold;font-weight:bold")
               if(transitionKeyRef.current) {
                 if (!listUrlProjects.includes(transitionKeyRef.current)) {
                   exitPage({ nodeChild: node.children[0].children[0] })
                 }else{
              
                   if(currentKeyRef.current !== '/work'){
-                    // -+- console.log("EXIT from page not is work")
+                    // --^^ console.log("EXIT from page not is work")
                     exitPage({ nodeChild: node.children[0].children[0] })
                   }
                 }
