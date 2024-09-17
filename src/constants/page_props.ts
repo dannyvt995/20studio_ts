@@ -178,7 +178,9 @@ export const project1_page = {
             challenge: "We believe that all good things are achieved by those who are willing to put in passion, courage and craftsmanship.",
             role: ["Fashion Develop", "Prototyping", "Sourcing", "Consulting"],
             date: "Jan 2023 - 3 weeks",
-            client: "Fashion Designer Huynh Anh Thu"
+            client: "Fashion Designer Bui Dong Duy",
+            infoProject: "Personal Prject of Bui Dong Duy",
+            desProject : "Personal Prject of Bui Dong Duy"
         },
         gridImageSlider: {
             img: [
@@ -215,7 +217,9 @@ export const project2_page = {
             challenge: "We believe that all good things are achieved by those who are willing to put in passion, courage and craftsmanship.",
             role: ["Fashion Develop", "Prototyping", "Sourcing", "Consulting"],
             date: "Jan 2023 - 3 weeks",
-            client: "Nét Studio Fashion"
+            client: "Fashion Designer Huynh Anh Thu",
+               infoProject: "Personal Prject of Huynh Anh Thu",
+            desProject : "Personal Prject of Huynh Anh Thu"
         },
         gridImageSlider: {
             img: [
@@ -252,7 +256,9 @@ export const project3_page = {
             challenge: "We believe that all good things are achieved by those who are willing to put in passion, courage and craftsmanship.",
             role: ["Fashion Develop", "Prototyping", "Sourcing", "Consulting"],
             date: "Jan 2023 - 3 weeks",
-            client: "Lungtung Studio"
+            client: "Lungtung Studio",
+              infoProject: "Lungtung Second Collection",
+            desProject : "Spring Summer 2024"
         },
         gridImageSlider: {
             img: [

@@ -13,7 +13,7 @@ function Project3(): JSX.Element {
         <div id="work3page">
             <IntroWorkPage content={project3_page.content.introWorkPage} />
 
-            <GridImageSlider1 content={project3_page.content.gridImageSlider} propsForGsap={project3_page.propsForGsap}/>
+            <GridImageSlider1 content={project3_page.content} propsForGsap={project3_page.propsForGsap}/>
             <LayoutCustom content={project3_page.content.gridImageSlider} />
             <FooterRedirect content={project4_page.content} currentId={3}  targetRedirect='4' scroller={project3_page.propsForGsap.scrollerRef}/>
           

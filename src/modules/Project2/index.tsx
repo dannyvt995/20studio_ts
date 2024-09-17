@@ -12,7 +12,7 @@ function Project2(): JSX.Element {
     return (
         <div id="work2page">
             <IntroWorkPage content={project2_page.content.introWorkPage}  propsForGsap={project2_page.propsForGsap} />
-            <GridImageSlider1 content={project2_page.content.gridImageSlider} propsForGsap={project2_page.propsForGsap}/>
+            <GridImageSlider1 content={project2_page.content} propsForGsap={project2_page.propsForGsap}/>
            {/*  <ProjectText scroller={project2_page.propsForGsap.scrollerRef} randomID='koko123' disableTitle={false}/> */}
             <LayoutCustom content={project2_page.content.gridImageSlider} />
       

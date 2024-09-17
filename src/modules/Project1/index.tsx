@@ -21,7 +21,7 @@ function Project1(): JSX.Element {
         <div id="work1page">
             <IntroWorkPage content={project1_page.content.introWorkPage} propsForGsap={project1_page.propsForGsap} />
            {/*  <ProjectText scroller={project1_page.propsForGsap.scrollerRef} randomID='hoho123' disableTitle={false}/> */}
-             <GridImageSlider content={project1_page.content.gridImageSlider} propsForGsap={project1_page.propsForGsap}/>
+             <GridImageSlider content={project1_page.content} propsForGsap={project1_page.propsForGsap}/>
             {/*  <ProjectText scroller={project1_page.propsForGsap.scrollerRef} randomID='ghhe123' disableTitle={true}/> */}
         
             <LayoutCustom content={project1_page.content.gridImageSlider} />

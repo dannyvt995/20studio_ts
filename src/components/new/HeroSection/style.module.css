@@ -187,7 +187,7 @@
 }
 
 .hero_section {
-   
+    will-change:  transform;
     background-size: 110% auto;
     background-position-y:  var(--bg-y,70%);;
 }

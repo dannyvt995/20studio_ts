@@ -36,12 +36,12 @@ function GridImageSlider({ propsForGsap, content }:{propsForGsap:any, content:an
     return (
         <section className={s.GridImageSlider} ref={triggleSection}>
                   <div className={s.titleProject}>
-                    <h2 className={s.nameProject}>Personal Prject of Bui Quang Duy</h2>
-                    <p className={s.infoProject}>Congratulations to Huyenh Anh Thu on achieving valedictorian!</p>
+                    <h2 className={s.nameProject}>{content.introWorkPage.infoProject}</h2>
+                    <p className={s.infoProject}>{content.introWorkPage.desProject}</p>
                   </div>
             <div className={s.container}>
                 <div className={s.row} ref={domEffectTop}>
-                    {content.img.slice(0, 3).map((src:string, index:number) => (
+                    {content.gridImageSlider.img.slice(0, 3).map((src:string, index:number) => (
                         <div key={index} className={s.media}>
                             <Image
                                 alt="image_cache_work"
@@ -56,7 +56,7 @@ function GridImageSlider({ propsForGsap, content }:{propsForGsap:any, content:an
                     ))}
                 </div>
                 <div className={s.row} ref={domEffectBot}>
-                    {content.img.slice(3, 6).map((src:string, index:number) => (
+                    {content.gridImageSlider.img.slice(3, 6).map((src:string, index:number) => (
                         <div key={index} className={s.media}>
                             <Image
                                 alt="image_cache_work"
