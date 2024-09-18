@@ -9,13 +9,15 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import Link from 'next/link';
 import { isMobile } from '@/utils/responsive';
+import useStoreZustand from '@/hooks/useStoreZustand';
+
 gsap.registerPlugin(useGSAP)
 export default function ServicesSection() {
     const container = useRef<any>()
     const listItemRef = useRef<any>()
     const { contextSafe } = useGSAP({ scope: listItemRef })
     const timelines = useRef<Record<number, gsap.core.Timeline>>({});
-
+    const   {setStateCursor} = useStoreZustand()
     useGSAP(() => {
         if(isMobile()) return
         const items = listItemRef.current.children;
@@ -41,12 +43,14 @@ export default function ServicesSection() {
 
     const actionGsap = contextSafe((e: any) => {
         if(isMobile()) return
+        setStateCursor(false)
         const id = e.currentTarget.getAttribute('data-id');
         timelines.current[id].play(0);
     })
 
     const disableGsap = contextSafe((e: any) => {
         if(isMobile()) return
+        setStateCursor(true)
         const id = e.currentTarget.getAttribute('data-id');
         timelines.current[id].reverse();
     })

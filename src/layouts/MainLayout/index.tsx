@@ -1,6 +1,7 @@
 
 import RouterControls from '@/app/RouterControls';
 import CacheImageGroup from '@/components/new/CacheImageGroup';
+import Cursor from '@/components/new/Cursor';
 
 
 import Header from '@Layouts/Header';
@@ -15,7 +16,7 @@ function MainLayout({ children }: PropsWithChildren): React.ReactElement {
       <Header/>
     
       <CacheImageGroup/>
-    
+      <Cursor/>
       <RouterControls>
         {children}
       </RouterControls>

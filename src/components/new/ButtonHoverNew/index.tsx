@@ -91,7 +91,11 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children,wrapper,btnNav
         const enterAnimation = contextSafe((e:any) => {
             if(timelineRef.current) {
                 timelineRef.current.tweenFromTo(0, "midway");
-              if(btnNavbar) selectedItemNavbar(data_id as number);
+              if(btnNavbar) {
+                selectedItemNavbar(data_id as number);
+              
+                }
+            
             }
 
           
@@ -101,6 +105,7 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children,wrapper,btnNav
             if(timelineRef.current) {
                 timelineRef.current.play();
             }
+        
         });
 
         if (linkRef.current && pathName !== targetRedirect) {

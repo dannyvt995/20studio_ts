@@ -70,7 +70,7 @@ function HeroSection({ pageName, content }: IHeroSection) {
                     start:"top top ",
                     end:"bottom 0%",
                     
-                    markers:true,
+                    // markers:true,
                     scrub:true,
                 }
             }).fromTo(triggleSection.current,

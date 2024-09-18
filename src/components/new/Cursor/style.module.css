@@ -1,0 +1,34 @@
+.cursor{
+    position: fixed;
+    align-items: center;
+    display: flex;
+    height: 5.9722222222vw;
+    justify-content: center;
+    pointer-events: none;
+    width: 5.9722222222vw;
+    z-index: 999;
+    transform: transform,opacity;
+
+    transform: scale(0);
+}
+
+.inner{
+    position: absolute;
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    background: rgba(0, 0, 0, .15);
+    border-radius: 100%;
+    bottom: 0;
+    left: 0;
+    opacity: 1;
+    overflow: hidden;
+    right: 0;
+    top: 0;
+
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+    font-family: BS-Regular;
+    color: whitesmoke;
+}

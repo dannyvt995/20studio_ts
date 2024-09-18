@@ -28,7 +28,9 @@ interface IStoreZustand {
   stateTransition: string;
   setStateTransition: (key: string) => void;
 
-  //page render
+  //cursor
+  stateCursor: boolean;
+  setStateCursor: (value : boolean) => void;
   
 }
 
@@ -77,6 +79,15 @@ selectedItemService: (index: number) => {
   setStateTransition: (key: string) => {
     set((state) => ({ stateTransition: key }));
   },
+
+
+   //cursor
+   stateCursor: false,
+   setStateCursor: (value) => {
+     set(() => ({ stateCursor: value }));
+   },
+
+   
 
 }));
 

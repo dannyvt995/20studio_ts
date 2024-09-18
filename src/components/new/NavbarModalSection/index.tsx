@@ -16,6 +16,7 @@ import ButtonHoverNew2 from '../ButtonHoverNew2'
 import IconSVG from '@/components/Icon/IconSVG'
 import SliderImageHover from '@/components/SliderImageHover'
 import { isMobile } from '@/utils/responsive'
+import WrapperTrackMouse from '../WrapperTrackMouse'
 
 
 function NavbarModalSection({ }) {
@@ -70,7 +71,7 @@ function NavbarModalSection({ }) {
 
 
     return (
-        <>
+        <WrapperTrackMouse>
 
             <section className={s.navbar_modal_section} ref={SectionRef}>
                 <div className={s.wrapper} ref={MaskRef}>
@@ -170,7 +171,7 @@ function NavbarModalSection({ }) {
 
                 </div>
             </section>
-        </>
+        </WrapperTrackMouse>
 
     )
 }

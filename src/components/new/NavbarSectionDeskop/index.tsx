@@ -8,6 +8,7 @@ import { usePathname } from 'next/navigation';
 import IconSVG from '@/components/Icon/IconSVG';
 import useStoreZustand from '@/hooks/useStoreZustand';
 import { isMobile } from '@/utils/responsive';
+import WrapperTrackMouse from '../WrapperTrackMouse';
 gsap.registerPlugin(useGSAP)
 
 function NavbarSectionDeskop() {
@@ -281,7 +282,8 @@ function NavbarSectionDeskop() {
 
 
     return (
-        <div ref={navbarSectionDes}>
+        <WrapperTrackMouse>
+ <div ref={navbarSectionDes}>
             <button onClick={handleClickMenu} ref={buttonMenuRef} className={s.button_menu} id="button_menu" >
                 <h3 className={s.lable}>
                     <span className={s.lableMenu}>Menu</span>
@@ -341,6 +343,8 @@ function NavbarSectionDeskop() {
             </nav>
 
         </div>
+        </WrapperTrackMouse>
+       
 
     )
 }
