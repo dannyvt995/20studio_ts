@@ -86,48 +86,49 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children, wrapper, btnN
         }
 
         isActiveRef.current = (pathName === targetRedirect) || (pathName === '/' && targetRedirect === '/home');
+
     }, [pathName]);
 
 
   
-    useEffect(() => {
+    // useEffect(() => {
       
-            if (btnNavbar) {
-                // Tạo một timeline mới
-                let timeline = gsap.timeline({paused:true}).fromTo(
-                    refIconNavbar.current,
-                    { rotate:0,scale:0,y:"-50%",x:"-50%" },
-                    { rotate:90,scale:1,y:"-50%",x:"-50%",duration:.5 }
-                ).fromTo(
-                    linkRef.current,
-                    { x:0 },
-                    { x:40,duration:.5 },"<"
-                )
-                timeline.name = targetRedirect;
+    //         if (btnNavbar) {
+    //             // Tạo một timeline mới
+    //             let timeline = gsap.timeline({paused:true}).fromTo(
+    //                 refIconNavbar.current,
+    //                 { rotate:0,scale:0,y:"-50%",x:"-50%" },
+    //                 { rotate:90,scale:1,y:"-50%",x:"-50%",duration:.5 }
+    //             ).fromTo(
+    //                 linkRef.current,
+    //                 { x:0 },
+    //                 { x:40,duration:.5 },"<"
+    //             )
+    //             timeline.name = targetRedirect;
               
-                timeline.reverse()
-                if( window.timelineIconNav || window.timelineIconNav.length < 5) {
-                    window.timelineIconNav.push(timeline)
+    //             timeline.reverse()
+    //             if( window.timelineIconNav || window.timelineIconNav.length < 5) {
+    //                 window.timelineIconNav.push(timeline)
   
-                }else{
-                    console.log("window.timelineIconNav.length > 5 !!")
+    //             }else{
+    //                 console.log("window.timelineIconNav.length > 5 !!")
                     
-                }
+    //             }
              
-            }   
+    //         }   
         
       
-    }, []);
-    useEffect(() => {
-        if(btnNavbar) {
-            if(window.timelineIconNav && window.timelineIconNav.length > 4) {
-                console.log("one time")
-                let timelineCC = window.timelineIconNav.find((t:any) => t.name === savePath.current);
-               if(timelineCC)  timelineCC.play()
-            }
-        }
+    // }, []);
+    // useEffect(() => {
+    //     if(btnNavbar) {
+    //         if(window.timelineIconNav && window.timelineIconNav.length > 4) {
+    //             console.log("one time")
+    //             let timelineCC = window.timelineIconNav.find((t:any) => t.name === savePath.current);
+    //            if(timelineCC)  timelineCC.play()
+    //         }
+    //     }
        
-    },[savePath.current])
+    // },[savePath.current])
     useEffect(() => {
 
 
@@ -179,32 +180,33 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children, wrapper, btnN
         if (timelineRef.current) {
             timelineRef.current.play();
         }
-        if(!btnNavbar &&  window.timelineIconNav) {
-            if(window.timelineIconNav && window.timelineIconNav.length > 4) {
+        // if(!btnNavbar &&  window.timelineIconNav) {
+        //     if(window.timelineIconNav && window.timelineIconNav.length > 4) {
           
-                let timelineCurrent = window.timelineIconNav.find((t:any) => t.name === savePath.current);
+        //         let timelineCurrent = window.timelineIconNav.find((t:any) => t.name === savePath.current);
            
            
-                timelineCurrent.reversed(!timelineCurrent.reversed())
+        //         timelineCurrent.reversed(!timelineCurrent.reversed())
           
-            }
-        }
+        //     }
+        // }
 
     }, []);
     const handleRedirectFromNavbar = useCallback((event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
         event.preventDefault();
         console.log("handleRedirectFromNavbar")
-        if(btnNavbar &&  window.timelineIconNav) {
-            if(window.timelineIconNav && window.timelineIconNav.length > 4) {
+        if(savePath.current === targetRedirect) return
+        // if(btnNavbar &&  window.timelineIconNav) {
+        //     if(window.timelineIconNav && window.timelineIconNav.length > 4) {
           
-                let timelineCurrent = window.timelineIconNav.find((t:any) => t.name === savePath.current);
-                let timelineNext = window.timelineIconNav.find((t:any) => t.name === targetRedirect);
-                console.log(timelineCurrent,timelineNext)
-                timelineCurrent.reversed(!timelineCurrent.reversed())
-                timelineNext.reversed(!timelineCurrent.reversed())
+        //         let timelineCurrent = window.timelineIconNav.find((t:any) => t.name === savePath.current);
+        //         let timelineNext = window.timelineIconNav.find((t:any) => t.name === targetRedirect);
+        //         console.log(timelineCurrent,timelineNext)
+        //         timelineCurrent.reversed(!timelineCurrent.reversed())
+        //         timelineNext.reversed(!timelineCurrent.reversed())
           
-            }
-        }
+        //     }
+        // }
       
         const elW = document.getElementById("main_navbar")
         if (elW) elW.style.pointerEvents = 'none'
@@ -232,6 +234,7 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children, wrapper, btnN
             ref={linkRef}
             className={cn(s.btn_hover_underline, classAdd)}
             data-link={btnNavbar ? data_id : 'none'}
+            style={isActiveRef.current ? {color:"var(--gray)",pointerEvents: "none",userSelect: "none"} : {}}
         >
             {btnNavbar ? <span ref={refIconNavbar} className={s.iconBtnNavbar}>
                 <IconSVG src='/icon/star.svg' /></span> : <></>}

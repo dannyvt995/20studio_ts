@@ -255,15 +255,10 @@ function NavbarSectionDeskop() {
     }, [])
 
 
-    function animWhenToggleNavModal(state:boolean) {
-        if(window.timelineIconNav && window.timelineIconNav.length > 4) {
-            let timelineCC = window.timelineIconNav.find((t:any) => t.name === pathName);
-           
-        }
-    }
+
     const handleClickMenu = contextSafe(() => {
         isMenuOpen.current = !isMenuOpen.current
-        animWhenToggleNavModal(isMenuOpen.current)
+        
         if (window.timelineNavbarModal && window.timelineBtnNavbar && window.timelineNavbarItem) {
             mainNavbar.current.style.pointerEvents = 'auto'
             window.timelineNavbarModal.reversed(!window.timelineNavbarModal.reversed());
