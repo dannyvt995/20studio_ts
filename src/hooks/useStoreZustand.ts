@@ -29,8 +29,12 @@ interface IStoreZustand {
   setStateTransition: (key: string) => void;
 
   //cursor
-  stateCursor: boolean;
-  setStateCursor: (value : boolean) => void;
+  stateCursor: {
+    isActive: boolean;
+    label: string;
+    isLock:boolean
+  };
+  setStateCursor: (value: Partial<IStoreZustand['stateCursor']>) => void;
   
 }
 
@@ -82,10 +86,20 @@ selectedItemService: (index: number) => {
 
 
    //cursor
-   stateCursor: false,
-   setStateCursor: (value) => {
-     set(() => ({ stateCursor: value }));
-   },
+   stateCursor: {
+    isActive: false,
+    label: 'Scroll',
+    isLock: false
+  },
+  // Hàm để cập nhật stateCursor, cho phép cập nhật từng phần
+  setStateCursor: (value) => {
+    set((state) => ({
+      stateCursor: {
+        ...state.stateCursor, // Duy trì các giá trị cũ
+        ...value, // Cập nhật các giá trị mới
+      },
+    }));
+  },
 
    
 

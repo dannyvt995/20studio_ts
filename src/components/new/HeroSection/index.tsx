@@ -1,18 +1,13 @@
 "use client"
-import { useRef, useEffect, memo } from 'react'
+import { useRef, memo } from 'react'
 import React from 'react'
 
 import s from './style.module.css'
 import cn from 'classnames'
-import Image from 'next/image'
-import Link from 'next/link'
-import ButtonHoverUnderLineNew from '../ButtonHoverUnderline'
 import gsap from 'gsap'
-import data from '@Data/hero.json'
+
 import { useGSAP } from '@gsap/react'
 import { isMobile } from '@/utils/responsive'
-import { IPropsFromTransition } from '@/types/common';
-import { ScrollTrigger } from 'gsap/all'
 import useStoreZustand from '@Hooks/useStoreZustand';
 import { usePathname } from 'next/navigation'
 import { removeSplash } from '@/utils/removeSplash'
@@ -20,6 +15,7 @@ import ButtonHoverNew2 from '../ButtonHoverNew2'
 import IconSVG from '@Components/Icon/IconSVG'
 import ButtonHoverNew from '../ButtonHoverNew'
 import { common } from '@Constants/page_props';
+import WrapperTrackMouse from '../WrapperTrackMouse'
 
 interface IHeroSection {
     pageName: string,
@@ -53,39 +49,37 @@ function HeroSection({ pageName, content }: IHeroSection) {
             stagger: .1,
             duration: 1
         }, '<')
-       
+
         if (stateTransition == 'entered' || stateTransition == 'none') {
             // --^^ console.log("useGSAP running...")
             tl1.current.play()
 
         }
-    }, {dependencies: [stateTransition]});
+    }, { dependencies: [stateTransition] });
     useGSAP(() => {
+        if(isMobile()) return
+        gsap.timeline({
+            scrollTrigger: {
+                scroller: content.scrollerRef,
+                trigger:`#this_pick${pageName}`,
+                start: "top top ",
+                end: "bottom 0%",
 
-        if (stateTransition === 'entered') {
-            gsap.timeline({
-                scrollTrigger: {
-                    scroller:content.scrollerRef,
-                    trigger: triggleSection.current,
-                    start:"top top ",
-                    end:"bottom 0%",
-                    
-                    // markers:true,
-                    scrub:true,
-                }
-            }).fromTo(triggleSection.current,
-                {
-                    "--bg-y": "70%",
-                
-                }, {
-                "--bg-y": "-100%",
-            
-            });
-        }
-
-    }, {dependencies:[stateTransition]});
+                // markers:true,
+                scrub: true,
+            }
+        }).fromTo(`#this_pick${pageName} .bg_hero_pick${pageName}`,
+            {
+                "--bg-y": "0%",
+                "--bright": "100%",
+            }, {
+            "--bg-y": "100%",
+            "--bright": "50.0202%",
+        });
+     
+    });
     return (
-        <section className={cn(s.hero_section, content.classAdd)} id="hero_section" ref={triggleSection} style={{backgroundImage:`url(${content.backgroundImage.url})`}}>
+        <section className={cn(s.hero_section, content.classAdd)} id={`this_pick${pageName}`} ref={triggleSection} >
             <div className="container" style={content.moreStyle}>
                 <div className={s.text_1}>
                     {content.disableParaInro ? <></> :
@@ -110,43 +104,52 @@ function HeroSection({ pageName, content }: IHeroSection) {
 
                     </div>
 
-
                     <ButtonHoverNew2 icon={<IconSVG src='/icon/arrow-right.svg' />} targetRedirect={content.btnMore[1]} classAdd={s.link}>
                         {content.btnMore[0]}
                     </ButtonHoverNew2>
+
+
                     <ul className={s.list1}>
-                        {content.listBtn.map((item: string, index: any) => {
-                           
-                            return (
-                                <li className={s.list_item} key={index}  >
-                                    <ButtonHoverNew classAdd={s.list_link} targetRedirect={(common.listBtnUrl as any)[item]}>
-                                        {item}
-                                    </ButtonHoverNew>
-                                </li>
-                            )
-                        })}
+                        <WrapperTrackMouse>
+                            {content.listBtn.map((item: string, index: any) => {
 
+                                return (
+                                    <li className={s.list_item} key={index}  >
+                                        <ButtonHoverNew classAdd={s.list_link} targetRedirect={(common.listBtnUrl as any)[item]}>
+                                            {item}
+                                        </ButtonHoverNew>
+                                    </li>
+                                )
+                            })}
 
+                        </WrapperTrackMouse>
                     </ul>
+
+
+
                     <ul className={s.list2}>
-                        <li className={s.list_item}>
-                            <a href={common.infoContact.mail.href} className={s.list_link}>
-                                {common.infoContact.mail.display}
-                            </a>
-                        </li>
-                        <li className={s.list_item}>
-                            <a href={common.infoContact.phone.href} className={s.list_link}>
-                                {common.infoContact.phone.display}
-                            </a>
-                        </li>
+                        <WrapperTrackMouse>
+                            <li className={s.list_item}>
+                                <a href={common.infoContact.mail.href} className={s.list_link}>
+                                    {common.infoContact.mail.display}
+                                </a>
+                            </li>
+                            <li className={s.list_item}>
+                                <a href={common.infoContact.phone.href} className={s.list_link}>
+                                    {common.infoContact.phone.display}
+                                </a>
+                            </li>
+
+                        </WrapperTrackMouse>
+
 
                     </ul>
                 </div>
             </div>
-           {/*  <div className={s.background} ref={backgroundImg}>
+            <div className={cn(s.background,`bg_hero_pick${pageName}`)} style={{ backgroundImage: `url(${content.backgroundImage.url})` }}>
 
-                <Image quality={100} priority src={`${content.backgroundImage.url}`} alt="image_cache_banner_about" width={0} height={0} sizes="100vw" style={content.backgroundImage.size} />
-            </div> */}
+                {/* <Image quality={100} priority src={`${content.backgroundImage.url}`} alt="image_cache_banner_about" width={0} height={0} sizes="100vw" style={content.backgroundImage.size} /> */}
+            </div>
         </section>
     )
 }

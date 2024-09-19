@@ -51,7 +51,7 @@ const PageTransition: React.FC<PageTransitionProps> = ({
   const indexRef = useRef(100)
   const scopeRef = useRef(null)
 
-const { setStateTransition,stateEnterPage } = useStoreZustand()
+const { setStateTransition,stateEnterPage,stateTransition } = useStoreZustand()
   const transitionKeyRef = useRef<string | null>(null)
   const currentKeyRef = useRef<string | null>(null)
   const isWorkPage = useRef<boolean>(false)
@@ -68,10 +68,10 @@ const { setStateTransition,stateEnterPage } = useStoreZustand()
     }
 
   }, [stateEnterPage])
-
   useInitLenis({
     firstLoad: firstLoadPage
   });
+
 
   function transitionFirst(pn: string) {
     // --^^ console.log("Enter page ================>")

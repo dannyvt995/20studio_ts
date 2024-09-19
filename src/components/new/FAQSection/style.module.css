@@ -147,4 +147,18 @@
         grid-row: 3!important;
         grid-column: 1 / 13 !important;
     }
+    .dif .item {
+        margin-bottom : 1rem;
+    }
+    .dif .item p {
+        font-size: .86rem !important;
+        line-height: 120% !important;
+    }
+    .dif .item > span:first-child {
+        width:40% !important;
+     
+    }
+    .dif .item > span:last-child {
+        width:60% !important;
+    }
 }

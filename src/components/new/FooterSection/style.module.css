@@ -62,9 +62,14 @@
         display:none !important;
     }
     .title {
-        margin-top: 6vw!important;
+        margin-top: 5rem!important;
         justify-content: center!important;
     }
+    .body {
+        font-size: .8rem !important;
+        line-height: 130% !important;
+    }
+   
 }
 @media (min-width: 601px) {
     .footer_section {

@@ -34,11 +34,11 @@ function NavbarModalSection({ }) {
     const pathName = usePathname()
     const pathNameFormat = removeSplash({ pathName: pathName })
 
-    const [isClient, setIsClient] = useState(false);
+    // const [isClient, setIsClient] = useState(false);
 
-    useEffect(() => {
-        if(isMobile()) setIsClient(true);
-    }, []);
+    // useEffect(() => {
+    //     if(isMobile()) setIsClient(true);
+    // }, []);
 
     // useEffect(() => {
     //     if (indexItemNavbar >= 0 && prevIndexItemNavbar >= 0) {
@@ -83,9 +83,9 @@ function NavbarModalSection({ }) {
                             20 STUDIO
                         </div>
                         <ul className={s.images} ref={SliderImage}>
-                            {isClient ? <></> : <SliderImageHover type={"navbar"}/>}
+                          {/*   {isClient ? <></> : <SliderImageHover type={"navbar"}/>} */}
                         
-                       {/*      <li>
+                           {/*  <li>
                                 <Image src="/home/banner.png" width={0} height={0} sizes="100vw" style={{ position: 'relative', width: 'auto', height: '100%', left: '50%', transform: 'translateX(-50%)' }} alt="logo narbar modal" />
                             </li>
                             <li>

@@ -6,6 +6,7 @@ import FooterSection from '@/components/new/FooterSection'
 import Advantage from "@Components/new/Aboutus/Advantage";
 import LetContact from '@/components/new/LetContact';
 import LetContactSustain from '@/components/new/LetContactSustain'
+import WrapperTrackMouse from '@/components/new/WrapperTrackMouse'
 function SustainabilityPage():JSX.Element {
 
     return (
@@ -15,7 +16,10 @@ function SustainabilityPage():JSX.Element {
            <Advantage content={sustainability_page.content.advantage}/>
           {/*  <LetContact content={sustainability_page.content.letContact}/> */}
           <LetContactSustain/>
-             <FooterSection  propsForGsap={sustainability_page.propsForGsap}/>
+          <WrapperTrackMouse>
+          <FooterSection  propsForGsap={sustainability_page.propsForGsap}/>
+          </WrapperTrackMouse>
+            
       </div>
     )
 }

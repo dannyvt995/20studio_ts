@@ -1,7 +1,7 @@
 .hero_section {
     
     /* height: 136.6666666667vw; */
-    height:130vw;
+    height:120vw;
     overflow: hidden;
   
 }
@@ -10,11 +10,18 @@
     left: 0;
     overflow: hidden;
     pointer-events: all;
+    user-select: none;
     position: absolute;
     right: 0;
     z-index:1;
     top:0;
-    will-change: transform;
+
+
+
+    background-size: 100% auto;
+    background-position-y: var(--bg-y,0%);
+    filter: brightness(var(--bright,100%));
+    will-change: transform,filter;
 }
 
  .intro,.title {
@@ -103,6 +110,7 @@
     line-height: var(--font-lh-p);
     position: relative;
   
+  
 }
  .link {
     font-family: BS-Medium;
@@ -113,7 +121,11 @@
     line-height: 5.6vw;
     line-height: var(--font-lh-p);
     position: relative;
-    will-change: transform;
+  
+
+    width: fit-content;
+    
+    height: fit-content;
 }
  .list1 {
     grid-column: 8 / 10;
@@ -152,31 +164,30 @@
 }
 @media (max-width:620px) {
     .hero_section   {
-        height:130vh !important;
+        height:100vh !important;
     }
-   
-     .background > img {
-        width:auto!important;
-        height:100%!important;
-        position:relative!important;
-        left:50%!important;
-        transform:translateX(-32%)!important;
+    .list1,.list2 {
+        display:none !important;
     }
+    .title .tp {
+        font-size: 4rem !important;
+        line-height: 110% !important;
+    }
+     .background {
+        background-size: auto 100% !important;
+     }
     .intro {
         padding-top: 70vw;
         max-width: 64vw !important;
     }
-    .ip {
-        font-size: 1rem !important;
-        line-height: 130% !important;
+    .ip,.body span {
+        font-size: .8rem !important;
+        line-height: 110% !important;
     }
     .body {
         grid-column: 1 / 11!important;
     }
-    .body span {
-        font-size: 1rem !important;
-        line-height: 130% !important;
-    }
+   
     .list1 {
         display:none !important;
     }
@@ -186,8 +197,3 @@
     }
 }
 
-.hero_section {
-    will-change:  transform;
-    background-size: 110% auto;
-    background-position-y:  var(--bg-y,70%);;
-}

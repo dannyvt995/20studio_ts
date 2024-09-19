@@ -168,9 +168,11 @@ export const project1_page = {
         scrollerRef: "#work1page"
     },
     content: {
+        
         introWorkPage: {
+            scrollerRef: "#work1page",
             img: [
-                "/clone/services1.webp",
+                "/clone/services1.png",
                 "image_cache_services1"
             ],
             name: ["Unwanted", "Project"],
@@ -208,6 +210,7 @@ export const project2_page = {
     },
     content: {
         introWorkPage: {
+            scrollerRef: "#work2page",
             img: [
                 "/clone/services2.webp",
                 "image_cache_services2"
@@ -247,6 +250,7 @@ export const project3_page = {
     },
     content: {
         introWorkPage: {
+            scrollerRef: "#work3page",
             img: [
                 "/clone/services3.webp",
                 "image_cache_services3"
@@ -286,6 +290,7 @@ export const project4_page = {
     },
     content: {
         introWorkPage: {
+            scrollerRef: "#work4page",
             img: [
                 "/clone/services4.webp",
                 "image_cache_services4"

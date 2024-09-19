@@ -2,6 +2,7 @@
 import RouterControls from '@/app/RouterControls';
 import CacheImageGroup from '@/components/new/CacheImageGroup';
 import Cursor from '@/components/new/Cursor';
+import { isMobile } from '@/utils/responsive';
 
 
 import Header from '@Layouts/Header';
@@ -16,7 +17,7 @@ function MainLayout({ children }: PropsWithChildren): React.ReactElement {
       <Header/>
     
       <CacheImageGroup/>
-      <Cursor/>
+      {isMobile() ? <></>:<Cursor/>}
       <RouterControls>
         {children}
       </RouterControls>

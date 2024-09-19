@@ -294,7 +294,7 @@ export default function WorkSlider() {
       <div className={s.thumbnails} ref={thumbnailsRef}>
         <div className={cn(s.thumbnail, s.active)}>
 
-          <Image quality={100} src="/clone/services1.webp" alt="image_cache_services1" width={0} height={0} sizes="100vw" style={{ width: "100%", height: "auto" }} className="thumbnail-image" /></div>
+          <Image quality={100} src="/clone/services1.png" alt="image_cache_services1" width={0} height={0} sizes="100vw" style={{ width: "100%", height: "auto" }} className="thumbnail-image" /></div>
         <div className={s.thumbnail}>
 
           <Image quality={100} src="/clone/services2.webp" alt="image_cache_services2" width={0} height={0} sizes="100vw" style={{ width: "100%", height: "auto" }} className="thumbnail-image" /></div>
@@ -309,7 +309,7 @@ export default function WorkSlider() {
       <div className={s.projects} ref={backgroundsRef}>
         <button onClick={handleOpenProject} data-work="1" type="button" className={cn(s.project, s.active)} style={{ display: 'block' }}>
           <div className={s.project_wrap}>
-            <Image quality={100} src="/clone/services1.webp" alt="alt" width={0} height={0} sizes="100vw" style={{ width: "100%", height: "auto" }} className={s.project_image} />
+            <Image quality={100} src="/clone/services1.png" alt="alt" width={0} height={0} sizes="100vw" style={{ width: "100%", height: "auto" }} className={s.project_image} />
           </div>
         </button>
         <button onClick={handleOpenProject} data-work="2" type="button" className={s.project} style={{ display: 'block' }}>

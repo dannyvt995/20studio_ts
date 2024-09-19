@@ -125,10 +125,13 @@
         height: 100% !important;
     }
     .main_line {
-        font-size: 4.2rem !important;
+        font-size: 3.2112rem !important;
     }
     .main {
         grid-column: 1 / 13!important;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
     }
     .logo {
         width: 150px;

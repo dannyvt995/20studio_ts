@@ -15,7 +15,7 @@ function CacheImageGroup() {
     {/* Image sẽ đc load trước */}
     <Image src={"/home/banner.png"} quality={100} width={0} height={0} sizes="100vw" alt="image_cache_banner_home" priority />
     <Image src={"/about/banner.webp"} quality={100} width={0} height={0} sizes="100vw" alt="image_cache_banner_about" priority />
-    <Image src={"/clone/services1.webp"} quality={100} width={0} height={0} sizes="100vw" alt="image_cache_services1" priority />
+    <Image src={"/clone/services1.png"} quality={100} width={0} height={0} sizes="100vw" alt="image_cache_services1" priority />
     <Image src={"/clone/services2.webp"} quality={100} width={0} height={0} sizes="100vw" alt="image_cache_services2" priority />
     <Image src={"/clone/services3.webp"} quality={100} width={0} height={0} sizes="100vw" alt="image_cache_services3" priority />
     <Image src={"/clone/services4.webp"} quality={100} width={0} height={0} sizes="100vw" alt="image_cache_services4" priority />

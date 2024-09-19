@@ -10,6 +10,8 @@ import { IPageModule } from '@/types/common';
 import { memo } from 'react';
 import { about_page } from '@Constants/page_props';
 import LetContact from '@/components/new/LetContact';
+import WrapperTrackMouse from '@/components/new/WrapperTrackMouse';
+import { isMobile } from '@/utils/responsive';
 
 function AboutPage(): JSX.Element {
   
@@ -19,11 +21,15 @@ function AboutPage(): JSX.Element {
 
             <Intro  propsForGsap={about_page.propsForGsap}/>
             <Advantage content={about_page.content.advantage}/>
-            <SectionTitleBlend  propsForGsap={about_page.propsForGsap} />
+            {isMobile() ? <></> : <SectionTitleBlend  propsForGsap={about_page.propsForGsap} /> }
             <Minded />
             <Us />
             <LetContact content={about_page.content.letContact}  propsForGsap={about_page.propsForGsap}/>
+            <WrapperTrackMouse>
             <FooterSection  propsForGsap={about_page.propsForGsap} />
+
+            </WrapperTrackMouse>
+         
         </div>
     )
 }

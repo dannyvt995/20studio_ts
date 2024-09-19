@@ -7,6 +7,7 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import useStoreZustand from '@/hooks/useStoreZustand';
 import { isMobile } from '@/utils/responsive';
+import WrapperTrackMouse from '../WrapperTrackMouse';
 
 gsap.registerPlugin(useGSAP)
 interface ButtonHoverNew2Props {
@@ -85,8 +86,8 @@ const ButtonHoverNew2: React.FC<ButtonHoverNew2Props> = ({ children,icon,targetR
 
 
   return (
-    
-    <Link   ref={linkRef} href={targetRedirect ? targetRedirect : '#'} className={cn(s.btn_hover_underline2,classAdd)}>
+    <WrapperTrackMouse classAdd={classAdd}>
+ <Link   ref={linkRef} href={targetRedirect ? targetRedirect : '#'} className={cn(s.btn_hover_underline2)}>
         <div className={s.icon}>{icon}</div>
         <div className={s.outline}>
           <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg" className={s.circle_outline} data-v-5152decb=""><circle cx="25" cy="25" r="23" data-v-5152decb=""></circle></svg>
@@ -94,6 +95,9 @@ const ButtonHoverNew2: React.FC<ButtonHoverNew2Props> = ({ children,icon,targetR
         </div>
         <div className={s.text}>{children}</div>
     </Link>
+
+    </WrapperTrackMouse>
+   
   )
 }
 export default memo(ButtonHoverNew2);

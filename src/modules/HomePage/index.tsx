@@ -18,8 +18,10 @@ function HomePage(): JSX.Element {
        
             <WrapperTrackMouse>
                 <ServicesSection />
+                </WrapperTrackMouse>
                 <FAQSection/>
                 <LetContact content={home_page.content.letContact}  propsForGsap={home_page.propsForGsap}/>
+                <WrapperTrackMouse>
                 <FooterSection propsForGsap={home_page.propsForGsap}/>
             </WrapperTrackMouse>
           

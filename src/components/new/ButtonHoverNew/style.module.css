@@ -1,13 +1,21 @@
 .btn_hover_underline {
-   
+   position: relative;
 }
-.iconBtnNavbar {
-  display:none;
-  width: 20px;
 
+.iconBtnNavbar {
+  position:absolute;
+  left:-20px;
+  top:calc(50% - 0.35vw);
+  transform: translate(-50%,-50%);
+  display:flex;
+  width: 1.72vw;
+  opacity: 1;
   align-items: center;
-  margin-top: -10px;
-  margin-right: 20px;
+
+
+
+  will-change: transform,opacity;
+ 
 }
 .btn_hover_underline::after {
     content: '';
@@ -22,3 +30,4 @@
   @media (max-width:601px) {
     
   }
+

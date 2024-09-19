@@ -33,7 +33,7 @@ export function useInitLenis({ firstLoad }: { firstLoad?: boolean }) {
     const flag = 1220;
     if (stateTransition == 'entered' || stateTransition == 'none') {
      
-      // --^^ console.log("%c=>>INIT LENIS!!!!!","color:orange;font-weight:bold")
+      console.log("%c=>>INIT LENIS!!!!!","color:orange;font-weight:bold")
       domScroll = document.getElementById(`${pathNameFormat}page`)
       ButtonNavbar = document.getElementById("button_menu")
       NavbarDeskop = document.getElementById("navbar_deskop")

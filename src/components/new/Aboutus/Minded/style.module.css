@@ -79,6 +79,8 @@
  .background {
     bottom: 0;
     overflow: hidden;
+    user-select: none;
+    pointer-events: none;
 }
  .background, .dark {
     left: 0;
@@ -100,6 +102,10 @@
   .container {
     margin: 0 8vw !important;
   }
+  .body p{
+    font-size: .86rem !important;
+    line-height: 120% !important;
+}
 }
 @media (min-width: 601px) {
       .aboutus_minded {

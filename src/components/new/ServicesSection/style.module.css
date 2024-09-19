@@ -3,7 +3,7 @@
     color: var(--color-dark-grey);
     padding: 21.3333333333vw 0;
 
-    height:555vw;
+    height:fit-content;
     background-color: white;
 }
  .text {
@@ -80,8 +80,18 @@
     }
     .body p{
         font-size: 1rem !important;
-        max-width: 72%;
+        max-width: 100%;
         line-height: normal !important;
+    }
+    .w_info {
+        margin-top:.5rem !important;
+    }
+    .info {
+    
+        transform:unset !important;
+    }
+    .info * {
+        font-size: .86rem !important;
     }
 }
 

@@ -6,5 +6,6 @@ declare global {
     timelineNavbarModal? : gsap.core.Timeline | null;
     timelineBtnNavbar? : gsap.core.Timeline | null;
     timelineNavbarItem? : gsap.core.Timeline | null;
+    timelineIconNav?: any; 
   }
 }

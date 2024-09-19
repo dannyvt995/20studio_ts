@@ -1,3 +1,4 @@
+"use client"
 import React, { memo, useEffect, useRef, useState } from 'react'
 import s from './style.module.css'
 
@@ -24,7 +25,7 @@ function NavbarSectionDeskop() {
     const timelineStatusNavbarItem = useRef<gsap.core.Timeline>()
     const mainNavbar = useRef<any>(null)
     const pathName = usePathname()
-    const { stateEnterPage, stateVarGlobalLenis } = useStoreZustand()
+    const { stateEnterPage,setStateCursor } = useStoreZustand()
 
     const unit = useRef<number>(0)
     const target = useRef<number>(0)
@@ -244,11 +245,6 @@ function NavbarSectionDeskop() {
 
         }
 
-
-
-
-
-
     }, { dependencies: [pathName, isEnterPage] })
 
     const { contextSafe } = useGSAP({ scope: navbarSectionDes })
@@ -258,8 +254,16 @@ function NavbarSectionDeskop() {
         mainNavbar.current = document.getElementById("main_navbar")
     }, [])
 
+
+    function animWhenToggleNavModal(state:boolean) {
+        if(window.timelineIconNav && window.timelineIconNav.length > 4) {
+            let timelineCC = window.timelineIconNav.find((t:any) => t.name === pathName);
+           
+        }
+    }
     const handleClickMenu = contextSafe(() => {
         isMenuOpen.current = !isMenuOpen.current
+        animWhenToggleNavModal(isMenuOpen.current)
         if (window.timelineNavbarModal && window.timelineBtnNavbar && window.timelineNavbarItem) {
             mainNavbar.current.style.pointerEvents = 'auto'
             window.timelineNavbarModal.reversed(!window.timelineNavbarModal.reversed());
@@ -267,8 +271,11 @@ function NavbarSectionDeskop() {
 
             if (isMenuOpen.current === true) {
                 gsap.set(`.${s.nav_item}`, { y: '100%' })
+                setStateCursor({isLock:true})
+                
             } else {
                 gsap.set(`.${s.nav_item}`, { y: '0%' })
+                setStateCursor({isLock:false})
             }
 
         } else {
@@ -309,32 +316,32 @@ function NavbarSectionDeskop() {
                 <ul className={s.nav_list}>
 
                     <li className={s.nav_item}>
-                        <ButtonHoverNew isActive={pathName === '/home' || pathName === '/'} targetRedirect='/home'>
+                        <ButtonHoverNew  targetRedirect='/home'>
                             Home
                         </ButtonHoverNew>
                     </li>
                     <li className={s.nav_item}>
-                        <ButtonHoverNew isActive={pathName === '/sustainability'} targetRedirect='/sustainability'>
+                        <ButtonHoverNew  targetRedirect='/sustainability'>
                             Sustain
                         </ButtonHoverNew>
                     </li>
                     <li className={s.nav_item}>
-                        <ButtonHoverNew isActive={pathName === '/work'} targetRedirect='/work'>
+                        <ButtonHoverNew  targetRedirect='/work'>
                             Project
                         </ButtonHoverNew>
                     </li>
                     <li className={s.nav_item}>
-                        <ButtonHoverNew isActive={pathName === '/about'} targetRedirect='/about'>
+                        <ButtonHoverNew  targetRedirect='/about'>
                             About us
                         </ButtonHoverNew>
                     </li>
                     <li className={s.nav_item}>
-                        <ButtonHoverNew isActive={pathName === '/service'} targetRedirect='/service'>
+                        <ButtonHoverNew  targetRedirect='/service'>
                             Service
                         </ButtonHoverNew>
                     </li>
                     <li className={s.nav_item}>
-                        <ButtonHoverNew isActive={pathName === '/contact'} targetRedirect='/contact'>
+                        <ButtonHoverNew  targetRedirect='/contact'>
                             Contact
                         </ButtonHoverNew>
                     </li>

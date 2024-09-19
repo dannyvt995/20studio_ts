@@ -43,14 +43,14 @@ export default function ServicesSection() {
 
     const actionGsap = contextSafe((e: any) => {
         if(isMobile()) return
-        setStateCursor(false)
+        setStateCursor({ isActive: false , label : "View"});
         const id = e.currentTarget.getAttribute('data-id');
         timelines.current[id].play(0);
     })
 
     const disableGsap = contextSafe((e: any) => {
         if(isMobile()) return
-        setStateCursor(true)
+        setStateCursor({ isActive: true , label : "Scroll"});
         const id = e.currentTarget.getAttribute('data-id');
         timelines.current[id].reverse();
     })
@@ -77,7 +77,7 @@ export default function ServicesSection() {
                     href='/work/work1'
                 >
                     <div className={s.block}>
-                        <Image loading="eager"  src="/clone/services1.webp" width={0} height={0} sizes="100vw" style={{ width: "100%", height: "auto" }} alt="image_cache_services1" />
+                        <Image loading="eager"  src="/clone/services1.png" width={0} height={0} sizes="100vw" style={{ width: "100%", height: "auto" }} alt="image_cache_services1" />
                     </div>
                     <div className={s.w_info}>
                         <p className={s.info}>

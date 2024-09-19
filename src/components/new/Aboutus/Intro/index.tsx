@@ -6,6 +6,7 @@ import Image from 'next/image'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { isMobile } from '@/utils/responsive'
 gsap.registerPlugin(ScrollTrigger)
 interface IProps {
     propsForGsap: any,
@@ -15,7 +16,7 @@ export default function Intro({propsForGsap}:IProps): ReactElement  {
     const triggleSection = useRef<HTMLDivElement>(null)
     useGSAP(() => {
 
-   
+        if(isMobile()) return
           const tl2 = gsap.timeline({paused:false})
           const disAction = [-1,0,1]
           tl2.to(`.${s.image}`, {

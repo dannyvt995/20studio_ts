@@ -159,3 +159,42 @@
         width: fit-content;
     }
 }
+
+@media (max-width: 601px) {
+    .text {
+        padding: 10vw 0 !important;
+    }
+    .media_wrapper {
+        margin-top: 21.3333333333vw !important;
+    }
+    .media:first-child {
+        height: 94.375vw;
+        width: 50.972222vw;
+    }
+     .media:nth-child(2) {
+        width: 24.791667vw;
+        left: 9.097222vw;
+        top: -13.111111vw;
+        height: 46.319444vw;
+
+    }
+     .media:nth-child(3) {
+        height: 32.152778vw;
+        left: 55vw;
+        top: 10.236111vw;
+        width: 38.083333vw;
+    }
+     .media:nth-child(4) {
+        height: 32.638889vw;
+        left: 9.097222vw;
+        top: 72.930556vw;
+        width: 41.319444vw;
+    }
+     .media:nth-child(5) {
+        height: 29.319444vw;
+        left: 63.583333vw;
+        top: 71.930556vw;
+        width: 30.319444vw;
+  
+    }
+}

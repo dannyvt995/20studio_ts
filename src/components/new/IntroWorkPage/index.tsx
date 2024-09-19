@@ -5,6 +5,7 @@ import s from './style.module.css'
 import Image from 'next/image'
 import { useGSAP } from '@gsap/react';
 import { isMobile } from '@/utils/responsive';
+import useStoreZustand from '@/hooks/useStoreZustand'
 
 interface IIntroWorkPage {
     state?: string,
@@ -15,17 +16,41 @@ interface IIntroWorkPage {
 
 function IntroWorkPage({ content}: IIntroWorkPage) {
     const triggleSection = useRef<HTMLUListElement>(null)
-
+    const {stateTransition} = useStoreZustand()
     useGSAP(() => {
-        if (isMobile()) return
-        gsap.to(`.${s.iii}`, { delay: .2, y: 0, duration: 1, ease: "power3.out" });
+
+         if (!isMobile()) gsap.to(`.${s.iii}`, { delay: .2, y: 0, duration: 1, ease: "power3.out" });
     }, { scope: triggleSection })
 
+    useGSAP(() => {
+        
+        if (stateTransition === 'entered' && !isMobile()) {
+            gsap.timeline({
+                scrollTrigger: {
+                    scroller:content.scrollerRef,
+                    trigger: triggleSection.current,
+                    start:"top top ",
+                    end:"bottom 0%",
+                    
+                  //  markers:true,
+                    scrub:true,
+                }
+            }).fromTo(`.${s.background}`,
+                {
+                    "--bg-y": "0%",
+                    "--bright": "100%",
+                
+                }, {
+                "--bg-y": "100%",
+                "--bright": "50.0202%",
+            });
+        }
 
+    }, {dependencies:[stateTransition]});
     return (
-        <section className={s.IntroWorkPage} ref={triggleSection}>
-            <div className={s.background}>
-                <Image  quality={100} alt={content.img[1]} src={content.img[0]} width={0} height={0} sizes='100vw' style={{ width: "100%", height: "auto" }} className={s.project_image} />
+        <section className={s.IntroWorkPage} ref={triggleSection} >
+            <div className={s.background} style={{backgroundImage: `url(${content.img[0]})`}}>
+                {/* <Image  quality={100} alt={content.img[1]} src={content.img[0]} width={0} height={0} sizes='100vw' style={{ width: "100%", height: "auto" }} className={s.project_image} /> */}
             </div>
             <div className={s.container}>
                 <div className={s.text_1}>
