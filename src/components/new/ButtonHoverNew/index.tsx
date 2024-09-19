@@ -31,7 +31,7 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children, wrapper, btnN
     const router = useRouter()
     const easeOps = "power3.inOut"
     const durationOps = 0.5
-    const { selectedItemNavbar } = useStoreZustand();
+
     const { contextSafe } = useGSAP({ scope: linkRef });
     const pathName = usePathname()
     const refIconNavbar = useRef<any>(null)
@@ -120,7 +120,7 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children, wrapper, btnN
             if(window.timelineIconNav && window.timelineIconNav.length > 4) {
                 console.log("one time")
                 let timelineCC = window.timelineIconNav.find((t:any) => t.name === savePath.current);
-                timelineCC.play()
+               if(timelineCC)  timelineCC.play()
             }
         }
        
@@ -190,7 +190,7 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children, wrapper, btnN
     }, []);
     const handleRedirectFromNavbar = useCallback((event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
         event.preventDefault();
-        console.log("vcl")
+        console.log("handleRedirectFromNavbar")
         if(btnNavbar &&  window.timelineIconNav) {
             if(window.timelineIconNav && window.timelineIconNav.length > 4) {
           
@@ -202,7 +202,7 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children, wrapper, btnN
           
             }
         }
-        // --^^ console.warn("timeline.play()")
+      
         const elW = document.getElementById("main_navbar")
         if (elW) elW.style.pointerEvents = 'none'
 
