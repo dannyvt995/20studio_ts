@@ -91,11 +91,8 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children, wrapper, btnN
 
   
     useEffect(() => {
-        if(window.timelineIconNav.length > 5) {
-            console.log("window.timelineIconNav.length > 5 !!")
-            return
-        }else{
-            if (btnNavbar && window.timelineIconNav) {
+      
+            if (btnNavbar) {
                 // Tạo một timeline mới
                 let timeline = gsap.timeline({paused:true}).fromTo(
                     refIconNavbar.current,
@@ -109,10 +106,16 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children, wrapper, btnN
                 timeline.name = targetRedirect;
               
                 timeline.reverse()
-                window.timelineIconNav.push(timeline)
+                if( window.timelineIconNav || window.timelineIconNav.length < 5) {
+                    window.timelineIconNav.push(timeline)
+  
+                }else{
+                    console.log("window.timelineIconNav.length > 5 !!")
+                    
+                }
              
             }   
-        }
+        
       
     }, []);
     useEffect(() => {
@@ -196,7 +199,7 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children, wrapper, btnN
           
                 let timelineCurrent = window.timelineIconNav.find((t:any) => t.name === savePath.current);
                 let timelineNext = window.timelineIconNav.find((t:any) => t.name === targetRedirect);
-           
+                console.log(timelineCurrent,timelineNext)
                 timelineCurrent.reversed(!timelineCurrent.reversed())
                 timelineNext.reversed(!timelineCurrent.reversed())
           
