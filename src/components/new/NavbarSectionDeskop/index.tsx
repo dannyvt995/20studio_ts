@@ -10,6 +10,8 @@ import IconSVG from '@/components/Icon/IconSVG';
 import useStoreZustand from '@/hooks/useStoreZustand';
 import { isMobile } from '@/utils/responsive';
 import WrapperTrackMouse from '../WrapperTrackMouse';
+import useStoreTimeline from '@/hooks/useStoreTimeline';
+
 gsap.registerPlugin(useGSAP)
 
 function NavbarSectionDeskop() {
@@ -20,7 +22,8 @@ function NavbarSectionDeskop() {
     const buttonMenuRef = useRef<any>(null)
     const navbarSectionDes = useRef<HTMLDivElement>(null)
     const timelineBtnMenu = useRef<gsap.core.Timeline>()
-    const timelineNavbarItem = useRef<gsap.core.Timeline>()
+    const timelineNavbarItemOn = useRef<gsap.core.Timeline>()
+    const timelineNavbarItemOff = useRef<gsap.core.Timeline>()
 
     const timelineStatusNavbarItem = useRef<gsap.core.Timeline>()
     const mainNavbar = useRef<any>(null)
@@ -31,6 +34,9 @@ function NavbarSectionDeskop() {
     const target = useRef<number>(0)
     const [isEnterPage, setIsEnterPage] = useState(true)
     const isMenuOpen = useRef<boolean>(false)
+
+    const timelineStore = useStoreTimeline((state) => state.timelines);
+    const setTimeline = useStoreTimeline((state) => state.setTimeline);
     useEffect(() => {
 
 
@@ -143,10 +149,10 @@ function NavbarSectionDeskop() {
             }, "<").reverse()
 
 
-        window.timelineBtnNavbar = timelineBtnMenu.current
-
+       
+        setTimeline('buttonNavbar', timelineBtnMenu.current);
         return () => {
-            window.timelineBtnNavbar = null
+         
             if (timelineBtnMenu.current) timelineBtnMenu.current.kill()
         }
     }, [buttonMenuRef, stateEnterPage])
@@ -154,30 +160,32 @@ function NavbarSectionDeskop() {
     useGSAP(() => {
         if (isEnterPage) {
             // --^^ console.log("Chạy lại à ??")
-            timelineNavbarItem.current = gsap.timeline({ defaults: { delay: .5 }, paused: true })
+            timelineNavbarItemOn.current = gsap.timeline({ defaults: { delay: .5 }, paused: true })
                 .to(`.${s.nav_item}`,
                     {
                         y: '0%',
                         duration: 1, ease: "power3.out",
                         stagger: .1
                     })
+
+                    timelineNavbarItemOff.current = gsap.timeline({  paused: true })
+                    .to(`.${s.nav_item}`,
+                        {
+                            y: '100%',
+                            duration: 1, ease: "power3.out",
+                            stagger: .1
+                        })
             timelineStatusNavbarItem.current = gsap.timeline({ paused: true, overwrite: true })
                 .addLabel('closeMenu')   // Label cho trạng thái đóng menu
                 .set(`.${s.nav_item}`, { y: '100%' }, 'closeMenu') // Thiết lập hành động cho label closeMenu
                 .addLabel('openMenu')    // Label cho trạng thái mở menu
                 .set(`.${s.nav_item}`, { y: '0%' }, 'openMenu');
 
-            window.timelineNavbarItem = timelineNavbarItem.current
-
-            setTimeout(() => {
-                if (window.timelineNavbarItem) {
-                    window.timelineNavbarItem.play()
-                } else {
-                    alert("window.timelineNavbarItem err on NavbarSectionDeskop")
-                }
-            }, 1000)
+  
+            setTimeline('navbarDesListOn',timelineNavbarItemOn.current)
+            setTimeline('navbarDesListOff',timelineNavbarItemOff.current)
+            timelineNavbarItemOn.current.play()
         }
-
     }, { scope: navbarDeskopRef })
 
     useGSAP(() => {
@@ -259,10 +267,10 @@ function NavbarSectionDeskop() {
     const handleClickMenu = contextSafe(() => {
         isMenuOpen.current = !isMenuOpen.current
         
-        if (window.timelineNavbarModal && window.timelineBtnNavbar && window.timelineNavbarItem) {
+        if (timelineStore['navbarModal'] && timelineStore['buttonNavbar']) {
             mainNavbar.current.style.pointerEvents = 'auto'
-            window.timelineNavbarModal.reversed(!window.timelineNavbarModal.reversed());
-            window.timelineBtnNavbar.reversed(!window.timelineBtnNavbar.reversed());
+            timelineStore['navbarModal'].reversed(!timelineStore['navbarModal'].reversed());
+           timelineStore['buttonNavbar'].reversed(!timelineStore['buttonNavbar'].reversed());
 
             if (isMenuOpen.current === true) {
                 gsap.set(`.${s.nav_item}`, { y: '100%' })

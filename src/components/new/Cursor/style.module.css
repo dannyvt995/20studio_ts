@@ -7,7 +7,7 @@
     pointer-events: none;
     width: 5.9722222222vw;
     z-index: 999;
-    transform: transform;
+    will-change: transform;
   
     transform: scale(0);
 }

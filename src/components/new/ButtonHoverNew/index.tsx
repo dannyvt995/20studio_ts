@@ -11,6 +11,8 @@ import useStoreZustand from '@/hooks/useStoreZustand';
 import { isMobile } from '@/utils/responsive';
 import { usePathname } from 'next/navigation';
 import IconSVG from '@/components/Icon/IconSVG';
+import useStoreTimeline from '@/hooks/useStoreTimeline';
+
 gsap.registerPlugin(useGSAP)
 interface ButtonHoverNewProps {
     children: React.ReactNode;
@@ -27,24 +29,25 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children, wrapper, btnN
 
 
     const linkRef = useRef<HTMLAnchorElement>(null);
+    const labelRef = useRef<HTMLSpanElement>(null);
     const timelineRef = useRef<gsap.core.Timeline>()
     const router = useRouter()
     const easeOps = "power3.inOut"
     const durationOps = 0.5
 
+    const timelineStore = useStoreTimeline((state) => state.timelines);
+    const setOtherTimeline = useStoreTimeline((state) => state.setOtherTimeline);
+    const getAllTimelines = useStoreTimeline((state) => state.getAllTimelines)
     const { contextSafe } = useGSAP({ scope: linkRef });
     const pathName = usePathname()
     const refIconNavbar = useRef<any>(null)
-    const { stateTransition } = useStoreZustand()
+    const { stateTransition,selectedItemNavbar } = useStoreZustand()
     const isActiveRef = useRef<boolean>(false)
-    const savePath = useRef<string>()
-
+    const currentPath = useRef<string>('/none')
+    const targetPath = useRef<string>('/none')
     useEffect(() => {
 
-        //init timeline for icon
-        if (!window.timelineIconNav) {
-            window.timelineIconNav = []; // Khởi tạo nếu chưa có
-        }
+ 
         timelineRef.current = gsap.timeline({ paused: true });
         timelineRef.current.fromTo(linkRef.current, {
             "--line-width": "0%",
@@ -59,6 +62,7 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children, wrapper, btnN
         timelineRef.current.fromTo(linkRef.current, {
             "--line-width": "100%",
             "--line-left": "0%",
+
         }, {
             "--line-width": "0%",
             "--line-left": "100%",
@@ -78,87 +82,53 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children, wrapper, btnN
 
 
     useEffect(() => {
-
-        if(pathName === '/work/work1' || pathName === '/work/work2' || pathName === '/work/work3' || pathName === '/work/work4') {
-            savePath.current = '/work'
-        }else{
-            savePath.current = pathName
-        }
-
+        currentPath.current = pathName
+        targetPath.current = targetRedirect || '/none'
+       
         isActiveRef.current = (pathName === targetRedirect) || (pathName === '/' && targetRedirect === '/home');
 
     }, [pathName]);
 
-
-  
-    // useEffect(() => {
-      
-    //         if (btnNavbar) {
-    //             // Tạo một timeline mới
-    //             let timeline = gsap.timeline({paused:true}).fromTo(
-    //                 refIconNavbar.current,
-    //                 { rotate:0,scale:0,y:"-50%",x:"-50%" },
-    //                 { rotate:90,scale:1,y:"-50%",x:"-50%",duration:.5 }
-    //             ).fromTo(
-    //                 linkRef.current,
-    //                 { x:0 },
-    //                 { x:40,duration:.5 },"<"
-    //             )
-    //             timeline.name = targetRedirect;
-              
-    //             timeline.reverse()
-    //             if( window.timelineIconNav || window.timelineIconNav.length < 5) {
-    //                 window.timelineIconNav.push(timeline)
-  
-    //             }else{
-    //                 console.log("window.timelineIconNav.length > 5 !!")
-                    
-    //             }
-             
-    //         }   
-        
-      
-    // }, []);
-    // useEffect(() => {
-    //     if(btnNavbar) {
-    //         if(window.timelineIconNav && window.timelineIconNav.length > 4) {
-    //             console.log("one time")
-    //             let timelineCC = window.timelineIconNav.find((t:any) => t.name === savePath.current);
-    //            if(timelineCC)  timelineCC.play()
-    //         }
-    //     }
-       
-    // },[savePath.current])
+    useGSAP(() => {
+        if (btnNavbar) {
+            let timeline = gsap.timeline({paused:true}).fromTo(
+                refIconNavbar.current,
+                { rotate:0,scale:0},
+                { rotate:90,scale:1,y:"-50%",x:"72%",duration:.5 }
+            ).fromTo(
+                labelRef.current,
+                { x:0 },
+                { x:42,duration:.5 },"<"
+            )
+            timeline.name = targetRedirect;
+            timeline.reverse()
+            setOtherTimeline(timeline.name, timeline);
+        } 
+    })
     useEffect(() => {
-
 
         if (isMobile()) return
         if (stateTransition !== 'entered') return
 
-
-
-
         const enterAnimation = contextSafe((e: any) => {
             if (timelineRef.current) {
-                timelineRef.current.tweenFromTo(0, "midway");
-                if (btnNavbar) {
-                    //  selectedItemNavbar(data_id as number);
-
+                if(currentPath.current !== targetPath.current) {
+                    timelineRef.current.tweenFromTo(0, "midway");
                 }
-
+               
+                if (btnNavbar) {
+                    selectedItemNavbar(data_id as number);
+                }
             }
-
-
         });
 
         const leaveAnimation = contextSafe(() => {
             if (timelineRef.current) {
                 timelineRef.current.play();
             }
-
         });
 
-        if (linkRef.current && pathName !== targetRedirect) {
+        if (linkRef.current ) {
             // --^^ console.log("%c=>>AddListenerToButton","color:blue;border:1px solid gray")
             linkRef.current.addEventListener('mouseenter', enterAnimation);
             linkRef.current.addEventListener('mouseleave', leaveAnimation);
@@ -174,39 +144,24 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children, wrapper, btnN
         };
     }, [stateTransition, pathName]);
 
+   
     const handleRedirect = useCallback((event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
         // không set  event.preventDefault(); 
         // vì cho funct này chạy song song với e mặc định
         if (timelineRef.current) {
             timelineRef.current.play();
         }
-        // if(!btnNavbar &&  window.timelineIconNav) {
-        //     if(window.timelineIconNav && window.timelineIconNav.length > 4) {
-          
-        //         let timelineCurrent = window.timelineIconNav.find((t:any) => t.name === savePath.current);
-           
-           
-        //         timelineCurrent.reversed(!timelineCurrent.reversed())
-          
-        //     }
-        // }
-
+      
     }, []);
     const handleRedirectFromNavbar = useCallback((event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
         event.preventDefault();
-        console.log("handleRedirectFromNavbar")
-        if(savePath.current === targetRedirect) return
-        // if(btnNavbar &&  window.timelineIconNav) {
-        //     if(window.timelineIconNav && window.timelineIconNav.length > 4) {
-          
-        //         let timelineCurrent = window.timelineIconNav.find((t:any) => t.name === savePath.current);
-        //         let timelineNext = window.timelineIconNav.find((t:any) => t.name === targetRedirect);
-        //         console.log(timelineCurrent,timelineNext)
-        //         timelineCurrent.reversed(!timelineCurrent.reversed())
-        //         timelineNext.reversed(!timelineCurrent.reversed())
-          
-        //     }
-        // }
+      
+        if(currentPath.current === targetPath.current) {
+            console.log("Trung")
+            return
+        }
+
+    
       
         const elW = document.getElementById("main_navbar")
         if (elW) elW.style.pointerEvents = 'none'
@@ -214,17 +169,18 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children, wrapper, btnN
         if (timelineRef.current) {
             timelineRef.current.play();
         }
-        router.push(targetRedirect || '#')
-        if (window.timelineNavbarModal && window.timelineBtnNavbar && window.timelineNavbarItem) {
+        router.push(targetPath.current || '#')
 
-            window.timelineNavbarModal.reversed(!window.timelineNavbarModal.reversed());
-            window.timelineBtnNavbar.reversed(!window.timelineBtnNavbar.reversed());
-            window.timelineNavbarItem.restart().play(0)
+        if (timelineStore['navbarModal'] && timelineStore['buttonNavbar'] && timelineStore['navbarDesListOn']) {
+
+            timelineStore['navbarModal'].reversed(!timelineStore['navbarModal'].reversed());
+            timelineStore['buttonNavbar'].reversed(! timelineStore['buttonNavbar'].reversed());
+            timelineStore['navbarDesListOn'].restart().play(0)
 
         } else {
             alert("Err on window var global >>>>>>>>")
         }
-    }, []);
+    }, [timelineStore,getAllTimelines]);
 
     return (
         <Link
@@ -234,7 +190,7 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children, wrapper, btnN
             ref={linkRef}
             className={cn(s.btn_hover_underline, classAdd)}
             data-link={btnNavbar ? data_id : 'none'}
-            style={isActiveRef.current ? {color:"var(--gray)",pointerEvents: "none",userSelect: "none"} : {}}
+          //  style={isActiveRef.current ? {userSelect: "none"} : {}}
         >
             {btnNavbar ? <span ref={refIconNavbar} className={s.iconBtnNavbar}>
                 <IconSVG src='/icon/star.svg' /></span> : <></>}
@@ -242,7 +198,7 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children, wrapper, btnN
                 <IconSVG src='/icon/star.svg' /></span> : <></>}
 
 
-            {children}
+            <span className={s.label} ref={labelRef}>{children}</span>
 
         </Link>
     );

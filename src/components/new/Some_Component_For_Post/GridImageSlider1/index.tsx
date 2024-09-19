@@ -22,12 +22,12 @@ function GridImageSlider({ propsForGsap, content }:{propsForGsap:any, content:an
                 end: "bottom top",
                 scrub: true
             }
-        }) .set(domEffectTop.current, { x: -50 })
-            .set(domEffectBot.current, { x: 200 })
+        }) .set(domEffectTop.current, { x: 100 })
+            .set(domEffectBot.current, { x: -200 })
             .to(domEffectTop.current, {
-                x: 50
+                x: -200
             }).to(domEffectBot.current, {
-                x: 0
+                x:0
             }, "<")
     })
 
@@ -49,7 +49,7 @@ function GridImageSlider({ propsForGsap, content }:{propsForGsap:any, content:an
                                 width={0}
                                 height={0}
                                 sizes="100vw"
-                                style={{ width: "100%", height: "auto" }}
+                                style={{ objectFit: "cover",width: "auto", height: "100%" }}
                                
                             />
                         </div>

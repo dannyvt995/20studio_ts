@@ -13,13 +13,13 @@
     position: absolute;
     color: aliceblue;
     z-index: 9;
-    top:-10vw;
+    top:-7.2vw;
     left:15vw;
     will-change: transform,opacity;
 }
 .info h3 {
     font-family: "BD-Medium";
-    font-size: 4vw;
+    font-size: 3vw;
     max-width: 20vw;
 
 }

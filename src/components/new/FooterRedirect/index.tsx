@@ -1,28 +1,28 @@
+"use client"
 import React, { useEffect, useRef } from 'react'
 import s from './style.module.css'
 import Image from 'next/image'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { useRouter } from 'next/navigation'
-import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
-gsap.registerPlugin(ScrollTrigger,ScrollToPlugin,useGSAP)
 
+import { useRouter } from 'next/navigation'
+import useStoreTimeline from '@/hooks/useStoreTimeline';
 export default function FooterRedirect({content,scroller,targetRedirect,currentId}:{content:any,scroller:string,targetRedirect:string,currentId:number}) {
     const container = useRef<any>(null)
     const cirRefIc = useRef<any>(null)
     const router = useRouter()
-
+    const timelineStore = useStoreTimeline((state) => state.timelines);
     const timeline = useRef<gsap.core.Timeline>()
     useEffect(() => {
         timeline.current =   gsap.timeline({
             onComplete:() => {
               setTimeout(() => {
        
-                if(window.timelineNavbarItem){
-                   window.timelineNavbarItem.reversed(false)
-                  }
+              
                   router.push(`/work/work${targetRedirect}`)
+                  if(timelineStore['navbarDesListOn']){
+                    timelineStore['navbarDesListOn'].restart().play(0)
+                  }
               },720)
             },
             paused:true,
@@ -38,12 +38,15 @@ export default function FooterRedirect({content,scroller,targetRedirect,currentI
         .to(`#image_fr_${currentId}`,{
             clipPath: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)',
         },'<')
-    },[targetRedirect,currentId])
+    },[timelineStore['navbarDesListOn'],targetRedirect,currentId])
     useGSAP(() => {
-        gsap.to(`.${s.info}`,{
+        gsap.timeline({
             scrollTrigger:{
                 scroller:scroller,
                 trigger:container.current,
+                onEnter:() => {
+                    if(timelineStore['navbarDesListOff']) timelineStore['navbarDesListOff'].play(timelineStore['navbarDesListOff'].totalDuration())
+                },
                 onUpdate:(self) => {
                     
                     cirRefIc.current.style.strokeDasharray = `${self.progress * 120}px, ${110-100*self.progress}px`
@@ -51,11 +54,13 @@ export default function FooterRedirect({content,scroller,targetRedirect,currentI
                     if(self.progress > 0.90) {
                         
                       document.body.style.pointerEvents = 'none'
-                      if(window.timelineNavbarItem){
-                        window.timelineNavbarItem.restart().play(0)
-                      }
+                   
                         window.lenis?.scrollTo(`.${s.footer_redirect}`,{duration:1,lerp:0.072,onComplete:() => {
-                            if(timeline.current) timeline.current.play()
+                            if(timeline.current) {
+                              
+                                timeline.current.play()
+                            
+                            }
                         }})
                         
                      
@@ -65,11 +70,21 @@ export default function FooterRedirect({content,scroller,targetRedirect,currentI
                 end:"top top",
                 //markers:true,
                 scrub:true,
-            },
+            }
+        }).to(`.${s.info}`,{
+          
             y :window.innerHeight * .5
             
-        })
-    })
+        }).fromTo(`.${s.background}`,{
+          
+            y : - window.innerHeight * .65
+            
+        },{
+          
+            y : 0
+            
+        },"<")
+    },{dependencies:[timelineStore['navbarDesListOff']]})
   return (
     <>
     <section className={s.footer_redirect} ref={container} >

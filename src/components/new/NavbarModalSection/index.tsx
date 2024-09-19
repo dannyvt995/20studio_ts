@@ -17,14 +17,16 @@ import IconSVG from '@/components/Icon/IconSVG'
 import SliderImageHover from '@/components/SliderImageHover'
 import { isMobile } from '@/utils/responsive'
 import WrapperTrackMouse from '../WrapperTrackMouse'
+import LiseImageHoverNavbarModal from '../LiseImageHoverNavbarModal'
+import { useGSAP } from '@gsap/react'
 
 
 function NavbarModalSection({ }) {
     const buttonMenuRef = useRef<HTMLButtonElement>(null)
-    const { indexItemNavbar, prevIndexItemNavbar } = useStoreZustand();
+   
 
     const indexOfSlider = useRef<number>(5)
-    const SliderImage = useRef<HTMLUListElement>(null)
+    const listItemNavbarModal = useRef<HTMLUListElement>(null)
     const navbarModalImages = useRef<Element[]>([])
     const DomEffect = useRef<HTMLDivElement>(null)
     const MaskRef = useRef<HTMLDivElement>(null)
@@ -53,21 +55,17 @@ function NavbarModalSection({ }) {
     //     }
     // }, [indexItemNavbar, prevIndexItemNavbar])
 
-    useEffect(() => {
-        const listBtnRedirectNode = document.querySelectorAll(`.${s.main_line}`)
-        listBtnRedirectRef.current = Array.from(listBtnRedirectNode)
-    }, [])
-
 
     useEffectActive_NavbarModal({
         btnMenu: buttonMenuRef.current,
         SectionRef: SectionRef.current,
         MaskRef: MaskRef.current,
         DomEffect: DomEffect.current,
-        SliderImage: SliderImage.current,
+        listItemNavbarModal:listItemNavbarModal.current,
         pathNameFormat: pathNameFormat,
-        listBtnRedirect: listBtnRedirectRef.current
+       
     })
+
 
 
     return (
@@ -82,49 +80,34 @@ function NavbarModalSection({ }) {
                         <div className={s.logo}>
                             20 STUDIO
                         </div>
-                        <ul className={s.images} ref={SliderImage}>
-                          {/*   {isClient ? <></> : <SliderImageHover type={"navbar"}/>} */}
-                        
-                           {/*  <li>
-                                <Image src="/home/banner.png" width={0} height={0} sizes="100vw" style={{ position: 'relative', width: 'auto', height: '100%', left: '50%', transform: 'translateX(-50%)' }} alt="logo narbar modal" />
-                            </li>
-                            <li>
-                                <Image src="/home/ser1.webp" width={0} height={0} sizes="100vw" style={{ position: 'relative', width: 'auto', height: '100%', left: '50%', transform: 'translateX(-50%)' }} alt="logo narbar modal" />
-                            </li>
-                            <li>
-                                <Image src="/home/ser2.webp" width={0} height={0} sizes="100vw" style={{ position: 'relative', width: 'auto', height: '100%', left: '50%', transform: 'translateX(-50%)' }} alt="logo narbar modal" />
-                            </li>
-                            <li>
-                                <Image src="/home/ser3.webp" width={0} height={0} sizes="100vw" style={{ position: 'relative', width: 'auto', height: '100%', left: '50%', transform: 'translateX(-50%)' }} alt="logo narbar modal" />
-                            </li> */}
-                        </ul>
-                        <ul className={s.main} id='main_navbar'>
+                        <LiseImageHoverNavbarModal classAdd={s.images}/>
+                        <ul className={s.main} id='main_navbar' ref={listItemNavbarModal}>
                             <li className={s.main_link}>
-                                <ButtonHoverNew btnNavbar={true} data_id={3} targetRedirect='/home' classAdd={s.main_line}>
+                                <ButtonHoverNew btnNavbar={true} data_id={0} targetRedirect='/home' classAdd={s.main_line}>
                                     Home
                                 </ButtonHoverNew>
 
                             </li>
                             <li className={s.main_link}>
-                                <ButtonHoverNew btnNavbar={true} data_id={0} targetRedirect='/work' classAdd={s.main_line}>
+                                <ButtonHoverNew btnNavbar={true} data_id={1} targetRedirect='/work' classAdd={s.main_line}>
                                     Project
                                 </ButtonHoverNew>
 
                             </li>
                             <li className={s.main_link}>
-                                <ButtonHoverNew btnNavbar={true} data_id={1} targetRedirect='/about' classAdd={s.main_line}>
+                                <ButtonHoverNew btnNavbar={true} data_id={2} targetRedirect='/about' classAdd={s.main_line}>
                                     About us
                                 </ButtonHoverNew>
 
                             </li>
                             <li className={s.main_link}>
-                                <ButtonHoverNew btnNavbar={true} data_id={2} targetRedirect='/service' classAdd={s.main_line}>
+                                <ButtonHoverNew btnNavbar={true} data_id={3} targetRedirect='/service' classAdd={s.main_line}>
                                     Service
                                 </ButtonHoverNew>
 
                             </li>
                             <li className={s.main_link}>
-                                <ButtonHoverNew btnNavbar={true} data_id={3} targetRedirect='/contact' classAdd={s.main_line}>
+                                <ButtonHoverNew btnNavbar={true} data_id={4} targetRedirect='/contact' classAdd={s.main_line}>
                                     Contact
                                 </ButtonHoverNew>
 

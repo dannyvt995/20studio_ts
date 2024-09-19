@@ -77,7 +77,7 @@ export default function ServicesSection() {
                     href='/work/work1'
                 >
                     <div className={s.block}>
-                        <Image loading="eager"  src="/clone/services1.png" width={0} height={0} sizes="100vw" style={{ width: "100%", height: "auto" }} alt="image_cache_services1" />
+                        <Image loading="eager"  src="/clone/services1.webp" width={0} height={0} sizes="100vw" style={{ width: "100%", height: "auto" }} alt="image_cache_services1" />
                     </div>
                     <div className={s.w_info}>
                         <p className={s.info}>

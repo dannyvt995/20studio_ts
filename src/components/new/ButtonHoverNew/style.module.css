@@ -1,11 +1,12 @@
 .btn_hover_underline {
    position: relative;
+   width: fit-content;
 }
 
 .iconBtnNavbar {
   position:absolute;
-  left:-20px;
-  top:calc(50% - 0.35vw);
+  left:0;
+  top:calc(50% - 0.42vw);
   transform: translate(-50%,-50%);
   display:flex;
   width: 1.72vw;
@@ -16,6 +17,9 @@
 
   will-change: transform,opacity;
  
+}
+.label {
+  will-change: transform;
 }
 .btn_hover_underline::after {
     content: '';

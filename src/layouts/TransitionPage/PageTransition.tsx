@@ -28,7 +28,8 @@ import { useInitLenis } from '@Hooks/lenis/useInitLenis';
 import { propsGsapTransitionPage } from "@Constants/gsap_props"
 import { gsap } from "gsap"
 import { useGSAP } from '@gsap/react';
-
+import useStoreTimeline from '@/hooks/useStoreTimeline';
+import {formatUrlForIconNavbar,resetIconNavbarModal} from '@Utils/utils_url'
 
 gsap.registerPlugin(useGSAP)
 
@@ -43,35 +44,62 @@ const PageTransition: React.FC<PageTransitionProps> = ({
   ...rest
 }) => {
 
- 
+
   const pathName = usePathname()
   const pathNameFormat = removeSplash({ pathName: pathName })
   const listUrlProjects = ['/work/work1', '/work/work2', '/work/work3', '/work/work4'];
   const timeTransition = 1.5
   const indexRef = useRef(100)
   const scopeRef = useRef(null)
-
-const { setStateTransition,stateEnterPage,stateTransition } = useStoreZustand()
-  const transitionKeyRef = useRef<string | null>(null)
-  const currentKeyRef = useRef<string | null>(null)
+  const getAllTimelines = useStoreTimeline((state) => state.getAllTimelines)
+  const { setStateTransition, stateEnterPage, stateTransition } = useStoreZustand()
+  const targetPath = useRef<string>('/none')
+  const currentPath = useRef<string>('/none')
+  const targetPathFormat = useRef<string>('/none')
+  const currentPathFormat = useRef<string>('/none')
   const isWorkPage = useRef<boolean>(false)
   const [firstLoadPage, setFirstLoadPage] = useState(false);
 
-  const {contextSafe} = useGSAP({scope:scopeRef})
+  const { contextSafe } = useGSAP({ scope: scopeRef })
 
   // --^^ console.log("##############   PageTransition render")
-  
+
   useEffect(() => {
-    if(stateEnterPage) {
+    if (stateEnterPage) {
       transitionFirst(pathNameFormat)
       setFirstLoadPage(true)
     }
 
   }, [stateEnterPage])
+
   useInitLenis({
     firstLoad: firstLoadPage
   });
 
+  useEffect(() => {
+    const { currentPathFormatted } = formatUrlForIconNavbar({ cur: currentPath.current, tar: targetPath.current });
+    if (currentPathFormatted === '/none') return
+    const timelines = getAllTimelines();
+    const currentTimeline = currentPathFormatted ? timelines[currentPathFormatted] : null;
+    if (currentTimeline) {
+      console.log("1")
+      currentTimeline.play()
+    }
+  }, [currentPath.current])
+
+
+  useEffect(() => {
+    const { currentPathFormatted, targetPathFormatted } = formatUrlForIconNavbar({ cur: currentPath.current, tar: targetPath.current });
+    if (currentPathFormatted === '/none' || targetPathFormatted === '/none') return
+    if (currentPathFormatted !== targetPathFormatted) {
+      const timelines = getAllTimelines()
+      console.log("2")
+      resetIconNavbarModal({ cur: currentPathFormatted, tar: targetPathFormatted ,listTimeline:timelines});
+    }
+  }, [targetPath.current])
+
+
+  
 
   function transitionFirst(pn: string) {
     // --^^ console.log("Enter page ================>")
@@ -85,7 +113,7 @@ const { setStateTransition,stateEnterPage,stateTransition } = useStoreZustand()
       index: 10
     })
     setStateTransition('entered')
-    currentKeyRef.current = pathName
+    currentPath.current = pathName
   }
 
   const enterPage = contextSafe(({ node, nodeChild, nodeParent, index }: { node: any, nodeChild: any, nodeParent: any, index: number }) => {
@@ -143,12 +171,12 @@ const { setStateTransition,stateEnterPage,stateTransition } = useStoreZustand()
         case '/contact':
           contentDomReference = <ContactPage />;
           break;
-          case '/service':
-            contentDomReference = <ServicePage />;
-            break;
-            case '/sustainability':
-              contentDomReference = <SustainabilityPage/>;
-              break;
+        case '/service':
+          contentDomReference = <ServicePage />;
+          break;
+        case '/sustainability':
+          contentDomReference = <SustainabilityPage />;
+          break;
         case '/work':
           contentDomReference = <WorkPage />;
           break;
@@ -194,8 +222,8 @@ const { setStateTransition,stateEnterPage,stateTransition } = useStoreZustand()
               // --^^ console.log(`%c STATE ==> onEnter`,"color:black;font-weight:bold;font-weight:bold")
               document.body.style.pointerEvents = 'none'
               document.body.style.userSelect = 'none'
-              transitionKeyRef.current = transitionKey
-              if (!listUrlProjects.includes(transitionKey) ) {
+              targetPath.current = transitionKey
+              if (!listUrlProjects.includes(transitionKey)) {
                 enterPage({
                   node: node.children[0],
                   nodeChild: node.children[0].children[0],
@@ -203,22 +231,22 @@ const { setStateTransition,stateEnterPage,stateTransition } = useStoreZustand()
                   index: indexRef.current++
                 })
               } else {
-                if(currentKeyRef.current && currentKeyRef.current !== '/work' && !listUrlProjects.includes(currentKeyRef.current)) {
-                
-                    enterPage({
-                      node: node.children[0],
-                      nodeChild: node.children[0].children[0],
-                      nodeParent: node,
-                      index: indexRef.current++
-                    })
-                 
-                  
-                }else{
+                if (currentPath.current && currentPath.current !== '/work' && !listUrlProjects.includes(currentPath.current)) {
+
+                  enterPage({
+                    node: node.children[0],
+                    nodeChild: node.children[0].children[0],
+                    nodeParent: node,
+                    index: indexRef.current++
+                  })
+
+
+                } else {
                   //set page type 2 thành index lớn và return thành nhỏ hơn 100 trong entered
                   node.style.zIndex = 444
                   node.children[0].style.clipPath = 'none'
                 }
-           
+
               }
             }}
             onEntered={(node: any) => {
@@ -226,24 +254,24 @@ const { setStateTransition,stateEnterPage,stateTransition } = useStoreZustand()
               document.body.style.pointerEvents = 'auto'
               document.body.style.userSelect = 'auto'
               // nên set 1 state tại đây , là cần thiết
-            setStateTransition('entered')
-              currentKeyRef.current = pathName
+              setStateTransition('entered')
+              currentPath.current = pathName
               // tạm thời return index < 100 với các page type 2
-              if(transitionKeyRef.current) {
-                if (listUrlProjects.includes(transitionKeyRef.current)) {
+              if (targetPath.current) {
+                if (listUrlProjects.includes(targetPath.current)) {
                   node.style.zIndex = 70
                 }
               }
-             
+
             }}
             onExit={(node: any) => {
               // --^^ console.log(`%c STATE ==> onExit`,"color:black;font-weight:bold;font-weight:bold")
-              if(transitionKeyRef.current) {
-                if (!listUrlProjects.includes(transitionKeyRef.current)) {
+              if (targetPath.current) {
+                if (!listUrlProjects.includes(targetPath.current)) {
                   exitPage({ nodeChild: node.children[0].children[0] })
-                }else{
-             
-                  if(currentKeyRef.current !== '/work'){
+                } else {
+
+                  if (currentPath.current !== '/work') {
                     // --^^ console.log("EXIT from page not is work")
                     exitPage({ nodeChild: node.children[0].children[0] })
                   }

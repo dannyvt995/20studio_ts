@@ -172,7 +172,7 @@ export const project1_page = {
         introWorkPage: {
             scrollerRef: "#work1page",
             img: [
-                "/clone/services1.png",
+                "/clone/services1.webp",
                 "image_cache_services1"
             ],
             name: ["Unwanted", "Project"],
@@ -192,6 +192,15 @@ export const project1_page = {
                 "/work1/4.png",
                 "/work1/5.png",
                 "/work1/6.png",
+                "/work1/7.png",
+                "/work1/8.png",
+            ],
+            img2:[
+                "/work1/4.png",
+                "/work1/7.png",
+                "/work1/5.png",
+                "/work1/8.png",
+                "/work1/2.png",
             ],
             imgOrigin: [
                 "/work1/origin/1.png",
@@ -226,12 +235,20 @@ export const project2_page = {
         },
         gridImageSlider: {
             img: [
+                "/work2/5.png",
+                "/work2/3.png",
+                "/work2/6.png",
+                "/work2/4.png",
                 "/work2/1.png",
                 "/work2/2.png",
-                "/work2/3.png",
-                "/work2/4.png",
-                "/work2/5.png",
-                "/work2/6.png",
+                
+            ],
+            img2:[
+                "/work2/7.png",
+                "/work2/8.png",
+                "/work2/9.png",
+                "/work2/10.png",
+                "/work2/12.png",
             ],
             imgOrigin: [
                 "/work2/origin/1.png",
@@ -272,6 +289,13 @@ export const project3_page = {
                 "/work3/4.png",
                 "/work3/5.png",
                 "/work3/6.png",
+            ],
+            img2:[
+                "/work3/7.png",
+                "/work3/8.png",
+                "/work3/9.png",
+                "/work3/12.png",
+                "/work3/10.png",
             ],
             imgOrigin: [
                 "/work3/origin/1.png",
