@@ -251,6 +251,8 @@ main {
     overflow: hidden;
     will-change: tranform;
 
+    -webkit-filter: 'brightness(100%)';
+    filter: 'brightness(100%)';
 }
 
 #work1page>.part1,

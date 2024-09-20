@@ -7,14 +7,17 @@ import FooterSection from '@Components/new/FooterSection';
 import Minded from '@Components/new/Aboutus/Minded';
 import Us from '@Components/new/Aboutus/Us';
 import { IPageModule } from '@/types/common';
-import { memo } from 'react';
+import { memo,useEffect,useState } from 'react';
 import { about_page } from '@Constants/page_props';
 import LetContact from '@/components/new/LetContact';
 import WrapperTrackMouse from '@/components/new/WrapperTrackMouse';
 import { isMobile } from '@/utils/responsive';
 
 function AboutPage(): JSX.Element {
-  
+    const [isMobi,setIsMobi] = useState(false)
+    useEffect(() => {
+        if(isMobile()) setIsMobi(true)
+    },[])
     return (
         <div id="aboutpage">
             <HeroSection pageName="about" propsForGsap={about_page.propsForGsap} content={about_page.content.heroSection} />
@@ -24,7 +27,7 @@ function AboutPage(): JSX.Element {
                 <Advantage content={about_page.content.advantage}/>
             </WrapperTrackMouse>
            
-            {isMobile() ? <></> : <SectionTitleBlend  propsForGsap={about_page.propsForGsap} /> }
+            {isMobi ? <></> : <SectionTitleBlend  propsForGsap={about_page.propsForGsap} /> }
            
             <Minded  propsForGsap={about_page.propsForGsap}/>
 

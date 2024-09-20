@@ -164,7 +164,7 @@
 }
 @media (max-width:620px) {
     .hero_section   {
-        height:100vh !important;
+        height:130vh !important;
     }
     .list1,.list2 {
         display:none !important;

@@ -6,6 +6,7 @@ import { useGSAP } from '@gsap/react';
 import useStoreZustand from '@/hooks/useStoreZustand';
 import { usePathname } from 'next/navigation';
 import {delayFirstLoadAfterLoadingPage} from '@Constants/gsap_props'
+
 function Cursor() {
     const cursorRef = useRef<HTMLDivElement>(null)
     const {stateCursor,stateEnterPage,setStateCursor} = useStoreZustand()
@@ -17,7 +18,10 @@ function Cursor() {
 
     let timeoutId: NodeJS.Timeout;
 
+
+    
     useEffect(() => {
+      
         timelineCursor.current = gsap.timeline({paused:true}).fromTo(
             cursorRef.current,
             {scale:0,duration:.2,ease: "expo.out"},

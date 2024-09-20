@@ -38,13 +38,13 @@ export const propsGsapTransitionPage = {
     },
     pageExit_tranform: {
         rotate: -7,
-        y: typeof window !== 'undefined' ? -window.innerHeight / 2 : 0,
-        scale: 1.2,
+        y: typeof window !== 'undefined' ? -window.innerHeight / 1.5 : 0,
+        scale: 1.5,
     },
     pageEnter_tranform: {
         rotate: 7,
-        y: typeof window !== 'undefined' ? window.innerHeight / 2 : 0,
-        scale: 1.2,
+        y: typeof window !== 'undefined' ? window.innerHeight / 1.5 : 0,
+        scale: 1.5,
     }
 }
 

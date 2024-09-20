@@ -78,8 +78,8 @@ function FooterSection({ propsForGsap,state }: IFooterSection) {
                 <ul className={s.nav_footer}>
                     <li className={s.item}>
                    
-                    <ButtonHoverNew targetRedirect='/work'>
-                    Project
+                    <ButtonHoverNew btnNavbarFooter={true} targetRedirect='/sustainability'>
+                    Sustain
                    </ButtonHoverNew>
                     </li>
                     <li className={s.item}>

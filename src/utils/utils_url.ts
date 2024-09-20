@@ -14,6 +14,14 @@ export  function formatUrlForIconNavbar({ cur, tar }: { cur: string; tar: string
       targetPathFormatted = '/work';
     }
   
+    if (tar === '/') {
+      targetPathFormatted = '/home';
+    }
+
+    if (cur === '/') {
+      currentPathFormatted = '/home';
+    }
+
     return { currentPathFormatted, targetPathFormatted };
   }
 

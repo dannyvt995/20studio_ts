@@ -36,6 +36,13 @@ interface IStoreZustand {
   };
   setStateCursor: (value: Partial<IStoreZustand['stateCursor']>) => void;
   
+
+   //url
+   stateUrl: {
+    isTarget: string;
+    isCurrent: string;
+  };
+  setStateUrl: (value: Partial<IStoreZustand['stateUrl']>) => void;
 }
 
 const useStoreZustand = create<IStoreZustand>((set) => ({
@@ -101,7 +108,20 @@ selectedItemService: (index: number) => {
     }));
   },
 
-   
+    //state url
+    stateUrl: {
+      isTarget: 'none',
+      isCurrent: 'none',
+    },
+    // Hàm để cập nhật stateCursor, cho phép cập nhật từng phần
+    setStateUrl: (value) => {
+      set((state) => ({
+        stateUrl: {
+          ...state.stateUrl, // Duy trì các giá trị cũ
+          ...value, // Cập nhật các giá trị mới
+        },
+      }));
+    }
 
 }));
 

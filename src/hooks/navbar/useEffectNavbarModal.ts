@@ -31,7 +31,7 @@ export const useEffectActive_NavbarModal = (
     const setTimeline = useStoreTimeline((state) => state.setTimeline);
     const {stateTransition,stateEnterPage} = useStoreZustand()
 
-    // --^^ console.log("%cHOOK NAVBAR MODAL Running","color:orange")
+    console.log("%cHOOK NAVBAR MODAL Running","color:orange")
     let timelineNavbarModal: any = null
     let DomContent: any = null
     let TargetList: any = []
@@ -44,7 +44,7 @@ export const useEffectActive_NavbarModal = (
    
         if(stateTransition !== 'entered') return
         if(!stateEnterPage) return
-        // --^^ console.log("%c=>>HOOK NAVBAR Running Update!!!!!","color:orange;font-weight:bold")
+        console.log("%c=>>HOOK NAVBAR Running Update!!!!!","color:orange;font-weight:bold")
         // update DomContent when path change
        // NavbarDeskop = document.getElementById(`navbar`)
         DomContent = document.getElementById(`${pathNameFormat}page`)
@@ -75,9 +75,11 @@ export const useEffectActive_NavbarModal = (
                         this.kill(); 
                     }
                 }, */
-                rotate: 7,
-                scale: 1.1,
-                y: window.innerHeight / 3,
+                rotate: 4.2,
+                scale: 1.36,
+                y: window.innerHeight / 2,
+                '-webkit-filter': 'brightness(16%)',
+                filter: 'brightness(16%)',
                 ...propsGsapNavbar.props_openNav
             }, '<')
             .to(MaskRef, {
@@ -88,7 +90,8 @@ export const useEffectActive_NavbarModal = (
                 rotate: 0,
                 scale: 1,   
                 y: 0,
-              
+                '-webkit-filter': 'brightness(100%)',
+                filter: 'brightness(100%)',
                 ...propsGsapNavbar.props_openNav
             }, '<')
             // .fromTo(TargetListChild,{
@@ -103,6 +106,7 @@ export const useEffectActive_NavbarModal = (
             }
     }, [pathName,SliderImage,SectionRef,MaskRef,DomEffect,stateEnterPage,stateTransition])
     return () => {
+        console.log("It clear???")
         timelineNavbarModal.kill()
         timelineNavbarModal = null
     }

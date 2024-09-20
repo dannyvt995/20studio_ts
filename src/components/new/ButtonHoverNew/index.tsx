@@ -85,7 +85,7 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children, wrapper, btnN
         currentPath.current = pathName
         targetPath.current = targetRedirect || '/none'
        
-        isActiveRef.current = (pathName === targetRedirect) || (pathName === '/' && targetRedirect === '/home');
+        isActiveRef.current = (currentPath.current === targetPath.current) || (currentPath.current === '/' && targetPath.current === '/home');
 
     }, [pathName]);
 
@@ -172,7 +172,7 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children, wrapper, btnN
         router.push(targetPath.current || '#')
 
         if (timelineStore['navbarModal'] && timelineStore['buttonNavbar'] && timelineStore['navbarDesListOn']) {
-
+            console.log("navbarModal")
             timelineStore['navbarModal'].reversed(!timelineStore['navbarModal'].reversed());
             timelineStore['buttonNavbar'].reversed(! timelineStore['buttonNavbar'].reversed());
             timelineStore['navbarDesListOn'].restart().play(0)
@@ -194,8 +194,11 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children, wrapper, btnN
         >
             {btnNavbar ? <span ref={refIconNavbar} className={s.iconBtnNavbar}>
                 <IconSVG src='/icon/star.svg' /></span> : <></>}
-            {btnNavbarFooter ? <span className={isActiveRef.current ? `${s.iconBtnNavbar}  ${s.activeShowIcon}` : s.iconBtnNavbar}>
-                <IconSVG src='/icon/star.svg' /></span> : <></>}
+            {btnNavbarFooter  ? 
+                <span className={s.iconBtnNavbar}>
+                    {isActiveRef.current ? <IconSVG src='/icon/star.svg' /> : <></>}
+                </span> 
+            : <></>}
 
 
             <span className={s.label} ref={labelRef}>{children}</span>

@@ -168,11 +168,15 @@
     bottom: 3px !important;
     background-color: var(--color-sand-08) !important;
 }
-.item span {
+.item > a > span:nth-child(1) {
     width: 10px !important;
     height: 10px;
     margin: 0 .5rem 0 0;
     align-self: center;
+
+    top: 50%!important;
+    left: -10px!important;
+    transform: translate(-50%, -50%)!important;
 }
 .link .circle {
     font-family: "BS-Medium";

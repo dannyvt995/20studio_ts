@@ -55,7 +55,7 @@ const PageTransition: React.FC<PageTransitionProps> = ({
   const indexRef = useRef(100)
   const scopeRef = useRef(null)
   const getAllTimelines = useStoreTimeline((state) => state.getAllTimelines)
-  const { setStateTransition, stateEnterPage, stateTransition } = useStoreZustand()
+  const { setStateTransition, stateEnterPage, setStateUrl } = useStoreZustand()
   const targetPath = useRef<string>('/none')
   const currentPath = useRef<string>('/none')
   const targetPathFormat = useRef<string>('/none')
@@ -83,9 +83,11 @@ const PageTransition: React.FC<PageTransitionProps> = ({
     const { currentPathFormatted } = formatUrlForIconNavbar({ cur: currentPath.current, tar: targetPath.current });
     if (currentPathFormatted === '/none') return
     const timelines = getAllTimelines();
+
     const currentTimeline = currentPathFormatted ? timelines[currentPathFormatted] : null;
     if (currentTimeline) {
       console.log("1")
+    
       currentTimeline.play()
     }
   }, [currentPath.current])
@@ -97,6 +99,7 @@ const PageTransition: React.FC<PageTransitionProps> = ({
     if (currentPathFormatted !== targetPathFormatted) {
       const timelines = getAllTimelines()
       console.log("2")
+      setStateUrl({isTarget:targetPath.current,isCurrent:currentPath.current})
       resetIconNavbarModal({ cur: currentPathFormatted, tar: targetPathFormatted ,listTimeline:timelines});
     }
   }, [targetPath.current])

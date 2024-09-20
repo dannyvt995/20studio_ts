@@ -1,32 +1,32 @@
 "use client"
-import Image from 'next/image'
-import React, { MutableRefObject, memo, useEffect, useRef, useState } from 'react'
+
+import  {  memo, useEffect, useRef, useState } from 'react'
 import s from './style.module.css'
 import gsap from 'gsap'
 import cn from 'classnames';
 import useStoreZustand from "@/hooks/useStoreZustand";
-import { listPathAndIdDom } from "@Constants/data_noname"
-import { usePathname, useRouter } from 'next/navigation'
-import Link from 'next/link'
+
+import { usePathname } from 'next/navigation'
+
 import { useEffectActive_NavbarModal } from '@/hooks/navbar/useEffectNavbarModal'
-import { useHoverSliderModalNav } from '@/hooks/navbar/useHoverSliderModalNav'
+
 import { removeSplash } from '@/utils/removeSplash'
 import ButtonHoverNew from '../ButtonHoverNew'
-import ButtonHoverNew2 from '../ButtonHoverNew2'
-import IconSVG from '@/components/Icon/IconSVG'
-import SliderImageHover from '@/components/SliderImageHover'
+
+import { propsGsapNavbar } from '@/constants/gsap_props';
 import { isMobile } from '@/utils/responsive'
 import WrapperTrackMouse from '../WrapperTrackMouse'
 
 import { useGSAP } from '@gsap/react'
 import ViewImgHoverNavbarModal from '../ViewImgHoverNavbarModal'
+import useStoreTimeline from '@/hooks/useStoreTimeline'
 
 
 function NavbarModalSection({ }) {
     const buttonMenuRef = useRef<HTMLButtonElement>(null)
    
 
-    const indexOfSlider = useRef<number>(5)
+    const [isMobi,setIsMobi] = useState(false)
     const listItemNavbarModal = useRef<HTMLUListElement>(null)
     const navbarModalImages = useRef<Element[]>([])
     const DomEffect = useRef<HTMLDivElement>(null)
@@ -36,26 +36,15 @@ function NavbarModalSection({ }) {
     // const [stateToggle,setStateToggle] = useState<boolean>(false)
     const pathName = usePathname()
     const pathNameFormat = removeSplash({ pathName: pathName })
+    const setTimeline = useStoreTimeline((state) => state.setTimeline);
+    const {stateTransition,stateEnterPage,stateUrl} = useStoreZustand()
 
-    // const [isClient, setIsClient] = useState(false);
+    useEffect(() => {
+        if(isMobile()) setIsMobi(true);
+        
+    }, []);
 
-    // useEffect(() => {
-    //     if(isMobile()) setIsClient(true);
-    // }, []);
-
-    // useEffect(() => {
-    //     if (indexItemNavbar >= 0 && prevIndexItemNavbar >= 0) {
-    //         // --^^ console.log(indexItemNavbar, prevIndexItemNavbar)
-    //         indexOfSlider.current++
-    // useHoverSliderModalNav({
-    //     prevState: prevIndexItemNavbar,
-    //     navbarModalImages: navbarModalImages.current,
-    //     nextState: indexItemNavbar,
-    //     indexOfSlider: indexOfSlider.current
-    // })
-    //     }
-    // }, [indexItemNavbar, prevIndexItemNavbar])
-
+    
 
     useEffectActive_NavbarModal({
         btnMenu: buttonMenuRef.current,
@@ -68,9 +57,80 @@ function NavbarModalSection({ }) {
     })
 
 
+    // const DomContentRef = useRef<any>()
+    // const timelineNavbarModal = useRef<gsap.core.Timeline>()
+
+
+    // useEffect(() => {
+    //     console.log(stateUrl)
+    //     if(stateUrl.isCurrent === stateUrl.isTarget) return
+     
+    //     console.log(" DomContentRef.current Run exacly 1 time")
+    //     // let TargetListChild = []
+     
+    //     // let TargetList  =  Array.from(listItemNavbarModal.current.children).slice(0,5)
+    //     // for (let i = 0; i < TargetList.length; i++) {
+    //     //     TargetListChild.push(TargetList[i].children[0]) 
+    //     // }
+    //     // TargetListChild = [...TargetListChild].reverse();
+
+    // },[pathNameFormat,stateUrl])
+
+
+    // useEffect(() => {
+   
+    //     if(stateTransition !== 'entered') return
+    //     if(!stateEnterPage) return
+    //     if(!SectionRef.current || !MaskRef.current || !DomEffect.current || !DomContentRef.current) return
+   
+    //     if(stateUrl.isCurrent === stateUrl.isTarget || stateUrl.isTarget === 'none') return
+    //     console.log(" timelineNavbarModal Run exacly 1 time")
+    //     DomContentRef.current = document.getElementById(`${pathNameFormat}page`)
+    //     timelineNavbarModal.current = gsap.timeline({
+    //         paused: true,
+    //         onComplete: () => {
+    //             gsap.set(SectionRef.current, { pointerEvents: 'auto' })
+    //         }
+    //     }).set(SectionRef.current, { zIndex: 500, pointerEvents: 'none' })
+    //         .set(MaskRef.current, { clipPath: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)' })
+    //         .set(DomEffect.current, {
+    //             rotate: -5,
+    //             scale: 1.72,
+    //             y: -window.innerHeight / 2,
+    //         })
+    //         .to(DomContentRef.current, {
+    //             rotate: 4.2,
+    //             scale: 1.36,
+    //             y: window.innerHeight / 2,
+    //             '-webkit-filter': 'brightness(16%)',
+    //             filter: 'brightness(16%)',
+    //             ...propsGsapNavbar.props_openNav
+    //         }, '<')
+    //         .to(MaskRef.current, {
+    //             clipPath: 'polygon(0% 0%, 100% 0%, 100% 110%, 0% 100%)',
+    //             ...propsGsapNavbar.props_openNav
+    //         }, '<')
+    //         .to(DomEffect.current, {
+    //             rotate: 0,
+    //             scale: 1,   
+    //             y: 0,
+    //             '-webkit-filter': 'brightness(100%)',
+    //             filter: 'brightness(100%)',
+    //             ...propsGsapNavbar.props_openNav
+    //         }, '<')
+    //         // .fromTo(TargetListChild,{
+    //         //     delay: 4.7,
+    //         //     y : "120%"
+    //         // },{delay: .5,y:0,stagger:0.036,ease:"power3.inOut"},"<")
+    //         timelineNavbarModal.current.reverse();
+    //         setTimeline('navbarModal', timelineNavbarModal.current);
+    //         return () => {
+    //             if(timelineNavbarModal.current) timelineNavbarModal.current.kill()
+    //         }
+    // }, [pathName,stateUrl,SectionRef.current,MaskRef.current,DomEffect.current,DomContentRef.current,stateEnterPage,stateTransition])
 
     return (
-        <WrapperTrackMouse>
+   
 
             <section className={s.navbar_modal_section} ref={SectionRef}>
                 <div className={s.wrapper} ref={MaskRef}>
@@ -81,7 +141,7 @@ function NavbarModalSection({ }) {
                         <div className={s.logo}>
                             20 STUDIO
                         </div>
-                        <ViewImgHoverNavbarModal classAdd={s.images}/>
+                        {isMobi ? <></> : <ViewImgHoverNavbarModal classAdd={s.images}/>}
                         <ul className={s.main} id='main_navbar' ref={listItemNavbarModal}>
                             <li className={s.main_link}>
                                 <ButtonHoverNew btnNavbar={true} data_id={0} targetRedirect='/home' classAdd={s.main_line}>
@@ -155,7 +215,7 @@ function NavbarModalSection({ }) {
 
                 </div>
             </section>
-        </WrapperTrackMouse>
+
 
     )
 }
