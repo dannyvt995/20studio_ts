@@ -17,8 +17,9 @@ import IconSVG from '@/components/Icon/IconSVG'
 import SliderImageHover from '@/components/SliderImageHover'
 import { isMobile } from '@/utils/responsive'
 import WrapperTrackMouse from '../WrapperTrackMouse'
-import LiseImageHoverNavbarModal from '../LiseImageHoverNavbarModal'
+
 import { useGSAP } from '@gsap/react'
+import ViewImgHoverNavbarModal from '../ViewImgHoverNavbarModal'
 
 
 function NavbarModalSection({ }) {
@@ -80,7 +81,7 @@ function NavbarModalSection({ }) {
                         <div className={s.logo}>
                             20 STUDIO
                         </div>
-                        <LiseImageHoverNavbarModal classAdd={s.images}/>
+                        <ViewImgHoverNavbarModal classAdd={s.images}/>
                         <ul className={s.main} id='main_navbar' ref={listItemNavbarModal}>
                             <li className={s.main_link}>
                                 <ButtonHoverNew btnNavbar={true} data_id={0} targetRedirect='/home' classAdd={s.main_line}>

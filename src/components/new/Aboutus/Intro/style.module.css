@@ -3,8 +3,7 @@
     background-color: var(--color-off-white);
     padding: 21.3333333333vw 0;
 }
-.container {
-}
+
 .images {
     display: grid;
     grid-template-columns: repeat(10, 1fr);
@@ -52,7 +51,7 @@
     letter-spacing: -.2666666667vw;
     letter-spacing: var(--font-ls-h2);
     line-height: 9.0666666667vw;
-    line-height: var(--font-lh-h2);
+    line-height: 115%;
 }
 .body ul li p{
     font-family: Lausanne-300;

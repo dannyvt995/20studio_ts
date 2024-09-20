@@ -17,7 +17,7 @@ function MainLayout({ children }: PropsWithChildren): React.ReactElement {
       <Header/>
     
       <CacheImageGroup/>
-      {isMobile() ? <></>:<Cursor/>}
+      <Cursor/>
       <RouterControls>
         {children}
       </RouterControls>

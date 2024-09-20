@@ -33,13 +33,12 @@
     margin: 10.6666666667vw 0 6.9333333333vw;
 }
 .title .title_line {
+    font-weight: 300;
     font-family: Lausanne-300;
-    font-family: var(--font-f-lausanne-300);
-    font-size: 16vw;
-    font-size: var(--font-s-h1);
+    font-size: 3rem;
     letter-spacing: .2vw;
   
-    line-height: 120%;
+    line-height: 130%;
   
    
 }
@@ -52,12 +51,11 @@
 }
 .body p {
     font-family: "BS-Regular";
-    font-size: 4.8vw;
-    font-size: var(--font-s-h4);
+    font-size: 2rem;
     letter-spacing: 0;
-    letter-spacing: var(--font-ls-h4);
-    line-height: 6.4vw;
-    line-height: var(--font-lh-h4);
+    line-height: 100%;
+
+    color:var(--color-off-white-06);
 }
 .image {
     height: auto;
@@ -66,8 +64,7 @@
 .quote {
     color: hsla(33, 14%, 88%, .8);
     color: var(--color-light-grey-08);
-    font-family: Lausanne-300;
-    font-family: var(--font-f-lausanne-300);
+    font-family: "BS-Regular";
     font-size: 3.2vw;
     font-size: var(--font-s-subtitle);
     letter-spacing: .0266666667vw;
@@ -98,7 +95,7 @@
         line-height: 2.5694444444vw;
         padding-left: 1.5277777778vw;
         position: absolute;
-        top: 36.8055555556vw;
+        top: 31.805556vw;
     }
 .icon {
         height: .8333333333vw;
@@ -110,7 +107,7 @@
         grid-column: 4 / 13;
     }
     .title .title_line {
-        font-size:6vw !important;
+        font-size: 6.4vw;
     }
 .title .title-mask {
         height: 10.0694444444vw;
@@ -119,6 +116,13 @@
 .body {
         grid-column: 4 / 8;
     }
+
+    .body p {
+        font-size: 1.6666666667vw;
+        letter-spacing: 0;
+        line-height: 2.2222222222vw;
+    }
+
 .images {
         display: flex;
         grid-column: 2 / 12;

@@ -1,7 +1,7 @@
 .hero_section {
     
     /* height: 136.6666666667vw; */
-    height:120vw;
+    height:130vw;
     overflow: hidden;
   
 }
@@ -18,7 +18,7 @@
 
 
 
-    background-size: 100% auto;
+    background-size: 110% auto;
     background-position-y: var(--bg-y,0%);
     filter: brightness(var(--bright,100%));
     will-change: transform,filter;
@@ -156,11 +156,11 @@
 .intro {
     grid-column: 1 / 9;
     max-width: 56.8055555556vw;
-    padding-top: 25.5555555556vw;
+    padding-top: 30.5555555556vw;
 }
 .body {
     grid-column: 1 / 8;
-    margin-bottom: 6.1111111111vw;
+    margin-bottom: 9.51111111111vw;
 }
 @media (max-width:620px) {
     .hero_section   {

@@ -50,16 +50,13 @@
 
 /* list item */
  .index {
-    color: hsla(33, 14%, 88%, .8);
-    color: var(--color-light-grey-08);
-    font-family: Lausanne-300;
-    font-family: var(--font-f-lausanne-300);
-    font-size: 3.7333333333vw;
-    font-size: var(--font-s-p);
-    letter-spacing: .0266666667vw;
-    letter-spacing: var(--font-ls-p);
-    line-height: 5.6vw;
-    line-height: var(--font-lh-p);
+  color: hsla(33, 14%, 88%, .8);
+  color: var(--color-light-grey-08);
+  font-family: Lausanne-300;
+  font-family: var(--font-f-lausanne-300);
+  font-size: 1.2vw;
+
+  line-height: 150%;
 }
  .subtitle {
     font-family: Lausanne-300;
@@ -127,7 +124,7 @@
         will-change: transform;
     }
       .intro {
-        margin: 4.8611111111vw 0 11.4583333333vw;
+        margin: 2.8611111111vw 0 11.4583333333vw;
         width: 40.625vw;
     }
    
@@ -141,10 +138,10 @@
       .index {
         left: -3.125vw;
         position: absolute;
-        top: 10.9722222222vw;
+        
     }
       .items {
-        padding-bottom: 10vw;
+        padding-bottom: 4.22435vw;
         display: grid;
         grid-column-gap: 2.2222222222vw;
         grid-template-columns: repeat(12, 1fr);

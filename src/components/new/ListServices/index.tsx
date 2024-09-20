@@ -1,15 +1,19 @@
-import React, { memo } from 'react'
+import React, { memo, useEffect } from 'react'
 import s from './style.module.css'
 import ProjectText from '../ProjectText'
 import { service_page } from '@/constants/page_props';
 import IconSVG from '@/components/Icon/IconSVG';
 import Image from 'next/image';
 import SliderImageHover from '@/components/SliderImageHover';
+import ViewImgHoverListService from '../ViewImgHoverListService';
+import useStoreZustand from '@/hooks/useStoreZustand';
 
 
 function ListServices() {
-
-
+   const {indexItemService,selectedItemService} = useStoreZustand()
+   useEffect(() => {
+    console.log(indexItemService)
+   },[indexItemService])
     return (
 
         <>
@@ -27,7 +31,7 @@ function ListServices() {
                             <div className={s.scope}>
                                 <h2>Design & Develop & Direct</h2>
                                 <ul>
-                                    <li >
+                                    <li onMouseEnter={() => selectedItemService(0)}>
                                         <div>Fashion Design & Prototype Development</div>
                                         <div className={s.carousel}>
 
@@ -61,7 +65,8 @@ function ListServices() {
                                             </div>
                                         </div>
                                     </li>
-                                    <li >
+                                  
+                                    <li onMouseEnter={() => selectedItemService(1)}>
                                         <div>Costume Design</div>
                                         <div className={s.carousel}>
 
@@ -95,7 +100,8 @@ function ListServices() {
                                             </div>
                                         </div>
                                     </li>
-                                    <li >
+                                  
+                                    <li onMouseEnter={() => selectedItemService(2)}>
                                         <div>Sample Development</div>
                                         <div className={s.carousel}>
 
@@ -130,7 +136,8 @@ function ListServices() {
                                             </div>
                                         </div>
                                     </li>
-                                    <li >
+                                  
+                                    <li onMouseEnter={() => selectedItemService(3)}>
                                         <div>Art Direction & Project Management</div>
                                         <div className={s.carousel}>
 
@@ -170,7 +177,7 @@ function ListServices() {
                             <div className={s.scope}>
                                 <h2>Digital</h2>
                                 <ul>
-                                    <li >
+                                    <li onMouseEnter={() => selectedItemService(4)}>
                                         <div>Website & E-commerce Development</div>
                                         <div className={s.carousel}>
 
@@ -198,7 +205,8 @@ function ListServices() {
                                             </div>
                                         </div>
                                     </li>
-                                    <li>
+                                  
+                                    <li onMouseEnter={() => selectedItemService(5)}>
                                         <div>Photo, Video, 2D, 3D & Motion</div>
                                         <div className={s.carousel}>
 
@@ -235,7 +243,7 @@ function ListServices() {
                             <div className={s.scope}>
                                 <h2>Production</h2>
                                 <ul>
-                                    <li >
+                                    <li onMouseEnter={() => selectedItemService(6)}>
                                         <div>Mass Production</div>
                                         <div className={s.carousel}>
 
@@ -264,7 +272,8 @@ function ListServices() {
                                             </div>
                                         </div>
                                     </li>
-                                    <li >
+                                 
+                                    <li onMouseEnter={() => selectedItemService(7)}>
                                         <div>Production Management</div>
                                         <div className={s.carousel}>
 
@@ -293,7 +302,8 @@ function ListServices() {
                                             </div>
                                         </div>
                                     </li>
-                                    <li >
+                                  
+                                    <li onMouseEnter={() => selectedItemService(8)}>
                                         <div>Inventory Management</div>
                                         <div className={s.carousel}>
 
@@ -324,10 +334,9 @@ function ListServices() {
                                 </ul>
                             </div>
                         </div>
-                        <div className={s.gallery}>
-                            <SliderImageHover type={"service"} />
-                            {/* <Image src={"/home/banner.png"} width={0} height={0} sizes="100vw" alt="image_cache_banner_home" /> */}
-                        </div>
+                    
+                        <ViewImgHoverListService classAdd={s.gallery}/>
+                 
                     </div>
 
                 </div>

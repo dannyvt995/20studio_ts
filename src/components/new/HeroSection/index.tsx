@@ -1,5 +1,5 @@
 "use client"
-import { useRef, memo } from 'react'
+import { useRef, memo, useEffect } from 'react'
 import React from 'react'
 
 import s from './style.module.css'
@@ -16,7 +16,7 @@ import IconSVG from '@Components/Icon/IconSVG'
 import ButtonHoverNew from '../ButtonHoverNew'
 import { common } from '@Constants/page_props';
 import WrapperTrackMouse from '../WrapperTrackMouse'
-
+import {delayFirstLoadAfterLoadingPage} from '@Constants/gsap_props'
 interface IHeroSection {
     pageName: string,
     state?: string,
@@ -26,17 +26,16 @@ interface IHeroSection {
 
 function HeroSection({ pageName, content }: IHeroSection) {
     const triggleSection = useRef<HTMLDivElement>(null)
-    const backgroundImg = useRef<HTMLDivElement>(null)
     const pathName = usePathname()
-    const pathNameFormat = removeSplash({ pathName: pathName })
-    const { stateTransition } = useStoreZustand()
-    const tl1 = useRef<gsap.core.Timeline>()
-    const tlBg = useRef<gsap.core.Timeline>()
-    useGSAP(() => {
+    const { stateEnterPage,stateTransition } = useStoreZustand()
+    const timelineTextHero = useRef<gsap.core.Timeline>()
 
+    let timeoutId: NodeJS.Timeout;
+
+    useGSAP(() => {
         //  if (isMobile()) return
-        tl1.current = gsap.timeline({ delay: .4, paused: true })
-        tl1.current.to(`.${s.ip}`, {
+        timelineTextHero.current = gsap.timeline({ paused: true })
+        timelineTextHero.current.to(`.${s.ip}`, {
             y: 0,
             opacity: 1,
             rotateZ: 0,
@@ -49,15 +48,10 @@ function HeroSection({ pageName, content }: IHeroSection) {
             stagger: .1,
             duration: 1
         }, '<')
-
-        if (stateTransition == 'entered' || stateTransition == 'none') {
-            // --^^ console.log("useGSAP running...")
-            tl1.current.play()
-
-        }
-    }, { dependencies: [stateTransition] });
+        
+    });
     useGSAP(() => {
-        if(isMobile()) return
+        if (isMobile()) return
         gsap.timeline({
             scrollTrigger: {
                 scroller: content.scrollerRef,
@@ -67,7 +61,8 @@ function HeroSection({ pageName, content }: IHeroSection) {
 
                 // markers:true,
                 scrub: true,
-            }
+            },
+            paused: true
         }).fromTo(`#this_pick${pageName} .bg_hero_pick${pageName}`,
             {
                 "--bg-y": "0%",
@@ -76,8 +71,21 @@ function HeroSection({ pageName, content }: IHeroSection) {
             "--bg-y": "100%",
             "--bright": "50.0202%",
         });
-     
-    });
+    })
+
+    useEffect(() => {
+        if(!stateEnterPage) return
+        if (stateTransition == 'entered' || stateTransition == 'none') {
+            timeoutId = setTimeout(() => {
+                timelineTextHero.current?.play()
+            }, delayFirstLoadAfterLoadingPage );
+        }
+        return () => {
+            clearTimeout(timeoutId)
+        }
+    },[stateTransition,stateEnterPage])
+
+  
     return (
         <section className={cn(s.hero_section, content.classAdd)} id={`this_pick${pageName}`} ref={triggleSection} >
             <div className="container" style={content.moreStyle}>

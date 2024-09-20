@@ -17,9 +17,10 @@ function Advantage({ content }: { content: any }): JSX.Element {
                 <div className={s.items}>
                     {content.items.map((item: any, index: any) => (
                         <div key={index} className={s.item}>
-                            {content.disableIndex ? <></> : <span className={s.index}>{index + 1}</span>}
+                           
                             <h3 className={s.subtitle}>{item[0]}</h3>
                             <div className={s.body}>
+                            {content.disableIndex ? <></> : <span className={s.index}>{index + 1}</span>}
                                 <p>{item[1]}</p>
                             </div>
                         </div>

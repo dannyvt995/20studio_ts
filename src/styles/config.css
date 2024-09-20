@@ -217,9 +217,7 @@ ul.format,ol.format {
     margin: 0;
     padding: 0;
 }
-p,a,button,span,div {
-   
-}
+
 a,
 button:hover {
     cursor: pointer;
@@ -250,12 +248,7 @@ ul.format,ol.format {
 .dark_background h3,
 .dark_background h4,
 .dark_background p,
-.dark_background a,
-.dark_background span {
+.dark_background a{
     color: var(--white) !important;
 }
 
-/* add */
-.mutil_line {
-    
-}

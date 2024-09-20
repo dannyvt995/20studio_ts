@@ -1,6 +1,7 @@
 "use client"
 const timeTransition = 1.234
 const easeTransition = "power3.inOut"
+export const delayFirstLoadAfterLoadingPage = 500
 export const propsGsapTransitionPage = {
     pathOpen: {
         clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)'

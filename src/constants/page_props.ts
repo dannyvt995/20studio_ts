@@ -25,7 +25,8 @@ export const common = {
 
 export const about_page = {
     propsForGsap: {
-        scrollerRef: "#aboutpage"
+        scrollerRef: "#aboutpage",
+        delayForBehindComponent: 1,
     },
     content: {
   

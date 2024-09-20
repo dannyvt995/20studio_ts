@@ -5,7 +5,7 @@ import gsap from 'gsap'
 import Image from 'next/image'
 
 import { useEffect,memo, useRef } from 'react'
-const LiseImageHoverNavbarModal = ({classAdd}:{classAdd:string}) => {
+const ViewImgHoverNavbarModal = ({classAdd}:{classAdd:string}) => {
   const { indexItemNavbar} = useStoreZustand();
   const container = useRef<HTMLUListElement>(null)
   const listEl = useRef<any>(null)
@@ -31,7 +31,7 @@ const LiseImageHoverNavbarModal = ({classAdd}:{classAdd:string}) => {
           ease:"power3.out"
         })
     }else{
-      console.log("Something wrong on LiseImageHoverNavbarModal!!")
+      console.log("Something wrong on ViewImgHoverNavbarModal!!")
     }
   },{dependencies:[indexItemNavbar,listEl.current],scope:container})
   return (
@@ -57,4 +57,4 @@ const LiseImageHoverNavbarModal = ({classAdd}:{classAdd:string}) => {
   )
 }
 
-export default  memo(LiseImageHoverNavbarModal)
+export default  memo(ViewImgHoverNavbarModal)

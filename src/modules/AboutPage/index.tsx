@@ -20,14 +20,22 @@ function AboutPage(): JSX.Element {
             <HeroSection pageName="about" propsForGsap={about_page.propsForGsap} content={about_page.content.heroSection} />
 
             <Intro  propsForGsap={about_page.propsForGsap}/>
-            <Advantage content={about_page.content.advantage}/>
-            {isMobile() ? <></> : <SectionTitleBlend  propsForGsap={about_page.propsForGsap} /> }
-            <Minded />
-            <Us />
-            <LetContact content={about_page.content.letContact}  propsForGsap={about_page.propsForGsap}/>
             <WrapperTrackMouse>
-            <FooterSection  propsForGsap={about_page.propsForGsap} />
+                <Advantage content={about_page.content.advantage}/>
+            </WrapperTrackMouse>
+           
+            {isMobile() ? <></> : <SectionTitleBlend  propsForGsap={about_page.propsForGsap} /> }
+           
+            <Minded  propsForGsap={about_page.propsForGsap}/>
 
+            <WrapperTrackMouse>
+                <Us />
+            </WrapperTrackMouse>
+           
+            <LetContact content={about_page.content.letContact}  propsForGsap={about_page.propsForGsap}/>
+          
+            <WrapperTrackMouse>
+                <FooterSection  propsForGsap={about_page.propsForGsap} />
             </WrapperTrackMouse>
          
         </div>
