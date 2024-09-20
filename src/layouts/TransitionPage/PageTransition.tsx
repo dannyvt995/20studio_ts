@@ -1,4 +1,4 @@
-
+'use client'
 import React, { useMemo, useEffect, useRef, useState, useCallback } from 'react';
 import { Transition, TransitionGroup } from 'react-transition-group';
 
@@ -9,17 +9,20 @@ import PageTransitionWrapper from './PageTransitionWrapper';
 import { usePathname } from 'next/navigation';
 
 
-import HomePage from '@Modules/HomePage';
-import AboutPage from '@Modules/AboutPage';
-import ContactPage from '@Modules/ContactPage';
-import WorkPage from '@Modules/WorkPage';
-import ServicePage from '@/modules/ServicePage';
-import Project1 from '@Modules/Project1';
-import Project2 from '@Modules/Project2';
-import Project3 from '@Modules/Project3';
-import Project4 from '@Modules/Project4';
-import SustainabilityPage from '@Modules/SustainabilityPage';
 
+
+// import HomePage from '@Modules/HomePage';
+// import AboutPage from '@Modules/AboutPage';
+// import ContactPage from '@Modules/ContactPage';
+// import WorkPage from '@Modules/WorkPage';
+// import ServicePage from '@/modules/ServicePage';
+// import Project1 from '@Modules/Project1';
+// import Project2 from '@Modules/Project2';
+// import Project3 from '@Modules/Project3';
+// import Project4 from '@Modules/Project4';
+// import SustainabilityPage from '@Modules/SustainabilityPage';
+
+import * as AllModules from '@Modules/AllModules';
 
 import { removeSplash } from '@Utils/removeSplash'
 import { isMobile } from '@Utils/responsive';
@@ -159,47 +162,47 @@ const PageTransition: React.FC<PageTransitionProps> = ({
 
   const getContentDomReference = useMemo(() => {
     const PageContentRef = (state: string) => {
-      let contentDomReference = null;
+      let ContentDomReference = null;
       switch (pathName) {
         case '/':
-        case '/home':
-          contentDomReference = <HomePage />;
-          break;
-        case '/about':
-          contentDomReference = <AboutPage />;
-          break;
-        case '/contact':
-          contentDomReference = <ContactPage />;
-          break;
-        case '/service':
-          contentDomReference = <ServicePage />;
-          break;
-        case '/sustainability':
-          contentDomReference = <SustainabilityPage />;
-          break;
-        case '/work':
-          contentDomReference = <WorkPage />;
-          break;
-        case '/work/work1':
-          contentDomReference = <Project1 />;
-          break;
-        case '/work/work2':
-          contentDomReference = <Project2 />;
-          break;
-        case '/work/work3':
-          contentDomReference = <Project3 />;
-          break;
-        case '/work/work4':
-          contentDomReference = <Project4 />;
-          break;
-        default:
-          return <h1>404 Page</h1>;
+          case '/home':
+            ContentDomReference = AllModules.HomePage;
+            break;
+          case '/about':
+            ContentDomReference = AllModules.AboutPage;
+            break;
+          case '/contact':
+            ContentDomReference = AllModules.ContactPage;
+            break;
+          case '/service':
+            ContentDomReference = AllModules.ServicePage;
+            break;
+          case '/sustainability':
+            ContentDomReference = AllModules.SustainabilityPage;
+            break;
+          case '/work':
+            ContentDomReference = AllModules.WorkPage;
+            break;
+          case '/work/work1':
+            ContentDomReference = AllModules.Project1;
+            break;
+          case '/work/work2':
+            ContentDomReference = AllModules.Project2;
+            break;
+          case '/work/work3':
+            ContentDomReference = AllModules.Project3;
+            break;
+          case '/work/work4':
+            ContentDomReference = AllModules.Project4;
+            break;
+          default:
+            return <h1>404 Page</h1>;
       }
       return (
         <PageTransitionWrapper state={state}>
           <div id='wrapper_this'  >
 
-            {contentDomReference}
+            <ContentDomReference/>
           </div>
         </PageTransitionWrapper>
       );

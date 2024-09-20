@@ -1,6 +1,6 @@
 
 
-import { memo, useEffect } from 'react';
+import { memo } from 'react';
 import { IPageModule } from '@/types/common';
 import IntroWorkPage from '@/components/new/IntroWorkPage';
 import ProjectText from '@/components/new/ProjectText';
@@ -41,4 +41,4 @@ function Project1(): JSX.Element {
         </div>
     )
 }
-export default  Project1
+export default  memo(Project1)

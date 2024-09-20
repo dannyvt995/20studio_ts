@@ -33,7 +33,7 @@ export default function RootLayout({
       <LoadingPage/>
    
       <MainLayout>
-        {children}
+          {children}
       </MainLayout>
       </main>
 

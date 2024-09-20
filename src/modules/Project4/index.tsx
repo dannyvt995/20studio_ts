@@ -3,7 +3,7 @@ import FooterRedirect from '@/components/new/FooterRedirect';
 import IntroWorkPage from '@/components/new/IntroWorkPage';
 import ProjectText from '@/components/new/ProjectText';
 import { project1_page,project4_page } from '@/constants/page_props';
-
+import { memo } from 'react';
 function Project4(): JSX.Element {
    
    
@@ -17,4 +17,4 @@ function Project4(): JSX.Element {
         </div>
     )
 }
-export default  Project4
+export default  memo(Project4)

@@ -5,6 +5,7 @@ import ProjectText from '@/components/new/ProjectText';
 import GridImageSlider1 from '@/components/new/Some_Component_For_Post/GridImageSlider1';
 import LayoutCustom from '@/components/new/Some_Component_For_Post/LayoutCustom';
 import { project2_page,project3_page } from '@/constants/page_props';
+import { memo } from 'react';
 
 function Project2(): JSX.Element {
    
@@ -21,4 +22,4 @@ function Project2(): JSX.Element {
         </div>
     )
 }
-export default  Project2
+export default  memo(Project2)
