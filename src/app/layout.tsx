@@ -32,9 +32,7 @@ export default function RootLayout({
      {/*    <ControlsState/> */}
       <LoadingPage/>
    
-      <MainLayout>
-          {children}
-      </MainLayout>
+      <MainLayout />
       </main>
 
      
