@@ -53,12 +53,12 @@ export const useEffectActive_NavbarModal = (
         //     TargetListChild.push(TargetList[i].children[0]) 
         // }
         // TargetListChild = [...TargetListChild].reverse();
-        // timelineNavbarModal = gsap.timeline({
-        //     paused: true,
-        //     onComplete: () => {
-        //         gsap.set(SectionRef, { pointerEvents: 'auto' })
-        //     }
-        // });
+        timelineNavbarModal = gsap.timeline({
+            paused: true,
+            onComplete: () => {
+                gsap.set(SectionRef, { pointerEvents: 'auto' })
+            }
+        });
         timelineNavbarModal.set(SectionRef, { zIndex: 500, pointerEvents: 'none' })
             .set(MaskRef, { clipPath: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)' })
             .set(DomEffect, {
