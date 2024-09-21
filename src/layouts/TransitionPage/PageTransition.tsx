@@ -225,6 +225,7 @@ const PageTransition: React.FC<PageTransitionProps> = ({
             unmountOnExit={true}
 
             onEnter={(node: any) => {
+              
               // --^^ console.log(`%c STATE ==> onEnter`,"color:black;font-weight:bold;font-weight:bold")
               document.body.style.pointerEvents = 'none'
               document.body.style.userSelect = 'none'
