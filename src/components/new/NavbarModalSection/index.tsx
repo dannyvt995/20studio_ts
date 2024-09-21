@@ -141,7 +141,7 @@ function NavbarModalSection({ }) {
                         <div className={s.logo}>
                             20 STUDIO
                         </div>
-                        {isMobi ? <></> : <ViewImgHoverNavbarModal classAdd={s.images}/>}
+                       {/*  {isMobi ? <></> : <ViewImgHoverNavbarModal classAdd={s.images}/>} */}
                         <ul className={s.main} id='main_navbar' ref={listItemNavbarModal}>
                             <li className={s.main_link}>
                                 <ButtonHoverNew btnNavbar={true} data_id={0} targetRedirect='/home' classAdd={s.main_line}>
