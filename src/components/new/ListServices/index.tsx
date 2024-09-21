@@ -29,7 +29,7 @@ function ListServices() {
                     <div className={s.list}>
                         <div className={s.waperList}>
                             <div className={s.scope}>
-                                <h2>Design & Develop & Direct</h2>
+                                <h2>Design & <br/> Develop & Direct</h2>
                                 <ul>
                                     <li onMouseEnter={() => selectedItemService(0)}>
                                         <div>Fashion Design & Prototype Development</div>

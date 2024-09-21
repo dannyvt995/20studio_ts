@@ -40,13 +40,16 @@
 .waperList {
   width: 50%;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .gallery {
-  position: absolute;
-  right: 0;
-  top:0;
-  height: 100%;
-  width: 42%;
+  position: relative;
+  right: -8.3333333333vw;
+
+  width: 61%;
+  height: 120vh;
   overflow: hidden;
 }
 .gallery li {
@@ -64,8 +67,8 @@
 }
 .scope h2{
     font-family: "BD-Medium";
-    padding:2rem 0 1rem 0;
-    font-size: 2.7vw;
+    padding: 4vw 0 1vw 0;
+    font-size: 3.6vw;
 }
 .scope li {
     position: relative;

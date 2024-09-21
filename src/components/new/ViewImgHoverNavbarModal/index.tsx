@@ -14,7 +14,7 @@ const ViewImgHoverNavbarModal = ({classAdd}:{classAdd:string}) => {
     if(container.current) listEl.current = Array.from(container.current?.childNodes)
   },[container.current])
   useGSAP(() => {
-    if(indexItemNavbar >= 0 && listEl.current.length === 5) {
+    if(indexItemNavbar >= 0 &&  listEl.current && listEl.current.length === 5) {
         indexCount.current++
    
         gsap.timeline({

@@ -15,7 +15,7 @@ const ViewImgHoverListService = ({classAdd}:{classAdd:string}) => {
   },[container.current])
   useGSAP(() => {
     
-    if(indexItemService >= 0 && listEl.current.length === 9) {
+    if(indexItemService >= 0 &&  listEl.current && listEl.current.length === 9) {
         indexCount.current++
    
         gsap.timeline({
@@ -38,31 +38,31 @@ const ViewImgHoverListService = ({classAdd}:{classAdd:string}) => {
   return (
     <ul className={classAdd} ref={container}>
       <li>
-        <Image src="/home/banner.png" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto'}} alt="logo narbar modal" />
+        <Image src="/home/banner.png" width={0} height={0} sizes="100vw" style={{ width: 'auto', height: '100%'}} alt="logo narbar modal" />
       </li>
       <li>
-        <Image src="/work1/2.png" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto'}} alt="logo narbar modal" />
+        <Image src="/work1/2.png" width={0} height={0} sizes="100vw" style={{ width: 'auto', height: '100%'}} alt="logo narbar modal" />
       </li>
       <li>
-        <Image src="/about/us2.png" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto'}} alt="logo narbar modal" />
+        <Image src="/about/us2.png" width={0} height={0} sizes="100vw" style={{ width: 'auto', height: '100%'}} alt="logo narbar modal" />
       </li>
       <li>
-        <Image src="/work3/2.png" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto'}} alt="logo narbar modal" />
+        <Image src="/work3/2.png" width={0} height={0} sizes="100vw" style={{ width: 'auto', height: '100%'}} alt="logo narbar modal" />
       </li>
       <li>
-        <Image src="/clone/services4.webp" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto'}} alt="logo narbar modal" />
+        <Image src="/clone/services4.webp" width={0} height={0} sizes="100vw" style={{ width: 'auto', height: '100%'}} alt="logo narbar modal" />
       </li>
       <li>
-        <Image src="/work2/3.png" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto'}} alt="logo narbar modal" />
+        <Image src="/work2/3.png" width={0} height={0} sizes="100vw" style={{ width: 'auto', height: '100%'}} alt="logo narbar modal" />
       </li>
       <li>
-        <Image src="/work3/5.png" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto'}} alt="logo narbar modal" />
+        <Image src="/work3/5.png" width={0} height={0} sizes="100vw" style={{ width: 'auto', height: '100%'}} alt="logo narbar modal" />
       </li>
       <li>
-        <Image src="/work3/4.png" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto'}} alt="logo narbar modal" />
+        <Image src="/work3/4.png" width={0} height={0} sizes="100vw" style={{ width: 'auto', height: '100%'}} alt="logo narbar modal" />
       </li>
       <li>
-        <Image src="/about/banner.webp" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto'}} alt="logo narbar modal" />
+        <Image src="/about/banner.webp" width={0} height={0} sizes="100vw" style={{ width: 'auto', height: '100%'}} alt="logo narbar modal" />
       </li>
     </ul>
   )
