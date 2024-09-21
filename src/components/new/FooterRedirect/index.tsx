@@ -7,6 +7,7 @@ import { useGSAP } from '@gsap/react'
 
 import { useRouter } from 'next/navigation'
 import useStoreTimeline from '@/hooks/useStoreTimeline';
+import { isMobile } from '@/utils/responsive'
 export default function FooterRedirect({content,scroller,targetRedirect,currentId}:{content:any,scroller:string,targetRedirect:string,currentId:number}) {
     const container = useRef<any>(null)
     const cirRefIc = useRef<any>(null)
@@ -17,12 +18,8 @@ export default function FooterRedirect({content,scroller,targetRedirect,currentI
         timeline.current =   gsap.timeline({
             onComplete:() => {
               setTimeout(() => {
-       
-              
                   router.push(`/work/work${targetRedirect}`)
-                  if(timelineStore['navbarDesListOn']){
-                    timelineStore['navbarDesListOn'].restart().play(0)
-                  }
+                  timelineStore['navbarDesListOn']?.restart().play(0)
               },720)
             },
             paused:true,
@@ -39,13 +36,16 @@ export default function FooterRedirect({content,scroller,targetRedirect,currentI
             clipPath: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)',
         },'<')
     },[timelineStore['navbarDesListOn'],targetRedirect,currentId])
+
+
+
     useGSAP(() => {
         gsap.timeline({
             scrollTrigger:{
                 scroller:scroller,
                 trigger:container.current,
                 onEnter:() => {
-                    if(timelineStore['navbarDesListOff']) timelineStore['navbarDesListOff'].play(timelineStore['navbarDesListOff'].totalDuration())
+                    timelineStore['navbarDesListOff']?.play(timelineStore['navbarDesListOff']?.totalDuration())
                 },
                 onUpdate:(self) => {
                     
@@ -54,7 +54,7 @@ export default function FooterRedirect({content,scroller,targetRedirect,currentI
                     if(self.progress > 0.90) {
                         
                       document.body.style.pointerEvents = 'none'
-                   
+                      
                         window.lenis?.scrollTo(`.${s.footer_redirect}`,{duration:1,lerp:0.072,onComplete:() => {
                             if(timeline.current) {
                               
@@ -62,13 +62,14 @@ export default function FooterRedirect({content,scroller,targetRedirect,currentI
                             
                             }
                         }})
-                        
-                     
-                    }
+                     }
+                     //else{
+                    //     document.body.style.pointerEvents = 'none'
+                    //     if(timeline.current) timeline.current.play()
+                    // }
                 },
                 start:"top 120% ",
                 end:"top top",
-                //markers:true,
                 scrub:true,
             }
         }).to(`.${s.info}`,{
@@ -76,15 +77,17 @@ export default function FooterRedirect({content,scroller,targetRedirect,currentI
             y :window.innerHeight * .5
             
         }).fromTo(`.${s.background}`,{
-          
+            '-webkit-filter': 'brightness(5%)',
+            filter: 'brightness(5%)',
             y : - window.innerHeight * .65
             
         },{
-          
+            '-webkit-filter': 'brightness(100%)',
+            filter: 'brightness(100%)',
             y : 0
             
         },"<")
-    },{dependencies:[timelineStore['navbarDesListOff']]})
+    })
   return (
     <>
     <section className={s.footer_redirect} ref={container} >

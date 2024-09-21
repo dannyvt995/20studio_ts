@@ -55,6 +55,9 @@
    
     overflow: hidden;
     will-change: transform;
+
+    -webkit-filter: brightness(5%);
+    filter: brightness(5%);
 }
 .background img {
     transform: scale(1.2);

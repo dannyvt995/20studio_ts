@@ -1,24 +1,5 @@
-@media (max-width:700px) {
-  
-}
-#lenis_space {
-
-    width: 100%;
-    z-index: 99999;
-    position: relative;
-}
 
 
-#page1 {
-
-
-
-    z-index: 0;
-}
-
-/* #home,#page1,#page2,#page3,#page4{
-    clip-path: polygon(0% 0%, 100% 0%, 100% 123%, 0% 100%),
-} */
 #homescroll,
 #page1scroll,
 #page2scroll,
@@ -46,12 +27,20 @@
 #work3page,
 #work4page,
 #sustainabilitypage {
+    
+    -webkit-filter: brightness(100%);
+    filter: brightness(100%);
     height: 100vh;
     height: --webkit-fill-available;
     /* overflow-y: scroll !important; */
     overflow: hidden !important;
 }
 
+
+body::-webkit-scrollbar {
+    height: 0;
+    width: 0
+}
 
 @media (max-width: 601px) {
     #aboutpage, #contactpage, #homepage,#servicepage, #workpage,#work1page,
@@ -261,8 +250,6 @@ main {
     overflow: hidden;
     will-change: tranform;
 
-    -webkit-filter: 'brightness(100%)';
-    filter: 'brightness(100%)';
 }
 
 #work1page>.part1,
