@@ -10,10 +10,8 @@ import useStoreZustand from '@/hooks/useStoreZustand';
 
 
 function ListServices() {
-   const {indexItemService,selectedItemService} = useStoreZustand()
-   useEffect(() => {
-    console.log(indexItemService)
-   },[indexItemService])
+   const {selectedItemService} = useStoreZustand()
+ 
     return (
 
         <>
@@ -335,8 +333,8 @@ function ListServices() {
                             </div>
                         </div>
                     
-                        <ViewImgHoverListService classAdd={s.gallery}/>
-                 
+                   {/*      <ViewImgHoverListService classAdd={s.gallery}/>
+                  */}
                     </div>
 
                 </div>

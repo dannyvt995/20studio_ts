@@ -26,7 +26,7 @@ function NavbarModalSection({ }) {
     const buttonMenuRef = useRef<HTMLButtonElement>(null)
    
 
-    const [isMobi,setIsMobi] = useState(false)
+   
     const listItemNavbarModal = useRef<HTMLUListElement>(null)
     const navbarModalImages = useRef<Element[]>([])
     const DomEffect = useRef<HTMLDivElement>(null)
@@ -39,12 +39,9 @@ function NavbarModalSection({ }) {
     const setTimeline = useStoreTimeline((state) => state.setTimeline);
     const {stateTransition,stateEnterPage,stateUrl} = useStoreZustand()
 
-    useEffect(() => {
-        if(isMobile()) setIsMobi(true);
-        
-    }, []);
+  
 
-    
+    console.log('render')
 
     useEffectActive_NavbarModal({
         btnMenu: buttonMenuRef.current,

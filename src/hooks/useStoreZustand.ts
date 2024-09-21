@@ -13,7 +13,7 @@ interface IStoreZustand {
 
   //button navbar state
   stateMenuIsOpen: boolean;
-  setStateMenuIsOpen: () => void;
+  setStateMenuIsOpen: (key:boolean) => void;
 
   //loadingPage
   stateEnterPage: boolean;
@@ -69,8 +69,8 @@ selectedItemService: (index: number) => {
 
   //button navbar state
   stateMenuIsOpen: false,
-  setStateMenuIsOpen: () => {
-    set((state) => ({ stateMenuIsOpen: !state.stateMenuIsOpen }));
+  setStateMenuIsOpen: (key:boolean) => {
+    set((state) => ({ stateMenuIsOpen: key }));
   },
 
   //loadingPage

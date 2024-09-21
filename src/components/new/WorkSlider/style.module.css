@@ -37,13 +37,10 @@
     /* for slider */
     width:25%;
 }
-.work_page .title span{
+.work_page .title >div> span{
     font-family: "BD-Medium";
     font-size: 3.3345654vw;
-  
-    letter-spacing: -.2666666667vw;
     letter-spacing: var(--font-ls-h2);
-    line-height: 9.0666666667vw;
     line-height: var(--font-lh-h2);
 }
 .work_page .indicator {
@@ -152,8 +149,13 @@
     .work_page .heading {
         width:50% !important;
         left: 8vw!important;
-    top: 50vh!important;
+    top: 52vh!important;
     transform: translateY(-50%)!important;
+    }
+    .work_page .title >div> span{
+        font-size: 2rem !important;
+        
+        line-height: 120% !important;
     }
 }
 @media (min-width: 601px) {

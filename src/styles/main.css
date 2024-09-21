@@ -50,7 +50,16 @@
     /* overflow-y: scroll !important; */
     overflow: hidden !important;
 }
+
+
 @media (max-width: 601px) {
+    #aboutpage, #contactpage, #homepage,#servicepage, #workpage,#work1page,
+    #work2page,
+    #work3page,
+    #work4page,
+    #sustainabilitypage {
+        overflow: none !important;
+    }
    
 }
 #wrapper_this {

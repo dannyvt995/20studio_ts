@@ -59,7 +59,7 @@ const PageTransition: React.FC<PageTransitionProps> = ({
   const indexRef = useRef(100)
   const scopeRef = useRef(null)
   const getAllTimelines = useStoreTimeline((state) => state.getAllTimelines)
-  const { setStateTransition, stateEnterPage } = useStoreZustand()
+  const { setStateTransition, stateEnterPage ,stateMenuIsOpen,setStateMenuIsOpen} = useStoreZustand()
   const targetPath = useRef<string>('/none')
   const currentPath = useRef<string>('/none')
   const targetPathFormat = useRef<string>('/none')
@@ -91,29 +91,29 @@ const PageTransition: React.FC<PageTransitionProps> = ({
   });
 
   useEffect(() => {
-    const { currentPathFormatted } = formatUrlForIconNavbar({ cur: currentPath.current, tar: targetPath.current });
-    if (currentPathFormatted === '/none') return
+    if(isMobile()) return
+    if(targetPath.current !== '/none') return
     const timelines = getAllTimelines();
-
-    const currentTimeline = currentPathFormatted ? timelines[currentPathFormatted] : null;
+    const currentTimeline = timelines[pathName] 
     if (currentTimeline) {
       console.log("1")
-    
       currentTimeline.play()
     }
-  }, [currentPath.current])
+  }, [pathName])
 
 
   useEffect(() => {
+    if(isMobile()) return
     const { currentPathFormatted, targetPathFormatted } = formatUrlForIconNavbar({ cur: currentPath.current, tar: targetPath.current });
     if (currentPathFormatted === '/none' || targetPathFormatted === '/none') return
+
     if (currentPathFormatted !== targetPathFormatted) {
       const timelines = getAllTimelines()
       console.log("2")
   //    setStateUrl({isTarget:targetPath.current,isCurrent:currentPath.current})
       resetIconNavbarModal({ cur: currentPathFormatted, tar: targetPathFormatted ,listTimeline:timelines});
     }
-  }, [targetPath.current])
+  }, [pathName])
 
 
   
@@ -274,6 +274,7 @@ const PageTransition: React.FC<PageTransitionProps> = ({
               document.body.style.userSelect = 'auto'
               // nên set 1 state tại đây , là cần thiết
               setStateTransition('entered')
+              setStateMenuIsOpen(false)
               currentPath.current = pathName
               // tạm thời return index < 100 với các page type 2
               if (targetPath.current) {
@@ -284,6 +285,9 @@ const PageTransition: React.FC<PageTransitionProps> = ({
 
             }}
             onExit={(node: any) => {
+              console.log(stateMenuIsOpen)
+              if(stateMenuIsOpen) return
+              console.log("?????????????")
               // --^^ console.log(`%c STATE ==> onExit`,"color:black;font-weight:bold;font-weight:bold")
               if (targetPath.current) {
                 if (!listUrlProjects.includes(targetPath.current)) {

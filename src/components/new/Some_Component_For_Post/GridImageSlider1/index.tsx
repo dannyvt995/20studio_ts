@@ -5,6 +5,7 @@ import s from './style.module.css'; // hoặc nơi bạn đang import CSS module
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { isMobile } from '@/utils/responsive';
 
 gsap.registerPlugin(useGSAP,ScrollTrigger)
 function GridImageSlider({ propsForGsap, content }:{propsForGsap:any, content:any }) {
@@ -12,8 +13,18 @@ function GridImageSlider({ propsForGsap, content }:{propsForGsap:any, content:an
     const domEffectTop = useRef(null);
     const domEffectBot = useRef(null);
 
-      
+    const config = [
+        {
+            top: [100,-200],
+            bot: [-200,0]
+        },
+        {
+            top: [50,-100],
+            bot: [-100,0]
+        }
+    ]
     useGSAP(() => {
+
         gsap.timeline({
             scrollTrigger: {
                 scroller: propsForGsap.scrollerRef,
@@ -22,10 +33,10 @@ function GridImageSlider({ propsForGsap, content }:{propsForGsap:any, content:an
                 end: "bottom top",
                 scrub: true
             }
-        }) .set(domEffectTop.current, { x: 100 })
-            .set(domEffectBot.current, { x: -200 })
+        }) .set(domEffectTop.current, { x: isMobile() ? 200 :  100 })
+            .set(domEffectBot.current, { x: isMobile() ? -200 : -100  })
             .to(domEffectTop.current, {
-                x: -200
+                x: isMobile() ? -200 : -100 
             }).to(domEffectBot.current, {
                 x:0
             }, "<")

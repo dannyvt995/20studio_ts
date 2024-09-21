@@ -95,7 +95,30 @@
 
 
 
-
+@media (max-width:601px) {
+  .container  {
+    padding-top: 10vh !important;
+    display : flex !important;
+    flex-direction: column;
+  }
+  .list {
+    display : flex !important;
+    flex-direction: column;
+  }
+  .waperList {
+    width: 100% !important;
+  }
+  .scope h2 {
+    font-size: 2.2rem !important;
+    padding: 4.2rem 0 0.7rem 0 !important;
+  }
+  .scope li > div {
+    font-size: 1.2rem !important;
+    line-height: 100% !important;
+    padding: .5rem 0 !important;
+  }
+ 
+}
 
 
 

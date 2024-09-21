@@ -28,7 +28,7 @@ function NavbarSectionDeskop() {
 
     const mainNavbar = useRef<any>(null)
     const pathName = usePathname()
-    const { stateEnterPage, setStateCursor } = useStoreZustand()
+    const { stateEnterPage, setStateCursor , setStateMenuIsOpen} = useStoreZustand()
 
     const unit = useRef<number>(0)
     const target = useRef<number>(0)
@@ -48,7 +48,7 @@ function NavbarSectionDeskop() {
     }, [])
 
     useEffect(() => {
-        if(isMobi) return
+        if(isMobile()) return
         switch (pathName) {
             case '/home':
             case '/home':
@@ -79,10 +79,10 @@ function NavbarSectionDeskop() {
             default:
                 target.current = unit.current;
         }
-    }, [pathName,isMobi])
+    }, [pathName])
 
     useEffect(() => {
-        if (navbarDeskopRef.current && buttonMenuRef.current && !isMobi) {
+        if (navbarDeskopRef.current && buttonMenuRef.current && !isMobile()) {
             navbarDeskopRef.current.style.opacity = `1`;
             buttonMenuRef.current.style.opacity = `0`;
             navbarDeskopRef.current.style.visibility = `visible`;
@@ -124,7 +124,7 @@ function NavbarSectionDeskop() {
                     duration: .5
                 }, "<").reverse()
 
-            if (!isMobi) {
+            if (!isMobile()) {
                 timelineNavbarItemOn.current = gsap.timeline({
                     defaults: { delay: .5 },
                     paused: true
@@ -169,7 +169,7 @@ function NavbarSectionDeskop() {
 
             timeoutId = setTimeout(() => {
 
-                if (!isMobi) {
+                if (!isMobile()) {
                     timelineNavbarItemOn.current?.play()
                     timelineIconBehindItemNav.current?.play()
                 }
@@ -186,23 +186,25 @@ function NavbarSectionDeskop() {
 
 
     useGSAP(() => {
-        if(isMobi) return
+        if(isMobile()) return
         gsap.to(`.${s.this_icon}`, {
             x: target.current,
             rotate: (target.current / unit.current) * 90,
             ease: "power3.out",
             duration: 1,
         })
-    }, { dependencies: [pathName, target.current,isMobi] })
+    }, { dependencies: [pathName, target.current] })
 
 
 
     const handleClickMenu = contextSafe(() => {
+        
         isMenuOpen.current = !isMenuOpen.current
+      
         mainNavbar.current.style.pointerEvents = 'auto'
         timelineStore['navbarModal']?.reversed(!timelineStore['navbarModal'].reversed());
         timelineStore['buttonNavbar']?.reversed(!timelineStore['buttonNavbar'].reversed());
-        if(isMobi) return
+        if(isMobile()) return
         if (isMenuOpen.current === true) {
             setStateCursor({ isLock: true })
            

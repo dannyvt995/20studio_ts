@@ -18,8 +18,7 @@ function IntroWorkPage({ content}: IIntroWorkPage) {
     const triggleSection = useRef<HTMLUListElement>(null)
     const {stateTransition} = useStoreZustand()
     useGSAP(() => {
-
-         if (!isMobile()) gsap.to(`.${s.iii}`, { delay: .2, y: 0, duration: 1, ease: "power3.out" });
+          gsap.to(`.${s.iii}`, { delay: 1.5, y: 0, duration: 1, ease: "power3.out" });
     }, { scope: triggleSection })
 
     useGSAP(() => {

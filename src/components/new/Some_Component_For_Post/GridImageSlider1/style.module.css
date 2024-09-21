@@ -67,9 +67,20 @@
 }
 
 
-
-
-
+@media (max-width: 601px) {
+    .row:first-child {
+        margin-bottom: .5rem !important;
+    }
+     .row .media {
+        margin-right: .5rem !important;
+    }
+    .nameProject {
+        font-size: 1.3rem !important;
+    }
+    .infoProject {
+        font-size: .8rem !important;
+    }
+}
 
 
 
@@ -78,10 +89,10 @@
 
 @media (min-width: 601px) {
      .row:first-child {
-        margin-bottom: 2.0833333333vw;
+        margin-bottom: 2.42vw;
     }
      .row .media {
-        margin-right: 2.1527777778vw;
+        margin-right: 2.42vw;
     }
      .row:nth-child(1) .media:first-child{
         width: 45.3055555556vw;

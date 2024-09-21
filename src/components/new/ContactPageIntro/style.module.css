@@ -66,10 +66,33 @@
         margin: auto;
     }
     .title {
-        top:50%;
+        top:35%;
     }
     .carousel {
         height: auto !important;
+    }
+    .left,.right {
+      
+        margin: 0 8.3333333333vw !important;
+    }
+    .body {
+        margin: 2rem 0 !important;
+        font-size: 2rem !important;
+        line-height: 100% !important;
+    }
+    .contact_item {
+        margin-bottom:.5rem !important;
+     
+    }
+    .right {
+        margin-top: 1rem !important;
+    }
+    .carousel__image {font-size: 3rem !important;}
+    .right  > div {
+        padding-top: 1rem !important;
+    }
+    .right  > div  > a{
+        margin:0 auto;
     }
 }
 @media (min-width: 601px) {

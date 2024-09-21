@@ -21,12 +21,13 @@
     font-family: "BD-Medium";
     font-size: 3vw;
     max-width: 20vw;
-
+    
 }
 .info p {
     max-width: 20vw;
     font-family: "BS-Medium";
     margin-bottom:1rem;
+    
 }
 .image {
     position: absolute;
