@@ -25,7 +25,7 @@ import { usePathname } from 'next/navigation';
 import * as AllModules from '@Modules/AllModules';
 
 import { removeSplash } from '@Utils/removeSplash'
-import { isMobile } from '@Utils/responsive';
+
 import useStoreZustand from '@Hooks/useStoreZustand';
 import { useInitLenis } from '@Hooks/lenis/useInitLenis';
 import { propsGsapTransitionPage } from "@Constants/gsap_props"
@@ -33,6 +33,10 @@ import { gsap } from "gsap"
 import { useGSAP } from '@gsap/react';
 import useStoreTimeline from '@/hooks/useStoreTimeline';
 import {formatUrlForIconNavbar,resetIconNavbarModal} from '@Utils/utils_url'
+
+
+import Cursor from '@/components/new/Cursor';
+import { isMobile } from '@/utils/responsive';
 
 gsap.registerPlugin(useGSAP)
 
@@ -66,6 +70,13 @@ const PageTransition: React.FC<PageTransitionProps> = ({
   const { contextSafe } = useGSAP({ scope: scopeRef })
 
   // --^^ console.log("##############   PageTransition render")
+
+
+  const [isMobi,setIsMobi] = useState(false)
+  useEffect(() => {
+    if(isMobile()) setIsMobi(true)
+  },[])
+
 
   useEffect(() => {
     if (stateEnterPage) {
@@ -217,6 +228,7 @@ const PageTransition: React.FC<PageTransitionProps> = ({
   return (
     <div ref={scopeRef}>
       {children}
+      {isMobi ? <></> : <Cursor/>}
       <PageTransitionGroup>
         <TransitionGroup component={null}>
           <Transition
