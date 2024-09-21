@@ -58,7 +58,7 @@
     #work3page,
     #work4page,
     #sustainabilitypage {
-        overflow: none !important;
+        overflow: scroll !important;
     }
    
 }

@@ -155,13 +155,12 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children, wrapper, btnN
       
         const elW = document.getElementById("main_navbar")
         if (elW) elW.style.pointerEvents = 'none'
-
+        setStateMenuIsOpen(true)
+        router.push(targetRedirect || '#')
         if (timelineRef.current) {
             timelineRef.current.play();
         }
-        setStateMenuIsOpen(true)
-        router.push(targetRedirect || '#')
-        console.log(timelineStore)
+   
         timelineStore['navbarModal']?.reversed(!timelineStore['navbarModal'].reversed());
         timelineStore['buttonNavbar']?.reversed(! timelineStore['buttonNavbar'].reversed());
         timelineStore['navbarDesListOn']?.restart().play(0)
