@@ -139,7 +139,10 @@
         padding-top: 50vh !important;
     }
      .IntroWorkPage {
-        height:110vh !important;
+    
+        height: fit-content!important;
+        padding-bottom: 5rem!important;
+    
     }
      .background > img{
         width: auto !important;

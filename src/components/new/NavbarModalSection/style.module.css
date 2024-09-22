@@ -168,7 +168,7 @@
         grid-column: 4 / 11;
     }
      .main {
-        grid-column: 8 / 11;
+        grid-column: 8 / 12;
         height: fit-content;
         margin: auto 0;
     }

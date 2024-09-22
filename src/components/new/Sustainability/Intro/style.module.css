@@ -1,4 +1,4 @@
-.letcontact_section{
+.intro_sustain{
     overflow: hidden;
     background-color: white;
 }
@@ -104,14 +104,12 @@
     margin: 10.9333333333vw 0 6.1333333333vw;
 }
 .title {
-    font-family: "BD-Regular";
-    font-family: var(--font-f-lausanne-300);
-    font-size: 16vw;
-    font-size: var(--font-s-h1);
+    font-family: "BD-Bold";
+    font-family: var(--font-f-lausanne-500);
+    font-size: 10vw;
     letter-spacing: -.4vw;
     letter-spacing: var(--font-ls-h1);
-    line-height: 16vw;
-    line-height: var(--font-lh-h1);
+    line-height: 10vw;
     margin: 10.9333333333vw 0 6.1333333333vw;
 }
 .wrap{
@@ -193,6 +191,9 @@
 }
 
 @media (max-width: 601px) {
+    .intro_sustain {
+        padding-top:12vh;
+    }
     .text {
         padding: 10vw 0 !important;
     }

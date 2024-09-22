@@ -133,7 +133,7 @@ export const sustainability_page = {
     },
     content: {
         advantage: {
-            disableIndex: true,
+            disableIndex: false,
             tag: "Our solution for sustainability",
             more: "To be sustainable, we are committed to offering eco-friendly solutions that align with your budget and your values, in creative ways than spending money.",
             items: [
@@ -144,7 +144,7 @@ export const sustainability_page = {
             ]
 
         },
-        introSustain: {
+        intro: {
             disableImg: true,
             disableTit: false,
             disableBtn: true,
@@ -171,6 +171,7 @@ export const project1_page = {
     content: {
         
         introWorkPage: {
+            mission:["Sample management"],
             scrollerRef: "#work1page",
             img: [
                 "/clone/services1.webp",
@@ -220,6 +221,7 @@ export const project2_page = {
     },
     content: {
         introWorkPage: {
+            mission:["Sample management"],
             scrollerRef: "#work2page",
             img: [
                 "/clone/services2.webp",
@@ -268,6 +270,7 @@ export const project3_page = {
     },
     content: {
         introWorkPage: {
+            mission:["Production management"],
             scrollerRef: "#work3page",
             img: [
                 "/clone/services3.webp",
@@ -315,6 +318,7 @@ export const project4_page = {
     },
     content: {
         introWorkPage: {
+            mission:["Web Development"],
             scrollerRef: "#work4page",
             img: [
                 "/clone/services4.webp",

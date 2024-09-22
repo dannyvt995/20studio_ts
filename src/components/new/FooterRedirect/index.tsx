@@ -51,18 +51,18 @@ export default function FooterRedirect({content,scroller,targetRedirect,currentI
                     
                     cirRefIc.current.style.strokeDasharray = `${self.progress * 120}px, ${110-100*self.progress}px`
                     
-                    if(self.progress > 0.90) {
+                    // if(self.progress > 0.90) {
                         
-                      document.body.style.pointerEvents = 'none'
+                    //   document.body.style.pointerEvents = 'none'
                       
-                        window.lenis?.scrollTo(`.${s.footer_redirect}`,{duration:1,lerp:0.072,onComplete:() => {
-                            if(timeline.current) {
+                    //     window.lenis?.scrollTo(`.${s.footer_redirect}`,{duration:1,lerp:0.072,onComplete:() => {
+                    //         if(timeline.current) {
                               
-                                timeline.current.play()
+                    //             timeline.current.play()
                             
-                            }
-                        }})
-                     }
+                    //         }
+                    //     }})
+                    //  }
                      //else{
                     //     document.body.style.pointerEvents = 'none'
                     //     if(timeline.current) timeline.current.play()
@@ -94,7 +94,7 @@ export default function FooterRedirect({content,scroller,targetRedirect,currentI
         <div className={s.wrapper}>
             <div className={s.info} id={`info_fr_${currentId}`}>
                 <h3>{content.introWorkPage.name[0]}<br></br>{content.introWorkPage.name[1]}</h3>
-                <p>Custom 20 studio hello {targetRedirect}</p>
+                <p>{content.introWorkPage.mission[0]}</p>
                 <div className={s.ic}>
                 <svg data-v-41220c7b="" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" className={s.icon}>
                 <circle data-v-41220c7b="" cx="20" cy="20" r="18" strokeWidth="1.5" stroke="currentColor" strokeOpacity="0.5"></circle>

@@ -41,6 +41,11 @@ function NavbarModalSection({ }) {
 
   
 
+    const [isMobi,setIsMobi] = useState(false)
+    useEffect(() => {
+      if(isMobile()) setIsMobi(true)
+    },[])
+  
     console.log('render')
 
     useEffectActive_NavbarModal({
@@ -126,6 +131,9 @@ function NavbarModalSection({ }) {
     //         }
     // }, [pathName,stateUrl,SectionRef.current,MaskRef.current,DomEffect.current,DomContentRef.current,stateEnterPage,stateTransition])
 
+
+
+
     return (
    
 
@@ -138,34 +146,38 @@ function NavbarModalSection({ }) {
                         <div className={s.logo}>
                             20 STUDIO
                         </div>
-                       {/*  {isMobi ? <></> : <ViewImgHoverNavbarModal classAdd={s.images}/>} */}
+                        {isMobi ? <></> : <ViewImgHoverNavbarModal classAdd={s.images}/>}
                         <ul className={s.main} id='main_navbar' ref={listItemNavbarModal}>
                             <li className={s.main_link}>
                                 <ButtonHoverNew btnNavbar={true} data_id={0} targetRedirect='/home' classAdd={s.main_line}>
                                     Home
                                 </ButtonHoverNew>
-
                             </li>
                             <li className={s.main_link}>
-                                <ButtonHoverNew btnNavbar={true} data_id={1} targetRedirect='/work' classAdd={s.main_line}>
+                                <ButtonHoverNew btnNavbar={true} data_id={1} targetRedirect='/sustainability' classAdd={s.main_line}>
+                                    Sustainability
+                                </ButtonHoverNew>
+                            </li>
+                            <li className={s.main_link}>
+                                <ButtonHoverNew btnNavbar={true} data_id={2} targetRedirect='/work' classAdd={s.main_line}>
                                     Project
                                 </ButtonHoverNew>
 
                             </li>
                             <li className={s.main_link}>
-                                <ButtonHoverNew btnNavbar={true} data_id={2} targetRedirect='/about' classAdd={s.main_line}>
+                                <ButtonHoverNew btnNavbar={true} data_id={3} targetRedirect='/about' classAdd={s.main_line}>
                                     About us
                                 </ButtonHoverNew>
 
                             </li>
                             <li className={s.main_link}>
-                                <ButtonHoverNew btnNavbar={true} data_id={3} targetRedirect='/service' classAdd={s.main_line}>
+                                <ButtonHoverNew btnNavbar={true} data_id={4} targetRedirect='/service' classAdd={s.main_line}>
                                     Service
                                 </ButtonHoverNew>
 
                             </li>
                             <li className={s.main_link}>
-                                <ButtonHoverNew btnNavbar={true} data_id={4} targetRedirect='/contact' classAdd={s.main_line}>
+                                <ButtonHoverNew btnNavbar={true} data_id={5} targetRedirect='/contact' classAdd={s.main_line}>
                                     Contact
                                 </ButtonHoverNew>
 

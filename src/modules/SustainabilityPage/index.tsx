@@ -5,17 +5,18 @@ import './style.module.css'
 import FooterSection from '@/components/new/FooterSection'
 import Advantage from "@Components/new/Aboutus/Advantage";
 import LetContact from '@/components/new/LetContact';
-import LetContactSustain from '@/components/new/LetContactSustain'
+import More from '@/components/new/Sustainability/More'
 import WrapperTrackMouse from '@/components/new/WrapperTrackMouse'
+import Intro from '@/components/new/Sustainability/Intro'
 function SustainabilityPage():JSX.Element {
 
     return (
         <div id="sustainabilitypage">
-         
-         <LetContact content={sustainability_page.content.introSustain}  propsForGsap={sustainability_page.propsForGsap}/>
+      
+         <Intro content={sustainability_page.content.intro}  propsForGsap={sustainability_page.propsForGsap}/>
            <Advantage content={sustainability_page.content.advantage}/>
           {/*  <LetContact content={sustainability_page.content.letContact}/> */}
-          <LetContactSustain/>
+          <More/>
           <WrapperTrackMouse>
           <FooterSection  propsForGsap={sustainability_page.propsForGsap}/>
           </WrapperTrackMouse>

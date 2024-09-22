@@ -138,12 +138,13 @@
     width: 100% !important;
   }
   .scope h2 {
+    font-weight: bold;
     font-size: 2.2rem !important;
     padding: 4.2rem 0 0.7rem 0 !important;
   }
   .scope li > div {
     font-size: 1.2rem !important;
-    line-height: 100% !important;
+    line-height: 120% !important;
     padding: .5rem 0 !important;
   }
   .carousel {
@@ -222,12 +223,4 @@
         counter-reset: slideNo;
       }
   
-    /*   .carousel__slide::before {
-        counter-increment: slideNo;
-        content: counter(slideNo);
-        position: absolute;
-        top: 0%;
-        left: 50%;
-        font-size: 2rem;
-        color: lime;
-      } */
+  

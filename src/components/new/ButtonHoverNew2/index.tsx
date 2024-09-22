@@ -10,6 +10,7 @@ import useStoreZustand from '@/hooks/useStoreZustand';
 import { isMobile } from '@/utils/responsive';
 import WrapperTrackMouse from '../WrapperTrackMouse';
 import useStoreTimeline from '@/hooks/useStoreTimeline';
+import { useRouter } from 'next/navigation';
 
 gsap.registerPlugin(useGSAP)
 interface ButtonHoverNew2Props {
@@ -24,7 +25,7 @@ const ButtonHoverNew2: React.FC<ButtonHoverNew2Props> = ({ children,icon,targetR
   const { contextSafe } = useGSAP({ scope: linkRef }); 
   const {stateTransition} = useStoreZustand()
   const timelineStore = useStoreTimeline((state) => state.timelines);
-
+  const router = useRouter()
 
   useEffect(() => {
      

@@ -1,47 +1,9 @@
-.letcontactsustain_section{
+.more{
     overflow: hidden;
     background-color: white;
 }
-.media_wrapper {
-    height: 89.3333333333vw;
-    margin: 0 0 21.3333333333vw;
-    position: relative;
-    transform: translateZ(0);
-}
-.media{
-    position: absolute;
-    overflow:hidden;
-}
-.media:first-child {
-    height: 60.2666666667vw;
-    margin: auto;
-    position: relative;
-    width: 35.7333333333vw;
-}
-.media:nth-child(2) {
-    width: 19.7333333333vw;
-    left: 8vw;
-    top: 19.2vw;
-    height: 35.2vw;
-}
-.media:nth-child(3) {
-    height: 23.2vw;
-    left: 61.3333333333vw;
-    top: 5.3333333333vw;
-    width: 16.2666666667vw;
-}
-.media:nth-child(4) {
-    height: 24vw;
-    left: 8vw;
-    top: 53.3333333333vw;
-    width: 35.2vw;
-}
-.media:nth-child(5) {
-    height: 35.7333333333vw;
-    left: 56.2666666667vw;
-    top: 53.3333333333vw;
-    width: 35.2vw;
-}
+
+
  .text {
     margin: auto;
     text-align: center;
@@ -114,43 +76,18 @@
     .container {
         margin: 0 8.3333333333vw;
     }
-    .letcontactsustain_section{
+    .more{
         padding: 13.8888888889vw 0;
     }
-    .media_wrapper {
-        height: 66.25vw;
-        margin: 0;
-    }
-     .media:first-child {
-        height: 44.375vw;
-      
-        width: 25.9722222222vw;
-    }
-     .media:nth-child(2) {
-        width: 15.791667vw;
-        left: 16.097222vw;
-        top: -9.111111vw;
-        height: 26.3194444444vw;
-    }
-     .media:nth-child(3) {
-        height: 17.1527777778vw;
-        left: 50.263889vw;
-        top: 4.2361111111vw;
-        width: 22.083333vw;
-    }
-     .media:nth-child(4) {
-        height: 17.6388888889vw;
-        left: 9.0972222222vw;
-        top: 39.9305555556vw;
-        width: 26.3194444444vw;
-    }
-     .media:nth-child(5) {
-        height: 26.3194444444vw;
-        left: 50.583333vw;
-        top: 40.930556vw;
-        width: 18.319444vw;
-    }
+    
+
      .text {
         width: fit-content;
+    }
+}
+
+@media (max-width:601px) {
+    .text {
+        padding: 13.8888888889vw  0;
     }
 }

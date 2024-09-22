@@ -1,14 +1,14 @@
 "use client"
-import {useRef,useEffect} from 'react'
+import {useRef,memo,useCallback,useMemo} from 'react'
 import s from './style.module.css'
 import cn from 'classnames';
 import useStoreZustand from '@/hooks/useStoreZustand';
 
-export default function WrapperTrackMouse({children,classAdd,changeLabel}:{children:React.ReactNode,classAdd?:any,changeLabel?:string}) {
-  
+function WrapperTrackMouse({children,classAdd,changeLabel}:{children:React.ReactNode,classAdd?:any,changeLabel?:string}) {
+    console.log("runnn")
     const container = useRef<HTMLDivElement>(null)
-    const   {setStateCursor} = useStoreZustand()
-    const mouseEnter = () => {
+    const setStateCursor = useStoreZustand((state) => state.setStateCursor);
+    const mouseEnter = useCallback(() => {
   
         if(changeLabel) {
         
@@ -16,18 +16,22 @@ export default function WrapperTrackMouse({children,classAdd,changeLabel}:{child
         }else{
             setStateCursor({ isActive: true });
         }
-    }
-    const mouseLeave = () => {
+    },[])
+
+    const mouseLeave = useCallback(() => {
         if(changeLabel) {
             setStateCursor({ isActive: false,label:"Scroll" });
         }else{
             setStateCursor({ isActive: false });
         }
         
-    }
+    },[])
+
+    const classNamesMemo = useMemo(() => cn(s.wrapperTrackMouse, classAdd), [classAdd]);
+
     return (
     <div 
-        className={cn(s.wrapperTrackMouse,classAdd)} 
+        className={classNamesMemo} 
         ref={container}
         onMouseEnter={() => mouseEnter()}
         onMouseLeave={() => mouseLeave()}
@@ -36,3 +40,7 @@ export default function WrapperTrackMouse({children,classAdd,changeLabel}:{child
     </div>
   )
 }
+
+
+
+export default memo(WrapperTrackMouse)

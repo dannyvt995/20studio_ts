@@ -32,6 +32,8 @@
     will-change: transform;
   }
   @media (max-width:601px) {
-    
+    .iconBtnNavbar {
+      width: 5vw !important;
+    }
   }
 

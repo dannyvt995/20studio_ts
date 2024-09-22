@@ -90,21 +90,21 @@ const PageTransition: React.FC<PageTransitionProps> = ({
     firstLoad: firstLoadPage
   });
   const timelines = getAllTimelines();
-  useEffect(() => {
-    if(isMobile()) return
-    if(targetPath.current !== '/none' && timelines[pathName]) return
-    console.log("1")
+  // useEffect(() => {
+  //   if(isMobile()) return
+  //   if(targetPath.current !== '/none' && timelines[pathName]) return
+  //   console.log("1")
     
-    const currentTimeline = timelines[pathName] 
-    if (currentTimeline) {
+  //   const currentTimeline = timelines[pathName] 
+  //   if (currentTimeline) {
 
-      currentTimeline.play()
-    }
-  }, [pathName,timelines[pathName]])
+  //     currentTimeline.play()
+  //   }
+  // }, [pathName,timelines[pathName]])
 
 
   useEffect(() => {
-    if(isMobile()) return
+    //if(isMobile()) return
     const { currentPathFormatted, targetPathFormatted } = formatUrlForIconNavbar({ cur: currentPath.current, tar: targetPath.current });
     if (currentPathFormatted === '/none' || targetPathFormatted === '/none') return
 

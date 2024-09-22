@@ -12,7 +12,7 @@ import { isMobile } from '@/utils/responsive';
 import { usePathname } from 'next/navigation';
 import IconSVG from '@/components/Icon/IconSVG';
 import useStoreTimeline from '@/hooks/useStoreTimeline';
-
+import {formatUrlForIconNavbar} from '@Utils/utils_url'
 gsap.registerPlugin(useGSAP)
 interface ButtonHoverNewProps {
     children: React.ReactNode;
@@ -47,7 +47,7 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children, wrapper, btnN
     const targetPath = useRef<string>('/none')
     useEffect(() => {
 
- 
+        const {currentPathFormatted} = formatUrlForIconNavbar({cur:pathName,tar:'none'})
         timelineRef.current = gsap.timeline({ paused: true });
         timelineRef.current.fromTo(linkRef.current, {
             "--line-width": "0%",
@@ -83,6 +83,9 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children, wrapper, btnN
             timeline.name = targetRedirect;
             timeline.reverse()
             setOtherTimeline(timeline.name, timeline);
+
+
+            if(currentPathFormatted === targetRedirect) timeline.play()
         } 
         isActiveRef.current = (pathName === targetRedirect) || (pathName === '/' && targetRedirect === '/home');
         return () => {
@@ -107,7 +110,7 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children, wrapper, btnN
                 }
                
                 if (btnNavbar) {
-                    selectedItemNavbar(data_id as number);
+                   selectedItemNavbar(data_id as number);
                 }
             }
         });
@@ -143,8 +146,14 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children, wrapper, btnN
         }
       
     }, []);
+
+    useEffect(() => {
+        // Prefetch 
+        router.prefetch(targetRedirect as string)
+      }, [router])
+
     const handleRedirectFromNavbar = useCallback((event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-        event.preventDefault();
+       // event.preventDefault();
       
         if(pathName === targetRedirect) {
             console.log("Trung")
@@ -156,7 +165,7 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children, wrapper, btnN
         const elW = document.getElementById("main_navbar")
         if (elW) elW.style.pointerEvents = 'none'
         setStateMenuIsOpen(true)
-        router.push(targetRedirect || '#')
+       // router.push(targetRedirect || '#')
         if (timelineRef.current) {
             timelineRef.current.play();
         }
@@ -171,7 +180,8 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children, wrapper, btnN
         <Link
 
             onClick={btnNavbar ? handleRedirectFromNavbar : handleRedirect}
-            href={btnNavbar ? '#' : (targetRedirect || '#')}
+        //    href={btnNavbar ? '#' : (targetRedirect || '#')}
+            href={targetRedirect ? targetRedirect : '#'} 
             ref={linkRef}
             className={cn(s.btn_hover_underline, classAdd)}
             data-link={btnNavbar ? data_id : 'none'}

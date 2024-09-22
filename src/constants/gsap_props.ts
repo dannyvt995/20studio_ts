@@ -1,6 +1,6 @@
 "use client"
-const timeTransition = 1.234
-const easeTransition = "power3.inOut"
+export const timeTransitionPage = 1.234
+export const easeTransitionPage = "power3.inOut"
 export const delayFirstLoadAfterLoadingPage = 500
 export const propsGsapTransitionPage = {
     pathOpen: {
@@ -14,13 +14,13 @@ export const propsGsapTransitionPage = {
     },
     config: {
 
-        duration: timeTransition,
-        ease: easeTransition
+        duration: timeTransitionPage,
+        ease: easeTransitionPage
     },
     props_exitAnim: {
 
-        duration: timeTransition,
-        ease: easeTransition
+        duration: timeTransitionPage,
+        ease: easeTransitionPage
     },
     brightness100: {
         '-webkit-filter': 'brightness(100%)',
@@ -51,11 +51,11 @@ export const propsGsapTransitionPage = {
 export const propsGsapNavbar = {
     props_openNav: {
         duration: 1.123,
-        ease: "power3.inOut"
+        ease: easeTransitionPage
     },
     props_CloseNav: {
-        duration: 1.36,
-        ease: "power3.out"
+        duration: timeTransitionPage,
+        ease: easeTransitionPage
     },
     props_Filter_Light: {
         '-webkit-filter': 'brightness(100%)',
