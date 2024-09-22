@@ -17,14 +17,32 @@
     grid-row: 1;
 
     display: flex;
+
+    font-family: "BD-Medium";
+    color: #0d0e13;
+    color: var(--color-dark-grey);
+    display: inline-flex;
+    font-family: "BS-Medium";
+    font-size: 3.7333333333vw;
+    font-size: var(--font-s-label);
+    height: 7.7333333333vw;
+    justify-self: flex-start;
+    letter-spacing: 0;
+    letter-spacing: var(--font-ls-label);
+    line-height: 3.7333333333vw;
+    line-height: var(--font-lh-label);
+    line-height: 8.2666666667vw;
+    padding-left: 5.8666666667vw;
+    position: relative;
 }
 .tag span {
-    width: 20px;
-    margin-right:10px;
+  height: 3.2vw;
+  position: absolute;
+  transform: translate(-5.3333333333vw, 2.1333333333vw);
+  width: 3.2vw;
+  z-index: 1;
 }
-.tag h3 {
-    font-family: "BD-Medium";
-}
+
 .more {
     grid-column: 3/7;
     grid-row: 1;
@@ -38,7 +56,7 @@
     position: relative;
 }
 .waperList {
-  width: 50%;
+  width: 60%;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -48,8 +66,8 @@
   position: relative;
   right: -8.3333333333vw;
 
-  width: 61%;
-  height: 120vh;
+  width: 50%;
+  height: auto;
   overflow: hidden;
 }
 .gallery li {
@@ -77,18 +95,29 @@
     overflow: hidden;
   
 }
-.scope li:hover .carousel {
-    transform: translateY(-100%);
-    transition: transform 420ms ease;
-    will-change: transform; 
-}
+
+
+
+
+
+
+/* y solve woith padding text */
 .carousel {
-    transition: transform 1000ms ease-in-out;
-    will-change: transform; 
+ 
+  transition: transform 1000ms ease-in-out;
+  will-change: transform; 
 }
-.scope li  > div {
+.scope li:hover .carousel {
+  transform: translateY(calc(-100%));
+  transition: transform 420ms ease;
+  will-change: transform; 
+}
+.scope ul .hiddenText,.scope ul .carousel__image {
     font-family: "BS-Medium";
-    font-size:1.5vw;
+    font-size: 1.7333333333vw;
+    letter-spacing: .0266666667vw;
+    line-height: 1.6vw;
+    padding: 1vw 0;
 }
 
 
@@ -97,7 +126,7 @@
 
 @media (max-width:601px) {
   .container  {
-    padding-top: 10vh !important;
+    padding-top: 15vh !important;
     display : flex !important;
     flex-direction: column;
   }
@@ -117,7 +146,9 @@
     line-height: 100% !important;
     padding: .5rem 0 !important;
   }
- 
+  .carousel {
+    display: none !important;
+  }
 }
 
 
@@ -179,7 +210,6 @@
     
     height: fit-content;
     /*width: 100px;*/
-    font-size:1.5vw;
   }
   
   

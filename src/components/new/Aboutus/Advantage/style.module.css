@@ -6,13 +6,13 @@
     color: var(--color-light-grey);
   
     padding: 21.3333333333vw 0 ;
+
 }
 
  .label {
-    color: #0d0e13;
-    color: var(--color-dark-grey);
+   
     display: inline-flex;
-    font-family: "BD-Medium";
+    font-family: "BS-Medium";
     font-size: 3.7333333333vw;
     font-size: var(--font-s-label);
     height: 7.7333333333vw;
@@ -52,11 +52,14 @@
  .index {
   color: hsla(33, 14%, 88%, .8);
   color: var(--color-light-grey-08);
-  font-family: Lausanne-300;
+  font-family: "Lausanne-300";
   font-family: var(--font-f-lausanne-300);
-  font-size: 1.2vw;
-
-  line-height: 150%;
+  font-size: 3.7333333333vw;
+  font-size: var(--font-s-p);
+  letter-spacing: .0266666667vw;
+  letter-spacing: var(--font-ls-p);
+  line-height: 5.6vw;
+  line-height: var(--font-lh-p);
 }
  .subtitle {
     font-family: Lausanne-300;
@@ -89,20 +92,19 @@
   
 
   .item {
-    max-width:86% !important;
-    margin-left:2rem !important;
-    margin-bottom:4rem !important;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    margin-bottom: 18.6666666667vw;
 }
-.item  .index {
-  position: absolute;
-  top:50%;
-  transform: translateY(-50%);
-  left:-2rem !important;
-  font-size: 1.6rem !important;
-}
-.subtitle {
-  margin-bottom: .5rem !important;
-}
+ .index {
+    grid-column: 1 / 3;
+  }
+  .subtitle {
+    grid-column: 3 / 10;
+  }
+  .body {
+    grid-column: 3 / 10;
+  }
 }
 
 @media (min-width: 601px) {
@@ -138,6 +140,7 @@
       .index {
         left: -3.125vw;
         position: absolute;
+        top: 10.9722222222vw;
         
     }
       .items {

@@ -64,6 +64,8 @@ function LetContact({ propsForGsap, content }: ILetContact) {
 
         <div className={s.text}>
           <h2 className={s.lable}>
+            
+          <IconSVG src='/icon/star.svg' className={s.icon} />
             {content.tag}
           </h2>
           {content.disableTit ? <></> :

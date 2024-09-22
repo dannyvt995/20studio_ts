@@ -30,10 +30,10 @@ function ListServices() {
                                 <h2>Design & <br/> Develop & Direct</h2>
                                 <ul>
                                     <li onMouseEnter={() => selectedItemService(0)}>
-                                        <div>Fashion Design & Prototype Development</div>
+                                        <div className={s.hiddenText}>Fashion Design & Prototype Development</div>
                                         <div className={s.carousel}>
 
-                                            <div className={s.carousel__wrapper} style={{ "--slide-width": "38vw" } as React.CSSProperties}>
+                                            <div className={s.carousel__wrapper} style={{ "--slide-width": "42vw" } as React.CSSProperties}>
 
                                                 <div className={s.carousel__slide}>
                                                     <div className={s.carousel__image} >/ Fashion Design & Prototype Development</div>
@@ -65,7 +65,7 @@ function ListServices() {
                                     </li>
                                   
                                     <li onMouseEnter={() => selectedItemService(1)}>
-                                        <div>Costume Design</div>
+                                        <div className={s.hiddenText}>Costume Design</div>
                                         <div className={s.carousel}>
 
                                             <div className={s.carousel__wrapper} style={{ "--slide-width": "20vw" } as React.CSSProperties}>
@@ -100,10 +100,10 @@ function ListServices() {
                                     </li>
                                   
                                     <li onMouseEnter={() => selectedItemService(2)}>
-                                        <div>Sample Development</div>
+                                        <div className={s.hiddenText}>Sample Development</div>
                                         <div className={s.carousel}>
 
-                                            <div className={s.carousel__wrapper} style={{ "--slide-width": "20vw" } as React.CSSProperties}>
+                                            <div className={s.carousel__wrapper} style={{ "--slide-width": "27vw" } as React.CSSProperties}>
 
                                                 <div className={s.carousel__slide}>
                                                     <div className={s.carousel__image} >/ Sample Development</div>
@@ -136,10 +136,10 @@ function ListServices() {
                                     </li>
                                   
                                     <li onMouseEnter={() => selectedItemService(3)}>
-                                        <div>Art Direction & Project Management</div>
+                                        <div className={s.hiddenText}>Art Direction & Project Management</div>
                                         <div className={s.carousel}>
 
-                                            <div className={s.carousel__wrapper} style={{ "--slide-width": "30vw" } as React.CSSProperties}>
+                                            <div className={s.carousel__wrapper} style={{ "--slide-width": "42vw" } as React.CSSProperties}>
 
                                                 <div className={s.carousel__slide}>
                                                     <div className={s.carousel__image} >/ Art Direction & Project Management</div>
@@ -176,10 +176,10 @@ function ListServices() {
                                 <h2>Digital</h2>
                                 <ul>
                                     <li onMouseEnter={() => selectedItemService(4)}>
-                                        <div>Website & E-commerce Development</div>
+                                        <div className={s.hiddenText}>Website & E-commerce Development</div>
                                         <div className={s.carousel}>
 
-                                            <div className={s.carousel__wrapper} style={{ "--slide-width": "30vw" } as React.CSSProperties}>
+                                            <div className={s.carousel__wrapper} style={{ "--slide-width": "42vw" } as React.CSSProperties}>
 
                                                 <div className={s.carousel__slide}>
                                                     <div className={s.carousel__image} >/ Website & E-commerce Development</div>
@@ -205,10 +205,10 @@ function ListServices() {
                                     </li>
                                   
                                     <li onMouseEnter={() => selectedItemService(5)}>
-                                        <div>Photo, Video, 2D, 3D & Motion</div>
+                                        <div className={s.hiddenText}>Photo, Video, 2D, 3D & Motion</div>
                                         <div className={s.carousel}>
 
-                                            <div className={s.carousel__wrapper} style={{ "--slide-width": "30vw" } as React.CSSProperties}>
+                                            <div className={s.carousel__wrapper} style={{ "--slide-width": "36vw" } as React.CSSProperties}>
 
                                                 <div className={s.carousel__slide}>
                                                     <div className={s.carousel__image} >/ Photo, Video, 2D, 3D & Motion</div>
@@ -242,7 +242,7 @@ function ListServices() {
                                 <h2>Production</h2>
                                 <ul>
                                     <li onMouseEnter={() => selectedItemService(6)}>
-                                        <div>Mass Production</div>
+                                        <div className={s.hiddenText}>Mass Production</div>
                                         <div className={s.carousel}>
 
                                             <div className={s.carousel__wrapper} style={{ "--slide-width": "20vw" } as React.CSSProperties}>
@@ -272,10 +272,10 @@ function ListServices() {
                                     </li>
                                  
                                     <li onMouseEnter={() => selectedItemService(7)}>
-                                        <div>Production Management</div>
+                                        <div className={s.hiddenText}>Production Management</div>
                                         <div className={s.carousel}>
 
-                                            <div className={s.carousel__wrapper} style={{ "--slide-width": "20vw" } as React.CSSProperties}>
+                                            <div className={s.carousel__wrapper} style={{ "--slide-width": "28vw" } as React.CSSProperties}>
 
                                                 <div className={s.carousel__slide}>
                                                     <div className={s.carousel__image} >/ Production Management</div>
@@ -302,10 +302,10 @@ function ListServices() {
                                     </li>
                                   
                                     <li onMouseEnter={() => selectedItemService(8)}>
-                                        <div>Inventory Management</div>
+                                        <div className={s.hiddenText}>Inventory Management</div>
                                         <div className={s.carousel}>
 
-                                            <div className={s.carousel__wrapper} style={{ "--slide-width": "20vw" } as React.CSSProperties}>
+                                            <div className={s.carousel__wrapper} style={{ "--slide-width": "28vw" } as React.CSSProperties}>
 
                                                 <div className={s.carousel__slide}>
                                                     <div className={s.carousel__image} >/ Inventory Management</div>
@@ -333,8 +333,8 @@ function ListServices() {
                             </div>
                         </div>
                     
-                   {/*      <ViewImgHoverListService classAdd={s.gallery}/>
-                  */}
+                        <ViewImgHoverListService classAdd={s.gallery}/>
+                 
                     </div>
 
                 </div>

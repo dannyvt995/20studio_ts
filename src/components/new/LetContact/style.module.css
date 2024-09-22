@@ -51,8 +51,8 @@
     color: #0d0e13;
     color: var(--color-dark-grey);
     display: inline-flex;
-    font-family: Lausanne-300;
-    font-family: var(--font-f-lausanne-300);
+    font-family: BS-Regular;
+    font-family: var(--font-f-para-300);
     font-size: 3.7333333333vw;
     font-size: var(--font-s-label);
     height: 7.7333333333vw;
@@ -70,24 +70,22 @@
     transform-origin: top left;
     z-index: 1;
 }
-.text .title{
 
-    margin: 0.9333333333vw 0 6.1333333333vw;
+.icon {
+    height: 3.2vw;
+    position: absolute;
+    transform: translate(-5.3333333333vw, 2.1333333333vw);
+    width: 3.2vw;
+    z-index: 1;
 }
-.text .title .title_line{
-    font-weight:300;
-    font-family: Lausanne-300;
-    font-family: var(--font-f-lausanne-300);
-    font-size: 16vw;
-    font-size: var(--font-s-h1);
-    letter-spacing: -.4vw;
-    letter-spacing: var(--font-ls-h1);
-    line-height: 16vw;
-    line-height: var(--font-lh-h1);
+
+
+.title_line{
+  
 }
-.text .body p{
-    font-family: Lausanne-300;
-    font-family: var(--font-f-lausanne-300);
+ .body {
+    font-family: "BD-Regular";
+    font-family: var(--font-f-para-300);
     font-size: 4.8vw;
     font-size: var(--font-s-h4);
     letter-spacing: 0;
@@ -95,6 +93,17 @@
     line-height: 6.4vw;
     line-height: var(--font-lh-h4);
     margin-bottom: 7.4666666667vw;
+}
+.title {
+    font-family: "BD-Regular";
+    font-family: var(--font-f-lausanne-300);
+    font-size: 16vw;
+    font-size: var(--font-s-h1);
+    letter-spacing: -.4vw;
+    letter-spacing: var(--font-ls-h1);
+    line-height: 16vw;
+    line-height: var(--font-lh-h1);
+    margin: 10.9333333333vw 0 6.1333333333vw;
 }
 .wrap{
     display: inline-flex;
@@ -155,8 +164,22 @@
         top: 40.930556vw;
         width: 18.319444vw;
     }
+    .title {
+        margin: 3.4722222222vw 0 2.0833333333vw;
+    }
      .text {
         width: fit-content;
+    }
+    .lable {
+        height: 2.3611111111vw;
+        line-height: 2.5694444444vw;
+        padding-left: 1.5277777778vw;
+    }
+    .icon {
+        height: .8333333333vw;
+        transform: translate(-1.4930555556vw, .7638888889vw);
+        width: .8333333333vw;
+        will-change: transform;
     }
 }
 

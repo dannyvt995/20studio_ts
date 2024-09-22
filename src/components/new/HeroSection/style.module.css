@@ -1,9 +1,14 @@
 .hero_section {
     
     /* height: 136.6666666667vw; */
-    height:130vw;
+    height:fit-content;
+    padding-bottom: 25vh;
     overflow: hidden;
-  
+   
+}
+.hero_section * {
+    color: #fff !important;
+    color: var(--color-white)!important;
 }
 .background {
     bottom: 0;
@@ -29,7 +34,8 @@
     flex-direction: column;
 }
  .intro {
-
+    font-family: BS-Regular;
+    font-family: var(--font-f-para-300);
     position: relative;
 
 }
@@ -45,21 +51,23 @@
     transform-origin: left center;
     opacity: 0;
     will-change: transform,opacity;
-  
-
-    
-    font-family: BS-Regular;
-
-    font-size: 1.4vw;
-    letter-spacing: 0;
-    letter-spacing: var(--font-ls-h4);
+ 
  
    
 }
  .title {
 
-   
+    display: flex;
+    flex-direction: column;
+    font-family: Lausanne-300;
+    font-family: var(--font-f-lausanne-300);
+    font-size: 16vw;
+    font-size: var(--font-s-h1);
     grid-column: 1 / 13;
+    letter-spacing: -.4vw;
+    letter-spacing: var(--font-ls-h1);
+    line-height: 16vw;
+    line-height: var(--font-lh-h1);
     margin: 6.6666666667vw 0;
     transform: translateX(-1.0666666667vw);
 }
@@ -75,21 +83,11 @@
     opacity: 0;
     will-change: transform,opacity;
 
-
-    font-weight: 300;
-    font-size: 12.95vw;
-   /*  font-size: var(--font-s-h1);  */
-    font-family: Lausanne-300;
-    font-family: var(--font-f-lausanne-300);
-
-    letter-spacing: -.4vw;
-    letter-spacing: var(--font-ls-h1);
-    line-height: 12.95vw;
-/*     line-height: var(--font-lh-h1); */
   
 }
  .body > p > span{
     font-family: BS-Regular;
+    font-family: var(--font-f-para-300);
     font-size: 4.8vw;
     font-size: var(--font-s-h4);
     letter-spacing: 0;
@@ -164,7 +162,7 @@
 }
 @media (max-width:620px) {
     .hero_section   {
-        height:130vh !important;
+       
     }
     .list1,.list2 {
         display:none !important;
@@ -177,16 +175,18 @@
         background-size: auto 100% !important;
      }
     .intro {
-        padding-top: 70vw;
-        max-width: 64vw !important;
+       
+        padding-top: 50vh;
+        max-width: 100% !important;
+    }
+    .body , .intro {
+        grid-column: 1 / 13!important;
     }
     .ip,.body span {
-        font-size: .8rem !important;
+        font-size: 4.8000123vw !important;
         line-height: 110% !important;
     }
-    .body {
-        grid-column: 1 / 11!important;
-    }
+
    
     .list1 {
         display:none !important;

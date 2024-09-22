@@ -81,17 +81,17 @@ function NavbarSectionDeskop() {
         }
     }, [pathName])
 
-    useEffect(() => {
-        if (navbarDeskopRef.current && buttonMenuRef.current && !isMobile()) {
-            navbarDeskopRef.current.style.opacity = `1`;
-            buttonMenuRef.current.style.opacity = `0`;
-            navbarDeskopRef.current.style.visibility = `visible`;
-            buttonMenuRef.current.style.visibility = `hidden`;
-        }else{
-            buttonMenuRef.current.style.opacity = `1`;
-            buttonMenuRef.current.style.visibility = `visible`; 
-        }
-    }, [pathName])
+    // useEffect(() => {
+    //     if (navbarDeskopRef.current && buttonMenuRef.current && !isMobile()) {
+    //         navbarDeskopRef.current.style.opacity = `1`;
+    //         buttonMenuRef.current.style.opacity = `0`;
+    //         navbarDeskopRef.current.style.visibility = `visible`;
+    //         buttonMenuRef.current.style.visibility = `hidden`;
+    //     }else{
+    //         buttonMenuRef.current.style.opacity = `1`;
+    //         buttonMenuRef.current.style.visibility = `visible`; 
+    //     }
+    // }, [pathName])
 
     useEffect(() => {
         if (stateEnterPage) {

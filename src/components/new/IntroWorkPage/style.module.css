@@ -131,14 +131,12 @@
          margin: 0 8vw;
      }
      .intro {
-        padding: 1rem 0 !important;
-       font-size: 1rem !important;
-       line-height: 120% !important;
+       
        grid-column: 1 / 11 !important;
     }
      .text_1 {
         height:fit-content !important;
-        padding-top: 35vh !important;
+        padding-top: 50vh !important;
     }
      .IntroWorkPage {
         height:110vh !important;

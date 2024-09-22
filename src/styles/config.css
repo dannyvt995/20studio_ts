@@ -1,30 +1,46 @@
-@font-face {
-    font-family: BeautiqueDisplay;
-    src: url('/fonts/BeautiqueDisplay/BeautiqueDisplay-Bold.otf');
-   
-  }
 
   @font-face {
-    font-family: "Lausanne-300";
-    src: url('/fonts/BeautiqueDisplay/BeautiqueDisplay-Medium.otf');
- 
-  }
+    
+    font-family: "BD-Regular";
+    src: url('/fonts/BeautiqueDisplay/BeautiqueDisplay-Regular.otf');
 
+  }
   @font-face {
+    
     font-family: "BD-Medium";
     src: url('/fonts/BeautiqueDisplay/BeautiqueDisplay-Medium.otf');
 
   }
   @font-face {
+  
+    font-family: "BD-Bold";
+    src: url('/fonts/BeautiqueDisplay/BeautiqueDisplay-Bold.otf');
+    
+  }
+
+
+
+  @font-face {
+    
+    font-family: "BS-Regular";
+    src: url('/fonts/BeauSans/BT-BeauSans-Regular.ttf');
+   
+  }
+  @font-face {
+    
     font-family: "BS-Medium";
     src: url('/fonts/BeauSans/BT-BeauSans-Medium.ttf');
     
   }
   @font-face {
-    font-family: "BS-Regular";
-    src: url('/fonts/BeauSans/BT-BeauSans-Regular.ttf');
+    
+    font-family: "BS-Bold";
+    src: url('/fonts/BeauSans/BT-BeauSans-Bold.ttf');
    
   }
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 400;
+}
   a{
     text-decoration: none;
   }
@@ -96,9 +112,15 @@ ul {
     --color-sand: #e0ccbb;
     --color-sand-06: hsla(28,37%,81%,.6);
     --color-sand-08: hsla(28,37%,81%,.8);
-    --font-f-lausanne-300: "Lausanne-300";
-    --font-f-Lausanne-300: "Lausanne-300";
-    --font-f-lausanne-500: "Lausanne-500";
+    --font-f-lausanne-300: "BD-Regular";
+    --font-f-lausanne-400: "BD-Medium";
+    --font-f-lausanne-500: "BD-Bold";
+
+    --font-f-para-300: "BS-Regular";
+    --font-f-para-400: "BS-Medium";
+    --font-f-para-500: "BS-Bold";
+
+
     --font-s-h0: 25.6vw;
     --font-lh-h0: 25.6vw;
     --font-ls-h0: -1.2vw;
@@ -201,19 +223,7 @@ body {
 * {
     box-sizing: border-box;
 }
-h1,h2,h3,h4,h5 {
-    font-family:JosefinSans;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-p,
-ul.format,ol.format {
-    margin: 0;
-    padding: 0;
-}
+
 
 a,
 button:hover {
@@ -246,6 +256,6 @@ ul.format,ol.format {
 .dark_background h4,
 .dark_background p,
 .dark_background a{
-    color: var(--white) !important;
+   
 }
 

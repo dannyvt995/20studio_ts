@@ -1,3 +1,25 @@
+
+@media (max-width: 601px) {
+    #button_menu {
+        opacity: 1;
+        visibility: visible;
+    }
+    #navbar_deskop {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+@media (min-width: 601px) {
+    #button_menu {
+        opacity: 0;
+      
+    }
+    #navbar_deskop {
+        opacity: 1;
+    }
+}
+
+
 .nav {
     position: fixed;
     right: 3.4722222222vw;
@@ -107,6 +129,7 @@
     position:absolute;
     top:0;
     left: 0;
+    transform: translateY(-100%);
     will-change: transform;
     font-family: "BD-Medium";
     font-size: 3.7333333333vw;

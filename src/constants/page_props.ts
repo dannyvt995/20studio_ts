@@ -50,7 +50,7 @@ export const about_page = {
             tag: "Our procedure",
             more: "We believe that all good things are achieved by those who are willing to put in passion, courage and craftsmanship.",
             items: [
-                ["Briefing", "Meet with the client to understand their needs, goals, and vision. Gather all necessary information and share initial ideas to ensure alignment."],
+                ["Meet & Briefing", "Meet with the client to understand their needs, goals, and vision. Gather all necessary information and share initial ideas to ensure alignment."],
                 ["Consulting & Quotation", "Provide expert advice and present a detailed quotation covering design, materials, and production costs. Finalize the contract once the client agrees."],
                 ["Project Execution", "Begin the design and production process, collaborating with the client for approvals and ensuring quality throughout."],
                 ["Final Review and Delivery", "Present the finished product, make any final adjustments, and deliver the project. Gather feedback and close the project."]

@@ -89,17 +89,18 @@ const PageTransition: React.FC<PageTransitionProps> = ({
   useInitLenis({
     firstLoad: firstLoadPage
   });
-
+  const timelines = getAllTimelines();
   useEffect(() => {
     if(isMobile()) return
-    if(targetPath.current !== '/none') return
-    const timelines = getAllTimelines();
+    if(targetPath.current !== '/none' && timelines[pathName]) return
+    console.log("1")
+    
     const currentTimeline = timelines[pathName] 
     if (currentTimeline) {
-      console.log("1")
+
       currentTimeline.play()
     }
-  }, [pathName])
+  }, [pathName,timelines[pathName]])
 
 
   useEffect(() => {
@@ -108,7 +109,7 @@ const PageTransition: React.FC<PageTransitionProps> = ({
     if (currentPathFormatted === '/none' || targetPathFormatted === '/none') return
 
     if (currentPathFormatted !== targetPathFormatted) {
-      const timelines = getAllTimelines()
+  
       console.log("2")
   //    setStateUrl({isTarget:targetPath.current,isCurrent:currentPath.current})
       resetIconNavbarModal({ cur: currentPathFormatted, tar: targetPathFormatted ,listTimeline:timelines});
