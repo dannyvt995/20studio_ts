@@ -12,6 +12,7 @@ import { isMobile } from '@/utils/responsive';
 import WrapperTrackMouse from '../WrapperTrackMouse';
 import useStoreTimeline from '@/hooks/useStoreTimeline';
 import { delayFirstLoadAfterLoadingPage } from '@Constants/gsap_props'
+import ButtonMenu from '../ButtonMenu';
 gsap.registerPlugin(useGSAP)
 
 function NavbarSectionDeskop() {
@@ -100,13 +101,7 @@ function NavbarSectionDeskop() {
 
 
             timelineBtnMenu.current = gsap.timeline({ paused: true })
-                .fromTo(`.${s.icon}`, {
-                    rotate: 45,
-                }, {
-                    rotate: 180,
-                    ease: "power3.inOut",
-                    duration: .5
-                })
+             
 
                 .fromTo(`.${s.lableMenu}`, {
                     y: 0
@@ -197,7 +192,7 @@ function NavbarSectionDeskop() {
 
 
 
-    const handleClickMenu = contextSafe(() => {
+   /*  const handleClickMenu = contextSafe(() => {
         
         isMenuOpen.current = !isMenuOpen.current
       
@@ -219,24 +214,30 @@ function NavbarSectionDeskop() {
 
     })
 
-
+ */
 
     return (
      
             <div ref={navbarSectionDes}>
-                <button onClick={handleClickMenu} ref={buttonMenuRef} className={s.button_menu} id="button_menu" >
+                <ButtonMenu/>
+                {/* <button onClick={handleClickMenu} ref={buttonMenuRef} className={s.button_menu} id="button_menu" >
                     <h3 className={s.lable}>
-                        <span className={s.lableMenu}>Menu</span>
-                        <span className={s.lableClose}>Close</span>
+                        <span className={s.lable_item}>Menu</span>
+                        <span className={s.lable_item}>Close</span>
                     </h3>
                     <div className={s.icon}>
+                        <svg viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg" className={s.icon_burger}>
+                            <line x1="18" y1="0.6" y2="0.6" stroke="currentColor" stroke-width="1.2"></line>
+                            <line x1="18" y1="5.7167" y2="5.7167" stroke="currentColor" stroke-width="1.2"></line>
+                            <line x1="18" y1="10.8334" y2="10.8334" stroke="currentColor" stroke-width="1.2"></line>
+                        </svg>
                         <svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" className={s.icon_close}>
                             <line x1="13.788" y1="1.28816" x2="1.06011" y2="14.0161" stroke="currentColor" strokeWidth="1.2" style={{ strokeDashoffset: '0', strokeDasharray: 'none' }}></line>
                             <line x1="1.06049" y1="1.43963" x2="13.7884" y2="14.1675" stroke="currentColor" strokeWidth="1.2" style={{ strokeDashoffset: '0', strokeDasharray: 'none' }}></line>
                         </svg>
                     </div>
                 </button>
-
+ */}
                 <nav ref={navbarDeskopRef} className={s.nav} id='navbar_deskop'>
                      {/* <div className={s.logo}>
                              <svg xmlns="http://www.w3.org/2000/svg" width="2164" height="363" viewBox="0 0 2164 363" fill="white">

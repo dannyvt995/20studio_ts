@@ -165,6 +165,8 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children, wrapper, btnN
         const elW = document.getElementById("main_navbar")
         if (elW) elW.style.pointerEvents = 'none'
       //  setStateMenuIsOpen(true)
+
+      localStorage.setItem('isOpenNav','true')
        // router.push(targetRedirect || '#')
         if (timelineRef.current) {
             timelineRef.current.play();

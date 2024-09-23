@@ -39,6 +39,7 @@ function Cursor() {
     },[])
 
     function trackDom(stt:string,label?:string) {
+        
           if(stt === 'active') {
            
             gsap.to(cursorRef.current,{scale:1,duration:.42  })

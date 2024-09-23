@@ -7,5 +7,9 @@ declare global {
     timelineBtnNavbar? : gsap.core.Timeline | null;
     timelineNavbarItem? : gsap.core.Timeline | null;
     timelineIconNav?: any; 
+
+
+    //some new
+    isOpenNav? : boolean
   }
 }

@@ -74,6 +74,7 @@ const PageTransition: React.FC<PageTransitionProps> = ({
 
   const [isMobi,setIsMobi] = useState(false)
   useEffect(() => {
+    localStorage.setItem('isOpenNav','false')
     if(isMobile()) setIsMobi(true)
   },[])
 
@@ -275,7 +276,7 @@ const PageTransition: React.FC<PageTransitionProps> = ({
               document.body.style.userSelect = 'auto'
               // nên set 1 state tại đây , là cần thiết
               setStateTransition('entered')
-             // setStateMenuIsOpen(false)
+              localStorage.setItem('isOpenNav','false')
               currentPath.current = pathName
               // tạm thời return index < 100 với các page type 2
               if (targetPath.current) {
@@ -286,9 +287,9 @@ const PageTransition: React.FC<PageTransitionProps> = ({
 
             }}
             onExit={(node: any) => {
-            
-           //   if(stateMenuIsOpen) return
-              console.log("?????????????")
+              let a =  localStorage.getItem('isOpenNav')
+              // if(a === 'true') return
+          
               // --^^ console.log(`%c STATE ==> onExit`,"color:black;font-weight:bold;font-weight:bold")
               if (targetPath.current) {
                 if (!listUrlProjects.includes(targetPath.current)) {

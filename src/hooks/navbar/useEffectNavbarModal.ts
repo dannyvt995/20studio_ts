@@ -58,30 +58,22 @@ export const useEffectActive_NavbarModal = (
             onComplete: () => {
                 gsap.set(SectionRef, { pointerEvents: 'auto' })
             }
-        });
-        timelineNavbarModal.set(SectionRef, { zIndex: 500, pointerEvents: 'none' })
+        })
+        .set(SectionRef, { zIndex: 500, pointerEvents: 'none' })
             .set(MaskRef, { clipPath: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)' })
             .set(DomEffect, {
                 rotate: -5,
                 scale: 1.72,
                 y: -window.innerHeight / 2,
             })
-            .to(DomContent, {
-                
-         /*        onStart: function() {
-                 
-                    if (timelineNavbarModal.reversed() === true) {
-                        // --^^ console.log("KILL IT NOW====))))))))))")
-                        this.kill(); 
-                    }
-                }, */
-                rotate: 4.2,
-                scale: 1.36,
-                y: window.innerHeight / 2,
-                '-webkit-filter': 'brightness(16%)',
-                filter: 'brightness(16%)',
-                ...propsGsapNavbar.props_openNav
-            }, '<')
+            // .to(DomContent, {
+            //     rotate: 4.2,
+            //     scale: 1.36,
+            //     y: window.innerHeight / 2,
+            //     '-webkit-filter': 'brightness(16%)',
+            //     filter: 'brightness(16%)',
+            //     ...propsGsapNavbar.props_openNav
+            // }, '<')
             .to(MaskRef, {
                 clipPath: 'polygon(0% 0%, 100% 0%, 100% 110%, 0% 100%)',
                 ...propsGsapNavbar.props_openNav

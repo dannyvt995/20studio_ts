@@ -10,8 +10,8 @@ function ServicePage(): JSX.Element {
   return (
     <div id="servicepage">
         <WrapperTrackMouse dataCursor='active'>
-        <ListServices/>
-        <LetContact content={service_page.content.letContact} propsForGsap={service_page.propsForGsap}/>
+          <ListServices/>
+          <LetContact content={service_page.content.letContact} propsForGsap={service_page.propsForGsap}/>
         </WrapperTrackMouse>
    
     </div>

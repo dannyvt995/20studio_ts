@@ -164,8 +164,8 @@ ul {
         --font-s-h0:17.3611111111vw;
         --font-lh-h0: 15.6944444444vw;
         --font-ls-h0: -0.7986111111vw;
-        --font-s-h1: 10vw;
-        --font-lh-h1: 10vw;
+        --font-s-h1: 12vw;
+        --font-lh-h1: 12vw;
         --font-ls-h1: -0.3472222222vw;
         --font-s-h2: 3.6111111111vw;
         --font-lh-h2: 4.4444444444vw;
@@ -224,7 +224,13 @@ body {
     box-sizing: border-box;
 }
 
-
+button, input, select, textarea {
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  font: inherit;
+  outline: 0;
+}
 a,
 button:hover {
     cursor: pointer;
