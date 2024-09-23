@@ -10,7 +10,7 @@ import useStoreZustand from '@/hooks/useStoreZustand';
 import { isMobile } from '@/utils/responsive';
 import WrapperTrackMouse from '../WrapperTrackMouse';
 import useStoreTimeline from '@/hooks/useStoreTimeline';
-import { useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 
 gsap.registerPlugin(useGSAP)
 interface ButtonHoverNew2Props {
@@ -18,15 +18,17 @@ interface ButtonHoverNew2Props {
     icon: React.ReactNode;
     classAdd?: string;
     targetRedirect?:string;
+    btnNavbar?:boolean
 }
 
-const ButtonHoverNew2: React.FC<ButtonHoverNew2Props> = ({ children,icon,targetRedirect,classAdd }) => {
+const ButtonHoverNew2: React.FC<ButtonHoverNew2Props> = ({ children,btnNavbar,icon,targetRedirect,classAdd }) => {
   const linkRef = useRef<any>()
   const { contextSafe } = useGSAP({ scope: linkRef }); 
-  const {stateTransition} = useStoreZustand()
+  const {stateTransition, setStateMenuIsOpen} = useStoreZustand()
   const timelineStore = useStoreTimeline((state) => state.timelines);
-  const router = useRouter()
-
+  const pathName = usePathname()
+  
+ 
   useEffect(() => {
      
     if(stateTransition !== 'entered') return
@@ -94,10 +96,35 @@ const handleRedirect = useCallback((event: React.MouseEvent<HTMLAnchorElement, M
     console.log("Err on timelineStore")
 }
 }, []);
+
+
+const handleRedirectFromNavbar = useCallback((event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+  // event.preventDefault();
+ 
+   if(pathName === targetRedirect) {
+       console.log("Trung")
+       return
+   }
+
+
+ 
+   const elW = document.getElementById("main_navbar")
+   if (elW) elW.style.pointerEvents = 'none'
+   //setStateMenuIsOpen(true)
+
+
+   timelineStore['navbarModal']?.reversed(!timelineStore['navbarModal'].reversed());
+   timelineStore['buttonNavbar']?.reversed(! timelineStore['buttonNavbar'].reversed());
+   timelineStore['navbarDesListOn']?.restart().play(0)
+  
+}, [timelineStore]);
+
+
+
   return (
-    <WrapperTrackMouse classAdd={classAdd}>
+    <div className={classAdd}>
       <Link  ref={linkRef} 
-         onClick={handleRedirect}
+        onClick={btnNavbar ? handleRedirectFromNavbar : handleRedirect}
         href={targetRedirect ? targetRedirect : '#'} 
         className={cn(s.btn_hover_underline2)}
         >
@@ -109,7 +136,7 @@ const handleRedirect = useCallback((event: React.MouseEvent<HTMLAnchorElement, M
         <div className={s.text}>{children}</div>
     </Link>
 
-    </WrapperTrackMouse>
+    </div>
    
   )
 }

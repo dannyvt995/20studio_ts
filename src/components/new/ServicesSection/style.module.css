@@ -182,10 +182,13 @@
     display: flex;
     flex-direction: column;
     height: fit-content;
+
+    pointer-events: auto !important;
 }
  .block {
     overflow: hidden;
     position: relative;
+    pointer-events: none;
 }
  .info {
     color: rgba(13, 14, 19, .6);

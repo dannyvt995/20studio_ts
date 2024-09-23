@@ -206,13 +206,13 @@ function NavbarSectionDeskop() {
         timelineStore['buttonNavbar']?.reversed(!timelineStore['buttonNavbar'].reversed());
         if(isMobile()) return
         if (isMenuOpen.current === true) {
-            setStateCursor({ isLock: true })
+        //    setStateCursor({ isLock: true })
            
             timelineStore['navbarDesListOff']?.restart().play(0)
 
 
         } else {
-            setStateCursor({ isLock: false })
+         //   setStateCursor({ isLock: false })
             timelineStore['navbarDesListOn']?.restart().play(0)
 
         }
@@ -222,7 +222,7 @@ function NavbarSectionDeskop() {
 
 
     return (
-        <WrapperTrackMouse>
+     
             <div ref={navbarSectionDes}>
                 <button onClick={handleClickMenu} ref={buttonMenuRef} className={s.button_menu} id="button_menu" >
                     <h3 className={s.lable}>
@@ -246,44 +246,47 @@ function NavbarSectionDeskop() {
                      <span className={s.this_icon}>
                          <IconSVG src='/icon/star.svg' />
                      </span>
+                     <WrapperTrackMouse dataCursor='hidden'>
                      <ul className={s.nav_list}>
- 
-                         <li className={s.nav_item}>
-                             <ButtonHoverNew targetRedirect='/home'>
-                                 Home
-                             </ButtonHoverNew>
-                         </li>
-                         <li className={s.nav_item}>
-                             <ButtonHoverNew targetRedirect='/sustainability'>
-                                 Sustain
-                             </ButtonHoverNew>
-                         </li>
-                         <li className={s.nav_item}>
-                             <ButtonHoverNew targetRedirect='/work'>
-                                 Project
-                             </ButtonHoverNew>
-                         </li>
-                         <li className={s.nav_item}>
-                             <ButtonHoverNew targetRedirect='/about'>
-                                 About us
-                             </ButtonHoverNew>
-                         </li>
-                         <li className={s.nav_item}>
-                             <ButtonHoverNew targetRedirect='/service'>
-                                 Service
-                             </ButtonHoverNew>
-                         </li>
-                         <li className={s.nav_item}>
-                             <ButtonHoverNew targetRedirect='/contact'>
-                                 Contact
-                             </ButtonHoverNew>
-                         </li>
- 
-                     </ul>
+                        
+                        <li className={s.nav_item}>
+                            <ButtonHoverNew targetRedirect='/home'>
+                                Home
+                            </ButtonHoverNew>
+                        </li>
+                        <li className={s.nav_item}>
+                            <ButtonHoverNew targetRedirect='/sustainability'>
+                                Sustain
+                            </ButtonHoverNew>
+                        </li>
+                        <li className={s.nav_item}>
+                            <ButtonHoverNew targetRedirect='/work'>
+                                Project
+                            </ButtonHoverNew>
+                        </li>
+                        <li className={s.nav_item}>
+                            <ButtonHoverNew targetRedirect='/about'>
+                                About us
+                            </ButtonHoverNew>
+                        </li>
+                        <li className={s.nav_item}>
+                            <ButtonHoverNew targetRedirect='/service'>
+                                Service
+                            </ButtonHoverNew>
+                        </li>
+                        <li className={s.nav_item}>
+                            <ButtonHoverNew targetRedirect='/contact'>
+                                Contact
+                            </ButtonHoverNew>
+                        </li>
+
+                    </ul>
+                     </WrapperTrackMouse>
+                    
                  </nav> 
 
             </div>
-        </WrapperTrackMouse>
+     
 
 
     )

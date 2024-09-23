@@ -26,7 +26,7 @@ interface IHeroSection {
 
 function HeroSection({ pageName, content }: IHeroSection) {
     const triggleSection = useRef<HTMLDivElement>(null)
-    const pathName = usePathname()
+    console.log("HeroSectionHeroSectionHeroSectionHeroSection")
     const { stateEnterPage,stateTransition } = useStoreZustand()
     const timelineTextHero = useRef<gsap.core.Timeline>()
 
@@ -116,9 +116,9 @@ function HeroSection({ pageName, content }: IHeroSection) {
                         {content.btnMore[0]}
                     </ButtonHoverNew2>
 
-
-                    <ul className={s.list1}>
-                        <WrapperTrackMouse>
+                   
+                    <ul  className={s.list1}>
+                       
                             {content.listBtn.map((item: string, index: any) => {
 
                                 return (
@@ -130,13 +130,13 @@ function HeroSection({ pageName, content }: IHeroSection) {
                                 )
                             })}
 
-                        </WrapperTrackMouse>
+                  
                     </ul>
+                   
 
 
-
-                    <ul className={s.list2}>
-                        <WrapperTrackMouse>
+                    <ul  className={s.list2}>
+                      
                             <li className={s.list_item}>
                                 <a href={common.infoContact.mail.href} className={s.list_link}>
                                     {common.infoContact.mail.display}
@@ -148,7 +148,7 @@ function HeroSection({ pageName, content }: IHeroSection) {
                                 </a>
                             </li>
 
-                        </WrapperTrackMouse>
+                
 
 
                     </ul>

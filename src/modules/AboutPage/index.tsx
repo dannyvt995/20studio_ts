@@ -20,24 +20,21 @@ function AboutPage(): JSX.Element {
     },[])
     return (
         <div id="aboutpage">
-            <HeroSection pageName="about" propsForGsap={about_page.propsForGsap} content={about_page.content.heroSection} />
+             <WrapperTrackMouse dataCursor='active'>
+                <HeroSection pageName="about" propsForGsap={about_page.propsForGsap} content={about_page.content.heroSection} />
 
-            <Intro  propsForGsap={about_page.propsForGsap}/>
-            <WrapperTrackMouse>
-                <Advantage content={about_page.content.advantage}/>
-            </WrapperTrackMouse>
-           
-            {isMobi ? <></> : <SectionTitleBlend  propsForGsap={about_page.propsForGsap} /> }
-           
-            <Minded  propsForGsap={about_page.propsForGsap}/>
-
-            <WrapperTrackMouse>
+                <Intro  propsForGsap={about_page.propsForGsap}/>
+            
+                    <Advantage content={about_page.content.advantage}/>
+            
+            
+                {isMobi ? <></> : <SectionTitleBlend  propsForGsap={about_page.propsForGsap} /> }
+            
+                <Minded  propsForGsap={about_page.propsForGsap}/>
                 <Us />
+                <LetContact content={about_page.content.letContact}  propsForGsap={about_page.propsForGsap}/>
             </WrapperTrackMouse>
-           
-            <LetContact content={about_page.content.letContact}  propsForGsap={about_page.propsForGsap}/>
-          
-            <WrapperTrackMouse>
+            <WrapperTrackMouse  dataCursor='hidden'>
                 <FooterSection  propsForGsap={about_page.propsForGsap} />
             </WrapperTrackMouse>
          

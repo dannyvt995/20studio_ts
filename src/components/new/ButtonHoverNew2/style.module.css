@@ -6,6 +6,12 @@
     width: fit-content !important;
     color: inherit;
 
+    pointer-events: auto !important;
+
+}
+
+.btn_hover_underline2 * {
+    pointer-events: none;
 }
 .text {
     position: relative;

@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useRef } from 'react'
+import { memo, useRef } from 'react'
 import cn from 'classnames'
 import s from './style.module.css'
 import Image from 'next/image'
@@ -12,7 +12,7 @@ import { isMobile } from '@/utils/responsive';
 import useStoreZustand from '@/hooks/useStoreZustand';
 
 gsap.registerPlugin(useGSAP)
-export default function ServicesSection() {
+function ServicesSection() {
     const container = useRef<any>()
     const listItemRef = useRef<any>()
     const { contextSafe } = useGSAP({ scope: listItemRef })
@@ -43,20 +43,20 @@ export default function ServicesSection() {
 
     const actionGsap = contextSafe((e: any) => {
         if(isMobile()) return
-        setStateCursor({ isActive: false , label : "View"});
+       // setStateCursor({  label : "View"});
         const id = e.currentTarget.getAttribute('data-id');
         timelines.current[id].play(0);
     })
 
     const disableGsap = contextSafe((e: any) => {
         if(isMobile()) return
-        setStateCursor({ isActive: true , label : "Scroll"});
+       // setStateCursor({ label : "Scroll"});
         const id = e.currentTarget.getAttribute('data-id');
         timelines.current[id].reverse();
     })
 
     return (
-        <section ref={container} className={cn(s.servcies_section, s.light_background)} id="servcies_section">
+        <section data-cursor="hidden" ref={container} className={cn(s.servcies_section, s.light_background)} id="servcies_section">
             <div className={s.container}>
                 <div className={s.text}>
                     <h2 className={s.lable}>
@@ -71,6 +71,8 @@ export default function ServicesSection() {
             <div className={s.services} ref={listItemRef}>
                
                 <Link className={s.service}
+                data-cursorlabel='View'
+                data-cursor="active"
                     data-id="0"
                     onMouseEnter={(e) => actionGsap(e)}
                     onMouseLeave={(e) => disableGsap(e)}
@@ -88,6 +90,8 @@ export default function ServicesSection() {
                    
                 </Link>
                 <Link className={s.service}
+                          data-cursorlabel='View'
+                 data-cursor="active"
                     data-id="1"
                     onMouseEnter={(e) => actionGsap(e)}
                     onMouseLeave={(e) => disableGsap(e)}
@@ -105,6 +109,8 @@ export default function ServicesSection() {
                    
                 </Link>
                 <Link className={s.service}
+                          data-cursorlabel='View'
+                 data-cursor="active"
                     data-id="2"
                     onMouseEnter={(e) => actionGsap(e)}
                     onMouseLeave={(e) => disableGsap(e)}
@@ -123,6 +129,8 @@ export default function ServicesSection() {
                     
                 </Link>
                 <Link className={s.service}
+                          data-cursorlabel='View'
+                 data-cursor="active"
                     data-id="3"
                     onMouseEnter={(e) => actionGsap(e)}
                     onMouseLeave={(e) => disableGsap(e)}
@@ -148,3 +156,4 @@ export default function ServicesSection() {
         </section>
     )
 }
+export default  memo(ServicesSection)

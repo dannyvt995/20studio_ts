@@ -31,6 +31,7 @@
     z-index: 999;
     will-change: opacity;
     mix-blend-mode: difference;
+ 
 }
 .logo {
     position: fixed;
@@ -67,6 +68,7 @@
     text-align: center;
     will-change: transform;
     transform: translateY(100%);
+    
  
 }
 .nav_item a {

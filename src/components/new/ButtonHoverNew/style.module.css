@@ -2,7 +2,12 @@
    position: relative;
    width: fit-content;
 }
-
+.btn_hover_underline {
+  pointer-events: auto  !important;
+}
+.btn_hover_underline *{
+  pointer-events: none;
+}
 .iconBtnNavbar {
   position:absolute;
   left:0;

@@ -10,9 +10,12 @@ function ContactPage(): JSX.Element {
 
     return (
         <div id="contactpage">
-            <ContactPageIntro />
-            <WrapperTrackMouse>
-            <FooterSection  propsForGsap={contact_page.propsForGsap}/>
+             <WrapperTrackMouse dataCursor='active'>
+             <ContactPageIntro />
+             </WrapperTrackMouse>
+            
+            <WrapperTrackMouse dataCursor='hidden'>
+                <FooterSection  propsForGsap={contact_page.propsForGsap}/>
             </WrapperTrackMouse>
             
         </div>

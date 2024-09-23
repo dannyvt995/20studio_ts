@@ -110,7 +110,7 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children, wrapper, btnN
                 }
                
                 if (btnNavbar) {
-                   selectedItemNavbar(data_id as number);
+                  // selectedItemNavbar(data_id as number);
                 }
             }
         });
@@ -147,10 +147,10 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children, wrapper, btnN
       
     }, []);
 
-    useEffect(() => {
-        // Prefetch 
-        router.prefetch(targetRedirect as string)
-      }, [router])
+    // useEffect(() => {
+    //     // Prefetch 
+    //     router.prefetch(targetRedirect as string)
+    //   }, [router])
 
     const handleRedirectFromNavbar = useCallback((event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
        // event.preventDefault();
@@ -164,7 +164,7 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children, wrapper, btnN
       
         const elW = document.getElementById("main_navbar")
         if (elW) elW.style.pointerEvents = 'none'
-        setStateMenuIsOpen(true)
+      //  setStateMenuIsOpen(true)
        // router.push(targetRedirect || '#')
         if (timelineRef.current) {
             timelineRef.current.play();
@@ -174,11 +174,11 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children, wrapper, btnN
         timelineStore['buttonNavbar']?.reversed(! timelineStore['buttonNavbar'].reversed());
         timelineStore['navbarDesListOn']?.restart().play(0)
        
-    }, [timelineStore,getAllTimelines]);
+    }, [timelineStore]);
 
     return (
         <Link
-
+      
             onClick={btnNavbar ? handleRedirectFromNavbar : handleRedirect}
         //    href={btnNavbar ? '#' : (targetRedirect || '#')}
             href={targetRedirect ? targetRedirect : '#'} 

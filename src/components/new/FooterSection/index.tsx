@@ -2,7 +2,7 @@
 "use client"
 
 import s from './style.module.css'
-import { useRef } from 'react';
+import { useRef,memo } from 'react';
 import gsap from 'gsap'
 import Link from 'next/link';
 import { isMobile } from '@/utils/responsive';
@@ -129,4 +129,4 @@ function FooterSection({ propsForGsap,state }: IFooterSection) {
     )
 }
 
-export default FooterSection
+export default memo(FooterSection)

@@ -97,13 +97,15 @@
 }
 
 
-
+.listHover li {
+  pointer-events: auto ;
+}
 
 
 
 /* y solve woith padding text */
 .carousel {
- 
+  display: none;
   transition: transform 1000ms ease-in-out;
   will-change: transform; 
 }

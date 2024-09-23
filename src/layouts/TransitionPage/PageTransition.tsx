@@ -275,7 +275,7 @@ const PageTransition: React.FC<PageTransitionProps> = ({
               document.body.style.userSelect = 'auto'
               // nên set 1 state tại đây , là cần thiết
               setStateTransition('entered')
-              setStateMenuIsOpen(false)
+             // setStateMenuIsOpen(false)
               currentPath.current = pathName
               // tạm thời return index < 100 với các page type 2
               if (targetPath.current) {
@@ -286,8 +286,8 @@ const PageTransition: React.FC<PageTransitionProps> = ({
 
             }}
             onExit={(node: any) => {
-              console.log(stateMenuIsOpen)
-              if(stateMenuIsOpen) return
+            
+           //   if(stateMenuIsOpen) return
               console.log("?????????????")
               // --^^ console.log(`%c STATE ==> onExit`,"color:black;font-weight:bold;font-weight:bold")
               if (targetPath.current) {

@@ -1,10 +1,9 @@
 "use client"
 
-import  {  memo, useEffect, useRef, useState } from 'react'
+import { memo, useEffect, useRef, useState } from 'react'
 import s from './style.module.css'
 import gsap from 'gsap'
 import cn from 'classnames';
-import useStoreZustand from "@/hooks/useStoreZustand";
 
 import { usePathname } from 'next/navigation'
 
@@ -13,140 +12,112 @@ import { useEffectActive_NavbarModal } from '@/hooks/navbar/useEffectNavbarModal
 import { removeSplash } from '@/utils/removeSplash'
 import ButtonHoverNew from '../ButtonHoverNew'
 
-import { propsGsapNavbar } from '@/constants/gsap_props';
 import { isMobile } from '@/utils/responsive'
 import WrapperTrackMouse from '../WrapperTrackMouse'
 
 import { useGSAP } from '@gsap/react'
-import ViewImgHoverNavbarModal from '../ViewImgHoverNavbarModal'
-import useStoreTimeline from '@/hooks/useStoreTimeline'
+import Image from 'next/image';
+import ButtonHoverNew2 from '../ButtonHoverNew2';
+import IconSVG from '@/components/Icon/IconSVG';
 
 
 function NavbarModalSection({ }) {
     const buttonMenuRef = useRef<HTMLButtonElement>(null)
-   
-
-   
     const listItemNavbarModal = useRef<HTMLUListElement>(null)
-    const navbarModalImages = useRef<Element[]>([])
+    const listImgHover = useRef<HTMLUListElement>(null)
+    const listImgHoverFormat = useRef<any>([])
+    const [itemNavbar, setItemNavbar] = useState(0);
+    const indexCount = useRef<number>(5)
+
+
     const DomEffect = useRef<HTMLDivElement>(null)
     const MaskRef = useRef<HTMLDivElement>(null)
     const SectionRef = useRef<HTMLElement>(null)
-    const listBtnRedirectRef = useRef<any>([])
-    // const [stateToggle,setStateToggle] = useState<boolean>(false)
     const pathName = usePathname()
     const pathNameFormat = removeSplash({ pathName: pathName })
-    const setTimeline = useStoreTimeline((state) => state.setTimeline);
-    const {stateTransition,stateEnterPage,stateUrl} = useStoreZustand()
-
   
-
-    const [isMobi,setIsMobi] = useState(false)
+    const [isMobi, setIsMobi] = useState(false)
     useEffect(() => {
-      if(isMobile()) setIsMobi(true)
-    },[])
-  
+        if (isMobile()) setIsMobi(true)
+    }, [])
+
     console.log('render')
+
+    useEffect(() => {
+        if (listImgHover.current) {
+            listImgHoverFormat.current = Array.from(listImgHover.current.children)
+        }
+
+    }, [listImgHover])
+
+   
+    useEffect(() => {
+        const  hoverItem = (e: MouseEvent)  => {
+            const target = e.target as HTMLElement;
+    
+            if (target.tagName.toLowerCase() === 'a') {
+    
+                setItemNavbar(Number(target.getAttribute("data-link")))
+            }
+        }
+        if (listItemNavbarModal.current) listItemNavbarModal.current.addEventListener('mousemove', hoverItem, false)
+        return () => {
+            if (listItemNavbarModal.current) listItemNavbarModal.current.removeEventListener('mousemove', hoverItem, false)
+        }
+    }, [listItemNavbarModal])
+
+    useGSAP(() => {
+        if (listImgHoverFormat) {
+            let dir = 1
+            indexCount.current++
+
+            gsap.timeline({
+                overwrite: true
+            }).set(listImgHoverFormat.current[itemNavbar], { zIndex: indexCount.current }).fromTo(listImgHoverFormat.current[itemNavbar], {
+                rotate: 10 * dir,
+                opacity: 0,
+                scale: 1.2
+            }, {
+                rotate: 0,
+                opacity: 1,
+                scale: 1,
+                duration: .72,
+                ease: "power3.out"
+            })
+        } else {
+            console.log("Something wrong on ViewImgHoverNavbarModal!!")
+        }
+    }, { dependencies: [itemNavbar], scope: listImgHover })
+
+
+    useEffect(() => {
+
+    })
 
     useEffectActive_NavbarModal({
         btnMenu: buttonMenuRef.current,
         SectionRef: SectionRef.current,
         MaskRef: MaskRef.current,
         DomEffect: DomEffect.current,
-        listItemNavbarModal:listItemNavbarModal.current,
+        listItemNavbarModal: listItemNavbarModal.current,
         pathNameFormat: pathNameFormat,
-       
+
     })
 
 
-    // const DomContentRef = useRef<any>()
-    // const timelineNavbarModal = useRef<gsap.core.Timeline>()
-
-
-    // useEffect(() => {
-    //     console.log(stateUrl)
-    //     if(stateUrl.isCurrent === stateUrl.isTarget) return
-     
-    //     console.log(" DomContentRef.current Run exacly 1 time")
-    //     // let TargetListChild = []
-     
-    //     // let TargetList  =  Array.from(listItemNavbarModal.current.children).slice(0,5)
-    //     // for (let i = 0; i < TargetList.length; i++) {
-    //     //     TargetListChild.push(TargetList[i].children[0]) 
-    //     // }
-    //     // TargetListChild = [...TargetListChild].reverse();
-
-    // },[pathNameFormat,stateUrl])
-
-
-    // useEffect(() => {
-   
-    //     if(stateTransition !== 'entered') return
-    //     if(!stateEnterPage) return
-    //     if(!SectionRef.current || !MaskRef.current || !DomEffect.current || !DomContentRef.current) return
-   
-    //     if(stateUrl.isCurrent === stateUrl.isTarget || stateUrl.isTarget === 'none') return
-    //     console.log(" timelineNavbarModal Run exacly 1 time")
-    //     DomContentRef.current = document.getElementById(`${pathNameFormat}page`)
-    //     timelineNavbarModal.current = gsap.timeline({
-    //         paused: true,
-    //         onComplete: () => {
-    //             gsap.set(SectionRef.current, { pointerEvents: 'auto' })
-    //         }
-    //     }).set(SectionRef.current, { zIndex: 500, pointerEvents: 'none' })
-    //         .set(MaskRef.current, { clipPath: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)' })
-    //         .set(DomEffect.current, {
-    //             rotate: -5,
-    //             scale: 1.72,
-    //             y: -window.innerHeight / 2,
-    //         })
-    //         .to(DomContentRef.current, {
-    //             rotate: 4.2,
-    //             scale: 1.36,
-    //             y: window.innerHeight / 2,
-    //             '-webkit-filter': 'brightness(16%)',
-    //             filter: 'brightness(16%)',
-    //             ...propsGsapNavbar.props_openNav
-    //         }, '<')
-    //         .to(MaskRef.current, {
-    //             clipPath: 'polygon(0% 0%, 100% 0%, 100% 110%, 0% 100%)',
-    //             ...propsGsapNavbar.props_openNav
-    //         }, '<')
-    //         .to(DomEffect.current, {
-    //             rotate: 0,
-    //             scale: 1,   
-    //             y: 0,
-    //             '-webkit-filter': 'brightness(100%)',
-    //             filter: 'brightness(100%)',
-    //             ...propsGsapNavbar.props_openNav
-    //         }, '<')
-    //         // .fromTo(TargetListChild,{
-    //         //     delay: 4.7,
-    //         //     y : "120%"
-    //         // },{delay: .5,y:0,stagger:0.036,ease:"power3.inOut"},"<")
-    //         timelineNavbarModal.current.reverse();
-    //         setTimeline('navbarModal', timelineNavbarModal.current);
-    //         return () => {
-    //             if(timelineNavbarModal.current) timelineNavbarModal.current.kill()
-    //         }
-    // }, [pathName,stateUrl,SectionRef.current,MaskRef.current,DomEffect.current,DomContentRef.current,stateEnterPage,stateTransition])
-
-
-
-
     return (
-   
 
+        <WrapperTrackMouse dataCursor='hidden'>
             <section className={s.navbar_modal_section} ref={SectionRef}>
                 <div className={s.wrapper} ref={MaskRef}>
-              
-                
+
+
                     <div className={s.container} ref={DomEffect}>
-                   
+
                         <div className={s.logo}>
                             20 STUDIO
                         </div>
-                        {isMobi ? <></> : <ViewImgHoverNavbarModal classAdd={s.images}/>}
+
                         <ul className={s.main} id='main_navbar' ref={listItemNavbarModal}>
                             <li className={s.main_link}>
                                 <ButtonHoverNew btnNavbar={true} data_id={0} targetRedirect='/home' classAdd={s.main_line}>
@@ -170,7 +141,7 @@ function NavbarModalSection({ }) {
                                 </ButtonHoverNew>
 
                             </li>
-                            <li className={s.main_link}>
+                                <li className={s.main_link} style={{visibility:'hidden',height:0}}>
                                 <ButtonHoverNew btnNavbar={true} data_id={4} targetRedirect='/service' classAdd={s.main_line}>
                                     Service
                                 </ButtonHoverNew>
@@ -194,14 +165,6 @@ function NavbarModalSection({ }) {
                         </ul>
                         <ul className={s.social}>
                             <li className={s.social_link}>
-                               
-                                {/*   <ButtonHoverUnderLineNew eventPass={handleClick} data_type="outsite" noName={"var(--font-lh-p)"} data_link="/" classStyle="link-item">Facebook</ButtonHoverUnderLineNew> */}
-                            </li>
-                            <li className={s.social_link}>
-                                {/* <ButtonHoverUnderLineNew eventPass={handleClick} data_type="outsite" noName={"var(--font-lh-p)"} data_link="/" classStyle="link-item">Instagram</ButtonHoverUnderLineNew> */}
-                            </li>
-                            <li className={s.social_link}>
-                                {/*  <ButtonHoverUnderLineNew eventPass={handleClick} data_type="outsite" noName={"var(--font-lh-p)"} data_link="/" classStyle="link-item">Linked</ButtonHoverUnderLineNew> */}
                             </li>
                         </ul>
                         <ul className={s.sub}>
@@ -210,20 +173,46 @@ function NavbarModalSection({ }) {
                                     Made by 20 Team
                                 </span>
                             </li>
-                            <li className={s.sub_link}>
-                                {/*    <ButtonHoverUnderLineNew eventPass={handleClick} data_type="outsite" noName={"var(--font-lh-p)"} data_link="/about" classStyle="link-item">Về chúng tôi</ButtonHoverUnderLineNew> */}
-                            </li>
                         </ul>
-{/*                         <div className={s.link_about}>
 
-                            <ButtonHoverNew2 icon={<IconSVG src='/icon/arrow-right.svg' />} targetRedirect='/about' classAdd={s.link}>
-                                Our mission
+                        <div className={s.link_about}>
+
+                            <ButtonHoverNew2 btnNavbar={true} icon={<IconSVG src='/icon/arrow-right.svg' />} targetRedirect='/service' classAdd={s.link}>
+                                Our service
                             </ButtonHoverNew2>
-                        </div> */}
+                        </div>
+
+
+                        {isMobi ? <></> :
+                            <ul className={s.images} ref={listImgHover}>
+                                <li >
+                                    <Image src="/home/banner.png" width={0} height={0} sizes="100vw" style={{ width: '100%', height: '100%' }} alt="logo narbar modal" />
+                                </li>
+                                <li>
+                                    <Image src="/work3/8.png" width={0} height={0} sizes="100vw" style={{ width: '100%', height: '100%' }} alt="logo narbar modal" />
+                                </li>
+                                <li>
+                                    <Image src="/work1/2.png" width={0} height={0} sizes="100vw" style={{ width: '100%', height: '100%' }} alt="logo narbar modal" />
+                                </li>
+                                <li>
+                                    <Image src="/about/us2.png" width={0} height={0} sizes="100vw" style={{ width: '100%', height: '100%' }} alt="logo narbar modal" />
+                                </li>
+                                <li>
+                                    <Image src="/about/intro2.png" width={0} height={0} sizes="100vw" style={{ width: '100%', height: '100%' }} alt="logo narbar modal" />
+                                </li>
+                                <li>
+                                    <Image src="/about/banner.webp" width={0} height={0} sizes="100vw" style={{ width: '100%', height: '100%' }} alt="logo narbar modal" />
+                                </li>
+
+
+                            </ul>
+                        }
                     </div>
 
                 </div>
             </section>
+        </WrapperTrackMouse>
+
 
 
     )

@@ -4,17 +4,20 @@
     height:fit-content;
     padding-bottom: 25vh;
     overflow: hidden;
+    
    
 }
 .hero_section * {
     color: #fff !important;
     color: var(--color-white)!important;
+    
+    pointer-events: none;
 }
 .background {
     bottom: 0;
     left: 0;
     overflow: hidden;
-    pointer-events: all;
+  
     user-select: none;
     position: absolute;
     right: 0;
@@ -128,16 +131,16 @@
  .list1 {
     grid-column: 8 / 10;
     margin-top: -3.8194444444vw;
-    pointer-events: all;
+   
 }
  .list2 {
     grid-column: 10 / 12;
     margin-top: -3.8194444444vw;
-    pointer-events: all;
+   
 }
  .link {
     grid-column: 1 / 6;
-    pointer-events: all;
+
 }
 
 

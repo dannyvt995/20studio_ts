@@ -14,19 +14,27 @@ function HomePage(): JSX.Element {
 
     return (
         <div id="homepage">
-            <HeroSection pageName="home" propsForGsap={home_page.propsForGsap} content={home_page.content.heroSection}/>
-       
-            <WrapperTrackMouse>
-                <ServicesSection />
-                </WrapperTrackMouse>
-                <FAQSection/>
-                <LetContact content={home_page.content.letContact}  propsForGsap={home_page.propsForGsap}/>
-                <WrapperTrackMouse>
-                <FooterSection propsForGsap={home_page.propsForGsap}/>
+            <WrapperTrackMouse dataCursor='active'>
+                <HeroSection pageName="home" propsForGsap={home_page.propsForGsap} content={home_page.content.heroSection} />
             </WrapperTrackMouse>
-          
-            
+
+
+            <WrapperTrackMouse dataCursor='hidden'>
+                <ServicesSection />
+            </WrapperTrackMouse>
+
+            <WrapperTrackMouse dataCursor='active'>
+                <FAQSection />
+                <LetContact content={home_page.content.letContact} propsForGsap={home_page.propsForGsap} />
+            </WrapperTrackMouse>
+         
+
+            <WrapperTrackMouse dataCursor='hidden'>
+                <FooterSection propsForGsap={home_page.propsForGsap} />
+            </WrapperTrackMouse>
+
+
         </div>
     )
 }
-export default  memo(HomePage)
+export default memo(HomePage)

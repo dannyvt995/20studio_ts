@@ -1,3 +1,6 @@
 .wrapperTrackMouse {
-    
+    pointer-events: auto;
+}
+.wrapperTrackMouse *{
+    pointer-events: none;
 }

@@ -1,17 +1,49 @@
-import React, { memo, useEffect } from 'react'
+import React, { memo, useRef, useState } from 'react'
 import s from './style.module.css'
-import ProjectText from '../ProjectText'
-import { service_page } from '@/constants/page_props';
+import cn from 'classnames'
 import IconSVG from '@/components/Icon/IconSVG';
 import Image from 'next/image';
-import SliderImageHover from '@/components/SliderImageHover';
-import ViewImgHoverListService from '../ViewImgHoverListService';
-import useStoreZustand from '@/hooks/useStoreZustand';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
 
 
 function ListServices() {
-   const {selectedItemService} = useStoreZustand()
- 
+
+    const [indexItemService, selectedItemService] = useState(1)
+    const container = useRef<HTMLUListElement>(null)
+    const listEl = useRef<HTMLUListElement>(null)
+    const listElFormat = useRef<any>([])
+    const indexCount = useRef<number>(5)
+
+    useGSAP(() => {
+        if (listEl.current) {
+            listElFormat.current = Array.from(listEl.current.children)
+            if (indexItemService >= 0) {
+                indexCount.current++
+
+                gsap.timeline({
+                    overwrite: true
+                }).set(listElFormat.current[indexItemService], { zIndex: indexCount.current }).fromTo(listElFormat.current[indexItemService], {
+                    rotate: -10,
+                    opacity: 0,
+                    scale: 1.2
+                }, {
+                    rotate: 0,
+                    opacity: 1,
+                    scale: 1,
+                    duration: .72,
+                    ease: "power3.out"
+                })
+            } else {
+                console.log("Something wrong on ViewImgHoverListService!!")
+            }
+        }
+
+
+
+    }, { dependencies: [indexItemService], scope: listEl })
+
+
     return (
 
         <>
@@ -25,10 +57,10 @@ function ListServices() {
                         <p>We transform Fashion businesses by solving upstream challenges to unlock new growth opportunities.</p>
                     </div>
                     <div className={s.list}>
-                        <div className={s.waperList}>
+                        <div className={cn(s.waperList, s.listHover)}>
                             <div className={s.scope}>
-                                <h2>Design & <br/> Develop & Direct</h2>
-                                <ul>
+                                <h2>Design & <br /> Develop & Direct</h2>
+                                <ul  >
                                     <li onMouseEnter={() => selectedItemService(0)}>
                                         <div className={s.hiddenText}>Fashion Design & Prototype Development</div>
                                         <div className={s.carousel}>
@@ -63,7 +95,7 @@ function ListServices() {
                                             </div>
                                         </div>
                                     </li>
-                                  
+
                                     <li onMouseEnter={() => selectedItemService(1)}>
                                         <div className={s.hiddenText}>Costume Design</div>
                                         <div className={s.carousel}>
@@ -98,7 +130,7 @@ function ListServices() {
                                             </div>
                                         </div>
                                     </li>
-                                  
+
                                     <li onMouseEnter={() => selectedItemService(2)}>
                                         <div className={s.hiddenText}>Sample Development</div>
                                         <div className={s.carousel}>
@@ -134,7 +166,7 @@ function ListServices() {
                                             </div>
                                         </div>
                                     </li>
-                                  
+
                                     <li onMouseEnter={() => selectedItemService(3)}>
                                         <div className={s.hiddenText}>Art Direction & Project Management</div>
                                         <div className={s.carousel}>
@@ -174,7 +206,7 @@ function ListServices() {
                             </div>
                             <div className={s.scope}>
                                 <h2>Digital</h2>
-                                <ul>
+                                <ul >
                                     <li onMouseEnter={() => selectedItemService(4)}>
                                         <div className={s.hiddenText}>Website & E-commerce Development</div>
                                         <div className={s.carousel}>
@@ -203,7 +235,7 @@ function ListServices() {
                                             </div>
                                         </div>
                                     </li>
-                                  
+
                                     <li onMouseEnter={() => selectedItemService(5)}>
                                         <div className={s.hiddenText}>Photo, Video, 2D, 3D & Motion</div>
                                         <div className={s.carousel}>
@@ -270,7 +302,7 @@ function ListServices() {
                                             </div>
                                         </div>
                                     </li>
-                                 
+
                                     <li onMouseEnter={() => selectedItemService(7)}>
                                         <div className={s.hiddenText}>Production Management</div>
                                         <div className={s.carousel}>
@@ -300,7 +332,7 @@ function ListServices() {
                                             </div>
                                         </div>
                                     </li>
-                                  
+
                                     <li onMouseEnter={() => selectedItemService(8)}>
                                         <div className={s.hiddenText}>Inventory Management</div>
                                         <div className={s.carousel}>
@@ -332,9 +364,37 @@ function ListServices() {
                                 </ul>
                             </div>
                         </div>
-                    
-                        <ViewImgHoverListService classAdd={s.gallery}/>
-                 
+
+
+                        <ul className={s.gallery} ref={listEl}>
+                            <li>
+                                <Image src="/home/banner.png" width={0} height={0} sizes="100vw" style={{ width: 'auto', height: '100%' }} alt="logo narbar modal" />
+                            </li>
+                            <li>
+                                <Image src="/work1/2.png" width={0} height={0} sizes="100vw" style={{ width: 'auto', height: '100%' }} alt="logo narbar modal" />
+                            </li>
+                            <li>
+                                <Image src="/about/us2.png" width={0} height={0} sizes="100vw" style={{ width: 'auto', height: '100%' }} alt="logo narbar modal" />
+                            </li>
+                            <li>
+                                <Image src="/work3/2.png" width={0} height={0} sizes="100vw" style={{ width: 'auto', height: '100%' }} alt="logo narbar modal" />
+                            </li>
+                            <li>
+                                <Image src="/clone/services4.webp" width={0} height={0} sizes="100vw" style={{ width: 'auto', height: '100%' }} alt="logo narbar modal" />
+                            </li>
+                            <li>
+                                <Image src="/work2/3.png" width={0} height={0} sizes="100vw" style={{ width: 'auto', height: '100%' }} alt="logo narbar modal" />
+                            </li>
+                            <li>
+                                <Image src="/work3/5.png" width={0} height={0} sizes="100vw" style={{ width: 'auto', height: '100%' }} alt="logo narbar modal" />
+                            </li>
+                            <li>
+                                <Image src="/work3/4.png" width={0} height={0} sizes="100vw" style={{ width: 'auto', height: '100%' }} alt="logo narbar modal" />
+                            </li>
+                            <li>
+                                <Image src="/about/banner.webp" width={0} height={0} sizes="100vw" style={{ width: 'auto', height: '100%' }} alt="logo narbar modal" />
+                            </li>
+                        </ul>
                     </div>
 
                 </div>

@@ -1,6 +1,7 @@
 .intro_sustain{
     overflow: hidden;
     background-color: white;
+    padding-top:20vh;
 }
 .media_wrapper {
     height: 89.3333333333vw;
@@ -192,7 +193,7 @@
 
 @media (max-width: 601px) {
     .intro_sustain {
-        padding-top:12vh;
+        padding-top:12vh !important;
     }
     .text {
         padding: 10vw 0 !important;

@@ -30,10 +30,10 @@ export  function formatUrlForIconNavbar({ cur, tar }: { cur: string; tar: string
    
     const currentTimeline = cur ? listTimeline[cur] : null;
     const targetTimeline = tar ? listTimeline[tar] : null;
-
+   
     if (currentTimeline && targetTimeline) {
       
-      currentTimeline.reversed(!currentTimeline.reversed())
+     currentTimeline.reversed(!currentTimeline.reversed())
       targetTimeline.reversed(!targetTimeline.reversed())
     } else {
       console.log("Some err on resetIconNavbarModal")
