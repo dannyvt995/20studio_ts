@@ -16,7 +16,9 @@ import IconSVG from '@Components/Icon/IconSVG'
 import ButtonHoverNew from '../ButtonHoverNew'
 import { common } from '@Constants/page_props';
 import WrapperTrackMouse from '../WrapperTrackMouse'
-import {delayFirstLoadAfterLoadingPage} from '@Constants/gsap_props'
+import { delayFirstLoadAfterLoadingPage } from '@Constants/gsap_props'
+
+
 interface IHeroSection {
     pageName: string,
     state?: string,
@@ -26,12 +28,14 @@ interface IHeroSection {
 
 function HeroSection({ pageName, content }: IHeroSection) {
     const triggleSection = useRef<HTMLDivElement>(null)
-    console.log("HeroSectionHeroSectionHeroSectionHeroSection")
-    const { stateEnterPage,stateTransition } = useStoreZustand()
+    console.log("HeroSection re-render","have 2 update state on scrolltrigggle")
+    const { stateEnterPage, stateTransition } = useStoreZustand()
     const timelineTextHero = useRef<gsap.core.Timeline>()
 
     let timeoutId: NodeJS.Timeout;
 
+ 
+  
     useGSAP(() => {
         //  if (isMobile()) return
         timelineTextHero.current = gsap.timeline({ paused: true })
@@ -48,19 +52,16 @@ function HeroSection({ pageName, content }: IHeroSection) {
             stagger: .1,
             duration: 1
         }, '<')
-        
+
     });
     useGSAP(() => {
         if (isMobile()) return
         gsap.timeline({
             scrollTrigger: {
                 scroller: content.scrollerRef,
-                trigger:`#this_pick${pageName}`,
+                trigger: `#this_pick${pageName}`,
                 start: "top top ",
                 end: "bottom 0%",
-
-                // markers:true,
-                scrub: true,
             },
             paused: true
         }).fromTo(`#this_pick${pageName} .bg_hero_pick${pageName}`,
@@ -74,18 +75,24 @@ function HeroSection({ pageName, content }: IHeroSection) {
     })
 
     useEffect(() => {
-        if(!stateEnterPage) return
+        if (!stateEnterPage) return
         if (stateTransition == 'entered' || stateTransition == 'none') {
             timeoutId = setTimeout(() => {
                 timelineTextHero.current?.play()
-            }, delayFirstLoadAfterLoadingPage );
+            }, delayFirstLoadAfterLoadingPage);
         }
         return () => {
             clearTimeout(timeoutId)
         }
-    },[stateTransition,stateEnterPage])
+    }, [stateTransition, stateEnterPage])
 
-  
+
+
+
+
+
+
+
     return (
         <section className={cn(s.hero_section, content.classAdd)} id={`this_pick${pageName}`} ref={triggleSection} >
             <div className="container" style={content.moreStyle}>
@@ -116,45 +123,45 @@ function HeroSection({ pageName, content }: IHeroSection) {
                         {content.btnMore[0]}
                     </ButtonHoverNew2>
 
-                   
-                    <ul  className={s.list1}>
-                       
-                            {content.listBtn.map((item: string, index: any) => {
 
-                                return (
-                                    <li className={s.list_item} key={index}  >
-                                        <ButtonHoverNew classAdd={s.list_link} targetRedirect={(common.listBtnUrl as any)[item]}>
-                                            {item}
-                                        </ButtonHoverNew>
-                                    </li>
-                                )
-                            })}
+                    <ul className={s.list1}>
 
-                  
+                        {content.listBtn.map((item: string, index: any) => {
+
+                            return (
+                                <li className={s.list_item} key={index}  >
+                                    <ButtonHoverNew classAdd={s.list_link} targetRedirect={(common.listBtnUrl as any)[item]}>
+                                        {item}
+                                    </ButtonHoverNew>
+                                </li>
+                            )
+                        })}
+
+
                     </ul>
-                   
 
 
-                    <ul  className={s.list2}>
-                      
-                            <li className={s.list_item}>
-                                <a href={common.infoContact.mail.href} className={s.list_link}>
-                                    {common.infoContact.mail.display}
-                                </a>
-                            </li>
-                            <li className={s.list_item}>
-                                <a href={common.infoContact.phone.href} className={s.list_link}>
-                                    {common.infoContact.phone.display}
-                                </a>
-                            </li>
 
-                
+                    <ul className={s.list2}>
+
+                        <li className={s.list_item}>
+                            <a href={common.infoContact.mail.href} className={s.list_link}>
+                                {common.infoContact.mail.display}
+                            </a>
+                        </li>
+                        <li className={s.list_item}>
+                            <a href={common.infoContact.phone.href} className={s.list_link}>
+                                {common.infoContact.phone.display}
+                            </a>
+                        </li>
+
+
 
 
                     </ul>
                 </div>
             </div>
-            <div className={cn(s.background,`bg_hero_pick${pageName}`)} style={{ backgroundImage: `url(${content.backgroundImage.url})` }}>
+            <div className={cn(s.background, `bg_hero_pick${pageName}`)} style={{ backgroundImage: `url(${content.backgroundImage.url})` }}>
 
                 {/* <Image quality={100} priority src={`${content.backgroundImage.url}`} alt="image_cache_banner_about" width={0} height={0} sizes="100vw" style={content.backgroundImage.size} /> */}
             </div>

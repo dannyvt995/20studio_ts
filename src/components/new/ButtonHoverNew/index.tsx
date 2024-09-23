@@ -70,6 +70,7 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children, wrapper, btnN
             ease: easeOps,
             immediateRender: false,
         });
+
         if (btnNavbar) {
             let timeline = gsap.timeline({paused:true}).fromTo(
                 refIconNavbar.current,
@@ -164,17 +165,19 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children, wrapper, btnN
       
         const elW = document.getElementById("main_navbar")
         if (elW) elW.style.pointerEvents = 'none'
-      //  setStateMenuIsOpen(true)
+        //  setStateMenuIsOpen(true)
 
-      localStorage.setItem('isOpenNav','true')
+        localStorage.setItem('isOpenNav','true')
        // router.push(targetRedirect || '#')
         if (timelineRef.current) {
             timelineRef.current.play();
         }
-   
+      
         timelineStore['navbarModal']?.reversed(!timelineStore['navbarModal'].reversed());
-        timelineStore['buttonNavbar']?.reversed(! timelineStore['buttonNavbar'].reversed());
+        timelineStore['btnNavbarOpen']?.reversed(!timelineStore['btnNavbarOpen'].reversed())
+        timelineStore['btnNavbarClose']?.reversed(!timelineStore['btnNavbarClose'].reversed())
         timelineStore['navbarDesListOn']?.restart().play(0)
+
        
     }, [timelineStore]);
 

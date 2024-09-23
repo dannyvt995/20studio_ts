@@ -18,15 +18,17 @@
     right: 0;
     top: 0;
     transition: color .5s;
-    z-index: 14;
+    z-index: 9999;
     background-color:unset !important;
 }
  .lable {
    
     position: relative;
-    overflow: hidden;
+    
 }
-
+.button_menu:hover .icon_burger {
+   
+}
 .lable_item {
     display: block;
     position: absolute;
@@ -57,13 +59,14 @@
     height: 3.2vw;
     position: absolute;
     width: 4.8vw;
+    transition: .2s ease-out;
 }
 
 @media (min-width: 601px) {
     .button_menu {
          line-height: 1.3888888889vw;
          padding:5.000001vw 3.4722222222vw 0 0 ;
-       /*   visibility: hidden; */
+         visibility: hidden;
      }
     .icon {
      
@@ -87,8 +90,9 @@
  @media (max-width: 601px) {
    
      .button_menu {
-         display: flex !important;
-         padding-top:10vw !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        padding-top : 10vw !important;
      }
  }
  

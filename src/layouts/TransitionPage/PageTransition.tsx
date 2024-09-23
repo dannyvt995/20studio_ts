@@ -37,6 +37,7 @@ import {formatUrlForIconNavbar,resetIconNavbarModal} from '@Utils/utils_url'
 
 import Cursor from '@/components/new/Cursor';
 import { isMobile } from '@/utils/responsive';
+import TrackScrollView from '@/components/new/TrackScrollView';
 
 gsap.registerPlugin(useGSAP)
 
@@ -59,6 +60,7 @@ const PageTransition: React.FC<PageTransitionProps> = ({
   const indexRef = useRef(100)
   const scopeRef = useRef(null)
   const getAllTimelines = useStoreTimeline((state) => state.getAllTimelines)
+  const timelineStore = useStoreTimeline((state) => state.timelines);
   const { setStateTransition, stateEnterPage ,stateMenuIsOpen,setStateMenuIsOpen} = useStoreZustand()
   const targetPath = useRef<string>('/none')
   const currentPath = useRef<string>('/none')
@@ -105,6 +107,7 @@ const PageTransition: React.FC<PageTransitionProps> = ({
 
 
   useEffect(() => {
+   
     //if(isMobile()) return
     const { currentPathFormatted, targetPathFormatted } = formatUrlForIconNavbar({ cur: currentPath.current, tar: targetPath.current });
     if (currentPathFormatted === '/none' || targetPathFormatted === '/none') return
@@ -231,6 +234,7 @@ const PageTransition: React.FC<PageTransitionProps> = ({
     <div ref={scopeRef}>
       {children}
       {isMobi ? <></> : <Cursor/>}
+     {/*  <TrackScrollView /> */}
       <PageTransitionGroup>
         <TransitionGroup component={null}>
           <Transition
@@ -288,7 +292,7 @@ const PageTransition: React.FC<PageTransitionProps> = ({
             }}
             onExit={(node: any) => {
               let a =  localStorage.getItem('isOpenNav')
-              // if(a === 'true') return
+               if(a === 'true') return
           
               // --^^ console.log(`%c STATE ==> onExit`,"color:black;font-weight:bold;font-weight:bold")
               if (targetPath.current) {

@@ -66,14 +66,14 @@ export const useEffectActive_NavbarModal = (
                 scale: 1.72,
                 y: -window.innerHeight / 2,
             })
-            // .to(DomContent, {
-            //     rotate: 4.2,
-            //     scale: 1.36,
-            //     y: window.innerHeight / 2,
-            //     '-webkit-filter': 'brightness(16%)',
-            //     filter: 'brightness(16%)',
-            //     ...propsGsapNavbar.props_openNav
-            // }, '<')
+            .to(DomContent, {
+                rotate: 4.2,
+                scale: 1.36,
+                y: window.innerHeight / 2,
+                '-webkit-filter': 'brightness(16%)',
+                filter: 'brightness(16%)',
+                ...propsGsapNavbar.props_openNav
+            }, '<')
             .to(MaskRef, {
                 clipPath: 'polygon(0% 0%, 100% 0%, 100% 110%, 0% 100%)',
                 ...propsGsapNavbar.props_openNav

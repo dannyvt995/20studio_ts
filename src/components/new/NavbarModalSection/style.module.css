@@ -122,7 +122,7 @@
     margin-bottom: .36rem;
     overflow: hidden;
 }
-@media (max-width:600px) {
+@media (max-width:601px) {
     .container {
         height: 100% !important;
     }
@@ -148,6 +148,11 @@
         left: 0 !important;
         bottom: 10vw !important;
         height: fit-content;
+    }
+    .link_about {
+        right:0 !important;
+        bottom:10vw !important;
+
     }
 }
 @media (min-width: 601px) {

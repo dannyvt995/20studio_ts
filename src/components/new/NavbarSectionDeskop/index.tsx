@@ -20,35 +20,28 @@ function NavbarSectionDeskop() {
     // --^^ console.log("%cNavbarDeskop_render", "color:green;font-weight:bold")
 
     const navbarDeskopRef = useRef<any>(null)
-    const buttonMenuRef = useRef<any>(null)
     const navbarSectionDes = useRef<HTMLDivElement>(null)
-    const timelineBtnMenu = useRef<gsap.core.Timeline>()
     const timelineNavbarItemOn = useRef<gsap.core.Timeline>()
     const timelineNavbarItemOff = useRef<gsap.core.Timeline>()
     const timelineIconBehindItemNav = useRef<gsap.core.Timeline>()
 
-    const mainNavbar = useRef<any>(null)
+
     const pathName = usePathname()
-    const { stateEnterPage, setStateCursor , setStateMenuIsOpen} = useStoreZustand()
+    const { stateEnterPage} = useStoreZustand()
 
     const unit = useRef<number>(0)
     const target = useRef<number>(0)
-    const [isMobi, setIsMobi] = useState(false)
-    const isMenuOpen = useRef<boolean>(false)
 
-    const timelineStore = useStoreTimeline((state) => state.timelines);
     const setTimeline = useStoreTimeline((state) => state.setTimeline);
 
-    const { contextSafe } = useGSAP({ scope: navbarSectionDes })
+  
     let timeoutId: NodeJS.Timeout;
 
     useEffect(() => {
-        if (isMobile()) setIsMobi(true)
-        mainNavbar.current = document.getElementById("main_navbar")
         unit.current = window.innerWidth / 100 * 6
     }, [])
 
-    useEffect(() => {
+    useGSAP(() => {
         if(isMobile()) return
         switch (pathName) {
             case '/home':
@@ -80,45 +73,17 @@ function NavbarSectionDeskop() {
             default:
                 target.current = unit.current;
         }
-    }, [pathName])
-
-    // useEffect(() => {
-    //     if (navbarDeskopRef.current && buttonMenuRef.current && !isMobile()) {
-    //         navbarDeskopRef.current.style.opacity = `1`;
-    //         buttonMenuRef.current.style.opacity = `0`;
-    //         navbarDeskopRef.current.style.visibility = `visible`;
-    //         buttonMenuRef.current.style.visibility = `hidden`;
-    //     }else{
-    //         buttonMenuRef.current.style.opacity = `1`;
-    //         buttonMenuRef.current.style.visibility = `visible`; 
-    //     }
-    // }, [pathName])
+        gsap.to(`.${s.this_icon}`, {
+            x: target.current,
+            rotate: (target.current / unit.current) * 90,
+            ease: "power3.out",
+            duration: 1,
+        })
+    }, { dependencies: [pathName, target.current] })
 
     useEffect(() => {
         if (stateEnterPage) {
-
-            // --^^ console.log("Chạy lại à ??")
-
-
-            timelineBtnMenu.current = gsap.timeline({ paused: true })
-             
-
-                .fromTo(`.${s.lableMenu}`, {
-                    y: 0
-                }, {
-                    y: "-100%",
-                    ease: "power3.inOut",
-                    duration: .5
-                }, "<")
-
-                .fromTo(`.${s.lableClose}`, {
-                    y: "100%"
-                }, {
-                    y: 0,
-                    ease: "power3.inOut",
-                    duration: .5
-                }, "<").reverse()
-
+            console.log("re-init? =}}}")
             if (!isMobile()) {
                 timelineNavbarItemOn.current = gsap.timeline({
                     defaults: { delay: .5 },
@@ -157,11 +122,6 @@ function NavbarSectionDeskop() {
 
             }
 
-
-            setTimeline('buttonNavbar', timelineBtnMenu.current);
-
-
-
             timeoutId = setTimeout(() => {
 
                 if (!isMobile()) {
@@ -174,70 +134,19 @@ function NavbarSectionDeskop() {
             clearTimeout(timeoutId)
             if (timelineNavbarItemOn.current) timelineNavbarItemOn.current.kill()
             if (timelineNavbarItemOff.current) timelineNavbarItemOff.current.kill()
-            if (timelineBtnMenu.current) timelineBtnMenu.current.kill()
             if (timelineIconBehindItemNav.current) timelineIconBehindItemNav.current.kill()
         })
     }, [stateEnterPage])
 
 
-    useGSAP(() => {
-        if(isMobile()) return
-        gsap.to(`.${s.this_icon}`, {
-            x: target.current,
-            rotate: (target.current / unit.current) * 90,
-            ease: "power3.out",
-            duration: 1,
-        })
-    }, { dependencies: [pathName, target.current] })
+   
 
-
-
-   /*  const handleClickMenu = contextSafe(() => {
-        
-        isMenuOpen.current = !isMenuOpen.current
-      
-        mainNavbar.current.style.pointerEvents = 'auto'
-        timelineStore['navbarModal']?.reversed(!timelineStore['navbarModal'].reversed());
-        timelineStore['buttonNavbar']?.reversed(!timelineStore['buttonNavbar'].reversed());
-        if(isMobile()) return
-        if (isMenuOpen.current === true) {
-        //    setStateCursor({ isLock: true })
-           
-            timelineStore['navbarDesListOff']?.restart().play(0)
-
-
-        } else {
-         //   setStateCursor({ isLock: false })
-            timelineStore['navbarDesListOn']?.restart().play(0)
-
-        }
-
-    })
-
- */
 
     return (
      
             <div ref={navbarSectionDes}>
                 <ButtonMenu/>
-                {/* <button onClick={handleClickMenu} ref={buttonMenuRef} className={s.button_menu} id="button_menu" >
-                    <h3 className={s.lable}>
-                        <span className={s.lable_item}>Menu</span>
-                        <span className={s.lable_item}>Close</span>
-                    </h3>
-                    <div className={s.icon}>
-                        <svg viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg" className={s.icon_burger}>
-                            <line x1="18" y1="0.6" y2="0.6" stroke="currentColor" stroke-width="1.2"></line>
-                            <line x1="18" y1="5.7167" y2="5.7167" stroke="currentColor" stroke-width="1.2"></line>
-                            <line x1="18" y1="10.8334" y2="10.8334" stroke="currentColor" stroke-width="1.2"></line>
-                        </svg>
-                        <svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" className={s.icon_close}>
-                            <line x1="13.788" y1="1.28816" x2="1.06011" y2="14.0161" stroke="currentColor" strokeWidth="1.2" style={{ strokeDashoffset: '0', strokeDasharray: 'none' }}></line>
-                            <line x1="1.06049" y1="1.43963" x2="13.7884" y2="14.1675" stroke="currentColor" strokeWidth="1.2" style={{ strokeDashoffset: '0', strokeDasharray: 'none' }}></line>
-                        </svg>
-                    </div>
-                </button>
- */}
+         
                 <nav ref={navbarDeskopRef} className={s.nav} id='navbar_deskop'>
                      {/* <div className={s.logo}>
                              <svg xmlns="http://www.w3.org/2000/svg" width="2164" height="363" viewBox="0 0 2164 363" fill="white">

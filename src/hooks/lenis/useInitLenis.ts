@@ -40,10 +40,14 @@ export function useInitLenis({ firstLoad }: { firstLoad?: boolean }) {
 
       if (!domScroll) return
       if (!NavbarDeskop || !ButtonNavbar) {
-        console.error('PageTransition>>Menu references are not correct');
+        console.error('!NavbarDeskop || !ButtonNavbar ERR');
         return;
       }
 
+      NavbarDeskop.style.opacity = `1`;
+      ButtonNavbar.style.opacity = `0`;
+      NavbarDeskop.style.visibility = `visible`;
+      ButtonNavbar.style.visibility = `hidden`;
 
       lenisRef.current = new Lenis({
         wrapper:domScroll as HTMLElement,

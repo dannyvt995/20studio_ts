@@ -21,7 +21,7 @@ import ButtonHoverNew2 from '../ButtonHoverNew2';
 import IconSVG from '@/components/Icon/IconSVG';
 
 
-function NavbarModalSection({ }) {
+function NavbarModalSection() {
     const buttonMenuRef = useRef<HTMLButtonElement>(null)
     const listItemNavbarModal = useRef<HTMLUListElement>(null)
     const listImgHover = useRef<HTMLUListElement>(null)
@@ -67,7 +67,7 @@ function NavbarModalSection({ }) {
     }, [listItemNavbarModal])
 
     useGSAP(() => {
-        if (listImgHoverFormat) {
+        if (listImgHoverFormat.current && listImgHoverFormat.current.length === 6) {
             let dir = 1
             indexCount.current++
 
@@ -85,7 +85,7 @@ function NavbarModalSection({ }) {
                 ease: "power3.out"
             })
         } else {
-            console.log("Something wrong on ViewImgHoverNavbarModal!!")
+            console.log("????? getting 6 img from ref on NavbarModal")
         }
     }, { dependencies: [itemNavbar], scope: listImgHover })
 

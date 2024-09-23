@@ -11,9 +11,17 @@ interface IStoreZustand {
   prevIndexItemService: number;
   selectedItemService: (index: number) => void;
 
-  //button navbar state
+  //state navbar modal
   stateMenuIsOpen: boolean;
   setStateMenuIsOpen: (key:boolean) => void;
+
+  //navbarlist state
+  stateNavbarList: boolean;
+  setStateNavbarList: (key:boolean) => void;
+
+  //button navbar state
+  stateButtonNav: boolean;
+  setStateButtonNav: (key:boolean) => void;
 
   //loadingPage
   stateEnterPage: boolean;
@@ -67,11 +75,24 @@ selectedItemService: (index: number) => {
 },
 
 
-  //button navbar state
+  // state navbar modal
   stateMenuIsOpen: false,
   setStateMenuIsOpen: (key:boolean) => {
-    set((state) => ({ stateMenuIsOpen: key }));
+    set(() => ({ stateMenuIsOpen: key }));
   },
+
+  //button navbar state
+  stateNavbarList: false,
+  setStateNavbarList: (key:boolean) => {
+    set(() => ({ stateNavbarList: key }));
+  },
+
+  //button navbar state
+  stateButtonNav: false,
+  setStateButtonNav: (key:boolean) => {
+    set(() => ({ stateButtonNav: key }));
+  },
+
 
   //loadingPage
   stateEnterPage: false,

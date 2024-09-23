@@ -1,0 +1,7 @@
+.track {
+    position: absolute;
+    width: 10px;
+    height: 1000px;
+    background: red;
+    z-index: 99999;
+}

@@ -12,9 +12,13 @@ interface TimelineStore {
     buttonNavbar: gsap.core.Timeline | null;
     itemNavbarModal: gsap.core.Timeline | null;
     otherTimelines: Record<string, gsap.core.Timeline | null>; // Sử dụng Record<string, Timeline | null> để cho phép chỉ mục kiểu string
+
+    btnNavbarOpen: gsap.core.Timeline | null;
+    btnNavbarClose: gsap.core.Timeline | null;
+
   };
-  setTimeline: (key: 'navbarModal' | 'navbarDesListOn' | 'navbarDesListOff' | 'buttonNavbar' | 'itemNavbarModal', timeline: gsap.core.Timeline) => void;
-  getTimeline: (key: 'navbarModal' | 'navbarDesListOn' | 'navbarDesListOff' | 'buttonNavbar' | 'itemNavbarModal') => gsap.core.Timeline | null;
+  setTimeline: (key: 'btnNavbarOpen' | 'btnNavbarClose' | 'navbarModal' | 'navbarDesListOn' | 'navbarDesListOff' | 'buttonNavbar' | 'itemNavbarModal', timeline: gsap.core.Timeline) => void;
+  getTimeline: (key: 'btnNavbarOpen' | 'btnNavbarClose' |  'navbarModal' | 'navbarDesListOn' | 'navbarDesListOff' | 'buttonNavbar' | 'itemNavbarModal') => gsap.core.Timeline | null;
   setOtherTimeline: (key: string, timeline: gsap.core.Timeline) => void; // Cập nhật kiểu key
   getOtherTimeline: (key: string) => gsap.core.Timeline | null; // Cập nhật kiểu key
   getAllTimelines: () => Record<string, gsap.core.Timeline | null>; // Cập nhật kiểu trả về
@@ -35,6 +39,8 @@ const useStoreTimeline = create<TimelineStore>((set, get) => ({
       '/service': null,
       '/contact': null,
     },
+    btnNavbarOpen:null,
+    btnNavbarClose:null
   },
   setTimeline: (key, timeline) =>
     set((state) => ({
