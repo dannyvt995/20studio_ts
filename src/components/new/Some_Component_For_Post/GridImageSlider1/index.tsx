@@ -33,10 +33,10 @@ function GridImageSlider({ propsForGsap, content }:{propsForGsap:any, content:an
                 end: "bottom top",
                 scrub: true
             }
-        }) .set(domEffectTop.current, { x: isMobile() ? 200 :  100 })
-            .set(domEffectBot.current, { x: isMobile() ? -200 : -100  })
+        }) .set(domEffectTop.current, { x: isMobile() ? 60 :  100 })
+            .set(domEffectBot.current, { x: isMobile() ? -60 : -100  })
             .to(domEffectTop.current, {
-                x: isMobile() ? -200 : -100 
+                x: isMobile() ? -60 : -100 
             }).to(domEffectBot.current, {
                 x:0
             }, "<")

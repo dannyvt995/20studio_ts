@@ -31,7 +31,6 @@
     -webkit-filter: brightness(100%);
     filter: brightness(100%);
     height: 100vh;
-    height: --webkit-fill-available;
     /* overflow-y: scroll !important; */
     overflow: hidden !important;
 }

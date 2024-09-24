@@ -30,7 +30,13 @@
 .sketching p,
 .experimentation p,
 .prototyping p {
-    font-family: "BS-Medium";
+    font-family: "BS-Regular";
+    font-size: 3.7333333333vw;
+    font-size: var(--font-s-p);
+    letter-spacing: .0266666667vw;
+    letter-spacing: var(--font-ls-p);
+    line-height: 5.6vw;
+    line-height: var(--font-lh-p);
 }
 .sketchingImg {
     width: 100%;
@@ -72,4 +78,27 @@
     grid-row: 5;
     margin-top: 30vw;
     aspect-ratio: 365/616;
+}
+
+
+@media (max-width: 601px) {
+
+    .container{
+        display: flex !important;
+        flex-direction: column ;
+    }
+    .sketching h3, .experimentation h3, .prototyping h3 {
+        font-size: var(--font-s-h2)!important;
+  
+    letter-spacing: var(--font-ls-h2)!important;
+
+    line-height: var(--font-lh-h2)!important;
+    }
+    .prototypingImg,.experimentationImg2{
+        margin-top: 0!important;
+    }
+    .experimentationImg3 {
+        position: relative!important;
+        width: 100%!important;
+    }
 }

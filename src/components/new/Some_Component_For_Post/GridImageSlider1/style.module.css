@@ -29,11 +29,11 @@
 .row .media {
     overflow: hidden;
 }
- .row .media:first-child,  .row .media:nth-child(4) {
-    width: 25.0666666667vw;
+ .row .media:first-child {
+    width: 35.0666666667vw;
 }
  .row .media:nth-child(2) {
-    width: 58.4vw;
+    width: 42.4vw;
 }
  .row .media:nth-child(3) {
     width: 32.8vw;
@@ -41,10 +41,10 @@
 
 
 .row:nth-child(2) .media:nth-child(2) {
-    width: 32.8vw;
+    width: 36.8vw;
 }
 .row:nth-child(2) .media:nth-child(3) {
-    width: 58.4vw;
+    width: 32.4vw;
 }
 
 
@@ -81,12 +81,43 @@
     .infoProject {
         font-size: .8rem !important;
     }
+    .row .media:nth-child(2) img{
+        width: 100% !important;
+        height: auto !important;
+    }
+    .row:nth-child(1) .media:first-child {
+        
+    }
 }
 
 
 
+.row:nth-child(1) .media:first-child{
+   
+    aspect-ratio: 729/472;
+}
 
+ .row:nth-child(1) .media:nth-child(2) {
+    
+    aspect-ratio: 522 / 768;
+}
+ .row:nth-child(1) .media:nth-child(3) {
+   
+    aspect-ratio: 396/616;
+}
 
+.row:nth-child(2) .media:first-child{
+  
+    aspect-ratio: 513/621;
+}
+ .row:nth-child(2) .media:nth-child(2) {
+ 
+    aspect-ratio: 524/846;
+}
+ .row:nth-child(2) .media:nth-child(3) {
+   
+    aspect-ratio: 653/732;
+}
 
 @media (min-width: 601px) {
      .row:first-child {
@@ -97,39 +128,32 @@
     }
      .row:nth-child(1) .media:first-child{
         width: 45.3055555556vw;
-        aspect-ratio: 729/472;
+       
     }
 
      .row:nth-child(1) .media:nth-child(2) {
         width: 27.5555555556vw;
-        aspect-ratio: 522 / 768;
+      
     }
      .row:nth-child(1) .media:nth-child(3) {
         width: 36.388889vw;
-        aspect-ratio: 396/616;
+       
     }
-    
-    .row:nth-child(1) .media:nth-child(4) {
-        width: 19.3055555556vw;
-    }
- 
+   
 
     .row:nth-child(2) .media:first-child{
         width: 27.3055555556vw;
-        aspect-ratio: 513/621;
+       
     }
      .row:nth-child(2) .media:nth-child(2) {
         width: 42.5555555556vw;
-        aspect-ratio: 524/846;
+   
     }
      .row:nth-child(2) .media:nth-child(3) {
         width: 37.3888888889vw;
-        aspect-ratio: 653/732;
+      
     }
-    .row:nth-child(2) .media:nth-child(4) {
-        width: 19.3055555556vw;
-    }
-
+ 
   
    
 }

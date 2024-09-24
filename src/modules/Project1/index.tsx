@@ -1,6 +1,6 @@
 
 
-import { memo } from 'react';
+import { memo, Suspense } from 'react';
 import { IPageModule } from '@/types/common';
 import IntroWorkPage from '@/components/new/IntroWorkPage';
 import ProjectText from '@/components/new/ProjectText';
@@ -23,8 +23,10 @@ function Project1(): JSX.Element {
            {/*  <ProjectText scroller={project1_page.propsForGsap.scrollerRef} randomID='hoho123' disableTitle={false}/> */}
              <GridImageSlider content={project1_page.content} propsForGsap={project1_page.propsForGsap}/>
             {/*  <ProjectText scroller={project1_page.propsForGsap.scrollerRef} randomID='ghhe123' disableTitle={true}/> */}
-        
+            <Suspense>
             <LayoutCustom content={project1_page.content.gridImageSlider} />
+            </Suspense>
+          
         
           {/*    <div className='cream_background'>
                 <ProjectText scroller={project1_page.propsForGsap.scrollerRef} randomID='bobo123' disableTitle={false}/>

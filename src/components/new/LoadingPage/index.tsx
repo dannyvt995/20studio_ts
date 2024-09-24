@@ -23,7 +23,7 @@ function LoadingPage() {
     gsap.timeline({
       onComplete: () => {
        setStateEnterPage()
-       gsap.to(`.${s.logo}`,{delay:.3,scale:.2,duration:1.345})
+       gsap.to(`.${s.logo}`,{delay:.3,scale:.3,duration:1.345})
         setTimeout(() => {
           gsap.set(container.current, { delay: 1.2, opacity: 0 })
          //^^console.log('%c///// END anim loading page, disable this', 'color: red;font-weight:bold;text-decoration: underline')

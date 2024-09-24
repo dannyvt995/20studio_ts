@@ -4,7 +4,7 @@ import s from './style.module.css'
 import Image from 'next/image'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
-
+import useStoreZustand from '@Hooks/useStoreZustand';
 import { useRouter } from 'next/navigation'
 import useStoreTimeline from '@/hooks/useStoreTimeline';
 import { isMobile } from '@/utils/responsive'
@@ -14,80 +14,117 @@ export default function FooterRedirect({content,scroller,targetRedirect,currentI
     const router = useRouter()
     const timelineStore = useStoreTimeline((state) => state.timelines);
     const timeline = useRef<gsap.core.Timeline>()
+    const { stateTransition } = useStoreZustand()
+   
+   
     useEffect(() => {
-        timeline.current =   gsap.timeline({
-            onComplete:() => {
-              setTimeout(() => {
-                  router.push(`/work/work${targetRedirect}`)
-                  timelineStore['navbarDesListOn']?.restart().play(0)
-              },720)
-            },
-            paused:true,
-            defaults:{duration: 0.72 }
-        })
+        if(!isMobile()) {
+            timeline.current =   gsap.timeline({
+                onComplete:() => {
+                  setTimeout(() => {
+                      router.push(`/work/work${targetRedirect}`)
+                      timelineStore['navbarDesListOn']?.restart().play(0)
+                  },720)
+                },
+                paused:true,
+                defaults:{duration: 0.72 }
+            })
+    
+            .to(`#bg_fr_${currentId}`,{
+                scale:1,
+            })
+            .to(`#info_fr_${currentId}`,{
+                opacity:0,
+            },'<')
+            .to(`#image_fr_${currentId}`,{
+                clipPath: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)',
+            },'<')
+        }else{
+            timeline.current =   gsap.timeline({
+                onComplete:() => {
+                  setTimeout(() => {
+                    router.push(`/work/work${targetRedirect}`)
+                      timelineStore['navbarDesListOn']?.restart().play(0)
+                  },720)
+                },
+                paused:true,
+                defaults:{duration: 0.72 }
+            })
+    
+            .to(`#bg_fr_${currentId}`,{
+                scale:1,
+            })
+            .to(`#info_fr_${currentId}`,{
+                opacity:0,
+            },'<')
+            .to(`#image_fr_${currentId}`,{
+                clipPath: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)',
+            },'<')
 
-        .to(`#bg_fr_${currentId}`,{
-            scale:1,
-        })
-        .to(`#info_fr_${currentId}`,{
-            opacity:0,
-        },'<')
-        .to(`#image_fr_${currentId}`,{
-            clipPath: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)',
-        },'<')
+        }
+    
     },[timelineStore['navbarDesListOn'],targetRedirect,currentId])
 
 
 
     useGSAP(() => {
-        gsap.timeline({
-            scrollTrigger:{
-                scroller:scroller,
-                trigger:container.current,
-                onEnter:() => {
-                    timelineStore['navbarDesListOff']?.play(timelineStore['navbarDesListOff']?.totalDuration())
-                },
-                onUpdate:(self) => {
-                    
-                    cirRefIc.current.style.strokeDasharray = `${self.progress * 120}px, ${110-100*self.progress}px`
-                    
-                    // if(self.progress > 0.90) {
-                        
-                    //   document.body.style.pointerEvents = 'none'
-                      
-                    //     window.lenis?.scrollTo(`.${s.footer_redirect}`,{duration:1,lerp:0.072,onComplete:() => {
-                    //         if(timeline.current) {
-                              
-                    //             timeline.current.play()
+
+        let timeoutId: NodeJS.Timeout;
+        if (stateTransition === 'entered') {
+            timeoutId = setTimeout(() => {
+                gsap.timeline({
+                    scrollTrigger:{
+                        scroller:scroller,
+                        trigger:container.current,
+                        onEnter:() => {
+                            timelineStore['navbarDesListOff']?.play(timelineStore['navbarDesListOff']?.totalDuration())
+                        },
+                        onUpdate:(self) => {
                             
-                    //         }
-                    //     }})
-                    //  }
-                     //else{
-                    //     document.body.style.pointerEvents = 'none'
-                    //     if(timeline.current) timeline.current.play()
-                    // }
-                },
-                start:"top 120% ",
-                end:"top top",
-                scrub:true,
-            }
-        }).to(`.${s.info}`,{
-          
-            y :window.innerHeight * .5
-            
-        }).fromTo(`.${s.background}`,{
-            '-webkit-filter': 'brightness(5%)',
-            filter: 'brightness(5%)',
-            y : - window.innerHeight * .65
-            
-        },{
-            '-webkit-filter': 'brightness(100%)',
-            filter: 'brightness(100%)',
-            y : 0
-            
-        },"<")
-    })
+                            cirRefIc.current.style.strokeDasharray = `${self.progress * 120}px, ${110-100*self.progress}px`
+                            
+                            if(self.progress > 0.90) {
+                                
+                              document.body.style.pointerEvents = 'none'
+                              
+                                window.lenis?.scrollTo(`.${s.footer_redirect}`,{duration:1,lerp:0.072,onComplete:() => {
+                                    if(timeline.current) {
+                                      
+                                        timeline.current.play()
+                                    
+                                    }
+                                }})
+                             }
+                             else{
+                                document.body.style.pointerEvents = 'none'
+                                if(timeline.current) timeline.current.play()
+                            }
+                        },
+                        start:"top 120% ",
+                        end:"top top",
+                        scrub:true,
+                    }
+                }).to(`.${s.info}`,{
+                  
+                    y :window.innerHeight * .5
+                    
+                }).fromTo(`.${s.background}`,{
+                    '-webkit-filter': 'brightness(5%)',
+                    filter: 'brightness(5%)',
+                    y : - window.innerHeight * .65
+                    
+                },{
+                    '-webkit-filter': 'brightness(100%)',
+                    filter: 'brightness(100%)',
+                    y : 0
+                    
+                },"<")
+            },2000)
+        }
+
+
+     
+     }, {dependencies:[stateTransition]});
   return (
     <>
     <section className={s.footer_redirect} ref={container} >

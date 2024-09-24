@@ -70,12 +70,12 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children, wrapper, btnN
             ease: easeOps,
             immediateRender: false,
         });
-
+        let a = isMobile() ? "50%" : "72%"
         if (btnNavbar) {
             let timeline = gsap.timeline({paused:true}).fromTo(
                 refIconNavbar.current,
                 { rotate:0,scale:0},
-                { rotate:90,scale:1,y:"-50%",x:"72%",duration:.5 }
+                { rotate:90,scale:1,y:"-50%",x:a,duration:.5 }
             ).fromTo(
                 labelRef.current,
                 { x:0 },

@@ -18,12 +18,17 @@ function IntroWorkPage({ content}: IIntroWorkPage) {
     const triggleSection = useRef<HTMLUListElement>(null)
     const {stateTransition} = useStoreZustand()
     useGSAP(() => {
-        if(!isMobile()) {
-            gsap.to(`.${s.iii}`, { delay: 1.5, y: 0, duration: 1, ease: "power3.out" });
-        } else {
-            gsap.set(`.${s.iii}`, {y: 0});
-        }
-    }, { scope: triggleSection })
+         if (stateTransition === 'entered' ){
+            gsap.to(`.${s.iii}`, { delay: .72, y: 0, duration: 1, ease: "power3.out" });
+
+         }
+       
+        // if(!isMobile()) {
+        //     gsap.to(`.${s.iii}`, { delay: 1.5, y: 0, duration: 1, ease: "power3.out" });
+        // } else {
+        //     gsap.set(`.${s.iii}`, {y: 0});
+        // }
+    }, {dependencies:[stateTransition], scope: triggleSection })
 
     useGSAP(() => {
         
