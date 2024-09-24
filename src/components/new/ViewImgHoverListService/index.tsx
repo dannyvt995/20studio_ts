@@ -32,7 +32,7 @@ const ViewImgHoverListService = ({classAdd}:{classAdd:string}) => {
           ease:"power3.out"
         })
     }else{
-      console.log("Something wrong on ViewImgHoverListService!!")
+      //^^console.log("Something wrong on ViewImgHoverListService!!")
     }
   },{dependencies:[indexItemService,listEl.current],scope:container})
   return (

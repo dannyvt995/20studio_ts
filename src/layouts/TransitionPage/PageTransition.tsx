@@ -71,7 +71,7 @@ const PageTransition: React.FC<PageTransitionProps> = ({
 
   const { contextSafe } = useGSAP({ scope: scopeRef })
 
-  // --^^ console.log("##############   PageTransition render")
+ //^^console.log("##############   PageTransition render")
 
 
   const [isMobi,setIsMobi] = useState(false)
@@ -96,7 +96,7 @@ const PageTransition: React.FC<PageTransitionProps> = ({
   // useEffect(() => {
   //   if(isMobile()) return
   //   if(targetPath.current !== '/none' && timelines[pathName]) return
-  //   console.log("1")
+  //   //^^console.log("1")
     
   //   const currentTimeline = timelines[pathName] 
   //   if (currentTimeline) {
@@ -114,7 +114,7 @@ const PageTransition: React.FC<PageTransitionProps> = ({
 
     if (currentPathFormatted !== targetPathFormatted) {
   
-      console.log("2")
+      //^^console.log("2")
   //    setStateUrl({isTarget:targetPath.current,isCurrent:currentPath.current})
       resetIconNavbarModal({ cur: currentPathFormatted, tar: targetPathFormatted ,listTimeline:timelines});
     }
@@ -124,7 +124,7 @@ const PageTransition: React.FC<PageTransitionProps> = ({
   
 
   function transitionFirst(pn: string) {
-    // --^^ console.log("Enter page ================>")
+   //^^console.log("Enter page ================>")
 
     const this_page = document.getElementById(`${pn}page`)
 
@@ -244,7 +244,7 @@ const PageTransition: React.FC<PageTransitionProps> = ({
 
             onEnter={(node: any) => {
               
-              // --^^ console.log(`%c STATE ==> onEnter`,"color:black;font-weight:bold;font-weight:bold")
+             //^^console.log(`%c STATE ==> onEnter`,"color:black;font-weight:bold;font-weight:bold")
               document.body.style.pointerEvents = 'none'
               document.body.style.userSelect = 'none'
               targetPath.current = transitionKey
@@ -275,11 +275,11 @@ const PageTransition: React.FC<PageTransitionProps> = ({
               }
             }}
             onEntered={(node: any) => {
-              // --^^ console.log(`%c STATE ==> onEntered`,"color:black;font-weight:bold;font-weight:bold")
+             //^^console.log(`%c STATE ==> onEntered`,"color:black;font-weight:bold;font-weight:bold")
               document.body.style.pointerEvents = 'auto'
               document.body.style.userSelect = 'auto'
               // nên set 1 state tại đây , là cần thiết
-              setStateTransition('entered')
+              // setStateTransition('entered')
               localStorage.setItem('isOpenNav','false')
               currentPath.current = pathName
               // tạm thời return index < 100 với các page type 2
@@ -294,14 +294,14 @@ const PageTransition: React.FC<PageTransitionProps> = ({
               let a =  localStorage.getItem('isOpenNav')
                if(a === 'true') return
           
-              // --^^ console.log(`%c STATE ==> onExit`,"color:black;font-weight:bold;font-weight:bold")
+             //^^console.log(`%c STATE ==> onExit`,"color:black;font-weight:bold;font-weight:bold")
               if (targetPath.current) {
                 if (!listUrlProjects.includes(targetPath.current)) {
                   exitPage({ nodeChild: node.children[0].children[0] })
                 } else {
 
                   if (currentPath.current !== '/work') {
-                    // --^^ console.log("EXIT from page not is work")
+                   //^^console.log("EXIT from page not is work")
                     exitPage({ nodeChild: node.children[0].children[0] })
                   }
                 }

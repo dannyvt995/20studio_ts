@@ -84,7 +84,7 @@ function Cursor() {
         if(stateEnterPage && isPageLoadFirst === 'none') {
             setIsPageLoadFirst('isFirst')
             if(isPageLoadFirst)  {
-                console.log("Run exacly 1 time")
+                //^^console.log("Run exacly 1 time")
                 timeoutId = setTimeout(() => {
                     gsap.to(cursorRef.current,{scale:1,duration:.42  })
                     setIsPageLoadFirst('endFirst')

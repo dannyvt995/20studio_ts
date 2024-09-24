@@ -32,7 +32,7 @@ const ViewImgHoverNavbarModal = ({classAdd}:{classAdd:string}) => {
           ease:"power3.out"
         })
     }else{
-      console.log("Something wrong on ViewImgHoverNavbarModal!!")
+      //^^console.log("Something wrong on ViewImgHoverNavbarModal!!")
     }
   },{dependencies:[indexItemNavbar,listEl.current],scope:container})
   return (

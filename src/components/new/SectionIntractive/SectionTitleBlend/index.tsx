@@ -15,7 +15,7 @@ function SectionTitleBlend({ propsForGsap }: {propsForGsap:any}) {
 
         let timeoutId: NodeJS.Timeout;
         if (stateTransition === 'entered') {
-            // --^^ console.log("FooterSection re-render")
+           //^^console.log("FooterSection re-render")
             timeoutId = setTimeout(() => {
                 gsap.timeline({
                     scrollTrigger: {

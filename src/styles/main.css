@@ -49,6 +49,8 @@ body::-webkit-scrollbar {
     #work4page,
     #sustainabilitypage {
         overflow: scroll !important;
+        -webkit-filter: brightness(100%);
+        filter: brightness(100%);
     }
    
 }
@@ -249,7 +251,7 @@ main {
     height: 100vh;
     overflow: hidden;
     will-change: tranform;
-
+    
 }
 
 #work1page>.part1,

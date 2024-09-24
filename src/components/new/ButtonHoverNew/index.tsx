@@ -123,7 +123,7 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children, wrapper, btnN
         });
 
         if (linkRef.current ) {
-            // --^^ console.log("%c=>>AddListenerToButton","color:blue;border:1px solid gray")
+           //^^console.log("%c=>>AddListenerToButton","color:blue;border:1px solid gray")
             linkRef.current.addEventListener('mouseenter', enterAnimation);
             linkRef.current.addEventListener('mouseleave', leaveAnimation);
         }
@@ -131,7 +131,7 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children, wrapper, btnN
         return () => {
 
             if (linkRef.current) {
-                // --^^ console.log("%c<<=RemoveListenerOfButton","color:blue;border:1px solid gray")
+               //^^console.log("%c<<=RemoveListenerOfButton","color:blue;border:1px solid gray")
                 linkRef.current.removeEventListener('mouseenter', enterAnimation);
                 linkRef.current.removeEventListener('mouseleave', leaveAnimation);
             }
@@ -157,7 +157,7 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children, wrapper, btnN
        // event.preventDefault();
       
         if(pathName === targetRedirect) {
-            console.log("Trung")
+            //^^console.log("Trung")
             return
         }
 

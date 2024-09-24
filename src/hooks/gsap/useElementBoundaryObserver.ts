@@ -16,7 +16,7 @@ useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
             const rect = entry.boundingClientRect; // This provides the location of the observed element.
-            // --^^ console.log(rect.y)
+           //^^console.log(rect.y)
             // Here we check the position of the element and update the boundary state accordingly.
             if (rect.y <= 0) {
                 entry.isIntersecting ? setBoundary('topIn'):setBoundary('topOut');

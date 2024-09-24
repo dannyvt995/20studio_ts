@@ -4,7 +4,7 @@ import s from './style.module.css'
 import cn from 'classnames';
 
 function WrapperTrackMouse({children,classAdd,dataCursor,changeLabel}:{children:React.ReactNode,classAdd?:any,changeLabel?:string,dataCursor?:string}) {
-    console.log("WrapperTrackMouse")
+    //^^console.log("WrapperTrackMouse")
 
     return (
     <div 

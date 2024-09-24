@@ -8,7 +8,7 @@ import { useGSAP } from '@gsap/react'
 gsap.registerPlugin(useGSAP)
 
 function LoadingPage() {
-  // --^^ console.log('%cLoadingPage_Render!', 'color: red;')
+ //^^console.log('%cLoadingPage_Render!', 'color: red;')
 
   const container = useRef<HTMLDivElement>(null)
   const { stateEnterPage,setStateEnterPage } = useStoreZustand()
@@ -18,7 +18,7 @@ function LoadingPage() {
 
   useGSAP(() => {
     if (stateEnterPage) return
-    // --^^ console.log('%cFire anim loading page', 'color: red;font-weight:bold;text-decoration: underline')
+   //^^console.log('%cFire anim loading page', 'color: red;font-weight:bold;text-decoration: underline')
 
     gsap.timeline({
       onComplete: () => {
@@ -26,7 +26,7 @@ function LoadingPage() {
        gsap.to(`.${s.logo}`,{delay:.3,scale:.2,duration:1.345})
         setTimeout(() => {
           gsap.set(container.current, { delay: 1.2, opacity: 0 })
-          // --^^ console.log('%c///// END anim loading page, disable this', 'color: red;font-weight:bold;text-decoration: underline')
+         //^^console.log('%c///// END anim loading page, disable this', 'color: red;font-weight:bold;text-decoration: underline')
         }, 1200)
       }
     }).to(`.${s.progressBar}`, {

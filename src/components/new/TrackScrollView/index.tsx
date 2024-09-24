@@ -5,7 +5,7 @@ import { useGSAP } from '@gsap/react'
 import { isMobile } from '@/utils/responsive'
 
 export default function TrackScrollView() {
-    console.log("TrackScrollView re-render")
+    //^^console.log("TrackScrollView re-render")
     const container = useRef<HTMLDivElement>(null)
     const hasLogged = useRef<boolean>()
    

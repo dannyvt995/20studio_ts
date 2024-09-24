@@ -1,6 +1,6 @@
 "use client"
 
-import { memo, useEffect, useRef, useState } from 'react'
+import { memo, useCallback, useEffect, useRef, useState } from 'react'
 import s from './style.module.css'
 import gsap from 'gsap'
 import cn from 'classnames';
@@ -22,6 +22,7 @@ import IconSVG from '@/components/Icon/IconSVG';
 
 
 function NavbarModalSection() {
+    //^^console.log("NavbarModalSection rere")
     const buttonMenuRef = useRef<HTMLButtonElement>(null)
     const listItemNavbarModal = useRef<HTMLUListElement>(null)
     const listImgHover = useRef<HTMLUListElement>(null)
@@ -41,7 +42,7 @@ function NavbarModalSection() {
         if (isMobile()) setIsMobi(true)
     }, [])
 
-    console.log('render')
+  
 
     useEffect(() => {
         if (listImgHover.current) {
@@ -51,20 +52,22 @@ function NavbarModalSection() {
     }, [listImgHover])
 
    
-    useEffect(() => {
-        const  hoverItem = (e: MouseEvent)  => {
-            const target = e.target as HTMLElement;
-    
-            if (target.tagName.toLowerCase() === 'a') {
-    
-                setItemNavbar(Number(target.getAttribute("data-link")))
-            }
+    const  hoverItem = useCallback((e: MouseEvent)  => {
+        const target = e.target as HTMLElement;
+
+        if (target.tagName.toLowerCase() === 'a') {
+
+            setItemNavbar(Number(target.getAttribute("data-link")))
         }
+    },[])
+
+    useEffect(() => {
+     
         if (listItemNavbarModal.current) listItemNavbarModal.current.addEventListener('mousemove', hoverItem, false)
         return () => {
             if (listItemNavbarModal.current) listItemNavbarModal.current.removeEventListener('mousemove', hoverItem, false)
         }
-    }, [listItemNavbarModal])
+    }, [])
 
     useGSAP(() => {
         if (listImgHoverFormat.current && listImgHoverFormat.current.length === 6) {
@@ -85,14 +88,12 @@ function NavbarModalSection() {
                 ease: "power3.out"
             })
         } else {
-            console.log("????? getting 6 img from ref on NavbarModal")
+            //^^console.log("????? getting 6 img from ref on NavbarModal")
         }
     }, { dependencies: [itemNavbar], scope: listImgHover })
 
 
-    useEffect(() => {
-
-    })
+  
 
     useEffectActive_NavbarModal({
         btnMenu: buttonMenuRef.current,

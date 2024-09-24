@@ -31,7 +31,7 @@ export const useEffectActive_NavbarModal = (
     const setTimeline = useStoreTimeline((state) => state.setTimeline);
     const {stateTransition,stateEnterPage} = useStoreZustand()
 
-    console.log("%cHOOK NAVBAR MODAL Running","color:orange")
+    //^^console.log("%cHOOK NAVBAR MODAL Running","color:orange")
     let timelineNavbarModal: any = null
     let DomContent: any = null
     let TargetList: any = []
@@ -44,7 +44,7 @@ export const useEffectActive_NavbarModal = (
    
         if(stateTransition !== 'entered') return
         if(!stateEnterPage) return
-        console.log("%c=>>HOOK NAVBAR Running Update!!!!!","color:orange;font-weight:bold")
+        //^^console.log("%c=>>HOOK NAVBAR Running Update!!!!!","color:orange;font-weight:bold")
         // update DomContent when path change
        // NavbarDeskop = document.getElementById(`navbar`)
         DomContent = document.getElementById(`${pathNameFormat}page`)
@@ -61,6 +61,8 @@ export const useEffectActive_NavbarModal = (
         })
         .set(SectionRef, { zIndex: 500, pointerEvents: 'none' })
             .set(MaskRef, { clipPath: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)' })
+            .set(DomContent, {  '-webkit-filter': 'brightness(100%)',
+                filter: 'brightness(100%)', })
             .set(DomEffect, {
                 rotate: -5,
                 scale: 1.72,
@@ -98,7 +100,7 @@ export const useEffectActive_NavbarModal = (
             }
     }, [pathName,SliderImage,SectionRef,MaskRef,DomEffect,stateEnterPage,stateTransition])
     return () => {
-        console.log("It clear???")
+        //^^console.log("It clear???")
         timelineNavbarModal.kill()
         timelineNavbarModal = null
     }

@@ -28,7 +28,7 @@ interface IHeroSection {
 
 function HeroSection({ pageName, content }: IHeroSection) {
     const triggleSection = useRef<HTMLDivElement>(null)
-    console.log("HeroSection re-render","have 2 update state on scrolltrigggle")
+    //^^console.log("HeroSection re-render","have 2 update state on scrolltrigggle")
     const { stateEnterPage, stateTransition } = useStoreZustand()
     const timelineTextHero = useRef<gsap.core.Timeline>()
 

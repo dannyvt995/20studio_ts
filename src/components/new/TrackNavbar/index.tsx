@@ -14,11 +14,11 @@ export default function TrackNavbar() {
            markers:true,
             onEnter: () => {
               // Hành động khi phần tử vào viewport
-              // --^^ console.log('Phần tử đã vào viewport!');
+             //^^console.log('Phần tử đã vào viewport!');
             },
             onLeave: () => {
               // Hành động khi phần tử ra khỏi viewport
-              // --^^ console.log('Phần tử đã ra khỏi viewport!');
+             //^^console.log('Phần tử đã ra khỏi viewport!');
             },
           });
     })

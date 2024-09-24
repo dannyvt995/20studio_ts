@@ -36,7 +36,7 @@ export  function formatUrlForIconNavbar({ cur, tar }: { cur: string; tar: string
      currentTimeline.reversed(!currentTimeline.reversed())
       targetTimeline.reversed(!targetTimeline.reversed())
     } else {
-      console.log("Some err on resetIconNavbarModal")
+      //^^console.log("Some err on resetIconNavbarModal")
     }
 
 

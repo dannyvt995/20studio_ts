@@ -17,7 +17,7 @@ gsap.registerPlugin(useGSAP)
 
 function NavbarSectionDeskop() {
 
-    // --^^ console.log("%cNavbarDeskop_render", "color:green;font-weight:bold")
+ //^^console.log("%cNavbarDeskop_render", "color:green;font-weight:bold")
 
     const navbarDeskopRef = useRef<any>(null)
     const navbarSectionDes = useRef<HTMLDivElement>(null)
@@ -27,7 +27,7 @@ function NavbarSectionDeskop() {
 
 
     const pathName = usePathname()
-    const { stateEnterPage} = useStoreZustand()
+    const { stateEnterPage ,stateTransition} = useStoreZustand()
 
     const unit = useRef<number>(0)
     const target = useRef<number>(0)
@@ -82,8 +82,8 @@ function NavbarSectionDeskop() {
     }, { dependencies: [pathName, target.current] })
 
     useEffect(() => {
-        if (stateEnterPage) {
-            console.log("re-init? =}}}")
+        if (stateEnterPage && stateTransition === 'entered') {
+            //^^console.log("re-init? =}}}")
             if (!isMobile()) {
                 timelineNavbarItemOn.current = gsap.timeline({
                     defaults: { delay: .5 },
@@ -136,7 +136,7 @@ function NavbarSectionDeskop() {
             if (timelineNavbarItemOff.current) timelineNavbarItemOff.current.kill()
             if (timelineIconBehindItemNav.current) timelineIconBehindItemNav.current.kill()
         })
-    }, [stateEnterPage])
+    }, [stateEnterPage,stateTransition])
 
 
    

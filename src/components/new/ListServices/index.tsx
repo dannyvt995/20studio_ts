@@ -35,7 +35,7 @@ function ListServices() {
                     ease: "power3.out"
                 })
             } else {
-                console.log("Something wrong on ViewImgHoverListService!!")
+                //^^console.log("Something wrong on ViewImgHoverListService!!")
             }
         }
 

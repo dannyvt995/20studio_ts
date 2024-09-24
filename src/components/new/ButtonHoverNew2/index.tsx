@@ -93,7 +93,7 @@ const handleRedirect = useCallback((event: React.MouseEvent<HTMLAnchorElement, M
   if (timelineStore['navbarDesListOn']) {
     timelineStore['navbarDesListOn'].restart().play(0)
 } else {
-    console.log("Err on timelineStore")
+    //^^console.log("Err on timelineStore")
 }
 }, []);
 
@@ -102,7 +102,7 @@ const handleRedirectFromNavbar = useCallback((event: React.MouseEvent<HTMLAnchor
   // event.preventDefault();
  
    if(pathName === targetRedirect) {
-       console.log("Trung")
+       //^^console.log("Trung")
        return
    }
 

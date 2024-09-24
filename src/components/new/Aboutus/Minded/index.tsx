@@ -15,7 +15,7 @@ function Minded({ propsForGsap }: { propsForGsap: any }) {
 
 
         if (stateTransition === 'entered') {
-            // --^^ console.log("FooterSection re-render")
+           //^^console.log("FooterSection re-render")
             timeoutId = setTimeout(() => {
                 gsap.timeline({
                     scrollTrigger: {

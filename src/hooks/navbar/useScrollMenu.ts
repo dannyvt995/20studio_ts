@@ -8,10 +8,10 @@ function useScrollMenu() {
       const scrollPosition = window.scrollY || document.documentElement.scrollTop;
 
       if (scrollPosition >= 500 && !aboveThreshold) {
-        // --^^ console.log('menuButton');
+       //^^console.log('menuButton');
        
       } else if (scrollPosition < 500 && aboveThreshold) {
-        // --^^ console.log('menuDesktop');
+       //^^console.log('menuDesktop');
       
       }
     };

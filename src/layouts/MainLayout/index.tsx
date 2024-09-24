@@ -9,7 +9,7 @@ import { memo, PropsWithChildren, useEffect, useState } from 'react';
 
 
 function MainLayout({ children }: PropsWithChildren): React.ReactElement {
-  console.log("MainLayout=====>1 time")
+  //^^console.log("MainLayout=====>1 time")
 
   return (
     <>
