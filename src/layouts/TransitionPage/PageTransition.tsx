@@ -66,7 +66,7 @@ const PageTransition: React.FC<PageTransitionProps> = ({
   const currentPath = useRef<string>('/none')
   const targetPathFormat = useRef<string>('/none')
   const currentPathFormat = useRef<string>('/none')
-  const isWorkPage = useRef<boolean>(false)
+  const isMobiAh = useRef<boolean>(false)
   const [firstLoadPage, setFirstLoadPage] = useState(false);
 
   const { contextSafe } = useGSAP({ scope: scopeRef })
@@ -76,8 +76,14 @@ const PageTransition: React.FC<PageTransitionProps> = ({
 
   const [isMobi,setIsMobi] = useState(false)
   useEffect(() => {
+    localStorage.setItem('isMobi','false')
     localStorage.setItem('isOpenNav','false')
-    if(isMobile()) setIsMobi(true)
+    if(isMobile()) {
+      setIsMobi(true)
+      isMobiAh.current = true
+    }else{
+      isMobiAh.current = false
+    }
   },[])
 
 
@@ -248,31 +254,42 @@ const PageTransition: React.FC<PageTransitionProps> = ({
               document.body.style.pointerEvents = 'none'
               document.body.style.userSelect = 'none'
               targetPath.current = transitionKey
-              if (!listUrlProjects.includes(transitionKey)) {
+              if(isMobiAh.current) {
                 enterPage({
                   node: node.children[0],
                   nodeChild: node.children[0].children[0],
                   nodeParent: node,
                   index: indexRef.current++
                 })
-              } else {
-                if (currentPath.current && currentPath.current !== '/work' && !listUrlProjects.includes(currentPath.current)) {
-
+              }else{
+                if (!listUrlProjects.includes(transitionKey)) {
                   enterPage({
                     node: node.children[0],
                     nodeChild: node.children[0].children[0],
                     nodeParent: node,
                     index: indexRef.current++
                   })
-
-
                 } else {
-                  //set page type 2 thành index lớn và return thành nhỏ hơn 100 trong entered
-                  node.style.zIndex = 444
-                  node.children[0].style.clipPath = 'none'
+                  if (currentPath.current && currentPath.current !== '/work' && !listUrlProjects.includes(currentPath.current)) {
+  
+                    enterPage({
+                      node: node.children[0],
+                      nodeChild: node.children[0].children[0],
+                      nodeParent: node,
+                      index: indexRef.current++
+                    })
+  
+  
+                  } else {
+                    //set page type 2 thành index lớn và return thành nhỏ hơn 100 trong entered
+                    node.style.zIndex = 444
+                    node.children[0].style.clipPath = 'none'
+                  }
+  
                 }
-
               }
+              
+              
             }}
             onEntered={(node: any) => {
              //^^console.log(`%c STATE ==> onEntered`,"color:black;font-weight:bold;font-weight:bold")
@@ -295,7 +312,13 @@ const PageTransition: React.FC<PageTransitionProps> = ({
                if(a === 'true') return
           
              //^^console.log(`%c STATE ==> onExit`,"color:black;font-weight:bold;font-weight:bold")
-              if (targetPath.current) {
+            
+
+            
+              if(isMobiAh.current) {
+                exitPage({ nodeChild: node.children[0].children[0] })
+              }else{
+                  if (targetPath.current) {
                 if (!listUrlProjects.includes(targetPath.current)) {
                   exitPage({ nodeChild: node.children[0].children[0] })
                 } else {
@@ -305,6 +328,7 @@ const PageTransition: React.FC<PageTransitionProps> = ({
                     exitPage({ nodeChild: node.children[0].children[0] })
                   }
                 }
+              }
               }
             }}
           >

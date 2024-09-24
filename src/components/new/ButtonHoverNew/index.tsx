@@ -72,21 +72,37 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children, wrapper, btnN
         });
         let a = isMobile() ? "50%" : "72%"
         if (btnNavbar) {
-            let timeline = gsap.timeline({paused:true}).fromTo(
-                refIconNavbar.current,
-                { rotate:0,scale:0},
-                { rotate:90,scale:1,y:"-50%",x:a,duration:.5 }
-            ).fromTo(
-                labelRef.current,
-                { x:0 },
-                { x:42,duration:.5 },"<"
-            )
-            timeline.name = targetRedirect;
-            timeline.reverse()
-            setOtherTimeline(timeline.name, timeline);
-
-
-            if(currentPathFormatted === targetRedirect) timeline.play()
+            if(!isMobile()){
+                let timeline = gsap.timeline({paused:true}).fromTo(
+                    refIconNavbar.current,
+                    { rotate:0,scale:0},
+                    { rotate:90,scale:1,y:"-50%",x:a,duration:.5 }
+                ).fromTo(
+                    labelRef.current,
+                    { x:0 },
+                    { x:42,duration:.5 },"<"
+                )
+                timeline.name = targetRedirect;
+                timeline.reverse()
+                setOtherTimeline(timeline.name, timeline);
+    
+    
+                if(currentPathFormatted === targetRedirect) timeline.play()
+            }else{
+                let timeline = gsap.timeline({paused:true}).set(
+                    refIconNavbar.current,
+                    { rotate:90,scale:1,y:"-50%",x:a}
+                ).set(
+                    labelRef.current,
+                    { x:42}
+                )
+                timeline.name = targetRedirect;
+                timeline.reverse()
+                setOtherTimeline(timeline.name, timeline);
+    
+    
+                if(currentPathFormatted === targetRedirect) timeline.play()
+            }
         } 
         isActiveRef.current = (pathName === targetRedirect) || (pathName === '/' && targetRedirect === '/home');
         return () => {
@@ -109,10 +125,7 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children, wrapper, btnN
                 if(pathName !== targetRedirect) {
                     timelineRef.current.tweenFromTo(0, "midway");
                 }
-               
-                if (btnNavbar) {
-                  // selectedItemNavbar(data_id as number);
-                }
+              
             }
         });
 

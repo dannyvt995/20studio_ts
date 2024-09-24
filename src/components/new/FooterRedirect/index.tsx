@@ -68,9 +68,9 @@ export default function FooterRedirect({content,scroller,targetRedirect,currentI
 
 
     useGSAP(() => {
-
+       
         let timeoutId: NodeJS.Timeout;
-        if (stateTransition === 'entered') {
+        if (!isMobile() && stateTransition === 'entered') {
             timeoutId = setTimeout(() => {
                 gsap.timeline({
                     scrollTrigger:{
@@ -120,6 +120,9 @@ export default function FooterRedirect({content,scroller,targetRedirect,currentI
                     
                 },"<")
             },2000)
+        }else{
+            gsap.timeline().set(`.${s.background}`,{'-webkit-filter': 'brightness(100%)',
+                    filter: 'brightness(100%)',y:0}).set(`.${s.info}`,{y :window.innerHeight * .5})
         }
 
 
