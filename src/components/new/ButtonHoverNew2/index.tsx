@@ -114,7 +114,8 @@ const handleRedirectFromNavbar = useCallback((event: React.MouseEvent<HTMLAnchor
    localStorage.setItem('isOpenNav','true')
 
    timelineStore['navbarModal']?.reversed(!timelineStore['navbarModal'].reversed());
-   timelineStore['buttonNavbar']?.reversed(! timelineStore['buttonNavbar'].reversed());
+   timelineStore['btnNavbarOpen']?.reversed(!timelineStore['btnNavbarOpen'].reversed())
+   timelineStore['btnNavbarClose']?.reversed(!timelineStore['btnNavbarClose'].reversed())
    timelineStore['navbarDesListOn']?.restart().play(0)
   
 }, [timelineStore]);

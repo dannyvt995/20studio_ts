@@ -10,7 +10,7 @@ function Project4(): JSX.Element {
     return (
         <div id="work4page">
             <IntroWorkPage content={project4_page.content.introWorkPage} />
-            <ProjectText scroller={project4_page.propsForGsap.scrollerRef} randomID='kadx123' disableTitle={false}/>
+           {/*  <ProjectText scroller={project4_page.propsForGsap.scrollerRef} randomID='kadx123' disableTitle={false}/> */}
            
             <FooterRedirect  content={project1_page.content} currentId={4}  targetRedirect='1' scroller={project4_page.propsForGsap.scrollerRef}/>
            

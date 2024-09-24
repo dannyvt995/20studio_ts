@@ -221,7 +221,7 @@ const PageTransition: React.FC<PageTransitionProps> = ({
             ContentDomReference = AllModules.Project4;
             break;
           default:
-            return <h1>404 Page</h1>;
+            ContentDomReference = AllModules.HomePage;
       }
       return (
         <PageTransitionWrapper state={state}>

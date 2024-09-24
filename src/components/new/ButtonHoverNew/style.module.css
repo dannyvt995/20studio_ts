@@ -23,6 +23,14 @@
   will-change: transform,opacity;
  
 }
+.active1 {
+  transform: translate(32px, 0px)!important;
+}
+.active2 {
+  left: 10px;
+
+  opacity: 1 !important;
+}
 .label {
   will-change: transform;
 }
@@ -42,3 +50,9 @@
     }
   }
 
+
+  @media (max-width:601px) {
+      .iconBtnNavbar {
+        opacity: 0;
+      }
+  }

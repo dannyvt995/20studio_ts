@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import s from './style.module.css'
 import Image from 'next/image'
 import gsap from 'gsap'
@@ -8,6 +8,7 @@ import useStoreZustand from '@Hooks/useStoreZustand';
 import { useRouter } from 'next/navigation'
 import useStoreTimeline from '@/hooks/useStoreTimeline';
 import { isMobile } from '@/utils/responsive'
+import Link from 'next/link'
 export default function FooterRedirect({content,scroller,targetRedirect,currentId}:{content:any,scroller:string,targetRedirect:string,currentId:number}) {
     const container = useRef<any>(null)
     const cirRefIc = useRef<any>(null)
@@ -15,8 +16,10 @@ export default function FooterRedirect({content,scroller,targetRedirect,currentI
     const timelineStore = useStoreTimeline((state) => state.timelines);
     const timeline = useRef<gsap.core.Timeline>()
     const { stateTransition } = useStoreZustand()
-   
-   
+    const isMobi = useRef<any>('')
+    useEffect(() => {
+        isMobi.current = localStorage.getItem('isMobi')
+    },[])
     useEffect(() => {
         if(!isMobile()) {
             timeline.current =   gsap.timeline({
@@ -95,10 +98,6 @@ export default function FooterRedirect({content,scroller,targetRedirect,currentI
                                     }
                                 }})
                              }
-                             else{
-                                document.body.style.pointerEvents = 'none'
-                                if(timeline.current) timeline.current.play()
-                            }
                         },
                         start:"top 120% ",
                         end:"top top",
@@ -136,9 +135,16 @@ export default function FooterRedirect({content,scroller,targetRedirect,currentI
                 <h3>{content.introWorkPage.name[0]}<br></br>{content.introWorkPage.name[1]}</h3>
                 <p>{content.introWorkPage.mission[0]}</p>
                 <div className={s.ic}>
-                <svg data-v-41220c7b="" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" className={s.icon}>
-                <circle data-v-41220c7b="" cx="20" cy="20" r="18" strokeWidth="1.5" stroke="currentColor" strokeOpacity="0.5"></circle>
-                <circle ref={cirRefIc} data-v-41220c7b="" cx="20" cy="20" r="18" strokeWidth="1.5" stroke="currentColor" strokeOpacity="1" style={{strokeDashoffset: 0.000999}}></circle></svg>
+                    {isMobi.current === 'true' ? 
+                    <Link className={s.link_re_mobi} href={`/work/work${targetRedirect}`}>
+                    View project
+                    </Link> :
+                     <svg data-v-41220c7b="" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" className={s.icon}>
+                        <circle data-v-41220c7b="" cx="20" cy="20" r="18" strokeWidth="1.5" stroke="currentColor" strokeOpacity="0.5"></circle>
+                        <circle ref={cirRefIc} data-v-41220c7b="" cx="20" cy="20" r="18" strokeWidth="1.5" stroke="currentColor" strokeOpacity="1" style={{strokeDashoffset: 0.000999}}></circle>
+                    </svg>
+                    }
+                   
                 </div>
             </div>
             <div className={s.image} id={`image_fr_${currentId}`}>

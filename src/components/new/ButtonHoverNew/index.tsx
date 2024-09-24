@@ -1,7 +1,7 @@
 "use client"
 import cn from 'classnames';
 import Link from 'next/link';
-import React, { useEffect, useRef, memo, useCallback } from 'react';
+import React, { useEffect, useRef, memo, useCallback, useState } from 'react';
 import s from './style.module.css';
 
 import gsap from 'gsap';
@@ -44,7 +44,10 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children, wrapper, btnN
     const { stateTransition,selectedItemNavbar,setStateMenuIsOpen } = useStoreZustand()
     const isActiveRef = useRef<boolean>(false)
     const currentPath = useRef<string>('/none')
-    const targetPath = useRef<string>('/none')
+    const [isMobi,setIsMobi] = useState(false)
+    useEffect(() => {
+        if(isMobile()) setIsMobi(true)
+    },[])
     useEffect(() => {
 
         const {currentPathFormatted} = formatUrlForIconNavbar({cur:pathName,tar:'none'})
@@ -70,41 +73,26 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children, wrapper, btnN
             ease: easeOps,
             immediateRender: false,
         });
-        let a = isMobile() ? "50%" : "72%"
-        if (btnNavbar) {
-            if(!isMobile()){
-                let timeline = gsap.timeline({paused:true}).fromTo(
-                    refIconNavbar.current,
-                    { rotate:0,scale:0},
-                    { rotate:90,scale:1,y:"-50%",x:a,duration:.5 }
-                ).fromTo(
-                    labelRef.current,
-                    { x:0 },
-                    { x:42,duration:.5 },"<"
-                )
-                timeline.name = targetRedirect;
-                timeline.reverse()
-                setOtherTimeline(timeline.name, timeline);
-    
-    
-                if(currentPathFormatted === targetRedirect) timeline.play()
-            }else{
-                let timeline = gsap.timeline({paused:true}).set(
-                    refIconNavbar.current,
-                    { rotate:90,scale:1,y:"-50%",x:a}
-                ).set(
-                    labelRef.current,
-                    { x:42}
-                )
-                timeline.name = targetRedirect;
-                timeline.reverse()
-                setOtherTimeline(timeline.name, timeline);
-    
-    
-                if(currentPathFormatted === targetRedirect) timeline.play()
-            }
+      
+       
+        if (btnNavbar && !isMobile()) {
+            let timeline = gsap.timeline({paused:true}).fromTo(
+                refIconNavbar.current,
+                { rotate:0,scale:0},
+                { rotate:90,scale:1,y:"-50%",x: "72%",duration:.5 }
+            ).fromTo(
+                labelRef.current,
+                { x:0 },
+                { x:42,duration:.5 },"<"
+            )
+            timeline.name = targetRedirect;
+            timeline.reverse()
+            setOtherTimeline(timeline.name, timeline);
+
+
+            if(currentPathFormatted === targetRedirect) timeline.play()
         } 
-        isActiveRef.current = (pathName === targetRedirect) || (pathName === '/' && targetRedirect === '/home');
+       
         return () => {
             if (timelineRef.current) {
                 timelineRef.current.kill();
@@ -114,10 +102,13 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children, wrapper, btnN
     }, [])
 
 
+    useEffect(() => {
+        isActiveRef.current = (pathName === targetRedirect) || (pathName === '/' && targetRedirect === '/home');
+    },[pathName])
   
     useEffect(() => {
 
-        if (isMobile()) return
+        if (isMobi) return
         if (stateTransition !== 'entered') return
 
         const enterAnimation = contextSafe((e: any) => {
@@ -205,7 +196,7 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children, wrapper, btnN
             data-link={btnNavbar ? data_id : 'none'}
           //  style={isActiveRef.current ? {userSelect: "none"} : {}}
         >
-            {btnNavbar ? <span ref={refIconNavbar} className={s.iconBtnNavbar}>
+            {btnNavbar ? <span ref={refIconNavbar} className={isActiveRef.current && isMobi ? cn(s.iconBtnNavbar,s.active2) : s.iconBtnNavbar} >
                 <IconSVG src='/icon/star.svg' /></span> : <></>}
             {btnNavbarFooter  ? 
                 <span className={s.iconBtnNavbar}>
@@ -214,7 +205,7 @@ const ButtonHoverNew: React.FC<ButtonHoverNewProps> = ({ children, wrapper, btnN
             : <></>}
 
 
-            <span className={s.label} ref={labelRef}>{children}</span>
+            <span className={isActiveRef.current && isMobi ? cn(s.label,s.active1) : s.label} ref={labelRef}>{children}</span>
 
         </Link>
     );

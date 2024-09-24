@@ -3,14 +3,17 @@ import WorkSlider from '@/components/new/WorkSlider';
 import { isMobile } from '@/utils/responsive';
 
 
-import { memo } from 'react';
+import { memo, useEffect, useState } from 'react';
 import WorkPageMobi from '../WorkPageMobi';
 function WorkPage(): JSX.Element {
-  
+  const [isMobi,setIsMobi] = useState(false)
+  useEffect(() => {
+    if(isMobile()) setIsMobi(true)
+  },[])
   return (
     <div id="workpage">
       
-      {isMobile() ? <WorkPageMobi></WorkPageMobi>: <WorkSlider />}
+      {isMobi ? <WorkPageMobi/>: <WorkSlider />}
     </div>
   )
 }

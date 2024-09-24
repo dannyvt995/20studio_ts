@@ -91,3 +91,21 @@
         max-width: 60%;
     }
 }
+
+.link_re_mobi {
+    background: #000000cf;
+    display: block;
+    width: max-content;
+    border: 1px solid gray;
+    padding: .42rem 1rem;
+    border-radius: 5px;
+    color: hsla(0, 0%, 100%, .8);
+    color: var(--color-white-08);
+    font-family: "BS-Regular";
+    font-size: 3.7333333333vw;
+    font-size: var(--font-s-p);
+    letter-spacing: .0266666667vw;
+    letter-spacing: var(--font-ls-p);
+    line-height: 5.6vw;
+    line-height: var(--font-lh-p);
+}

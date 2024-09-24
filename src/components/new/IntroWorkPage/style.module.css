@@ -179,7 +179,7 @@
 }
 @media (min-width: 601px) {
     .IntroWorkPage{
-        /* height: 134.2138888889vw !important; */
+        height: 134.2138888889vw !important;
         
         aspect-ratio: 16/18;
         overflow: hidden;
