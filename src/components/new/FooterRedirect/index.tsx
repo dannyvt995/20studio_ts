@@ -16,9 +16,9 @@ export default function FooterRedirect({content,scroller,targetRedirect,currentI
     const timelineStore = useStoreTimeline((state) => state.timelines);
     const timeline = useRef<gsap.core.Timeline>()
     const { stateTransition } = useStoreZustand()
-    const isMobi = useRef<any>('')
+    const [isMobi,setIsMobi] = useState(false)
     useEffect(() => {
-        isMobi.current = localStorage.getItem('isMobi')
+       if(isMobile()) setIsMobi(true)
     },[])
     useEffect(() => {
         if(!isMobile()) {
@@ -135,7 +135,7 @@ export default function FooterRedirect({content,scroller,targetRedirect,currentI
                 <h3>{content.introWorkPage.name[0]}<br></br>{content.introWorkPage.name[1]}</h3>
                 <p>{content.introWorkPage.mission[0]}</p>
                 <div className={s.ic}>
-                    {isMobi.current === 'true' ? 
+                    {isMobi ? 
                     <Link className={s.link_re_mobi} href={`/work/work${targetRedirect}`}>
                     View project
                     </Link> :
